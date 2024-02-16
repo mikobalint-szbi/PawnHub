@@ -1,0 +1,47 @@
+
+
+Loans:
+- id
+- productIDs: list
+- customerID
+- sumOfMoney
+- concludionDate
+- expirationDate
+- interest
+- note
+
+
+Customers:
+- id
+- name
+- address
+- phone
+- email
+- photo
+- note
+
+
+Products:
+- id
+- name
+- loanID: a keresés gyorsítása végett (ne kelljen mindig végignyálazni a loanokat)
+- location
+- estimatedValue
+- categoryID
+- description
+- állapot (dropDown-list)
+- photo
+
+// ↑ A főoldalon is a fentebbi három opció közül választhatunk 
+
+
+Categories
+- id
+- name
+
+
+FTP-alapú webszerver kísérlet
+
+
+
+
