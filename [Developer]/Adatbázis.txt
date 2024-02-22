@@ -27,6 +27,7 @@ Products:
 - loanID: a keresés gyorsítása végett (ne kelljen mindig végignyálazni a loanokat)
 - location
 - estimatedValue
+- payedValue
 - categoryID
 - description
 - állapot (dropDown-list)
