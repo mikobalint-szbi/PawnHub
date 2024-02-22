@@ -6,9 +6,7 @@
 <div class="app">
 	<Header/>
 
-	<main>
 		<slot />
-	</main>
 
 	<footer>
 		
@@ -16,5 +14,10 @@
 </div>
 
 <style>
-
+	.app{
+		height: 100vh;
+		display: flex;
+		flex-direction: column;
+		
+	}
 </style>

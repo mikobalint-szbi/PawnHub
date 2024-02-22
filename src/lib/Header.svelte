@@ -8,7 +8,7 @@
 <style lang="scss">
     
     #header{
-        width: 100vw;
+        width: 100%;
         height: 65px;
         background-color: rgb(109, 194, 106);
         display: flex;

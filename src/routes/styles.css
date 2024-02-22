@@ -2,9 +2,14 @@
 
 body {
 	min-height: 100vh;
+	height: 100% !important;
 	margin: 0;
 	background-attachment: fixed;
 	background-color: rgb(180, 221, 197);
     font-family: "Open Sans";
     font-weight: 300;
+}
+
+*{
+	box-sizing: border-box;
 }
