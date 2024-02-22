@@ -32,7 +32,30 @@
         </ul>
     </div>
     <div id="body-col2">
-
+        <div id="loginBox">
+            <h3>Bejelentkezés</h3>
+            <label for="l-username">Felhasználónév vagy e-mail:</label>
+            <input type="text" name="l-username" id="l-username">
+            <label for="l-password">Jelszó:</label>
+            <input type="password" name="l-password" id="l-password">
+            <button id="login">Bejelentkezés</button>
+        </div>
+        <div id="registerBox">
+            <h3>Regisztráció</h3>
+            <label for="r-surname">Vezetéknév:</label>
+            <input type="text" name="r-surname" id="r-surname">
+            <label for="r-forename">Keresztnév:</label>
+            <input type="text" name="r-forename" id="r-forename">
+            <label for="r-username">Felhasználónév:</label>
+            <input type="text" name="r-username" id="r-username">
+            <label for="r-email">E-mail-cím:</label>
+            <input type="text" name="r-email" id="r-email">
+            <label for="r-password">Jelszó:</label>
+            <input type="password" name="r-password" id="r-password">
+            <label for="r-passwordAgain">Jelszó újra:</label>
+            <input type="password" name="r-passwordAgain" id="r-passwordAgain">
+            <button id="register">Regisztráció</button>
+        </div>
     </div>
 
 </section>
@@ -55,8 +78,39 @@
         width: 45%;
         height: 100%;
         display: flex;
-
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 10px;
     }
+    #loginBox{
+        display: flex;
+        flex-direction: column;
+        padding: 12px;
+        border: 1px solid black;
+        input{
+            width: 270px;
+        }
+
+        #login{
+            margin-top: 10px;
+        }
+    }
+
+    #registerBox{
+        display: flex;
+        flex-direction: column;
+        padding: 12px;
+        border: 1px solid black;
+        input{
+            width: 270px;
+        }
+
+        #register{
+            margin-top: 10px;
+        }
+    }
+
 
     #offer{
         li{
