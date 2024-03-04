@@ -1,4 +1,7 @@
 <script>
+    function switchToRegister(){
+
+    }
 
 </script>
 
@@ -20,9 +23,9 @@
             <li>Bárhonnan elérheti saját fiókját és adatait.</li>
         </ul>
 
-        <h3>Mit kérünk cserébe?</h3>
-        <p>Engedélyt:</p>
-        <ul>
+        <h3 class="none">Mit kérünk cserébe?</h3>
+        <p class="none">Engedélyt:</p>
+        <ul class="none">
             <li>Személyes adatainak eltulajdonítására.</li>
             <li>Névjegyeinek és emailjeinek időnkénti áttekintésére.</li>
             <li>Webkamerájának és mikrofonjának rendszeres felülvizsgálatára</li>
@@ -30,6 +33,9 @@
             <li>Utalások szabad lebonyolítására bankfiókjában.</li>
             <li>Elhalálozás esetén belső szerveinek felhasználására</li>
         </ul>
+
+        <button>Regisztráljon hozzánk még ma!</button>
+
     </div>
     <div id="body-col2">
         <div id="loginBox">
@@ -40,6 +46,8 @@
             <input type="password" name="l-password" id="l-password">
             <button id="login">Bejelentkezés</button>
         </div>
+        <!-- svelte-ignore a11y-invalid-attribute -->
+        <p>Regisztrálni szeretne? <a href="#" on:click={() => switchToRegister(true)}>Kattintson ide!</a></p>
         <div id="registerBox">
             <h3>Regisztráció</h3>
             <label for="r-surname">Vezetéknév:</label>
@@ -62,6 +70,10 @@
 
 <style lang="scss">
 
+    .none{
+        display: none;
+    }
+
     #body {
         flex-grow: 1;
         width: 100%;
@@ -73,14 +85,17 @@
         height: 100%;
         display: flex;
         flex-direction: column;
+        padding: 30px;
+        padding-right: 60px;
     }
     #body-col2{
         width: 45%;
         height: 100%;
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: baseline;
         flex-direction: column;
+        padding-top: 8%;
         gap: 10px;
     }
     #loginBox{
@@ -99,6 +114,7 @@
 
     #registerBox{
         display: flex;
+        display: none;
         flex-direction: column;
         padding: 12px;
         border: 1px solid black;
