@@ -14,10 +14,8 @@
         document.getElementById("toRegister-p").style.display = "none"
         document.getElementById("toLogin-p").style.display = "block"
 
-        
-
-
     }
+    
     function switchtoLogin(){
         document.getElementById("loginBox").style.display = "flex"
         document.getElementById("registerBox").style.display = "none"
@@ -28,12 +26,12 @@
         document.getElementById("regDriector").style.display = "none"
     }
 
+    function loginHandler(){
+        window.location.href = "Dashboard"
+    }
+
 
 </script>
-
-<svelte:head>
-
-</svelte:head>
 
 <section id="body">
     <div id="body-col1">
@@ -74,7 +72,7 @@
             <input type="text" name="l-username" id="l-username">
             <label for="l-password">Jelszó:</label>
             <input type="password" name="l-password" id="l-password">
-            <button id="login">Bejelentkezés</button>
+            <button id="login" on:click={loginHandler}>Bejelentkezés</button>
         </div>
 
         <div id="registerBox">
