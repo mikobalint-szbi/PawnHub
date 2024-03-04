@@ -6,20 +6,9 @@
         <h3>PawnHub</h3>
     </div>
 
-    <div id="loginBox">
-        <div class="subLogin">
-            <label for="l-username">Felhasználónév vagy e-mail:</label>
-            <input type="text" name="l-username" id="l-username">
-        </div>
-        <div class="subLogin">
-            <label for="l-password">Jelszó:</label>
-            <input type="password" name="l-password" id="l-password">
-        </div>
-        <div class="subLogin">
-            <button id="login">Bejelentkezés</button>
-        </div>
 
-    </div>
+
+
 </div>
 
 <style lang="scss">
@@ -31,6 +20,7 @@
         display: flex;
         align-items: center;
         box-shadow: 0px 0.8px 3px black;
+        z-index: 300;
 
         h3{
             font-size: 35px;
@@ -46,27 +36,11 @@
         #logoBox{
             display: flex;
             flex-direction: row;
+            align-items: center;
         }
 
-        #loginBox{
-            display: flex;
-            flex-direction: row;
-            margin-left: auto;
-            margin-right: 30px;
-            justify-content: center;
+        
 
-            .subLogin{
-                display: flex;
-                flex-direction: column;
-                justify-content: end;
-                margin: 0 5px;
-
-                label{
-                    font-size: 12px;
-                    margin-left: 1px;
-                }
-            }
-        }
     }
 </style>
 

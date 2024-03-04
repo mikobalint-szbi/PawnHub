@@ -13,3 +13,19 @@ body {
 *{
 	box-sizing: border-box;
 }
+
+button{
+	background-color: rgb(128, 204, 154);
+	font-size: 16px;
+	padding: 3.5px;
+	cursor: pointer;
+	border-radius: 2px;
+}
+
+a{
+	color: rgb(71, 137, 94);
+}
+
+input{
+	background-color: rgb(199, 238, 217)
+}

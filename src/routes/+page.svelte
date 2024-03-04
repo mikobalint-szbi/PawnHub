@@ -1,7 +1,33 @@
 <script>
-    function switchToRegister(){
+    async function switchtoRegister(regDirector){
+
+        if (regDirector){
+            document.getElementById("regDriector").style.display = "block"
+            await new Promise(r => setTimeout(r, 100));
+        }
+
+
+
+        document.getElementById("loginBox").style.display = "none"
+        document.getElementById("registerBox").style.display = "flex"
+
+        document.getElementById("toRegister-p").style.display = "none"
+        document.getElementById("toLogin-p").style.display = "block"
+
+        
+
 
     }
+    function switchtoLogin(){
+        document.getElementById("loginBox").style.display = "flex"
+        document.getElementById("registerBox").style.display = "none"
+
+        document.getElementById("toRegister-p").style.display = "block"
+        document.getElementById("toLogin-p").style.display = "none"
+
+        document.getElementById("regDriector").style.display = "none"
+    }
+
 
 </script>
 
@@ -34,7 +60,11 @@
             <li>Elhalálozás esetén belső szerveinek felhasználására</li>
         </ul>
 
-        <button>Regisztráljon hozzánk még ma!</button>
+        <div id="registerPromotion-div">
+            <button id="registerPromotion" on:click={() => switchtoRegister(true)}>Regisztráljon hozzánk még ma!</button>
+            <p id="regDriector">🠦 Tekintsen a képernyő jobb oldalára! 🠦</p>
+        </div>
+
 
     </div>
     <div id="body-col2">
@@ -46,8 +76,7 @@
             <input type="password" name="l-password" id="l-password">
             <button id="login">Bejelentkezés</button>
         </div>
-        <!-- svelte-ignore a11y-invalid-attribute -->
-        <p>Regisztrálni szeretne? <a href="#" on:click={() => switchToRegister(true)}>Kattintson ide!</a></p>
+
         <div id="registerBox">
             <h3>Regisztráció</h3>
             <label for="r-surname">Vezetéknév:</label>
@@ -64,6 +93,12 @@
             <input type="password" name="r-passwordAgain" id="r-passwordAgain">
             <button id="register">Regisztráció</button>
         </div>
+
+        <!-- svelte-ignore a11y-invalid-attribute -->
+        <p id="toRegister-p">Regisztrálni szeretne? <a href="#" on:click={() => switchtoRegister(false)}>Kattintson ide!</a></p>
+        <!-- svelte-ignore a11y-invalid-attribute -->
+        <p id="toLogin-p">Már van PawnHub-fiókja? <a href="#" on:click={switchtoLogin}>Kattintson ide!</a></p>
+
     </div>
 
 </section>
@@ -87,6 +122,12 @@
         flex-direction: column;
         padding: 30px;
         padding-right: 60px;
+        padding-top: 6vh;
+        background-color: rgb(156, 210, 177);
+
+        h3, h2{
+            margin-bottom: 0px;
+        }
     }
     #body-col2{
         width: 45%;
@@ -95,20 +136,25 @@
         align-items: center;
         justify-content: baseline;
         flex-direction: column;
-        padding-top: 8%;
+        padding-top: 13vh;
         gap: 10px;
+        box-shadow: -0.8px 0px 3px black;
     }
     #loginBox{
         display: flex;
         flex-direction: column;
         padding: 12px;
         border: 1px solid black;
+        h3{
+            margin-top: 15px;
+        }
+
         input{
             width: 270px;
         }
 
         #login{
-            margin-top: 10px;
+            margin-top: 11px;
         }
     }
 
@@ -118,13 +164,25 @@
         flex-direction: column;
         padding: 12px;
         border: 1px solid black;
+        h3{
+            margin-top: 15px;
+        }
         input{
             width: 270px;
         }
 
         #register{
-            margin-top: 10px;
+            margin-top: 14px;
         }
+
+        #r-username{
+            margin-bottom: 10px;
+        }
+
+    }
+
+    #toLogin-p{
+        display: none;
     }
 
 
@@ -133,6 +191,29 @@
             margin-bottom: 10px;
         }
     }
+
+    #registerPromotion-div{
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        #registerPromotion{
+            font-size: 30px;
+            width: fit-content;
+            padding: 10px 20px;
+
+        }
+        #regDriector{
+            margin: 0;
+            display: none;
+        }
+
+    }
+
 
 
 </style>
