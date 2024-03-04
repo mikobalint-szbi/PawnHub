@@ -62,6 +62,7 @@
             <button id="registerPromotion" on:click={() => switchtoRegister(true)}>Regisztráljon hozzánk még ma!</button>
             <p id="regDriector">🠦 Tekintsen a képernyő jobb oldalára! 🠦</p>
         </div>
+        <p style="font-size: 30px; color: red">Még nincs kész a Bejelentkezés-oldal reszponzivitása.</p>
 
 
     </div>
@@ -103,6 +104,55 @@
 
 <style lang="scss">
 
+    @media (min-width: 0px) {
+        #body{
+            flex-direction: column;
+
+            #body-col1{
+                width: 100%;
+            }
+            #body-col2{
+                width: 100%;
+            }
+
+        }
+
+    }
+    @media (min-width: 340px) {
+
+
+    }
+    /* Small devices (portrait tablets and large phones, 600px and up) */
+    @media (min-width: 596px) {
+
+
+    }
+    @media (min-width: 868px) {
+        #body{
+            flex-direction: row;
+
+            #body-col1{
+                width: 55%;
+            }
+            #body-col2{
+                width: 45%;
+            }
+        }
+
+    }
+    /* Large devices (laptops/desktops, 992px and up) */
+    @media (min-width: 1000px) {
+
+
+    }
+    /* Extra large devices (large laptops and desktops, 1200px and up) */
+    @media (min-width: 1230px) {
+
+
+    }
+
+
+
     .none{
         display: none;
     }
@@ -114,7 +164,6 @@
     }
     #body-col1{
         border-right: 1px solid black;
-        width: 55%;
         height: 100%;
         display: flex;
         flex-direction: column;
@@ -128,7 +177,6 @@
         }
     }
     #body-col2{
-        width: 45%;
         height: 100%;
         display: flex;
         align-items: center;
