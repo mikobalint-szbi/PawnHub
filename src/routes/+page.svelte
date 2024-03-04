@@ -15,7 +15,7 @@
         document.getElementById("toLogin-p").style.display = "block"
 
     }
-    
+
     function switchtoLogin(){
         document.getElementById("loginBox").style.display = "flex"
         document.getElementById("registerBox").style.display = "none"
@@ -27,7 +27,7 @@
     }
 
     function loginHandler(){
-        window.location.href = "Dashboard"
+        window.location.href = "home"
     }
 
 

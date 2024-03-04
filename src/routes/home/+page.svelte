@@ -11,41 +11,44 @@
     </div>
     <div id="options">
 
-        <div class="optionBox">
+
+        <a class="optionBox" href="items">
             <div class="imageBox">
                 <img class="image" src="IMG/logo.png" alt="">
             </div>
             <div class="titleBox">
                 <h3 class="title">Zálogtárgyak</h3>
             </div>
-        </div>
+        </a>
+
+
     
-        <div class="optionBox">
+        <a class="optionBox" href="customers">
             <div class="imageBox">
-                <img class="image" src="IMG/Dashboard/customers.png" alt="">
+                <img class="image" src="IMG/Home/customers.png" alt="Ügyfelek">
             </div>
             <div class="titleBox">
                 <h3 class="title">Ügyfelek</h3>
             </div>
-        </div>
+        </a>
     
-        <div class="optionBox">
+        <a class="optionBox" href="loans">
             <div class="imageBox">
-                <img class="image" src="IMG/Dashboard/loans.png" alt="">
+                <img class="image" src="IMG/Home/loans.png" alt="Adósságok">
             </div>
             <div class="titleBox">
                 <h3 class="title">Adósságok</h3>
             </div>
-        </div>
+        </a>
     
-        <div class="optionBox">
+        <a class="optionBox" href="archive">
             <div class="imageBox">
-                <img class="image" src="IMG/Dashboard/archive.png" alt="">
+                <img class="image" src="IMG/Home/archive.png" alt="Archívum">
             </div>
             <div class="titleBox">
                 <h3 class="title">Archívum</h3>
             </div>
-        </div>
+        </a>
 
     </div>
 
@@ -162,6 +165,8 @@
 
 
             .optionBox{
+                text-decoration: none;
+                color: black !important;
                 cursor: pointer;
                 border: 1px solid black;
                 border-radius: 7px;
