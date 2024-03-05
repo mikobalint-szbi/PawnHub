@@ -1,10 +1,10 @@
 
 
 <div id="header">
-    <div id="logoBox">
+    <a id="logoBox" href="home">
         <img src="IMG/logo.png" alt="Gyémánt logo" id="logo">
         <h3>PawnHub</h3>
-    </div>
+    </a>
 
 
 
@@ -22,6 +22,7 @@
         box-shadow: 0px 0.8px 3px black;
         z-index: 300;
 
+
         h3{
             font-size: 35px;
             font-weight: 300;
@@ -37,6 +38,8 @@
             display: flex;
             flex-direction: row;
             align-items: center;
+            text-decoration: none;
+            color: black;
         }
 
         

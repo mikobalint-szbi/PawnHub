@@ -12,17 +12,15 @@
     <div id="options">
 
 
-        <a class="optionBox" href="items">
+        <a class="optionBox" href="products">
             <div class="imageBox">
                 <img class="image" src="IMG/logo.png" alt="">
             </div>
             <div class="titleBox">
-                <h3 class="title">Zálogtárgyak</h3>
+                <h3 class="title">Termékek</h3>
             </div>
         </a>
 
-
-    
         <a class="optionBox" href="customers">
             <div class="imageBox">
                 <img class="image" src="IMG/Home/customers.png" alt="Ügyfelek">

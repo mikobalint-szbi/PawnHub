@@ -24,19 +24,25 @@ Customers:
 Products:
 - id
 - name
+- status: zálog, eladható, archivált
 - loanID: a keresés gyorsítása végett (ne kelljen mindig végignyálazni a loanokat)
 - location
-- estimatedValue
+- estimatedValue / sellingValue
 - payedValue
 - categoryID
 - description
-- állapot (dropDown-list)
+- condition (dropDown-list)
 - photo
 
 // ↑ A főoldalon is a fentebbi három opció közül választhatunk 
 
 
 Categories
+- id
+- name
+- group
+
+Category groups
 - id
 - name
 

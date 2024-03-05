@@ -35,6 +35,6 @@ a{
 	color: rgb(71, 137, 94);
 }
 
-input{
+input, select, textarea{
 	background-color: rgb(199, 238, 217)
 }

@@ -1,7 +1,7 @@
 <script>
     async function switchtoRegister(regDirector){
 
-        if (regDirector){
+        if (regDirector && screen.width >= 868){
             document.getElementById("regDriector").style.display = "block"
             await new Promise(r => setTimeout(r, 100));
         }
@@ -59,10 +59,11 @@
         </ul>
 
         <div id="registerPromotion-div">
-            <button id="registerPromotion" on:click={() => switchtoRegister(true)}>Regisztráljon hozzánk még ma!</button>
+            <a href="#registerBox">
+                <button id="registerPromotion" on:click={() => switchtoRegister(true)}>Regisztráljon hozzánk még ma!</button>
+            </a>
             <p id="regDriector">🠦 Tekintsen a képernyő jobb oldalára! 🠦</p>
         </div>
-        <p style="font-size: 30px; color: red">Még nincs kész a Bejelentkezés-oldal reszponzivitása.</p>
 
 
     </div>
@@ -118,15 +119,6 @@
         }
 
     }
-    @media (min-width: 340px) {
-
-
-    }
-    /* Small devices (portrait tablets and large phones, 600px and up) */
-    @media (min-width: 596px) {
-
-
-    }
     @media (min-width: 868px) {
         #body{
             flex-direction: row;
@@ -138,16 +130,6 @@
                 width: 45%;
             }
         }
-
-    }
-    /* Large devices (laptops/desktops, 992px and up) */
-    @media (min-width: 1000px) {
-
-
-    }
-    /* Extra large devices (large laptops and desktops, 1200px and up) */
-    @media (min-width: 1230px) {
-
 
     }
 

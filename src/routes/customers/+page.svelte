@@ -1,8 +1,13 @@
 <script>
-
+    import ProductPopup from "../../lib/Popups/ProductPopup.svelte";
 </script>
 <section id="body">
-    <a href="home">Vissza</a>
+    
+    <ProductPopup/>
+
+
+
+
 </section>
 <style lang="scss">
 
