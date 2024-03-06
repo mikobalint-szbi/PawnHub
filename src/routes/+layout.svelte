@@ -4,7 +4,10 @@
 </script>
 
 <div class="app">
-	<Header/>
+	<header>
+		<Header id="header"/>
+	</header>
+
 
 		<slot />
 
@@ -19,5 +22,9 @@
 		display: flex;
 		flex-direction: column;
 		
+	}
+
+	header{
+		z-index: 100;
 	}
 </style>

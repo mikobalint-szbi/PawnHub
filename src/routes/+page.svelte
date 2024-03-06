@@ -211,6 +211,10 @@
 
     #toLogin-p{
         display: none;
+        margin-bottom: 40px;
+    }
+    #toRegister-p{
+        margin-bottom: 40px;
     }
 
 

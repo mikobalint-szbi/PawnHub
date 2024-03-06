@@ -15,8 +15,8 @@
     
     #header{
         width: 100%;
-        height: 65px;
-        background-color: rgb(109, 194, 106);
+        height: 65px !important;
+        background-color: rgb(118,197,118);
         display: flex;
         align-items: center;
         box-shadow: 0px 0.8px 3px black;
