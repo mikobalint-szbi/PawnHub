@@ -1,100 +1,116 @@
 <script>
-    
+    import {open_product, close_product, save_product} from "$lib/Popups/functions.js";
+
+
+
 </script>
 
 <dialog id="productPopup">
-    <div id="popup-grid">
-        <div id="image" class="popupGrid-element">
-            <img src="IMG/no-image.png" alt="">
-        </div>
-        <div id="product-name" class="popupGrid-element">
-            <label for="p-name" class="p-label">Termék neve:</label>
-            <input type="text" class="p-input" id="p-name">
-        </div>
-        <div id="status" class="popupGrid-element">
-            <label for="p-status" class="p-label">Státusz:</label>
-            <select id="p-status" class="p-input">
-                <option value="" id="p-status-opt1">Zálog</option>
-                <option value="">Eladó</option>
-                <option value="">Archivált</option>
-            </select>
-        </div>
-        <div id="category" class="popupGrid-element">
-            <label for="p-category" class="p-label">Kategória:</label>
-            <select id="p-category" class="p-input">
-                <optgroup label="Elektronika">
-                    <option value="">Mobiltelefon</option>
-                    <option value="">Karóra</option>
-                    <option value="">Játékkonzol</option>
-                </optgroup>
-                <optgroup label="Ékszerek">
-                    <option value="">Gyűrű</option>
-                    <option value="">Nyaklánc</option>
-                    <option value="">Fülbevaló</option>
-                </optgroup>
-
-            </select>
-        </div>
-        <div id="condition" class="popupGrid-element">
-            <label for="p-condition" class="p-label">Állapot:</label>
-            <select id="p-condition" class="p-input">
-                <option value="">🔵 Használatlan</option>
-                <option value="">🟢 Kiváló</option>
-                <option value="">🟠 Jó</option>
-                <option value="">🟡 Kielégítő</option>
-                <option value="">🔴 Lehasznált</option>
-            </select>
-        </div>
-        <div id="payed-value" class="popupGrid-element">
-            <label for="p-payedValue" class="p-label">Kifizetett érték:</label>
-            <div class="pv-row">
-                <input type="number" class="p-input" id="p-payedValue">
-                <p>Ft</p>
-            </div>
-
-        </div>
-        <div id="estimated-value" class="popupGrid-element">
-            <label for="p-estimatedValue" class="p-label">Becsült érték:</label>
-            <div class="pv-row">
-                <input type="number" class="p-input" id="p-estimatedValue">
-                <p>Ft</p>
-            </div>
-        </div>
-        <div id="description" class="popupGrid-element">
-            <label for="p-description" class="p-label">Leírás:</label>
-            <textarea type="text" class="p-input" id="p-description"></textarea>
-        </div>
-        <div id="location" class="popupGrid-element">
-            <label for="p-location" class="p-label">Hely:</label>
-            <textarea type="" class="p-input" id="p-location"></textarea>
-        </div>
-        <div id="loan" class="popupGrid-element">
-            <label for="loanBox" class="p-label">Adósság:</label>
-            <div id="loanBox">
-                <h5>Pénzösszeg:</h5>
-                <p>30 000 Ft</p>
-                <h5>Megköttetett:</h5>
-                <p>2024.03.06.</p>
-                <h5>Lejár:</h5>
-                <p>2025.03.06.</p>
-                <h5>Kamat:</h5>
-                <p>4%</p>
-            </div>
-        </div>
-        <div id="customer" class="popupGrid-element">
-            <div id="customer-row1">
-                <img src="IMG/no-profile-image.png" alt="">
-            </div>
-            <div id="customer-row2">
-                <p>Péld Aladárné Teszt Ilona unokahúga</p>
-            </div>
-
+    <div id="popup-inner">
+        <div id="topRow">
+            <button on:click={close_product}>
+                <img src="IMG/close.png" alt="">
+            </button>
         </div>
 
+        <div id="popup-grid">
+            <div id="image" class="popupGrid-element">
+                <img src="IMG/no-image.png" alt="">
+            </div>
+            <div id="product-name" class="popupGrid-element">
+                <label for="p-name" class="p-label">Termék neve:</label>
+                <input type="text" class="p-input" id="p-name">
+            </div>
+            <div id="status" class="popupGrid-element">
+                <label for="p-status" class="p-label">Státusz:</label>
+                <select id="p-status" class="p-input">
+                    <option value="" id="p-status-opt1">🔒 Zálog</option>
+                    <option value="">💰 Eladó</option>
+                    <option value="">🗃️ Archivált</option>
+                </select>
+            </div>
+            <div id="category" class="popupGrid-element">
+                <label for="p-category" class="p-label">Kategória:</label>
+                <select id="p-category" class="p-input">
+                    <optgroup label="Elektronika">
+                        <option value="">Mobiltelefon</option>
+                        <option value="">Karóra</option>
+                        <option value="">Játékkonzol</option>
+                    </optgroup>
+                    <optgroup label="Ékszerek">
+                        <option value="">Gyűrű</option>
+                        <option value="">Nyaklánc</option>
+                        <option value="">Fülbevaló</option>
+                    </optgroup>
+
+                </select>
+            </div>
+            <div id="condition" class="popupGrid-element">
+                <label for="p-condition" class="p-label">Állapot:</label>
+                <select id="p-condition" class="p-input">
+                    <option value="">🔵 Használatlan</option>
+                    <option value="">🟢 Kiváló</option>
+                    <option value="">🟠 Jó</option>
+                    <option value="">🟡 Kielégítő</option>
+                    <option value="">🔴 Lehasznált</option>
+                </select>
+            </div>
+            <div id="payed-value" class="popupGrid-element">
+                <label for="p-payedValue" class="p-label">Kifizetett érték:</label>
+                <div class="pv-row">
+                    <input type="number" class="p-input" id="p-payedValue">
+                    <p>Ft</p>
+                </div>
+
+            </div>
+            <div id="estimated-value" class="popupGrid-element">
+                <label for="p-estimatedValue" class="p-label">Becsült érték:</label>
+                <div class="pv-row">
+                    <input type="number" class="p-input" id="p-estimatedValue">
+                    <p>Ft</p>
+                </div>
+            </div>
+            <div id="description" class="popupGrid-element">
+                <label for="p-description" class="p-label">Leírás:</label>
+                <textarea type="text" class="p-input" id="p-description"></textarea>
+            </div>
+            <div id="location" class="popupGrid-element">
+                <label for="p-location" class="p-label">Hely:</label>
+                <textarea type="" class="p-input" id="p-location"></textarea>
+            </div>
+            <div id="loan" class="popupGrid-element">
+                <label for="loanBox" class="p-label">Adósság:</label>
+                <div id="loanBox">
+                    <h5>Pénzösszeg:</h5>
+                    <p>30 000 Ft</p>
+                    <h5>Megköttetett:</h5>
+                    <p>2024.03.06.</p>
+                    <h5>Lejár:</h5>
+                    <p>2025.03.06.</p>
+                    <h5>Kamat:</h5>
+                    <p>4%</p>
+                </div>
+            </div>
+            <div id="customer" class="popupGrid-element">
+                <div id="customer-row1">
+                    <img src="IMG/no-profile-image.png" alt="">
+                </div>
+                <div id="customer-row2">
+                    <p>Péld Aladárné Teszt Ilona unokahúga</p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="bottomRow">
+            <button on:click={save_product}>
+                <img src="IMG/save.png" alt="" id="submitImg">
+                <p id="submitText">Módosítások mentése</p>
+            </button>
+        </div>
     </div>
 </dialog>
-
-
 
 <style lang="scss">
 
@@ -102,25 +118,79 @@
 
     #productPopup{
         background-color: rgb(161, 213, 179);
-        width: 800px;
+        width: fit-content;
+        height: fit-content;
         margin: auto;
         border: solid 1px black;
         box-shadow: 0.1px 0.1px 5px black;
-
-        margin: 0; /* `margin: auto;` is the default. */
+        padding: 0;
+        margin: 0;
         transform: translateX(-50%);
         left: 50%;
         top: 6vh;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        #topRow{
+            display: flex;
+            width: 100%;
+            height: 44px;
+            justify-content: end;
+            padding: 9px;
+
+            margin-bottom: 4px;
+            button{
+                width: 30px;
+                height: 29px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                img{
+                    height: 100%;
+                }
+            }
+        }
+
+        #bottomRow{
+            display: flex;
+            width: 100%;
+            height: 79px;
+            justify-content: center;
+            padding: 14px;
+
+            button{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 3px;
+
+                img{
+                    height: 80%;
+                    margin-left: 3px;
+                    margin-right: 8px;
+                }
+                p{
+                    margin: 0;
+                }
+                font-size: 25px;
+                width: 310px;
+            }
+        }
+
 
         #popup-grid{
+
+            width: 800px !important;
+            height: calc(800px * 0.69) !important;
+            margin: 0 18px;
             display: grid;
             grid-template-rows: repeat(8, 1fr);
             grid-template-columns: repeat(12, 1fr);
-            width: 100%;
-            height: calc(800px * 0.7);
+            width: 97%;
+            height: 90%;
 
-
-            
+ 
 
             .popupGrid-element{
                 border: 0.5px solid rgb(106, 137, 116);
@@ -213,7 +283,7 @@
                     border: 1px solid black;
                     box-shadow: 0px 0px 1px black;
                     border-radius: 4px;
-                    padding: 5px;
+                    padding: 8px;
                     display: flex;
                     flex-direction: column;
                     justify-content: center;

@@ -1,11 +1,12 @@
 <script>
-    import ProductPopup from "../../lib/Popups/ProductPopup.svelte";
+    import ProductPopup from "$lib/Popups/ProductPopup.svelte";
+    import {open_product, close_product, save_product} from "$lib/Popups/functions.js";
+
 
     function psOption1_clicked(){
         document.getElementById("ps-option1").classList.add("active")
         document.getElementById("ps-option2").classList.remove("active")
         document.getElementById("ps-option3").classList.remove("active")
-        console.log("djéflj")
     }
     function psOption2_clicked(){
         document.getElementById("ps-option1").classList.remove("active")
@@ -18,13 +19,8 @@
         document.getElementById("ps-option3").classList.add("active")
     }
 
-    function row_clicked(){
-        document.getElementById("productPopup").showModal()
-    }
 
-    function addButton_clicked(){
-        document.getElementById("productPopup").showModal()
-    }
+
 
 
 
@@ -83,7 +79,7 @@
 
         </div>
         <div id="hl-col3">
-            <button id="add-button" on:click={addButton_clicked}>
+            <button id="add-button" on:click={() => open_product(true)}>
                 <div id="add-col1">
                     <img src="IMG/add.png" alt="Hozzáadás" title="Hozzáadás">
                 </div>
@@ -113,11 +109,11 @@
 
                 {#each {length: 17} as _, i}
                 <div class="row" href="">
-                    <td class="col1" href="" tabindex="0" on:click={row_clicked}>
+                    <td class="col1" href="" tabindex="0" on:click={() => open_product(false)}>
                         <img src="IMG/no-image.png" alt="">
                     </td>
-                    <td class="col2"  on:click={row_clicked}>Tárgy neve</td>
-                    <td class="col3"  on:click={row_clicked}>Karórák</td>
+                    <td class="col2"  on:click={() => open_product(false)}>Tárgy neve</td>
+                    <td class="col3"  on:click={() => open_product(false)}>Karórák</td>
                     <td class="col4">
                         <div class="flex">
                             <button>
@@ -133,10 +129,10 @@
                         </div>
 
                     </td>
-                    <td class="col6" on:click={row_clicked}>20 000 Ft</td>
-                    <td class="col7" on:click={row_clicked}>150 000 Ft</td>
-                    <td class="col8" on:click={row_clicked}>Kifogástalan</td>
-                    <td class="col9" on:click={row_clicked}>Kirakat alsó polc</td>
+                    <td class="col6" on:click={() => open_product(false)}>20 000 Ft</td>
+                    <td class="col7" on:click={() => open_product(false)}>150 000 Ft</td>
+                    <td class="col8" on:click={() => open_product(false)}>Kifogástalan</td>
+                    <td class="col9" on:click={() => open_product(false)}>Kirakat alsó polc</td>
                 </div>
                 {/each}
 

@@ -36,7 +36,7 @@
 <section id="body">
     <div id="body-col1">
         <h2>Zálogházak irányítása egyszerűbben mint valaha.</h2>
-        <p>Ön is zálogháztulajdonos, akinek elege van a papír alapú adminisztráció fáradalmas munkájából? Nincs megelégedve üzlete szervezettségével? Regisztráljon oldalunkra még ma!</p>
+        <p>Ön is zálogháztulajdonos, akinek elege van a papíralapú adminisztráció fáradalmas munkájából? Nincs megelégedve üzlete szervezettségével? Regisztráljon oldalunkra még ma!</p>
 
         <h3>Mit kínálunk önnek?</h3>
         <ul id="offer">
