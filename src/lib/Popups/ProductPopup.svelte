@@ -2,7 +2,7 @@
     
 </script>
 
-<div id="popup">
+<dialog id="productPopup">
     <div id="popup-grid">
         <div id="image" class="popupGrid-element">
             <img src="IMG/no-image.png" alt="">
@@ -14,7 +14,7 @@
         <div id="status" class="popupGrid-element">
             <label for="p-status" class="p-label">Státusz:</label>
             <select id="p-status" class="p-input">
-                <option value="">Zálog</option>
+                <option value="" id="p-status-opt1">Zálog</option>
                 <option value="">Eladó</option>
                 <option value="">Archivált</option>
             </select>
@@ -38,11 +38,11 @@
         <div id="condition" class="popupGrid-element">
             <label for="p-condition" class="p-label">Állapot:</label>
             <select id="p-condition" class="p-input">
-                <option value="">Használatlan</option>
-                <option value="">Kiváló</option>
-                <option value="">Jó</option>
-                <option value="">Kielégítő</option>
-                <option value="">Lehasznált</option>
+                <option value="">🔵 Használatlan</option>
+                <option value="">🟢 Kiváló</option>
+                <option value="">🟠 Jó</option>
+                <option value="">🟡 Kielégítő</option>
+                <option value="">🔴 Lehasznált</option>
             </select>
         </div>
         <div id="payed-value" class="popupGrid-element">
@@ -82,21 +82,25 @@
         </div>
 
     </div>
-</div>
+</dialog>
 
 
 
 <style lang="scss">
 
-    #popup{
 
+
+    #productPopup{
         background-color: rgb(161, 213, 179);
         width: 800px;
         margin: auto;
-        padding: 15px;
-        margin-top: 40px;
         border: solid 1px black;
-        box-shadow: 0.5px 0.5px 4px black;
+        box-shadow: 0.1px 0.1px 5px black;
+
+        margin: 0; /* `margin: auto;` is the default. */
+        transform: translateX(-50%);
+        left: 50%;
+        top: 6vh;
 
         #popup-grid{
             display: grid;
@@ -145,10 +149,12 @@
                 grid-column: 10 / 13;
                 border-top-width: 2px;
                 border-right-width: 2px;
+
             }
             #category{
                 grid-row: 2;
                 grid-column: 4 / 7;
+
             }
             #condition{
                 grid-row: 2;

@@ -1,4 +1,5 @@
 <script>
+    import ProductPopup from "../../lib/Popups/ProductPopup.svelte";
 
     function psOption1_clicked(){
         document.getElementById("ps-option1").classList.add("active")
@@ -17,12 +18,20 @@
         document.getElementById("ps-option3").classList.add("active")
     }
 
+    function row_clicked(){
+        document.getElementById("productPopup").showModal()
+    }
+
+    function addButton_clicked(){
+        document.getElementById("productPopup").showModal()
+    }
 
 
 
 
 </script>
 <section id="body">
+    <ProductPopup/>
 
     <div id="head-div">
         <div id="h-col1">
@@ -57,24 +66,24 @@
             <div id="product-status">
                 <!-- svelte-ignore a11y-click-events-have-key-events -->
                 <!-- svelte-ignore a11y-no-static-element-interactions -->
-                <div id="ps-option1" class="ps-option active" on:click={psOption1_clicked} >
+                <div id="ps-option1" class="ps-option active" on:click={psOption1_clicked} tabindex="0" role="button">
                     <p>Zálog</p>
                 </div>
                 <!-- svelte-ignore a11y-click-events-have-key-events -->
                 <!-- svelte-ignore a11y-no-static-element-interactions -->
-                <div id="ps-option2" class="ps-option"  on:click={psOption2_clicked}>
+                <div id="ps-option2" class="ps-option"  on:click={psOption2_clicked} tabindex="0" role="button">
                     <p>Eladó</p>
                 </div>
                 <!-- svelte-ignore a11y-click-events-have-key-events -->
                 <!-- svelte-ignore a11y-no-static-element-interactions -->
-                <div id="ps-option3" class="ps-option"  on:click={psOption3_clicked}>
+                <div id="ps-option3" class="ps-option"  on:click={psOption3_clicked} tabindex="0" role="button">
                     <p>Archivált</p>
                 </div>
             </div>
 
         </div>
         <div id="hl-col3">
-            <button id="add-button">
+            <button id="add-button" on:click={addButton_clicked}>
                 <div id="add-col1">
                     <img src="IMG/add.png" alt="Hozzáadás" title="Hozzáadás">
                 </div>
@@ -103,12 +112,12 @@
             <tbody>
 
                 {#each {length: 17} as _, i}
-                <a class="row" href="">
-                    <td class="col1">
+                <div class="row" href="">
+                    <td class="col1" href="" tabindex="0" on:click={row_clicked}>
                         <img src="IMG/no-image.png" alt="">
                     </td>
-                    <td class="col2">Tárgy neve</td>
-                    <td class="col3">Karórák</td>
+                    <td class="col2"  on:click={row_clicked}>Tárgy neve</td>
+                    <td class="col3"  on:click={row_clicked}>Karórák</td>
                     <td class="col4">
                         <div class="flex">
                             <button>
@@ -124,11 +133,11 @@
                         </div>
 
                     </td>
-                    <td class="col6">20 000 Ft</td>
-                    <td class="col7">150 000 Ft</td>
-                    <td class="col8">Kifogástalan</td>
-                    <td class="col9">Kirakat alsó polc</td>
-                </a>
+                    <td class="col6" on:click={row_clicked}>20 000 Ft</td>
+                    <td class="col7" on:click={row_clicked}>150 000 Ft</td>
+                    <td class="col8" on:click={row_clicked}>Kifogástalan</td>
+                    <td class="col9" on:click={row_clicked}>Kirakat alsó polc</td>
+                </div>
                 {/each}
 
                 
@@ -645,6 +654,9 @@
                 th{
                     font-weight: 600;
                 }
+                td{
+                    cursor: pointer;
+                }
 
                 .row{
                     display: table-row;
@@ -655,7 +667,7 @@
 
 
                 .col1{
-
+                    display: table-cell;
                     img{
                         width: 100%;
                     }
@@ -671,6 +683,7 @@
                         button{
                             width: 80%;
                             height: 90% !important;
+                            z-index: 100;
                             img{
                                 width: 100%;
                             }
