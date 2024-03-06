@@ -69,7 +69,17 @@
             <textarea type="" class="p-input" id="p-location"></textarea>
         </div>
         <div id="loan" class="popupGrid-element">
-            Adósság
+            <label for="loanBox" class="p-label">Adósság:</label>
+            <div id="loanBox">
+                <h5>Pénzösszeg:</h5>
+                <p>30 000 Ft</p>
+                <h5>Megköttetett:</h5>
+                <p>2024.03.06.</p>
+                <h5>Lejár:</h5>
+                <p>2025.03.06.</p>
+                <h5>Kamat:</h5>
+                <p>4%</p>
+            </div>
         </div>
         <div id="customer" class="popupGrid-element">
             <div id="customer-row1">
@@ -126,12 +136,19 @@
             #image{
                 grid-row: 1 / 4;
                 grid-column: 1 / 4;
+                display: flex;
+                justify-content: center;
+                align-items: center;
 
                 border-left-width: 2px;
                 border-top-width: 2px;
                 img{
-                    max-width: 100%;
-                    max-height: 100%;
+                    background-color: rgb(160, 206, 180);
+                    max-width: 94%;
+                    max-height: 94%;
+                    border: 1px solid black;
+                    border-radius: 4px;
+                    box-shadow: 0.3px 0.3px 1px black;
                 }
 
             }
@@ -187,6 +204,32 @@
                 grid-row: 2 / 6;
                 grid-column: 10 / 13;
                 border-right-width: 2px;
+                padding: 7px;
+
+                #loanBox{
+                    background-color: rgb(130, 203, 156);
+                    width: 100%;
+                    height: 100%;
+                    border: 1px solid black;
+                    box-shadow: 0px 0px 1px black;
+                    border-radius: 4px;
+                    padding: 5px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+
+
+                    h5{
+                        font-weight: 500;
+                        margin: 0;
+                        font-size: 16px;
+                    }
+                    p{
+                        margin: 0;
+                        margin-bottom: 13px;
+                        font-size: 16px;
+                    }
+                }
 
             }
             #customer{
@@ -203,20 +246,26 @@
                     width: 100%;
 
                     img{
-                        max-width: 100%;
-                        max-height: 100%;
+                        background-color: rgb(160, 206, 180);
+                        max-width: 94%;
+                        max-height: 94%;
+                        border: 1px solid black;
+                        border-radius: 4px;
+                        box-shadow: 0.3px 0.3px 1px black;
                     }
                 }
 
                 #customer-row2{
                     height: 25%;
                     display: flex;
-                    align-items: center;
+                    padding-top: 3px;
+                    align-items: baseline;
                     width: 100%;
 
                     p{
                         margin: 0;
                         text-align: center;
+                        width: 100%;
                     }
                 }
             }

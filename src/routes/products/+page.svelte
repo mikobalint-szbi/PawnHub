@@ -458,9 +458,9 @@
     /* Extra large devices (large laptops and desktops, 1200px and up) */
     @media (min-width: 1230px) {
 
-        .col1{ width: 116px;}
+        .col1{ width: 130px;}
         .col2{ width: 170px;}
-        .col3{ width: 150px;}
+        .col3{ width: 138px;}
         .col4{ width: 80px;}
         .col5{ width: 150px;}
         .col6{ width: 130px;}
@@ -664,12 +664,22 @@
                     color: black !important;
                 }
 
+                td.col2{
+                    font-weight: 400;
+                }
 
 
-                .col1{
+                td.col1{
                     display: table-cell;
+                    text-align: center;
+                    vertical-align: middle !important;
+                    padding-top: 7px;
                     img{
-                        width: 100%;
+                        background-color: rgb(161, 213, 179);
+                        width: 90%;
+                        border: 1px solid black;
+                        border-radius: 4px;
+                        box-shadow: 0.3px 0.3px 1px black;
                     }
                 }
                 .col4{
@@ -691,7 +701,7 @@
                     }
 
                 }
-                .col5{
+                td.col5{
                     .flex{
                         width: 100%;
                         height: 100% !important;
@@ -699,12 +709,23 @@
                         align-content: center;
                         justify-content: center;
                         flex-direction: column;
+
                         img{
                             width: 60%;
                             align-self: center;
+                            margin: 4px;
+                            background-color: rgb(161, 213, 179);
+                            border: 1px solid black;
+                            border-radius: 4px;
+                            box-shadow: 0.3px 0.3px 1px black;
+                        
+
+
+                            
                         }
                         p{
-                            margin: 0;
+                            font-size: 14px;
+                            margin: 2px 2px;
                             text-align: center;
                         }
 
