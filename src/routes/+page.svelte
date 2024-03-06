@@ -36,15 +36,20 @@
 <section id="body">
     <div id="body-col1">
         <h2>Zálogházak irányítása egyszerűbben mint valaha.</h2>
-        <p>Ön is zálogháztulajdonos, akinek elege van a papíralapú adminisztráció fáradalmas munkájából? Nincs megelégedve üzlete szervezettségével? Regisztráljon oldalunkra még ma!</p>
+        <p>Ön is zálogháztulajdonos, akinek <b>elege van </b> a papíralapú adminisztráció  <b>fáradalmas munkájából? </b> </p>
+        <p>Nincs megelégedve üzlete <b> szervezettségével? </b></p>
+        <p>
+            <b>Ez esetben a lehető legjobb helyen jár.</b> Munkatársaink <b>sok évtizednyi</b> fáradalmas munkát fektettek a lehető legtökéletesebb zálogházmenedzsment-szoftver struktúrájának kidolgozásába, valamint a tervek művészi precizitású megvalósításába csak azért, hogy Önnek mostantól fogva <b>kényelmesebben </b>mehessen az üzletvezetés.
+        </p>
+           
 
         <h3>Mit kínálunk önnek?</h3>
         <ul id="offer">
-            <li>Könnyedén átláthatja és kezelheti zálogházába érkező ügyfelek és értéktárgyak adatait, valamint zálogházáhan megköttetett hitelek táblázatát.</li>
-            <li>Számontarthatja egyenlegét, profitját és költségeit.</li>
-            <li>Követheti és feljegyezheti üzlete pénzmozgásait.</li>
-            <li>Képeket tölthet fel ügyfeleiről és értéktárgyairól, ezzel tökéletesítheti adatbázisa átláthatóságát és vizuális élményét.</li>
-            <li>Bárhonnan elérheti saját fiókját és adatait.</li>
+            <li>Könnyedén <b>átláthatja </b> és kezelheti zálogházába érkező <b>ügyfelek</b> és <b>értéktárgyak</b> adatait, valamint zálogházáhan megköttetett <b> hitelek </b> táblázatát.</li>
+            <li>Számontarthatja <b>egyenlegét</b>, <b>profitját</b> és <b>költségeit.</b></li>
+            <li>Feljegyezheti és követheti üzlete <b>pénzmozgásait.</b></li>
+            <li><b>Képeket tölthet fel</b> ügyfeleiről és értéktárgyairól, ezzel tökéletesítheti adatbázisa átláthatóságát és vizuális élményét.</li>
+            <li><b>Bárhonnan</b> elérheti saját fiókját és adatait.</li>
         </ul>
 
         <h3 class="none">Mit kérünk cserébe?</h3>
@@ -68,7 +73,7 @@
 
     </div>
     <div id="body-col2">
-        <div id="loginBox">
+        <div id="loginBox" class="formBox">
             <h3>Bejelentkezés</h3>
             <label for="l-username">Felhasználónév vagy e-mail:</label>
             <input type="text" name="l-username" id="l-username">
@@ -77,7 +82,7 @@
             <button id="login" on:click={loginHandler}>Bejelentkezés</button>
         </div>
 
-        <div id="registerBox">
+        <div id="registerBox" class="formBox">
             <h3>Regisztráció</h3>
             <label for="r-surname">Vezetéknév:</label>
             <input type="text" name="r-surname" id="r-surname">
@@ -143,6 +148,29 @@
         flex-grow: 1;
         width: 100%;
         display: flex;
+
+
+        .formBox{
+            padding-bottom: 15px;
+
+            button{
+                height: 37px;
+                font-size: 18px;
+            }
+            input{
+                height: 32px;
+                font-size: 18px;
+            }
+
+            h3{
+                font-size: 26px;
+                font-weight: 600;
+            }
+
+            }
+
+
+
     }
     #body-col1{
         border-right: 1px solid black;
@@ -154,9 +182,26 @@
         padding-top: 6vh;
         background-color: rgb(156, 210, 177);
 
-        h3, h2{
-            margin-bottom: 0px;
+        h2{
+            margin-bottom: 18px;
+            font-size: 34px;
         }
+        h3{
+            margin-bottom: 0px;
+            font-size: 28px;
+        }
+        p, li{
+            font-size: 22px;
+        }
+
+        p{
+            margin: 8px 0;
+            
+        }
+        b{
+            font-weight: 500;
+        }
+
     }
     #body-col2{
         height: 100%;
