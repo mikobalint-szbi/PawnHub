@@ -491,12 +491,13 @@
 
             }
             #loan{
-                padding: 7px;
+                padding: 10px;
+                padding-top: 6px;
 
                 #loanBox{
                     background-color: rgb(130, 203, 156);
                     width: 100%;
-                    height: 100%;
+                    height: 92%;
                     border: 1px solid black;
                     box-shadow: 0px 0px 1px black;
                     border-radius: 4px;
