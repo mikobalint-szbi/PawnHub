@@ -377,6 +377,7 @@
 
     }
     @media (min-width: 768px) {
+
         .col1{ width: 90px;}
         .col2{ width: 110px;}
         .col3{ width: 100px;}
@@ -396,6 +397,9 @@
         }
 
         #add-button{
+            img{
+                margin-left: 1.4px;
+            }
             #add-col2{
                 display: flex;
             }
@@ -568,7 +572,7 @@
                     
                     #add-col2{
                         width: fit-content;
-                        padding: 2px;
+                        padding: 4px;
                         align-items: center;
                         height: 100%;
                         p{
