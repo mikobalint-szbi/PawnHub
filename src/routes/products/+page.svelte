@@ -29,7 +29,7 @@
             <a href="/home" id="back">
                 <button>
                     <div id="b-col1">
-                        <img src="IMG/back.png" alt="Vissza">
+                        <img src="IMG/back.png" alt="Vissza" title="Vissza">
                     </div>
                     <div id="b-col2">
                         <p id="back-p">Vissza</p>
@@ -39,6 +39,20 @@
         </div>
         <div id="h-col2">
             <h1>Termékek</h1>
+
+
+        </div>
+        <div id="h-col3">
+        </div>
+
+    </div>
+
+    <div id="headDiv-lower">
+
+        <div id="hl-col1">
+
+        </div>
+        <div id="hl-col2">
 
             <div id="product-status">
                 <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -59,10 +73,18 @@
             </div>
 
         </div>
-        <div id="h-col3">
-
+        <div id="hl-col3">
+            <button id="add-button">
+                <div id="add-col1">
+                    <img src="IMG/add.png" alt="Hozzáadás" title="Hozzáadás">
+                </div>
+                <div id="add-col2">
+                    <p>Hozzáadás</p>
+                </div>
+            </button>
         </div>
-
+        
+    
     </div>
 
     <div id="main-container">
@@ -79,6 +101,7 @@
                 <th class="col9">Hely</th>
             </thead>
             <tbody>
+
                 {#each {length: 17} as _, i}
                 <a class="row" href="">
                     <td class="col1">
@@ -162,6 +185,66 @@
             width: 220px;
         }
 
+        #headDiv-lower{
+            width: 100%;
+            height: 80px;
+            grid-template-rows: repeat(2, 1fr);
+            grid-template-columns: 1fr;
+
+            margin-bottom: 5px;
+            row-gap: 5px;
+
+            #hl-col1{
+                display: none;
+            }
+
+            #hl-col2{
+                grid-row: 1;
+                justify-self: center;
+            }
+
+            #hl-col3{
+                grid-row: 2;
+                width: 100%;
+                display: flex;
+                justify-self: center;
+                align-self: center;
+                justify-content: center;
+
+            }
+
+            
+        }
+
+        
+        #add-button{
+            width: 220px;
+            justify-content: center;
+            height: 33px !important;
+            margin-bottom: 3px;
+
+            #add-col2{
+                display: flex;
+
+            }
+
+            #add-col1{
+                width: 35px;
+                padding-left: 0px;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 85%;
+
+                img{
+                    height: 100%;
+                }
+            }
+        }
+
+
+
     }
     @media (min-width: 340px) {
         .col1{ width: 90px;}
@@ -190,6 +273,13 @@
             margin-top: 0px;
         }
 
+        #headDiv-lower{
+            width: 280.5px;
+        }
+
+        #add-button{
+            width: 250px;
+        }
 
     }
     /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -226,6 +316,60 @@
             }
         }
 
+        #headDiv-lower{
+            width: 561px;
+            height: 50px;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: 1fr;
+            margin-bottom: 12px;
+
+            #hl-col1{
+                display: flex;
+                grid-column: 1;
+            }
+
+            #hl-col2{
+                grid-row: 1;
+                grid-column: 2;
+                height: 100%;
+            }
+
+            #hl-col3{
+                grid-row: 1;
+                grid-column: 3;
+                display: flex;
+
+                justify-content: end;
+                justify-self: end;
+                align-self: end;
+                align-items: end;
+            }
+        }
+
+        #add-button{
+            width: fit-content;
+            height: 40px !important ;
+            margin-bottom: 0px;
+
+            #add-col2{
+                display: none;
+            }
+
+            #add-col1{
+                width: 35px;
+                padding-left: 0px;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 85%;
+
+                img{
+                    height: 100%;
+                }
+            }
+        }
+
     }
     @media (min-width: 768px) {
         .col1{ width: 90px;}
@@ -241,6 +385,30 @@
         #product-status{
             width: 400px;
         }
+
+        #headDiv-lower{
+            width: 741px;
+        }
+
+        #add-button{
+            #add-col2{
+                display: flex;
+            }
+
+            #add-col1{
+                width: 28px;
+                padding-left: 1.3px;
+                display: flex;
+                align-items: center;
+                justify-content: start;
+                height: 75%;
+
+                img{
+                    height: 100%;
+                }
+            }
+        }
+
 
     }
     /* Large devices (laptops/desktops, 992px and up) */
@@ -273,6 +441,10 @@
             }
         }
 
+        #headDiv-lower{
+            width: 951px;
+        }
+
     }
     /* Extra large devices (large laptops and desktops, 1200px and up) */
     @media (min-width: 1230px) {
@@ -286,6 +458,11 @@
         .col7{ width: 130px;}
         .col8{ width: 130px;} 
         .col9{ width: 140px;}
+
+        #headDiv-lower{
+            width: 1198px;
+        }
+
     }
 
     #body{
@@ -296,7 +473,7 @@
         flex-direction: column;
 
         #head-div{
-            margin-top: 30px;
+            margin-top: 40px;
             display: flex;
             flex-direction: row;
             width: 100%;
@@ -319,48 +496,10 @@
                     margin-top: 0px;
                 }
 
-                #product-status{
-                    display: flex;
-                    margin-bottom: 18px;
-                    border: 1px solid black;
-                    border-radius: 5px;
-                    box-shadow: 0.5px 0.5px 1px black;
-
-
-                    #ps-option2{
-                        border-right: 1px solid black;
-                        border-left: 1px solid black;
-                    }
-                    #ps-option1{
-                        border-radius: 5px 0 0 5px;
-                    }
-                    #ps-option3{
-                        border-radius: 0 5px 5px 0;
-
-                    }
-
-                    .ps-option{
-                        cursor: pointer;
-                        width: 33.3333%;
-                        text-decoration: none;
-                        color: black;
-                        padding: 4px;
-
-                        p{
-                            text-align: center;
-                            font-weight: 400;
-                            margin: 0;
-                        }
-                    }
-
-                    .active{
-                        background-color: rgb(118, 199, 146);
-                        cursor: default;
-                    }
-                }
-
+ 
             }
 
+            
             #back{
                 margin-top: 5px;
                 text-decoration: none;
@@ -368,6 +507,7 @@
 
                 button{
                     display: flex;
+                    border-radius: 3px;
                     
                     #b-col1{
 
@@ -400,6 +540,96 @@
             }
 
         }
+
+        #headDiv-lower{
+            display: grid;
+            justify-content: center;
+            //border: 1px solid black;
+
+
+
+            #hl-col1, #hl-col3{
+
+
+                #add-button{
+                    height: fit-content;
+
+                    border: 1px solid black;
+                    border-radius: 5px;
+                    box-shadow: 0.5px 0.5px 1px black;
+                    display: flex;
+                    align-items: center;
+                    margin-right: 1px;
+                    
+                    #add-col2{
+                        width: fit-content;
+                        padding: 2px;
+                        align-items: center;
+                        height: 100%;
+                        p{
+                            margin: 0;
+                        }
+                    }
+                }
+
+
+            }
+
+            #hl-col2{
+                //border: 1px solid black;
+                display: flex;
+                align-items: end;
+
+
+
+                #product-status{
+                    display: flex;
+                    border: 1px solid black;
+                    border-radius: 5px;
+                    box-shadow: 0.5px 0.5px 1px black;
+                    height: 33px;
+
+
+                    #ps-option2{
+                        border-right: 1px solid black;
+                        border-left: 1px solid black;
+                    }
+                    #ps-option1{
+                        border-radius: 5px 0 0 5px;
+                    }
+                    #ps-option3{
+                        border-radius: 0 5px 5px 0;
+
+                    }
+
+                    .ps-option{
+                        cursor: pointer;
+                        width: 33.3333%;
+                        text-decoration: none;
+                        color: black;
+                        padding: 4px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+
+                        p{
+                            text-align: center;
+                            font-weight: 400;
+                            margin: 0;
+                        }
+                    }
+
+                    .active{
+                        background-color: rgb(118, 199, 146);
+                        cursor: default;
+                    }
+                }
+
+            }
+
+
+        }
+
 
         #main-container{
 
