@@ -28,7 +28,7 @@ export function open_product(create){
 
 
     let popup = document.getElementById("productPopup")
-    
+
 
     if (window.innerWidth < 596){
         document.getElementById("body").style.display = "none"

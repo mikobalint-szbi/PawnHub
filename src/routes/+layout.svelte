@@ -5,7 +5,7 @@
 
 <div class="app">
 	<header>
-		<Header id="header"/>
+		<Header/>
 	</header>
 
 
