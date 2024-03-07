@@ -6,6 +6,7 @@
 </script>
 
 <dialog id="productPopup">
+    <div id="marginner">
     <div id="popup-inner">
         <div id="topRow">
             <button on:click={close_product}>
@@ -116,6 +117,8 @@
             </button>
         </div>
     </div>
+    </div>
+    <div id="marginBottom"></div>
 </dialog>
 
 <style lang="scss">
@@ -378,25 +381,24 @@
 
     }
 
-
-
-
-    #productPopup{
+    #marginner{
         background-color: rgb(161, 213, 179);
-        width: fit-content;
-        height: fit-content;
-        margin: auto;
         border: solid 1px black;
         box-shadow: 0.1px 0.1px 5px black;
+    }
+
+    #productPopup{
+        border: none;
+        width: fit-content;
+        height: fit-content;
+        background-color: rgba($color: #000000, $alpha: 0.0);
         padding: 0;
-        margin: 0;
         transform: translateX(-50%);
         left: 50%;
         top: 6vh;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        max-height: 90vh;
 
         #topRow{
             display: flex;

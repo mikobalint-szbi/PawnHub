@@ -21,13 +21,14 @@
 
 
 
-
-
-
-
 </script>
-<section id="body">
+
+<section id="popupBody">
     <ProductPopup/>
+</section>
+
+<section id="body">
+
 
     <div id="head-div">
         <div id="h-col1">
@@ -156,6 +157,7 @@
         .col7{ display: none;}
         .col8{ display: none;}
         .col9{ display: none;}
+
 
         #back{
             button{
@@ -473,6 +475,11 @@
         }
 
     }
+
+    #popupBody{
+        display: flex
+    }
+
 
     #body{
         display: flex;
