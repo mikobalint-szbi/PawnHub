@@ -651,6 +651,7 @@
 
             #main{
                 border-collapse: collapse;
+                margin-bottom: 35px;
                 
                 td, th{
                     border: 1px solid rgb(106, 137, 116);
