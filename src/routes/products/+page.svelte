@@ -21,13 +21,14 @@
 
 
 
-
-
-
-
 </script>
-<section id="body">
+
+<section id="popupBody">
     <ProductPopup/>
+</section>
+
+<section id="body">
+
 
     <div id="head-div">
         <div id="h-col1">
@@ -156,6 +157,7 @@
         .col7{ display: none;}
         .col8{ display: none;}
         .col9{ display: none;}
+
 
         #back{
             button{
@@ -474,6 +476,11 @@
 
     }
 
+    #popupBody{
+        display: flex
+    }
+
+
     #body{
         display: flex;
         align-content: center;
@@ -646,13 +653,14 @@
                 border-collapse: collapse;
                 
                 td, th{
-                    border: 1px solid black;
+                    border: 1px solid rgb(106, 137, 116);
                     text-align: left;
                     vertical-align: middle;
                     padding: 3px;
                 }
                 th{
                     font-weight: 600;
+                    color: rgb(68, 90, 75);
                 }
                 td{
                     cursor: pointer;
