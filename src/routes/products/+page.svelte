@@ -1,6 +1,6 @@
 <script>
     import ProductPopup from "$lib/Popups/ProductPopup.svelte";
-    import {open_product, close_product, save_product} from "$lib/Popups/functions.js";
+    import {open_popup, close_popup, save_popup} from "$lib/Popups/functions.js";
 
 
     function psOption1_clicked(){
@@ -35,7 +35,7 @@
             <a href="/home" id="back">
                 <button>
                     <div id="b-col1">
-                        <img src="IMG/back.png" alt="Vissza" title="Vissza">
+                        <img src="IMG/Global/back.png" alt="Vissza" title="Vissza">
                     </div>
                     <div id="b-col2">
                         <p id="back-p">Vissza</p>
@@ -80,9 +80,9 @@
 
         </div>
         <div id="hl-col3">
-            <button id="add-button" on:click={() => open_product(true)}>
+            <button id="add-button" on:click={() => open_popup("productPopup",true)}>
                 <div id="add-col1">
-                    <img src="IMG/add.png" alt="Hozzáadás" title="Hozzáadás">
+                    <img src="IMG/Global/add.png" alt="Hozzáadás" title="Hozzáadás">
                 </div>
                 <div id="add-col2">
                     <p>Hozzáadás</p>
@@ -110,11 +110,11 @@
 
                 {#each {length: 17} as _, i}
                 <div class="row" href="">
-                    <td class="col1" href="" tabindex="0" on:click={() => open_product(false)}>
-                        <img src="IMG/no-image.png" alt="">
+                    <td class="col1" href="" tabindex="0" on:click={() => open_popup("productPopup",false)}>
+                        <img src="IMG/Global/no-image.png" alt="">
                     </td>
-                    <td class="col2"  on:click={() => open_product(false)}>Tárgy neve</td>
-                    <td class="col3"  on:click={() => open_product(false)}>Karórák</td>
+                    <td class="col2"  on:click={() => open_popup("productPopup",false)}>Tárgy neve</td>
+                    <td class="col3"  on:click={() => open_popup("productPopup",false)}>Karórák</td>
                     <td class="col4">
                         <div class="flex">
                             <button>
@@ -125,15 +125,15 @@
                     </td>
                     <td class="col5">
                         <div class="flex">
-                            <img src="IMG/no-profile-image.png" alt="">
+                            <img src="IMG/Global/no-profile-image.png" alt="">
                             <p>Péld Aladár</p>
                         </div>
 
                     </td>
-                    <td class="col6" on:click={() => open_product(false)}>20 000 Ft</td>
-                    <td class="col7" on:click={() => open_product(false)}>150 000 Ft</td>
-                    <td class="col8" on:click={() => open_product(false)}>Kifogástalan</td>
-                    <td class="col9" on:click={() => open_product(false)}>Kirakat alsó polc</td>
+                    <td class="col6" on:click={() => open_popup("productPopup",false)}>20 000 Ft</td>
+                    <td class="col7" on:click={() => open_popup("productPopup",false)}>150 000 Ft</td>
+                    <td class="col8" on:click={() => open_popup("productPopup",false)}>Kifogástalan</td>
+                    <td class="col9" on:click={() => open_popup("productPopup",false)}>Kirakat alsó polc</td>
                 </div>
                 {/each}
 

@@ -1,5 +1,5 @@
 <script>
-    import {open_product, close_product, save_product} from "$lib/Popups/functions.js";
+    import {open_popup, close_popup, save_popup} from "$lib/Popups/functions.js";
 
 
 
@@ -9,14 +9,14 @@
     <div id="marginner">
         <div id="popup-inner">
             <div id="topRow">
-                <button on:click={close_product}>
-                    <img src="IMG/close.png" alt="">
+                <button on:click={() => close_popup("productPopup")}>
+                    <img src="IMG/Global/close.png" alt="">
                 </button>
             </div>
 
             <div id="popup-grid">
                 <div id="image" class="popupGrid-element">
-                    <img src="IMG/no-image.png" alt="">
+                    <img src="IMG/Global/no-image.png" alt="">
                 </div>
                 <div id="product-name" class="popupGrid-element">
                     <label for="p-name" class="p-label">Termék neve:</label>
@@ -100,7 +100,7 @@
                 </div>
                 <div id="customer" class="popupGrid-element">
                     <div id="customer-row1">
-                        <img src="IMG/no-profile-image.png" alt="">
+                        <img src="IMG/Global/no-profile-image.png" alt="">
                     </div>
                     <div id="customer-row2">
                         <p>Péld Aladárné Teszt Ilona unokahúga</p>
@@ -111,8 +111,8 @@
             </div>
 
             <div id="bottomRow">
-                <button on:click={save_product} id="submitButton">
-                    <img src="IMG/save.png" alt="" id="submitImg">
+                <button on:click={() => save_popup("productPopup")} id="submitButton">
+                    <img src="IMG/Global/save.png" alt="" id="submitImg">
                     <p id="submitText">Módosítások mentése</p>
                 </button>
             </div>

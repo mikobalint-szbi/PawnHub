@@ -1,19 +1,19 @@
 <script>
-    import {open_product, close_product, save_product} from "$lib/Popups/functions.js";
+    import {open_popup, close_popup, save_popup} from "$lib/Popups/functions.js";
 
 </script>
 
-<dialog id="productPopup" class="popupDialog">
+<dialog id="imagePopup" class="popupDialog">
     <div id="marginner">
         <div id="popup-inner">
             <div id="topRow">
-                <button on:click={close_product}>
-                    <img src="IMG/close.png" alt="">
+                <button on:click={() => close_popup("imagePopup")}>
+                    <img src="IMG/Global/close.png" alt="">
                 </button>
             </div>
 
-            <div id="popup-grid">
-                <h3>Mi következik most?</h3>
+            <div id="popup-div">
+                <!--h3>Mi következik most?</h3>
                 <ul>
                     <li>functions.js-ben a függvények átalakítása, hogy argumentumként lehessen megadni, melyik popup-boxot nyissák meg</li>
                     <li>Talán: Mentés gomb átalakítása Vissza gombbá itt a képmegjelenítőben (vagy inkább fentre tenném, a táblázatos Product page vissza gombjának mintájára)</li>
@@ -26,15 +26,21 @@
                     </li>
                     <li>↓</li>
                     <li>Az imageViewer-ben van kép kicserélése és kép törlése gomb</li>
-                </ul>
+                </ul-->
+
+                <img id="popup-img" src="IMG/sample.jpg" alt="">
 
 
             </div>
 
             <div id="bottomRow">
-                <button on:click={save_product} id="submitButton">
-                    <img src="IMG/save.png" alt="" id="submitImg">
-                    <p id="submitText">Módosítások mentése</p>
+                <button on:click={() => {}} id="replaceButton" class="bottomButton">
+                    <img src="IMG/Global/replace.png" alt="" id="submitImg">
+                    <p id="submitText">Csere</p>
+                </button>
+                <button on:click={() => {}} id="deleteButton" class="bottomButton">
+                    <img src="IMG/Global/delete.png" alt="" id="submitImg">
+                    <p id="submitText">Törlés</p>
                 </button>
             </div>
         </div>
@@ -46,11 +52,18 @@
 
     @media (min-width: 0px) {
         
-        #popup-grid{
-            width: 80vw !important;
+        #popup-div{
+            width: 78vw !important;
             height: 70vh !important;
+            max-width: 80vw !important;
+            max-height: 70vh !important;
             height: fit-content;
 
+        }
+
+        .bottomButton{
+            font-size: 19px;
+            width: 110px;
         }
 
         #image{
@@ -66,17 +79,22 @@
             grid-row: 1 / 6;
         }
 
+        .bottomButton{
+            font-size: 21px;
+            width: 130px;
+        }
+
 
     }
     /* Small devices (portrait tablets and large phones, 600px and up) */
     @media (min-width: 596px) {
 
-        #submitButton{
-            font-size: 25px;
-            width: 310px;
+        .bottomButton{
+            font-size: 23px;
+            width: 180px;
         }
 
-        #popup-grid{
+        #popup-div{
             width: 520px !important;
 
         }
@@ -90,7 +108,7 @@
 
     }
     @media (min-width: 768px) {
-        #popup-grid{
+        #popup-div{
             width: 620px !important;
         }
 
@@ -98,7 +116,7 @@
     /* Large devices (laptops/desktops, 992px and up) */
     @media (min-width: 992px) {
 
-        #popup-grid{
+        #popup-div{
             width: 800px !important;
 
         }
@@ -113,7 +131,7 @@
     /* Extra large devices (large laptops and desktops, 1200px and up) */
     @media (min-width: 1230px) {
 
-        #popup-grid{
+        #popup-div{
             width: 1100px !important;
 
 
@@ -126,6 +144,8 @@
         border: solid 1px black;
         box-shadow: 0.1px 0.1px 5px black;
     }
+
+
 
     .popupDialog{
         border: none;
@@ -167,15 +187,16 @@
             height: 79px;
             justify-content: center;
             padding: 14px;
+            column-gap: 12px;
 
-            #submitButton{
+            .bottomButton{
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 border-radius: 3px;
 
                 img{
-                    height: 80%;
+                    height: 70%;
                     margin-left: 3px;
                     margin-right: 8px;
                 }
@@ -187,37 +208,23 @@
         }
 
 
-        #popup-grid{
+        #popup-div{
             margin: 0 18px;
-            display: grid;
+            display: flex;
             border: 0.5px rgb(106, 137, 116) solid;
 
-            .popupGrid-element{
-                border: 0.5px solid rgb(106, 137, 116);
-                display: flex;
-                flex-direction: column;
-                align-items: start;
-                justify-content: center;
-                padding: 6px;
+            align-items: center;
+            justify-content: center;
 
-
-            }
-
-            
-            #image{
-                display: flex;
-                justify-content: center;
-                align-items: center;
-
-                img{
-                    background-color: rgb(160, 206, 180);
-                    max-width: 94%;
-                    max-height: 94%;
-                    border: 1px solid black;
-                    border-radius: 4px;
-                    box-shadow: 0.3px 0.3px 1px black;
-                }
-
+        
+            #popup-img{
+                background-color: rgb(160, 206, 180);
+                scale: 1.5;
+                max-width: 64% !important;
+                max-height: 62% !important;
+                border: 1px solid black;
+                border-radius: 4px;
+                box-shadow: 0.3px 0.3px 1px black;
             }
 
         }

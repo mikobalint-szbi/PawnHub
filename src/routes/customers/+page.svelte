@@ -1,10 +1,10 @@
 <script>
     import ImageViewer from "$lib/Popups/ImageViewer.svelte";
-    import {open_product, close_product, save_product} from "$lib/Popups/functions.js";
+    import {open_popup, close_popup, save_popup} from "$lib/Popups/functions.js";
     import {onMount} from 'svelte';
 
     onMount(()=>{
-        open_product(true)
+        open_popup("imagePopup",true)
     });
 
 </script>

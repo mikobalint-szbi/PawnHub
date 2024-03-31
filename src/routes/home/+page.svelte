@@ -14,7 +14,7 @@
 
         <a class="optionBox" href="products">
             <div class="imageBox">
-                <img class="image" src="IMG/logo.png" alt="">
+                <img class="image" src="IMG/Global/logo.png" alt="">
             </div>
             <div class="titleBox">
                 <h3 class="title">Termékek</h3>

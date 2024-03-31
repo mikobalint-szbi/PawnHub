@@ -1,5 +1,6 @@
-export function close_product(){
-    let popup = document.getElementById("productPopup")
+
+export function close_popup(popupID){
+    let popup = document.getElementById(popupID)
     document.getElementById("body").style.display = "flex"
     popup.style.maxHeight = "unset"
     popup.style.margin = "0"
@@ -7,27 +8,38 @@ export function close_product(){
     popup.close()
 }
 
-export function save_product(){
-    let popup = document.getElementById("productPopup")
+export function save_popup(popupID){
+    let popup = document.getElementById(popupID)
     document.getElementById("body").style.display = "flex"
     popup.style.maxHeight = "unset"
     popup.style.margin = "0"
 
     popup.close()
+
+    if (popupID == "productPopup"){
+
+    }
+
+
 }
 
-export function open_product(create){
+export function open_popup(popupID, create){
 
-    if (create){
-        document.getElementById("submitText").innerHTML = "Mentés"
+    if (popupID != "imagePopup"){
         
-    }
-    else{
-        document.getElementById("submitText").innerHTML = "Módosítások mentése"
+        if (create){
+            document.getElementById("submitText").innerHTML = "Mentés"
+            
+        }
+        else{
+            document.getElementById("submitText").innerHTML = "Módosítások mentése"
+        }
     }
 
 
-    let popup = document.getElementById("productPopup")
+
+
+    let popup = document.getElementById(popupID)
 
 
     if (window.innerWidth < 596){

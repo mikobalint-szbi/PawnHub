@@ -2,7 +2,7 @@
 
 <div id="header">
     <a id="logoBox" href="home">
-        <img src="IMG/logo.png" alt="Gyémánt logo" id="logo">
+        <img src="IMG/Global/logo.png" alt="Gyémánt logo" id="logo">
         <h3>PawnHub</h3>
     </a>
 
