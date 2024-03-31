@@ -1,13 +1,18 @@
 <script>
 	import Header from '$lib/Header.svelte';
-	import './styles.css';
+	import './style.scss';
+	import ProductPopup from '$lib/Popups/ProductPopup.svelte';
+	import ImageViewer from '$lib/Popups/ImageViewer.svelte';
 </script>
 
 <div class="app">
 	<header>
 		<Header/>
 	</header>
-
+		<section id="popupBody">
+			<ProductPopup/>
+			<ImageViewer/>
+		</section>
 
 		<slot />
 

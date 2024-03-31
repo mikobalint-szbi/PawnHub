@@ -1,7 +1,6 @@
 <script>
-    import ProductPopup from "$lib/Popups/ProductPopup.svelte";
     import {open_popup, close_popup, save_popup} from "$lib/Popups/functions.js";
-
+  
 
     function psOption1_clicked(){
         document.getElementById("ps-option1").classList.add("active")
@@ -22,10 +21,6 @@
 
 
 </script>
-
-<section id="popupBody">
-    <ProductPopup/>
-</section>
 
 <section id="body">
 
@@ -80,7 +75,7 @@
 
         </div>
         <div id="hl-col3">
-            <button id="add-button" on:click={() => open_popup("productPopup",true)}>
+            <button id="add-button" on:click={() => open_popup("productPopup",true,false)}>
                 <div id="add-col1">
                     <img src="IMG/Global/add.png" alt="Hozzáadás" title="Hozzáadás">
                 </div>
@@ -110,11 +105,11 @@
 
                 {#each {length: 17} as _, i}
                 <div class="row" href="">
-                    <td class="col1" href="" tabindex="0" on:click={() => open_popup("productPopup",false)}>
+                    <td class="col1" href="" tabindex="0" on:click={() => open_popup("productPopup",false,false)}>
                         <img src="IMG/Global/no-image.png" alt="">
                     </td>
-                    <td class="col2"  on:click={() => open_popup("productPopup",false)}>Tárgy neve</td>
-                    <td class="col3"  on:click={() => open_popup("productPopup",false)}>Karórák</td>
+                    <td class="col2"  on:click={() => open_popup("productPopup",false,false)}>Tárgy neve</td>
+                    <td class="col3"  on:click={() => open_popup("productPopup",false,false)}>Karórák</td>
                     <td class="col4">
                         <div class="flex">
                             <button>
@@ -130,10 +125,10 @@
                         </div>
 
                     </td>
-                    <td class="col6" on:click={() => open_popup("productPopup",false)}>20 000 Ft</td>
-                    <td class="col7" on:click={() => open_popup("productPopup",false)}>150 000 Ft</td>
-                    <td class="col8" on:click={() => open_popup("productPopup",false)}>Kifogástalan</td>
-                    <td class="col9" on:click={() => open_popup("productPopup",false)}>Kirakat alsó polc</td>
+                    <td class="col6" on:click={() => open_popup("productPopup",false,false)}>20 000 Ft</td>
+                    <td class="col7" on:click={() => open_popup("productPopup",false,false)}>150 000 Ft</td>
+                    <td class="col8" on:click={() => open_popup("productPopup",false,false)}>Kifogástalan</td>
+                    <td class="col9" on:click={() => open_popup("productPopup",false,false)}>Kirakat alsó polc</td>
                 </div>
                 {/each}
 
@@ -145,7 +140,6 @@
 </section>
 
 <style lang="scss">
-
     
     @media (min-width: 0px) {
         .col1{ width: 90px;}

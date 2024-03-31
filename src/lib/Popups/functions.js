@@ -23,10 +23,10 @@ export function save_popup(popupID){
 
 }
 
-export function open_popup(popupID, create){
+export function open_popup(popupID, create, backButton){
 
-    if (popupID != "imagePopup"){
-        
+    if (popupID != "imageViewer"){
+
         if (create){
             document.getElementById("submitText").innerHTML = "Mentés"
             
@@ -34,6 +34,15 @@ export function open_popup(popupID, create){
         else{
             document.getElementById("submitText").innerHTML = "Módosítások mentése"
         }
+    }
+
+    if (backButton){
+        document.getElementById("popup-backButton").style.display = "flex"
+        document.getElementById("topRow").style.justifyContent = "space-between"
+    }
+    else{
+        document.getElementById("popup-backButton").style.display = "none"
+        document.getElementById("topRow").style.justifyContent = "end"
     }
 
 
@@ -51,6 +60,7 @@ export function open_popup(popupID, create){
     }
     else{
         popup.style.maxHeight = "90vh"
+        popup.style.margin = "15px 0"
         document.getElementById("marginBottom").style.height = "0"
         popup.showModal()
     }

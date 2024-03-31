@@ -1,6 +1,10 @@
 <script>
     import {open_popup, close_popup, save_popup} from "$lib/Popups/functions.js";
+    import {onMount} from 'svelte';
 
+    onMount(()=>{
+	    document.getElementById("image").addEventListener('click', () => {close_popup("productPopup"); open_popup("imageViewer")} )
+    });
 
 
 </script>
@@ -9,7 +13,11 @@
     <div id="marginner">
         <div id="popup-inner">
             <div id="topRow">
-                <button on:click={() => close_popup("productPopup")}>
+                <button on:click={() => close_popup("productPopup")} id="popup-backButton" class="topButton">
+                    <img src="IMG/Global/back.png" alt="">
+                    <p>Vissza</p>
+                </button>
+                <button on:click={() => close_popup("productPopup")} id="popup-closeButton" class="topButton">
                     <img src="IMG/Global/close.png" alt="">
                 </button>
             </div>
@@ -111,7 +119,7 @@
             </div>
 
             <div id="bottomRow">
-                <button on:click={() => save_popup("productPopup")} id="submitButton">
+                <button on:click={() => save_popup("productPopup")} id="submitButton" class="bottomButton">
                     <img src="IMG/Global/save.png" alt="" id="submitImg">
                     <p id="submitText">Módosítások mentése</p>
                 </button>
@@ -125,13 +133,6 @@
 
     @media (min-width: 0px) {
         
-        #popup-grid{
-            width: 80vw !important;
-            height: fit-content;
-            grid-template-rows: repeat(22, 65px);
-
-        }
-
         #image{
             grid-row: 1 / 5;
         }
@@ -162,20 +163,12 @@
             grid-row: 19 / 23;
         }
 
-        #submitButton{
-            width: 97.6%;
-        }
-
         .money{
             width: 93%;
         }
 
     }
     @media (min-width: 340px) {
-
-        #popup-grid{
-            grid-template-rows: repeat(23, 65px);
-        }
 
         #image{
             grid-row: 1 / 6;
@@ -214,17 +207,7 @@
     /* Small devices (portrait tablets and large phones, 600px and up) */
     @media (min-width: 596px) {
 
-        #submitButton{
-            font-size: 25px;
-            width: 310px;
-        }
 
-        #popup-grid{
-            width: 520px !important;
-            height: calc(800px * 0.8) !important;
-            grid-template-rows: repeat(10, 1fr);
-            grid-template-columns: repeat(9, 1fr);
-        }
 
         #image{
             grid-row: 1 / 4;
@@ -297,22 +280,12 @@
 
     }
     @media (min-width: 768px) {
-        #popup-grid{
-            width: 620px !important;
-        }
+
 
     }   
     /* Large devices (laptops/desktops, 992px and up) */
     @media (min-width: 992px) {
 
-        #popup-grid{
-            width: 800px !important;
-            height: calc(800px * 0.69) !important;
-            grid-template-rows: repeat(8, 1fr);
-            grid-template-columns: repeat(12, 1fr);
-
-        }
-        
         #image{
             grid-row: 1 / 4;
             grid-column: 1 / 4;
@@ -381,76 +354,11 @@
 
     }
 
-    #marginner{
-        background-color: rgb(161, 213, 179);
-        border: solid 1px black;
-        box-shadow: 0.1px 0.1px 5px black;
-    }
 
     .popupDialog{
-        border: none;
-        width: fit-content;
-        height: fit-content;
-        background-color: rgba($color: #000000, $alpha: 0.0);
-        padding: 0;
-        transform: translateX(-50%);
-        margin: 0;
-        left: 50%;
-        top: 6vh;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-
-        #topRow{
-            display: flex;
-            width: 100%;
-            height: 44px;
-            justify-content: end;
-            padding: 9px;
-
-            margin-bottom: 4px;
-            button{
-                width: 30px;
-                height: 29px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                img{
-                    height: 100%;
-                }
-            }
-        }
-
-        #bottomRow{
-            display: flex;
-            width: 100%;
-            height: 79px;
-            justify-content: center;
-            padding: 14px;
-
-            #submitButton{
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                border-radius: 3px;
-
-                img{
-                    height: 80%;
-                    margin-left: 3px;
-                    margin-right: 8px;
-                }
-                p{
-                    margin: 0;
-                }
-
-            }
-        }
-
 
         #popup-grid{
-            margin: 0 18px;
             display: grid;
-            border: 0.5px rgb(106, 137, 116) solid;
 
             .popupGrid-element{
                 border: 0.5px solid rgb(106, 137, 116);
@@ -468,6 +376,7 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                cursor: pointer;
 
                 img{
                     background-color: rgb(160, 206, 180);
@@ -557,42 +466,8 @@
                 }
             }
 
-            
-
         }
     
-        
-        .p-input{
-            height: 32px;
-            font-size: 18px;
-            width: 100%;
-        }
-        select.p-input{
-            font-size: 16px;
-
-        }
-        textarea.p-input{
-            height: 100%;
-            resize: none;
-        }
-
-        .p-label{
-            font-size: 14px;
-        }
-
-        .pv-row{
-            display: flex;
-            align-content: flex-end;
-            gap: 4px;
-            width: 100%;
-
-
-            p{
-                margin: 0;
-                margin-top: auto;
-                font-size: 20px;
-            }
-        }
     }
 
 
