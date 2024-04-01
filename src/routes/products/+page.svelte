@@ -142,8 +142,8 @@
 <style lang="scss">
     
     @media (min-width: 0px) {
-        .col1{ width: 90px;}
-        .col2{ width: 110px;}
+        .col1{ width: 90px; max-width: 90px;}
+        .col2{ width: 140px; max-width: 140px;}
         .col3{ display: none;}
         .col4{ display: none;}
         .col5{ display: none;}
@@ -153,133 +153,53 @@
         .col9{ display: none;}
 
 
-        #back{
-            button{
-                width: 43px;
-                height: 40px;
-
-                #b-col1{
-                    width: 53px;
-                }
-                #b-col2{
-                    display: none;
-                    p{
-                        display: none;
-                    }
-                }
-            }
-        }
-
-        #h-col1, #h-col3{
-            width: 25%;
-        }
-        #h-col2{
-            width: 50%;
-
-            h1{
-                font-size: 26px;
-            }
-        }
-
-        #product-status{
-            margin-top: 4px;
-            width: 220px;
-        }
-
-        #headDiv-lower{
-            width: 100%;
-            height: 80px;
-            grid-template-rows: repeat(2, 1fr);
-            grid-template-columns: 1fr;
-
-            margin-bottom: 5px;
-            row-gap: 5px;
-
-            #hl-col1{
-                display: none;
-            }
-
-            #hl-col2{
-                grid-row: 1;
-                justify-self: center;
-            }
-
-            #hl-col3{
-                grid-row: 2;
-                width: 100%;
-                display: flex;
-                justify-self: center;
-                align-self: center;
-                justify-content: center;
-
-            }
-
-            
-        }
-
-        
-        #add-button{
-            width: 220px;
-            justify-content: center;
-            height: 33px !important;
-            margin-bottom: 3px;
-
-            #add-col2{
-                display: flex;
-
-            }
-
-            #add-col1{
-                width: 35px;
-                padding-left: 0px;
-
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                height: 85%;
-
-                img{
-                    height: 100%;
-                }
-            }
-        }
-
-
 
     }
     @media (min-width: 340px) {
         .col1{ width: 90px;}
-        .col2{ width: 110px;}
+        .col2{ width: 110px; max-width: 110px;}
         .col3{ display: none;}
-        .col4{ width: 80px; display: table-cell;}
+        .col4{ width: 80px;  max-width: 80px; display: table-cell;}
         .col5{ display: none;}
         .col6{ display: none;}
         .col7{ display: none;}
         .col8{ display: none;}
         .col9{ display: none;}
 
-        #h-col1, #h-col3{
-            width: 20%;
-        }
-        #h-col2{
-            width: 60%;
-
-            h1{
-                font-size: 30px;
-            }
-        }
-
-        #product-status{
-            width: 250px;
-            margin-top: 0px;
-        }
-
         #headDiv-lower{
             width: 280.5px;
         }
+    }
+    @media (min-width: 404px) {
 
-        #add-button{
-            width: 250px;
+        .col1{ width: 110px; max-width: 110px;}
+        .col2{ width: 170px; max-width: 170px;}
+        .col3{ display: none;}
+        .col4{ width: 80px;  max-width: 80px; display: table-cell;}
+        .col5{ display: none;}
+        .col6{ display: none;}
+        .col7{ display: none;}
+        .col8{ display: none;}
+        .col9{ display: none;}
+
+        #headDiv-lower{
+            width: 300px;
+        }
+    
+    }
+    @media (min-width: 468px) {
+        .col1{ width: 100px; max-width: 100px;}
+        .col2{ width: 172px; max-width: 172px;}
+        .col3{ display: none;}
+        .col4{ width: 80px;  max-width: 80px; display: table-cell;}
+        .col5{ display: none;}
+        .col6{ display: none;}
+        .col7{ width: 90px; max-width: 90px; display: table-cell;}
+        .col8{ display: none;}
+        .col9{ display: none;}
+
+        #headDiv-lower{
+            width: 432px;
         }
 
     }
@@ -287,90 +207,18 @@
     @media (min-width: 596px) {
         .col1{ width: 90px;}
         .col2{ width: 110px;}
-        .col3{ width: 100px; display: table-cell;}
+        .col3{ width: 100px; max-width: 100px; display: table-cell;}
         .col4{ width: 80px;}
         .col5{ display: none;}
-        .col6{ width: 90px; display: table-cell;}
-        .col7{ width: 90px; display: table-cell;}
+        .col6{ width: 90px; max-width: 90px; display: table-cell;}
+        .col7{ width: 90px; max-width: 90px; display: table-cell;}
         .col8{ display: none;}
         .col9{ display: none;}
 
-        #h-col1, #h-col3{
-            width: 15%;
-        }
-        #h-col2{
-            width: 70%;
-
-            h1{
-                font-size: 40px;
-            }
-        }
-
-        #product-status{
-            width: 350px;
-        }
-
-        #back{
-            button{
-                height: 50px;
-                width: 53px;
-            }
-        }
-
+        
         #headDiv-lower{
             width: 561px;
-            height: 50px;
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: 1fr;
-            margin-bottom: 12px;
-
-            #hl-col1{
-                display: flex;
-                grid-column: 1;
-            }
-
-            #hl-col2{
-                grid-row: 1;
-                grid-column: 2;
-                height: 100%;
-            }
-
-            #hl-col3{
-                grid-row: 1;
-                grid-column: 3;
-                display: flex;
-
-                justify-content: end;
-                justify-self: end;
-                align-self: end;
-                align-items: end;
-            }
         }
-
-        #add-button{
-            width: fit-content;
-            height: 40px !important ;
-            margin-bottom: 0px;
-
-            #add-col2{
-                display: none;
-            }
-
-            #add-col1{
-                width: 35px;
-                padding-left: 0px;
-
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                height: 85%;
-
-                img{
-                    height: 100%;
-                }
-            }
-        }
-
     }
     @media (min-width: 768px) {
 
@@ -378,73 +226,28 @@
         .col2{ width: 110px;}
         .col3{ width: 100px;}
         .col4{ width: 80px;}
-        .col5{ width: 90px; display: table-cell;}
+        .col5{ width: 90px; max-width: 90px; display: table-cell;}
         .col6{ width: 90px;}
         .col7{ width: 90px;}
         .col8{ display: none;}
-        .col9{ width: 90px; display: table-cell;}
-
-        #product-status{
-            width: 400px;
-        }
+        .col9{ width: 90px; max-width: 90px; display: table-cell;}
 
         #headDiv-lower{
             width: 741px;
         }
 
-        #add-button{
-            img{
-                margin-left: 1.4px;
-            }
-            #add-col2{
-                display: flex;
-            }
-
-            #add-col1{
-                width: 28px;
-                padding-left: 1.3px;
-                display: flex;
-                align-items: center;
-                justify-content: start;
-                height: 75%;
-
-                img{
-                    height: 100%;
-                }
-            }
-        }
-
-
     }
     /* Large devices (laptops/desktops, 992px and up) */
     @media (min-width: 992px) {
-        .col1{ width: 110px;}
-        .col2{ width: 150px;}
+        .col1{ width: 110px; max-width: 110px;}
+        .col2{ width: 150px; max-width: 150px;}
         .col3{ width: 100px;}
         .col4{ width: 80px;}
-        .col5{ width: 110px;}
-        .col6{ width: 100px;}
-        .col7{ width: 100px;}
-        .col8{ width: 100px; display: table-cell;}
-        .col9{ width: 100px;}
-
-
-        #back{
-            button{
-                width: 123px;
-
-                #b-col1{
-                    width: 45px;
-                }
-                #b-col2{
-                    width: 78px;
-                    display: flex;
-                    p{
-                        display: block;
-                    }
-                }
-            }
-        }
+        .col5{ width: 110px; max-width: 110px;}
+        .col6{ width: 100px; max-width: 100px;}
+        .col7{ width: 100px; max-width: 100px;}
+        .col8{ width: 100px; max-width: 100px; display: table-cell;}
+        .col9{ width: 100px; max-width: 100px;}
 
         #headDiv-lower{
             width: 951px;
@@ -454,218 +257,27 @@
     /* Extra large devices (large laptops and desktops, 1200px and up) */
     @media (min-width: 1230px) {
 
-        .col1{ width: 130px;}
-        .col2{ width: 170px;}
-        .col3{ width: 138px;}
+        .col1{ width: 130px; max-width: 130px;}
+        .col2{ width: 170px; max-width: 170px;}
+        .col3{ width: 138px; max-width: 138px;}
         .col4{ width: 80px;}
-        .col5{ width: 150px;}
-        .col6{ width: 130px;}
-        .col7{ width: 130px;}
-        .col8{ width: 130px;} 
-        .col9{ width: 140px;}
+        .col5{ width: 150px; max-width: 150px;}
+        .col6{ width: 130px; max-width: 130px;}
+        .col7{ width: 130px; max-width: 130px;}
+        .col8{ width: 130px; max-width: 130px;} 
+        .col9{ width: 140px; max-width: 140px;}
 
         #headDiv-lower{
             width: 1198px;
         }
-
-    }
-
-    #popupBody{
-        display: flex
     }
 
 
     #body{
-        display: flex;
-        align-content: center;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-
-        #head-div{
-            margin-top: 40px;
-            display: flex;
-            flex-direction: row;
-            width: 100%;
-
-            #h-col1, #h-col3{
-                display: flex;
-                align-items:start;
-                justify-content: center;
-            }
-            #h-col2{
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-direction: column;
-
-                h1{
-                    text-align: center;
-                    font-weight: 600;
-                    margin-bottom: 10px;
-                    margin-top: 0px;
-                }
-
- 
-            }
-
-            
-            #back{
-                margin-top: 5px;
-                text-decoration: none;
-                color: black;
-
-                button{
-                    display: flex;
-                    border-radius: 3px;
-                    
-                    #b-col1{
-
-                        height: 100%;
-                        display: flex;
-                        align-items: center;
-                        align-content: center;
-                        img{
-                            width: 100%;
-                        }
-                    }
-                    #b-col2{
-                        height: 100%;
-                        display: flex;
-                        align-content: center;
-                        align-items: center;
-                        justify-content: center;
-
-
-
-                        p{
-                            margin: 0;
-                            font-size: 21px;
-                        }
-                    }
-
-
-                }
-
-            }
-
-        }
-
-        #headDiv-lower{
-            display: grid;
-            justify-content: center;
-            //border: 1px solid black;
-
-
-
-            #hl-col1, #hl-col3{
-
-
-                #add-button{
-                    height: fit-content;
-
-                    border: 1px solid black;
-                    border-radius: 5px;
-                    box-shadow: 0.5px 0.5px 1px black;
-                    display: flex;
-                    align-items: center;
-                    margin-right: 1px;
-                    
-                    #add-col2{
-                        width: fit-content;
-                        padding: 4px;
-                        align-items: center;
-                        height: 100%;
-                        p{
-                            margin: 0;
-                        }
-                    }
-                }
-
-
-            }
-
-            #hl-col2{
-                //border: 1px solid black;
-                display: flex;
-                align-items: end;
-
-
-
-                #product-status{
-                    display: flex;
-                    border: 1px solid black;
-                    border-radius: 5px;
-                    box-shadow: 0.5px 0.5px 1px black;
-                    height: 33px;
-
-
-                    #ps-option2{
-                        border-right: 1px solid black;
-                        border-left: 1px solid black;
-                    }
-                    #ps-option1{
-                        border-radius: 5px 0 0 5px;
-                    }
-                    #ps-option3{
-                        border-radius: 0 5px 5px 0;
-
-                    }
-
-                    .ps-option{
-                        cursor: pointer;
-                        width: 33.3333%;
-                        text-decoration: none;
-                        color: black;
-                        padding: 4px;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-
-                        p{
-                            text-align: center;
-                            font-weight: 400;
-                            margin: 0;
-                        }
-                    }
-
-                    .active{
-                        background-color: rgb(118, 199, 146);
-                        cursor: default;
-                    }
-                }
-
-            }
-
-
-        }
-
 
         #main-container{
 
             #main{
-                border-collapse: collapse;
-                margin-bottom: 35px;
-                
-                td, th{
-                    border: 1px solid rgb(106, 137, 116);
-                    text-align: left;
-                    vertical-align: middle;
-                    padding: 3px;
-                }
-                th{
-                    font-weight: 600;
-                    color: rgb(68, 90, 75);
-                }
-                td{
-                    cursor: pointer;
-                }
-
-                .row{
-                    display: table-row;
-                    text-decoration: none !important;
-                    color: black !important;
-                }
 
                 td.col2{
                     font-weight: 400;
@@ -737,7 +349,6 @@
                 
             }
         }
-
 
     }
 
