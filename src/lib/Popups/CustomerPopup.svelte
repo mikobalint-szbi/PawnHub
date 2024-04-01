@@ -3,123 +3,68 @@
     import {onMount} from 'svelte';
 
     onMount(()=>{
-	    document.getElementById("image").addEventListener('click', () => {close_popup("productPopup"); open_popup("imageViewer")} )
+	    document.getElementById("image").addEventListener('click', () => {close_popup("customerPopup"); open_popup("imageViewer")} )
     });
 
 
 </script>
 
-<dialog id="productPopup" class="popupDialog">
+<dialog id="customerPopup" class="popupDialog">
     <div id="marginner">
         <div id="popup-inner">
             <div id="topRow">
-                <button on:click={() => close_popup("productPopup")} id="popup-backButton" class="topButton">
+                <button on:click={() => close_popup("customerPopup")} id="popup-backButton" class="topButton">
                     <img src="IMG/Global/back.png" alt="">
                     <p>Vissza</p>
                 </button>
-                <button on:click={() => close_popup("productPopup")} id="popup-closeButton" class="topButton">
+                <button on:click={() => close_popup("customerPopup")} id="popup-closeButton" class="topButton">
                     <img src="IMG/Global/close.png" alt="">
                 </button>
             </div>
 
             <div id="popup-grid">
                 <div id="image" class="popupGrid-element">
-                    <img src="IMG/Global/no-image.png" alt="">
+                    <img src="IMG/Global/no-profile-image.png" alt="profile">
                 </div>
-                <div id="product-name" class="popupGrid-element">
-                    <label for="p-name" class="popup-label">Termék neve:</label>
-                    <input type="text" class="popup-input" id="p-name">
+                <div id="customer-name" class="popupGrid-element">
+                    <label for="c-name" class="popup-label">Név:</label>
+                    <input type="text" class="popup-input" id="c-name">
                 </div>
-                <div id="status" class="popupGrid-element">
-                    <label for="p-status" class="popup-label">Státusz:</label>
-                    <select id="p-status" class="popup-input">
-                        <option value="" id="p-status-opt1">🔒 Zálog</option>
-                        <option value="">💰 Eladó</option>
-                        <option value="">🗃️ Archivált</option>
-                    </select>
+                <div id="address" class="popupGrid-element">
+                    <label for="c-address" class="popup-label">Lakcím:</label>
+                    <input type="text" class="popup-input" id="c-address">
                 </div>
-                <div id="category" class="popupGrid-element">
-                    <label for="p-category" class="popup-label">Kategória:</label>
-                    <select id="p-category" class="popup-input">
-                        <optgroup label="Elektronika">
-                            <option value="">Mobiltelefon</option>
-                            <option value="">Karóra</option>
-                            <option value="">Játékkonzol</option>
-                        </optgroup>
-                        <optgroup label="Ékszerek">
-                            <option value="">Gyűrű</option>
-                            <option value="">Nyaklánc</option>
-                            <option value="">Fülbevaló</option>
-                        </optgroup>
+                <div id="phone" class="popupGrid-element">
+                    <label for="c-phone" class="popup-label">Telefonszám:</label>
+                    <input type="text" class="popup-input" id="c-phone">
+                </div>
+                <div id="email" class="popupGrid-element">
+                    <label for="c-email" class="popup-label">E-mail-cím::</label>
+                    <input type="text" class="popup-input" id="c-email">
+                </div>
 
-                    </select>
+                <div id="note" class="popupGrid-element">
+                    <label for="c-note" class="popup-label">Jegyzetek:</label>
+                    <textarea type="text" class="popup-input" id="c-note"></textarea>
                 </div>
-                <div id="condition" class="popupGrid-element">
-                    <label for="p-condition" class="popup-label">Állapot:</label>
-                    <select id="p-condition" class="popup-input">
-                        <option value="">🔵 Használatlan</option>
-                        <option value="">🟢 Kiváló</option>
-                        <option value="">🟠 Jó</option>
-                        <option value="">🟡 Kielégítő</option>
-                        <option value="">🔴 Lehasznált</option>
-                    </select>
-                </div>
-                <div id="payed-value" class="popupGrid-element">
-                    <label for="p-payedValue" class="popup-label">Kifizetett érték:</label>
-                    <div class="pv-row">
-                        <input type="number" class="popup-input money" id="p-payedValue">
-                        <p>Ft</p>
-                    </div>
 
+                <div id="debt" class="popupGrid-element">
+                    <label for="" class="popup-label">Tartozás:</label>
                 </div>
-                <div id="estimated-value" class="popupGrid-element">
-                    <label for="p-estimatedValue" class="popup-label">Becsült érték:</label>
-                    <div class="pv-row">
-                        <input type="number" class="popup-input money" id="p-estimatedValue">
-                        <p>Ft</p>
-                    </div>
-                </div>
-                <div id="description" class="popupGrid-element">
-                    <label for="p-description" class="popup-label">Leírás:</label>
-                    <textarea type="text" class="popup-input" id="p-description"></textarea>
-                </div>
-                <div id="location" class="popupGrid-element">
-                    <label for="p-location" class="popup-label">Hely:</label>
-                    <textarea type="" class="popup-input" id="p-location"></textarea>
-                </div>
-                <div id="loan" class="popupGrid-element">
-                    <label for="loanBox" class="popup-label">Adósság:</label>
-                    <div id="loanBox">
-                        <div id="lb-part1">
-                            <h5>Pénzösszeg:</h5>
-                            <p>30 000 Ft</p>
-                            <h5>Megköttetett:</h5>
-                            <p>2024.03.06.</p>
-                        </div>
-                        <div id="lb-part2">
-                            <h5>Lejár:</h5>
-                            <p>2025.03.06.</p>
-                            <h5>Kamat:</h5>
-                            <p>4%</p>
-                        </div>
 
 
-                    </div>
+                <div id="loans" class="popupGrid-element">
+                    <p>Adósságok</p>
                 </div>
-                <div id="customer" class="popupGrid-element">
-                    <div id="customer-row1">
-                        <img src="IMG/Global/no-profile-image.png" alt="">
-                    </div>
-                    <div id="customer-row2">
-                        <p>Péld Aladárné Teszt Ilona unokahúga</p>
-                    </div>
+                <div id="products" class="popupGrid-element">
+                    <p>Termékek</p>
 
                 </div>
 
             </div>
 
             <div id="bottomRow">
-                <button on:click={() => save_popup("productPopup")} id="submitButton" class="bottomButton">
+                <button on:click={() => save_popup("customerPopup")} id="submitButton" class="bottomButton">
                     <img src="IMG/Global/save.png" alt="" id="submitImg">
                     <p id="submitText">Módosítások mentése</p>
                 </button>
@@ -291,54 +236,44 @@
             grid-column: 1 / 4;
 
         }
-        #product-name{
+        #customer-name{
             grid-row: 1 / 2;
             grid-column:  4 / 10;
 
         }
-        #status{
-            grid-row: 1;
-            grid-column: 10 / 13;
-
+        #address{
+            grid-row: 2 / 3;
+            grid-column:  4 / 10;
         }
-        #category{
-            grid-row: 2;
+        #phone{
+            grid-row: 4 / 5;
+            grid-column: 1 / 7;
+        }
+        #email{
+            grid-row: 5 / 6;
+            grid-column: 1 / 7;
+        }
+
+        #debt{
+            grid-row: 3 / 4;
             grid-column: 4 / 7;
-
         }
-        #condition{
-            grid-row: 2;
+
+        #note{
+            grid-row: 6 / 9;
+            grid-column: 1 / 7;
+        }
+        #loans{
+            grid-row: 3 / 9;
             grid-column: 7 / 10;
-        }
-        #payed-value{
-            grid-row: 3;
-            grid-column: 4 / 7;
-
-        }
-        #estimated-value{
-            grid-row: 3;
-            grid-column: 7 / 10;
-        }
-        #description{
-            grid-row: 4 / 7;
-            grid-column: 1 / 10;
-        }
-        #location{
-            grid-row: 7 / 9;
-            grid-column: 1 / 10;
-
-        }
-        #loan{
-            grid-row: 2 / 6;
-            grid-column: 10 / 13;
 
             #loanBox{
                 flex-direction: column;
             }
         }
 
-        #customer{
-            grid-row: 6 / 9 ;
+        #products{
+            grid-row: 1 / 9;
             grid-column: 10 / -1;
             
         }
@@ -388,20 +323,17 @@
                 }
 
             }
-            #product-name{
+            #customer-name{
 
                 input{
                     width: 100%;
                 }
             }
-            #description{
+            #note{
                 padding: 8px;
 
             }
-            #location{
-                padding: 8px;
 
-            }
             #loan{
                 padding: 10px;
                 padding-top: 6px;

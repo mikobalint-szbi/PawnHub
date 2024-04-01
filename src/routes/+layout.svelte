@@ -5,6 +5,7 @@
 	import './tablePages.scss';
 	import ProductPopup from '$lib/Popups/ProductPopup.svelte';
 	import ImageViewer from '$lib/Popups/ImageViewer.svelte';
+	import CustomerPopup from '$lib/Popups/CustomerPopup.svelte';
 </script>
 
 <div class="app">
@@ -13,6 +14,7 @@
 	</header>
 		<section id="popupBody">
 			<ProductPopup/>
+			<CustomerPopup/>
 			<ImageViewer/>
 		</section>
 

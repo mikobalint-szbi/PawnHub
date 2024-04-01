@@ -75,7 +75,7 @@
 
         </div>
         <div id="hl-col3">
-            <button id="add-button" on:click={() => open_popup("productPopup",true,false)}>
+            <button id="add-button" on:click={() => open_popup("customerPopup",true,false)}>
                 <div id="add-col1">
                     <img src="IMG/Global/add.png" alt="Hozzáadás" title="Hozzáadás">
                 </div>
@@ -104,12 +104,12 @@
 
                 {#each {length: 17} as _, i}
                 <div class="row" href="">
-                    <td class="col1" href="" tabindex="0" on:click={() => open_popup("productPopup",false,false)}>
+                    <td class="col1" href="" tabindex="0" on:click={() => open_popup("customerPopup",false,false)}>
                         <img src="IMG/Global/no-profile-image.png" alt="">
                     </td>
-                    <td class="col2"  on:click={() => open_popup("productPopup",false,false)}>Teszt Elek</td>
-                    <td class="col3"  on:click={() => open_popup("productPopup",false,false)}>szoftvert.tesztelek@mail.org</td>
-                    <td class="col4" on:click={() => open_popup("productPopup",false,false)}>+36 12 345 6789</td>
+                    <td class="col2"  on:click={() => open_popup("customerPopup",false,false)}>Teszt Elek</td>
+                    <td class="col3"  on:click={() => open_popup("customerPopup",false,false)}>szoftvert.tesztelek@mail.org</td>
+                    <td class="col4" on:click={() => open_popup("customerPopup",false,false)}>+36 12 345 6789</td>
                     <td class="col5">2750 Nagykőrös. Szent Benedek u. 8.<td class="col6">
                         <div class="flex">
                             <button>
@@ -118,8 +118,8 @@
                         </div>
 
                     </td>
-                    <td class="col7" on:click={() => open_popup("productPopup",false,false)}></td>
-                    <td class="col8" on:click={() => open_popup("productPopup",false,false)}>1 300 000 Ft</td>
+                    <td class="col7" on:click={() => open_popup("customerPopup",false,false)}></td>
+                    <td class="col8" on:click={() => open_popup("customerPopup",false,false)}>1 300 000 Ft</td>
                 </div>
                 {/each}
 
