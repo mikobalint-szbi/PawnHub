@@ -24,7 +24,7 @@
 
             <div id="popup-grid">
                 <div id="image" class="popupGrid-element">
-                    <img src="IMG/Global/no-profile-image.png" alt="profile">
+                    <img src="IMG/CustomerPopup-design.png" alt="profile">
                 </div>
                 <div id="customer-name" class="popupGrid-element">
                     <label for="c-name" class="popup-label">Név:</label>
@@ -55,6 +55,7 @@
 
                 <div id="loans" class="popupGrid-element">
                     <p>Adósságok</p>
+                    <p><b>Megoldás a 'nem Nyílik Meg a képmegjelenítő' és a 'kéretlen visszagomb' problémákra:</b> <br> a product popupban és a customer popupban használt azonosítók ne egyezzenek. Mindegyik elé oda kell írnom a productP- és a customerP- előtagot  </p>
                 </div>
                 <div id="products" class="popupGrid-element">
                     <p>Termékek</p>
