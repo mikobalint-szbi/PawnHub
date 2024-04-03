@@ -144,7 +144,19 @@
                         </div>
                         <p class="loanField-sum" title="Összesen">Össz.: 1 300 000 Ft</p>
                     </td>
-                    <td class="col7" on:click={() => open_popup("customerPopup",false,false)}></td>
+                    <td class="col7" on:click={() => open_popup("customerPopup",false,false)}>
+                        <div class="productField-flex">
+                            <div class="productButton">
+                                <img src="IMG/Global/no-image.png" alt="">
+                                <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
+                            </div>
+                            <div class="productButton">
+                                <img src="IMG/Global/no-image.png" alt="">
+                                <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
+                            </div>
+                            <p class="loanField-more">...és további X db termék</p>
+                        </div>
+                    </td>
                 </div>
                 {/each}
 
@@ -284,11 +296,11 @@
 
         .col1{ width: 130px; max-width: 130px;}
         .col2{ width: 180px; max-width: 180px;}
-        .col3{ width: 263px; max-width: 263px;}
+        .col3{ width: 223px; max-width: 223px;}
         .col4{ width: 135px; max-width: 135px;}
         .col5{ width: 150px; max-width: 150px;}
         .col6{ width: 130px; max-width: 130px;}
-        .col7{ width: 210px; max-width: 210px;}
+        .col7{ width: 250px; max-width: 250px;}
 
         #headDiv-lower{
             width: 1198px;
@@ -334,6 +346,69 @@
                     }
 
 
+                }
+                .col7{
+                    .productField-flex{
+                        width: 100%;
+                        height: 100% !important;
+                        max-width: 100% !important;
+                        max-height: 100% !important;
+                        display: flex;
+                        align-content: center;
+                        justify-content: center;
+                        flex-wrap: wrap;
+                        padding: 4px;
+                        flex-direction: column;
+                        gap: 6px;
+
+                        .productButton{
+                            background-color: rgb(161, 213, 179);
+                            display: flex;
+
+                            align-items: center;
+                            justify-content: center;
+                            padding: 5px;
+                            height: 70px;
+                            border: 1px solid black;
+                            border-radius: 5px;
+                            box-shadow: 0.5px 0.5px 1px black;
+
+                            img{
+                                background-color: rgb(160, 206, 180);
+                                height: 100%;
+                                border: 1px solid black;
+                                border-radius: 4px;
+                                box-shadow: 0.3px 0.3px 1px black;
+                            }
+                            p{
+                                margin: 0 0 0 4px;
+                                font-size: 14px;
+                                font-weight: 400;
+                            }
+                        }
+
+                        .loanField-more{
+                            font-size: 13px;
+                            margin: 2px 0;
+                            text-align: center;
+                        }
+
+                        .productButton:first-child:last-child {
+                            flex-direction: column;
+                            padding: 9px;
+                            height: unset;
+                            width: 100%;
+
+                            img{
+                                width: 40%;
+                            }
+                            p{
+                                text-align: center;
+                                margin: 4px 0 0 0;
+                            }
+                            
+                        }
+                    }
                 }
                 
             }
