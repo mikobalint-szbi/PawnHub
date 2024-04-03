@@ -349,65 +349,13 @@
                 }
                 .col7{
                     .productField-flex{
-                        width: 100%;
-                        height: 100% !important;
-                        max-width: 100% !important;
-                        max-height: 100% !important;
-                        display: flex;
-                        align-content: center;
-                        justify-content: center;
-                        flex-wrap: wrap;
-                        padding: 4px;
-                        flex-direction: column;
-                        gap: 6px;
-
-                        .productButton{
-                            background-color: rgb(161, 213, 179);
-                            display: flex;
-
-                            align-items: center;
-                            justify-content: center;
-                            padding: 5px;
-                            height: 70px;
-                            border: 1px solid black;
-                            border-radius: 5px;
-                            box-shadow: 0.5px 0.5px 1px black;
-
-                            img{
-                                background-color: rgb(160, 206, 180);
-                                height: 100%;
-                                border: 1px solid black;
-                                border-radius: 4px;
-                                box-shadow: 0.3px 0.3px 1px black;
-                            }
-                            p{
-                                margin: 0 0 0 4px;
-                                font-size: 14px;
-                                font-weight: 400;
-                            }
-                        }
-
+                        
                         .loanField-more{
                             font-size: 13px;
                             margin: 2px 0;
                             text-align: center;
                         }
 
-                        .productButton:first-child:last-child {
-                            flex-direction: column;
-                            padding: 9px;
-                            height: unset;
-                            width: 100%;
-
-                            img{
-                                width: 40%;
-                            }
-                            p{
-                                text-align: center;
-                                margin: 4px 0 0 0;
-                            }
-                            
-                        }
                     }
                 }
                 
