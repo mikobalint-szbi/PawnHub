@@ -96,8 +96,8 @@
                 <th class="col3">Kategória</th>
                 <th class="col4">Kölcsön</th>
                 <th class="col5">Ügyfél</th>
-                <th class="col6">Kifizetett érték</th>
-                <th class="col7">Becsült érték</th>
+                <th class="col6" title="Kifizetett érték">Kifizetett</th>
+                <th class="col7" title="Becsült érték">Becsült</th>
                 <th class="col8">Állapot</th>
                 <th class="col9">Hely</th>
             </thead>
@@ -111,9 +111,12 @@
                     <td class="col2"  on:click={() => open_popup("productPopup",false,false)}>Tárgy neve</td>
                     <td class="col3"  on:click={() => open_popup("productPopup",false,false)}>Karórák</td>
                     <td class="col4">
-                        <div class="flex">
+                        <div class="loanField-flex">
                             <button>
-                                <img src="IMG/Home/loans.png" alt="Kölcsön">
+                                <p title="Pénzösszeg" class="loanField-money">1 300 000 Ft</p>
+                                <p title="Megköttetett" class="loanField-concludion">2024.03.22.</p>
+                                <p title="Lejár" class="loanField-expiration">2025.01.30.</p>
+                                <p title="Kamat" class="loanField-interest">5%</p>
                             </button>
                         </div>
 
@@ -155,11 +158,23 @@
 
 
     }
-    @media (min-width: 340px) {
-        .col1{ width: 90px;}
-        .col2{ width: 110px; max-width: 110px;}
+    @media (min-width: 300px) {
+        .col1{ width: 90px; max-width: 90px;}
+        .col2{ width: 170px; max-width: 170px;}
         .col3{ display: none;}
-        .col4{ width: 80px;  max-width: 80px; display: table-cell;}
+        .col4{ display: none;}
+        .col5{ display: none;}
+        .col6{ display: none;}
+        .col7{ display: none;}
+        .col8{ display: none;}
+        .col9{ display: none;}
+    
+    }
+    @media (min-width: 340px) {
+        .col1{ width: 110px; max-width: 110px;}
+        .col2{ width: 185px; max-width: 185px;}
+        .col3{ display: none;}
+        .col4{ display: none;}
         .col5{ display: none;}
         .col6{ display: none;}
         .col7{ display: none;}
@@ -173,12 +188,12 @@
     @media (min-width: 404px) {
 
         .col1{ width: 110px; max-width: 110px;}
-        .col2{ width: 170px; max-width: 170px;}
+        .col2{ width: 160px; max-width: 160px;}
         .col3{ display: none;}
-        .col4{ width: 80px;  max-width: 80px; display: table-cell;}
+        .col4{ display: none;}
         .col5{ display: none;}
         .col6{ display: none;}
-        .col7{ display: none;}
+        .col7{ width: 90px; max-width: 90px; display: table-cell;}
         .col8{ display: none;}
         .col9{ display: none;}
 
@@ -188,13 +203,13 @@
     
     }
     @media (min-width: 468px) {
-        .col1{ width: 100px; max-width: 100px;}
-        .col2{ width: 172px; max-width: 172px;}
+        .col1{ width: 90px; max-width: 90px;}
+        .col2{ width: 132px; max-width: 132px;}
         .col3{ display: none;}
-        .col4{ width: 80px;  max-width: 80px; display: table-cell;}
+        .col4{ width: 130px; max-width: 130px; display: table-cell;}
         .col5{ display: none;}
         .col6{ display: none;}
-        .col7{ width: 90px; max-width: 90px; display: table-cell;}
+        .col7{ width: 90px; max-width: 90px;}
         .col8{ display: none;}
         .col9{ display: none;}
 
@@ -206,12 +221,12 @@
     /* Small devices (portrait tablets and large phones, 600px and up) */
     @media (min-width: 596px) {
         .col1{ width: 90px;}
-        .col2{ width: 110px;}
+        .col2{ width: 150px; max-width: 150px;}
         .col3{ width: 100px; max-width: 100px; display: table-cell;}
-        .col4{ width: 80px;}
+        .col4{ width: 130px;}
         .col5{ display: none;}
-        .col6{ width: 90px; max-width: 90px; display: table-cell;}
-        .col7{ width: 90px; max-width: 90px; display: table-cell;}
+        .col6{ display: none;}
+        .col7{ width: 90px; max-width: 90px;}
         .col8{ display: none;}
         .col9{ display: none;}
 
@@ -223,14 +238,15 @@
     @media (min-width: 768px) {
 
         .col1{ width: 90px;}
-        .col2{ width: 110px;}
+        .col2{ width: 130px; max-width: 130px;}
         .col3{ width: 100px;}
-        .col4{ width: 80px;}
-        .col5{ width: 90px; max-width: 90px; display: table-cell;}
-        .col6{ width: 90px;}
+        .col4{ width: 130px;}
+        .col5{ width: 110px; max-width: 110px; display: table-cell;}
+        .col6{ width: 90px;  max-width: 90px; display: table-cell;}
         .col7{ width: 90px;}
         .col8{ display: none;}
-        .col9{ width: 90px; max-width: 90px; display: table-cell;}
+        .col9{ display: none;}
+
 
         #headDiv-lower{
             width: 741px;
@@ -240,14 +256,14 @@
     /* Large devices (laptops/desktops, 992px and up) */
     @media (min-width: 992px) {
         .col1{ width: 110px; max-width: 110px;}
-        .col2{ width: 150px; max-width: 150px;}
+        .col2{ width: 170px; max-width: 170px;}
         .col3{ width: 100px;}
-        .col4{ width: 80px;}
-        .col5{ width: 110px; max-width: 110px;}
+        .col4{ width: 130px;}
+        .col5{ width: 140px; max-width: 140px;}
         .col6{ width: 100px; max-width: 100px;}
         .col7{ width: 100px; max-width: 100px;}
         .col8{ width: 100px; max-width: 100px; display: table-cell;}
-        .col9{ width: 100px; max-width: 100px;}
+        .col9{ display: none;}
 
         #headDiv-lower{
             width: 951px;
@@ -260,12 +276,12 @@
         .col1{ width: 130px; max-width: 130px;}
         .col2{ width: 170px; max-width: 170px;}
         .col3{ width: 138px; max-width: 138px;}
-        .col4{ width: 80px;}
+        .col4{ width: 130px;}
         .col5{ width: 150px; max-width: 150px;}
-        .col6{ width: 130px; max-width: 130px;}
-        .col7{ width: 130px; max-width: 130px;}
-        .col8{ width: 130px; max-width: 130px;} 
-        .col9{ width: 140px; max-width: 140px;}
+        .col6{ width: 110px; max-width: 130px;}
+        .col7{ width: 110px; max-width: 130px;}
+        .col8{ width: 120px; max-width: 130px;} 
+        .col9{ width: 140px; max-width: 140px; display: table-cell;}
 
         #headDiv-lower{
             width: 1198px;
@@ -298,23 +314,7 @@
                     }
                 }
                 .col4{
-                    .flex{
-                        width: 100%;
-                        height: 100% !important;
-                        display: flex;
-                        align-content: center;
-                        justify-content: center;
-
-                        button{
-                            width: 80%;
-                            height: 90% !important;
-                            z-index: 100;
-                            img{
-                                width: 100%;
-                            }
-                        }
-                    }
-
+                    
                 }
                 td.col5{
                     .flex{
