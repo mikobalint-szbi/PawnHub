@@ -1,5 +1,6 @@
 <script>
     import {open_popup, close_popup, save_popup} from "$lib/Popups/functions.js";
+    import { onMount } from "svelte";
   
 
     function psOption1_clicked(){
@@ -18,6 +19,20 @@
         document.getElementById("ps-option3").classList.add("active")
     }
 
+    onMount(() =>{
+
+        let col6 = document.querySelectorAll("td.col6")
+        
+        for (let i = 0; i < col6.length; i++) {
+
+            if (col6.item(i).querySelector(".col6-flex").childElementCount <= 1){
+
+                col6.item(i).querySelector("p.col6-sum").style.display = "none"
+            
+            }
+        }
+
+    })
 
 
 </script>
@@ -98,7 +113,6 @@
                 <th class="col5">Lakcím</th>
                 <th class="col6">Adósságok</th>
                 <th class="col7">Termékek</th>
-                <th class="col8">Tartozás</th>
             </thead>
             <tbody>
 
@@ -110,16 +124,28 @@
                     <td class="col2"  on:click={() => open_popup("customerPopup",false,false)}>Teszt Elek</td>
                     <td class="col3"  on:click={() => open_popup("customerPopup",false,false)}>szoftvert.tesztelek@mail.org</td>
                     <td class="col4" on:click={() => open_popup("customerPopup",false,false)}>+36 12 345 6789</td>
-                    <td class="col5">2750 Nagykőrös. Szent Benedek u. 8.<td class="col6">
-                        <div class="flex">
+                    <td class="col5">2750 Nagykőrös. Szent Benedek u. 8.</td>
+                    <td class="col6">
+                        <div class="col6-flex">
                             <button>
                                 <img src="IMG/Home/loans.png" alt="Kölcsön">
+                                <p title="Pénzösszeg" class="col6-money">1 300 000 Ft</p>
+                                <p title="Megköttetett" class="col6-concludion">2024.03.22.</p>
+                                <p title="Lejár" class="col6-expiration">2025.01.30.</p>
+                                <p title="Kamat" class="col6-interest">5%</p>
                             </button>
-                        </div>
+                            <button>
+                                <img src="IMG/Home/loans.png" alt="Kölcsön">
+                                <p title="Pénzösszeg" class="col6-money">1 300 000 Ft</p>
+                                <p title="Megköttetett" class="col6-concludion">2024.03.22.</p>
+                                <p title="Lejár" class="col6-expiration">2025.01.30.</p>
+                                <p title="Kamat" class="col6-interest">5%</p>
+                            </button>
 
+                        </div>
+                        <p class="col6-sum" title="Összesen">Össz.: 1 300 000 Ft</p>
                     </td>
                     <td class="col7" on:click={() => open_popup("customerPopup",false,false)}></td>
-                    <td class="col8" on:click={() => open_popup("customerPopup",false,false)}>1 300 000 Ft</td>
                 </div>
                 {/each}
 
@@ -175,17 +201,17 @@
 
     @media (min-width: 404px) {
 
-        .col1{ width: 120px; max-width: 120px;}
-        .col2{ width: 240px; max-width: 240px;}
+        .col1{ width: 90px; max-width: 90px;}
+        .col2{ width: 140px; max-width: 140px;}
         .col3{ display: none; }
         .col4{ display: none;}
         .col5{ display: none;}
         .col6{ display: none;}
-        .col7{ display: none;}
+        .col6{ width: 130px; max-width: 130px; display: table-cell;}
         .col8{ display: none;} 
 
         #headDiv-lower{
-            width: 300px;
+            width: 360px;
         }
 
 
@@ -193,13 +219,13 @@
 
     @media (min-width: 468px) {
 
-        .col1{ width: 110px; max-width: 110px;}
+        .col1{ width: 115px; max-width: 115px;}
         .col2{ width: 187px; max-width: 187px;}
         .col3{ display: none; }
-        .col4{ width: 135px; max-width: 135px; display: table-cell;}
+        .col4{ display: none;}
         .col5{ display: none;}
         .col6{ display: none;}
-        .col7{ display: none;}
+        .col6{ width: 130px; max-width: 130px; display: table-cell;}
         .col8{ display: none;} 
 
         #headDiv-lower{
@@ -211,13 +237,12 @@
     @media (min-width: 596px) {
 
         .col1{ width: 110px; max-width: 110px;}
-        .col2{ width: 200px; max-width: 200px;}
+        .col2{ width: 156px; max-width: 156px;}
         .col3{ display: none; }
-        .col4{ width: 135px; max-width: 135px; display: table-cell;}
+        .col4{ display: none;}
         .col5{ display: none;}
-        .col6{ display: none;}
-        .col7{ display: none;}
-        .col8{ width: 116px; max-width: 116px; display: table-cell;} 
+        .col6{ width: 130px; max-width: 130px; display: table-cell;}
+        .col7{ width: 165px; max-width: 165px; display: table-cell;}
 
         #headDiv-lower{
             width: 561px;
@@ -226,14 +251,14 @@
     }
     @media (min-width: 768px) {
 
-        .col1{ width: 90px; max-width: 90px;}
-        .col2{ width: 138px; max-width: 138px;}
-        .col3{ width: 140px; max-width: 140px; display: table-cell;}
-        .col4{ width: 133px; max-width: 133px;}
-        .col5{ width: 130px; max-width: 130px; display: table-cell;}
-        .col6{ display: none;}
-        .col7{ display: none;}
-        .col8{ width: 110px; max-width: 110px;} 
+        .col1{ width: 110px; max-width: 110px;}
+        .col2{ width: 156px; max-width: 156px;}
+        .col3{ display: none;}
+        .col4{ width: 135px; max-width: 135px; display: table-cell;}
+        .col5{ display: none;}
+        .col6{ width: 130px; max-width: 130px; display: table-cell;}
+        .col7{ width: 210px; max-width: 210px; display: table-cell;}
+
 
         #headDiv-lower{
             width: 741px;
@@ -244,12 +269,11 @@
 
         .col1{ width: 110px; max-width: 110px;}
         .col2{ width: 145px; max-width: 145px;}
-        .col3{ width: 140px; max-width: 140px;}
-        .col4{ width: 133px; max-width: 133px;}
-        .col5{ width: 130px; max-width: 130px;}
-        .col6{ width: 100px; max-width: 100px; display: table-cell;}
-        .col7{ width: 100px; max-width: 100px; display: table-cell;}
-        .col8{ width: 110px; max-width: 110px;} 
+        .col3{ width: 140px; max-width: 140px; display: table-cell;}
+        .col4{ width: 135px; max-width: 135px;}
+        .col5{ width: 130px; max-width: 130px; display: table-cell;}
+        .col6{ width: 130px; max-width: 130px; }
+        .col7{ width: 178px; max-width: 178px; }
 
         #headDiv-lower{
             width: 968px;
@@ -260,13 +284,12 @@
     @media (min-width: 1230px) {
 
         .col1{ width: 130px; max-width: 130px;}
-        .col2{ width: 170px; max-width: 170px;}
-        .col3{ width: 208px; max-width: 208px;}
-        .col4{ width: 150px; max-width: 150px;}
+        .col2{ width: 180px; max-width: 180px;}
+        .col3{ width: 263px; max-width: 263px;}
+        .col4{ width: 135px; max-width: 135px;}
         .col5{ width: 150px; max-width: 150px;}
         .col6{ width: 130px; max-width: 130px;}
-        .col7{ width: 130px; max-width: 130px;}
-        .col8{ width: 130px; max-width: 130px;} 
+        .col7{ width: 210px; max-width: 210px;}
 
         #headDiv-lower{
             width: 1198px;
@@ -304,53 +327,49 @@
                     }
                 }
                 .col6{
-                    .flex{
+                    .col6-sum{
+                        font-size: 13px;
+                        margin: 2px 0;
+                        text-align: center;
+                    }
+
+                    .col6-flex{
                         width: 100%;
                         height: 100% !important;
+                        max-width: 100% !important;
+                        max-height: 100% !important;
                         display: flex;
                         align-content: center;
                         justify-content: center;
+                        flex-wrap: wrap;
+                        padding: 4px;
+                        flex-direction: column;
+                        gap: 6px;
 
                         button{
-                            width: 80%;
-                            height: 90% !important;
+                            box-sizing: border-box;
                             z-index: 100;
+                            width: 98%;
+
                             img{
-                                width: 100%;
+                                width: 30%;
+                                display: none;
+                            }
+
+                            p{
+                                margin: 0;
+                                font-size: 15px;
+                                color: rgb(89, 129, 103);
+                            }
+                            .col6-money{
+                                color: black;
+                                font-size: 17px;
+                                margin-bottom: 3px;
+                                margin-top: 1px;
                             }
                         }
                     }
 
-                }
-                td.col5{
-                    .flex{
-                        width: 100%;
-                        height: 100% !important;
-                        display: flex;
-                        align-content: center;
-                        justify-content: center;
-                        flex-direction: column;
-
-                        img{
-                            width: 60%;
-                            align-self: center;
-                            margin: 4px;
-                            background-color: rgb(161, 213, 179);
-                            border: 1px solid black;
-                            border-radius: 4px;
-                            box-shadow: 0.3px 0.3px 1px black;
-                        
-
-
-                            
-                        }
-                        p{
-                            font-size: 14px;
-                            margin: 2px 2px;
-                            text-align: center;
-                        }
-
-                    }
                 }
                 
             }
