@@ -206,7 +206,7 @@
         .col1{ width: 90px; max-width: 90px;}
         .col2{ width: 132px; max-width: 132px;}
         .col3{ display: none;}
-        .col4{ width: 80px;  max-width: 80px; display: table-cell;}
+        .col4{ width: 130px; max-width: 130px; display: table-cell;}
         .col5{ display: none;}
         .col6{ display: none;}
         .col7{ width: 90px; max-width: 90px;}
@@ -221,12 +221,12 @@
     /* Small devices (portrait tablets and large phones, 600px and up) */
     @media (min-width: 596px) {
         .col1{ width: 90px;}
-        .col2{ width: 110px;}
+        .col2{ width: 150px; max-width: 150px;}
         .col3{ width: 100px; max-width: 100px; display: table-cell;}
         .col4{ width: 130px;}
         .col5{ display: none;}
-        .col6{ width: 90px; max-width: 90px; display: table-cell;}
-        .col7{ width: 90px; max-width: 90px; display: table-cell;}
+        .col6{ display: none;}
+        .col7{ width: 90px; max-width: 90px;}
         .col8{ display: none;}
         .col9{ display: none;}
 
@@ -238,7 +238,7 @@
     @media (min-width: 768px) {
 
         .col1{ width: 90px;}
-        .col2{ width: 110px;}
+        .col2{ width: 130px; max-width: 130px;}
         .col3{ width: 100px;}
         .col4{ width: 130px;}
         .col5{ width: 110px; max-width: 110px; display: table-cell;}
