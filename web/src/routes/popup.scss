@@ -23,7 +23,7 @@
 @media (min-width: 596px) {
 
 	#popup-grid, #popup-div{
-		width: 520px !important;
+		width: 520px !important;	
 		height: calc(800px * 0.8) !important;
 		grid-template-rows: repeat(10, 1fr);
 		grid-template-columns: repeat(9, 1fr);
@@ -190,3 +190,14 @@ textarea.popup-input{
 		font-size: 20px;
 	}
 }
+
+
+textarea::-webkit-scrollbar {
+	width: 8px;
+	height: 9px;
+}
+
+
+
+
+

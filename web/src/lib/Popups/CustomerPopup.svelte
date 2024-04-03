@@ -233,80 +233,58 @@
     /* Small devices (portrait tablets and large phones, 600px and up) */
     @media (min-width: 596px) {
 
-
-
+        
         #image{
             grid-row: 1 / 4;
             grid-column: 1 / 4;
 
-
         }
-        #product-name{
+        #customer-name{
             grid-row: 1 / 2;
             grid-column:  4 / 10;
 
         }
-        #status{
-            grid-row: 4;
-            grid-column: 7 / 10;
+        #address{
+            grid-row: 2 / 3;
+            grid-column:  4 / 10;
+        }
+        #phone{
+            grid-row: 4 / 5;
+            grid-column: 1 / 6;
+        }
+        #email{
+            grid-row: 5 / 6;
+            grid-column: 1 / 6;
+        }
 
+        #debt{
+            grid-row: 3 / 4;
+            grid-column: 4 / 6;
         }
-        #category{
-            grid-row: 2;
-            grid-column: 4 / 7;
 
+        #note{
+            grid-row: 6 / 9;
+            grid-column: 1 / 6;
         }
-        #condition{
-            grid-row: 2;
-            grid-column: 7 / 10;
-        }
-        #payed-value{
-            grid-row: 3;
-            grid-column: 4 / 7;
-
-        }
-        #estimated-value{
-            grid-row: 3;
-            grid-column: 7 / 10;
-        }
-        #description{
-            grid-row: 4 / 8;
-            grid-column: 1 / 7;
-    
-        }
-        #location{
-            grid-row: 5 / 7;
-            grid-column: 7 / 10;
-
-        }
-        #loan{
-            grid-row: 8 / 11;
-            grid-column: 1 / 7;
+        #loans{
+            grid-row: 9 / 11;
+            grid-column: 1 / 10;
 
             #loanBox{
-                #lb-part1{
-                    width: 50%;
-                }
-                #lb-part2{
-                    width: 50%;
-                }
+                flex-direction: column;
             }
-
         }
 
-        #customer{
-            grid-row: 7 / 11;
-            grid-column: 7 / 10;
+        #products{
+            grid-row: 3 / 9;
+            grid-column: 6 / 11;
             
         }
 
-        .money{
-            width: 87.5%;
-        }
+        
 
     }
     @media (min-width: 768px) {
-
 
     }   
     /* Large devices (laptops/desktops, 992px and up) */
@@ -351,6 +329,55 @@
             #loanBox{
                 flex-direction: column;
             }
+
+            .loanField-flex button:first-child:last-child {
+                height: 99%;
+                display: flex;
+                align-self: center;
+                flex-direction: column;
+                align-items: center;
+                gap: 5px;
+
+
+                img{
+                    display: block;
+                    width: 100%;
+                    margin: 12px 0 15px 0;
+
+                }
+
+            }
+
+            .loanField-flex button:first-child:nth-last-child(2),
+            .loanField-flex button:first-child:nth-last-child(2) ~ button {
+                height: 49%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                img{
+                    display: block;
+                    width: 72%;
+                    margin: 7px 0 7px 0;
+
+                }
+
+            }
+
+            .loanField-flex button:first-child:nth-last-child(3),
+            .loanField-flex button:first-child:nth-last-child(3) ~ button {
+                height: 32%;
+                display: flex;
+                align-self: center;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .loanField-flex button:first-child:nth-last-child(4),
+            .loanField-flex button:first-child:nth-last-child(4) ~ button {
+                align-self: center;
+                margin-top: 1px;
+            }
         }
 
         #products{
@@ -360,7 +387,7 @@
         }
 
         #popup-grid, #popup-div{
-            width: 840px !important;
+            width: 840px;
         }
 
 
@@ -440,57 +467,6 @@
                     overflow-y: auto;
                     flex-wrap: nowrap;
                 }
-
-                .loanField-flex button:first-child:last-child {
-                    height: 99%;
-                    display: flex;
-                    align-self: center;
-                    flex-direction: column;
-                    align-items: center;
-                    gap: 5px;
-
-
-                    img{
-                        display: block;
-                        width: 100%;
-                        margin: 12px 0 15px 0;
-
-                    }
-
-                }
-
-                .loanField-flex button:first-child:nth-last-child(2),
-                .loanField-flex button:first-child:nth-last-child(2) ~ button {
-                    height: 49%;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    img{
-                        display: block;
-                        width: 72%;
-                        margin: 7px 0 7px 0;
-
-                    }
-
-                }
-
-                .loanField-flex button:first-child:nth-last-child(3),
-                .loanField-flex button:first-child:nth-last-child(3) ~ button {
-                    height: 32%;
-                    display: flex;
-                    align-self: center;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: center;
-                }
-
-                .loanField-flex button:first-child:nth-last-child(4),
-                .loanField-flex button:first-child:nth-last-child(4) ~ button {
-                    align-self: center;
-                    margin-top: 1px;
-                }
-
-
 
             }
 
