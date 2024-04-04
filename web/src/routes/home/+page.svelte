@@ -6,7 +6,7 @@
 
 
     <div id="welcome">
-        <h2>Üdvüzöljük, [FELHASZNÁLÓ]!</h2>
+        <h2>Üdvözöljük, [FELHASZNÁLÓ]!</h2>
         <p>Reméljük, kellemesen telik a napja.</p>
     </div>
     <div id="options">

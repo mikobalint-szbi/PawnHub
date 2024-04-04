@@ -24,7 +24,7 @@
 
             <div id="popup-grid">
                 <div id="image" class="popupGrid-element">
-                    <img src="IMG/CustomerPopup-design.png" alt="profile">
+                    <img src="IMG/Global/no-profile-image.png" alt="profile">
                 </div>
                 <div id="customer-name" class="popupGrid-element">
                     <label for="c-name" class="popup-label">Név:</label>
@@ -45,20 +45,100 @@
 
                 <div id="note" class="popupGrid-element">
                     <label for="c-note" class="popup-label">Jegyzetek:</label>
-                    <textarea type="text" class="popup-input" id="c-note"></textarea>
+                    <textarea type="text" class="popup-input" id="c-note" value="Megoldás a 'nem Nyílik Meg a képmegjelenítő' és a 'kéretlen visszagomb' problémákra: a product popupban és a customer popupban használt azonosítók ne egyezzenek. Mindegyik elé oda kell írnom a productP- és a customerP- előtagot"></textarea>
                 </div>
 
                 <div id="debt" class="popupGrid-element">
-                    <label for="" class="popup-label">Tartozás:</label>
+                    <p class="popup-label">Tartozás összesen:</p>
+                    <p id="debtOutput">1 112 000 Ft</p>
                 </div>
 
 
                 <div id="loans" class="popupGrid-element">
-                    <p>Adósságok</p>
-                    <p><b>Megoldás a 'nem Nyílik Meg a képmegjelenítő' és a 'kéretlen visszagomb' problémákra:</b> <br> a product popupban és a customer popupban használt azonosítók ne egyezzenek. Mindegyik elé oda kell írnom a productP- és a customerP- előtagot  </p>
+                    <p class="popup-label">Adósságok</p>
+                    <div class="loanField-flex">
+                        <button>
+                            <img src="IMG/Home/loans.png" alt="Kölcsön">
+                            <p title="Pénzösszeg" class="loanField-money">1 300 000 Ft</p>
+                            <p title="Megköttetett" class="loanField-concludion">2024.03.22.</p>
+                            <p title="Lejár" class="loanField-expiration">2025.01.30.</p>
+                            <p title="Kamat" class="loanField-interest">5%</p>
+                        </button>
+                        <button>
+                            <img src="IMG/Home/loans.png" alt="Kölcsön">
+                            <p title="Pénzösszeg" class="loanField-money">1 300 000 Ft</p>
+                            <p title="Megköttetett" class="loanField-concludion">2024.03.22.</p>
+                            <p title="Lejár" class="loanField-expiration">2025.01.30.</p>
+                            <p title="Kamat" class="loanField-interest">5%</p>
+                        </button>
+                        <button>
+                            <img src="IMG/Home/loans.png" alt="Kölcsön">
+                            <p title="Pénzösszeg" class="loanField-money">1 300 000 Ft</p>
+                            <p title="Megköttetett" class="loanField-concludion">2024.03.22.</p>
+                            <p title="Lejár" class="loanField-expiration">2025.01.30.</p>
+                            <p title="Kamat" class="loanField-interest">5%</p>
+                        </button>
+                        <button>
+                            <img src="IMG/Home/loans.png" alt="Kölcsön">
+                            <p title="Pénzösszeg" class="loanField-money">1 300 000 Ft</p>
+                            <p title="Megköttetett" class="loanField-concludion">2024.03.22.</p>
+                            <p title="Lejár" class="loanField-expiration">2025.01.30.</p>
+                            <p title="Kamat" class="loanField-interest">5%</p>
+                        </button>
+                        <!--button>
+                            <img src="IMG/Home/loans.png" alt="Kölcsön">
+                            <p title="Pénzösszeg" class="loanField-money">1 300 000 Ft</p>
+                            <p title="Megköttetett" class="loanField-concludion">2024.03.22.</p>
+                            <p title="Lejár" class="loanField-expiration">2025.01.30.</p>
+                            <p title="Kamat" class="loanField-interest">5%</p>
+                        </button>
+                        <button>
+                            <img src="IMG/Home/loans.png" alt="Kölcsön">
+                            <p title="Pénzösszeg" class="loanField-money">1 300 000 Ft</p>
+                            <p title="Megköttetett" class="loanField-concludion">2024.03.22.</p>
+                            <p title="Lejár" class="loanField-expiration">2025.01.30.</p>
+                            <p title="Kamat" class="loanField-interest">5%</p>
+                        </button-->
+
+                    </div>
+
                 </div>
                 <div id="products" class="popupGrid-element">
-                    <p>Termékek</p>
+                    <p class="popup-label">Termékek</p>
+                    <div class="productField-flex">
+                        <div class="productButton">
+                            <img src="IMG/Global/no-image.png" alt="">
+                            <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
+                        </div>
+                        <div class="productButton">
+                            <img src="IMG/Global/no-image.png" alt="">
+                            <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
+                        </div>
+                        <div class="productButton">
+                            <img src="IMG/Global/no-image.png" alt="">
+                            <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
+                        </div>
+                        <div class="productButton">
+                            <img src="IMG/Global/no-image.png" alt="">
+                            <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
+                        </div>
+                        <div class="productButton">
+                            <img src="IMG/Global/no-image.png" alt="">
+                            <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
+                        </div>
+                        <div class="productButton">
+                            <img src="IMG/Global/no-image.png" alt="">
+                            <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
+                        </div>
+                        <div class="productButton">
+                            <img src="IMG/Global/no-image.png" alt="">
+                            <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
+                        </div>
+                        <div class="productButton">
+                            <img src="IMG/Global/no-image.png" alt="">
+                            <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
+                        </div>
+                    </div>
 
                 </div>
 
@@ -153,85 +233,7 @@
     /* Small devices (portrait tablets and large phones, 600px and up) */
     @media (min-width: 596px) {
 
-
-
-        #image{
-            grid-row: 1 / 4;
-            grid-column: 1 / 4;
-
-
-        }
-        #product-name{
-            grid-row: 1 / 2;
-            grid-column:  4 / 10;
-
-        }
-        #status{
-            grid-row: 4;
-            grid-column: 7 / 10;
-
-        }
-        #category{
-            grid-row: 2;
-            grid-column: 4 / 7;
-
-        }
-        #condition{
-            grid-row: 2;
-            grid-column: 7 / 10;
-        }
-        #payed-value{
-            grid-row: 3;
-            grid-column: 4 / 7;
-
-        }
-        #estimated-value{
-            grid-row: 3;
-            grid-column: 7 / 10;
-        }
-        #description{
-            grid-row: 4 / 8;
-            grid-column: 1 / 7;
-    
-        }
-        #location{
-            grid-row: 5 / 7;
-            grid-column: 7 / 10;
-
-        }
-        #loan{
-            grid-row: 8 / 11;
-            grid-column: 1 / 7;
-
-            #loanBox{
-                #lb-part1{
-                    width: 50%;
-                }
-                #lb-part2{
-                    width: 50%;
-                }
-            }
-
-        }
-
-        #customer{
-            grid-row: 7 / 11;
-            grid-column: 7 / 10;
-            
-        }
-
-        .money{
-            width: 87.5%;
-        }
-
-    }
-    @media (min-width: 768px) {
-
-
-    }   
-    /* Large devices (laptops/desktops, 992px and up) */
-    @media (min-width: 992px) {
-
+        
         #image{
             grid-row: 1 / 4;
             grid-column: 1 / 4;
@@ -245,6 +247,62 @@
         #address{
             grid-row: 2 / 3;
             grid-column:  4 / 10;
+        }
+        #phone{
+            grid-row: 4 / 5;
+            grid-column: 1 / 6;
+        }
+        #email{
+            grid-row: 5 / 6;
+            grid-column: 1 / 6;
+        }
+
+        #debt{
+            grid-row: 3 / 4;
+            grid-column: 4 / 6;
+        }
+
+        #note{
+            grid-row: 6 / 9;
+            grid-column: 1 / 6;
+        }
+        #loans{
+            grid-row: 9 / 11;
+            grid-column: 1 / 10;
+
+            #loanBox{
+                flex-direction: column;
+            }
+        }
+
+        #products{
+            grid-row: 3 / 9;
+            grid-column: 6 / 11;
+            
+        }
+
+        
+
+    }
+    @media (min-width: 768px) {
+
+    }   
+    /* Large devices (laptops/desktops, 992px and up) */
+    @media (min-width: 992px) {
+
+        #image{
+            grid-row: 1 / 4;
+            grid-column: 1 / 4;
+
+        }
+        #customer-name{
+            grid-row: 1 / 2;
+            grid-column:  4 / -1;
+
+        }
+        #address{
+            grid-row: 2 / 3;
+            grid-column:  4 / -1;
         }
         #phone{
             grid-row: 4 / 5;
@@ -266,20 +324,71 @@
         }
         #loans{
             grid-row: 3 / 9;
-            grid-column: 7 / 10;
+            grid-column: 7 / 9;
 
             #loanBox{
                 flex-direction: column;
             }
+
+            .loanField-flex button:first-child:last-child {
+                height: 99%;
+                display: flex;
+                align-self: center;
+                flex-direction: column;
+                align-items: center;
+                gap: 5px;
+
+
+                img{
+                    display: block;
+                    width: 100%;
+                    margin: 12px 0 15px 0;
+
+                }
+
+            }
+
+            .loanField-flex button:first-child:nth-last-child(2),
+            .loanField-flex button:first-child:nth-last-child(2) ~ button {
+                height: 49%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                img{
+                    display: block;
+                    width: 72%;
+                    margin: 7px 0 7px 0;
+
+                }
+
+            }
+
+            .loanField-flex button:first-child:nth-last-child(3),
+            .loanField-flex button:first-child:nth-last-child(3) ~ button {
+                height: 32%;
+                display: flex;
+                align-self: center;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .loanField-flex button:first-child:nth-last-child(4),
+            .loanField-flex button:first-child:nth-last-child(4) ~ button {
+                align-self: center;
+                margin-top: 1px;
+            }
         }
 
         #products{
-            grid-row: 1 / 9;
-            grid-column: 10 / -1;
+            grid-row: 3 / 9;
+            grid-column: 9 / -1;
             
         }
 
-
+        #popup-grid, #popup-div{
+            width: 840px;
+        }
 
 
 
@@ -335,68 +444,68 @@
 
             }
 
-            #loan{
-                padding: 10px;
-                padding-top: 6px;
+            
 
-                #loanBox{
-                    background-color: rgb(130, 203, 156);
+            #debt{
+                #debtOutput{
+                    margin: 0;
+                    font-size: 26px;
+                    font-weight: 500;
+                    text-align: end;
                     width: 100%;
-                    height: 92%;
-                    border: 1px solid black;
-                    box-shadow: 0px 0px 1px black;
-                    border-radius: 4px;
-                    padding: 8px;
-                    display: flex;
+                    padding-right: 3px;
+                }
+            }
 
-                    justify-content: center;
-
-
-                    h5{
-                        font-weight: 500;
-                        margin: 0;
-                        font-size: 16px;
-                    }
-                    p{
-                        margin: 0;
-                        margin-bottom: 13px;
-                        font-size: 16px;
-                    }
+            #loans{
+                .popup-label{
+                    margin-bottom: 2px;
+                }
+                .loanField-flex{
+                    padding: 2px;
+                    justify-content: start;
+                    overflow-y: auto;
+                    flex-wrap: nowrap;
                 }
 
             }
-            #customer{
 
-                #customer-row1{
-                    display: flex;
-                    height: 75%;
-                    align-items: center;
-                    justify-content: center;
-                    width: 100%;
+            .productField-flex::-webkit-scrollbar, .loanField-flex::-webkit-scrollbar {
+                    width: 7px;
+                    height: 8px;
+                }
 
-                    img{
-                        background-color: rgb(160, 206, 180);
-                        max-width: 94%;
-                        max-height: 94%;
-                        border: 1px solid black;
-                        border-radius: 4px;
-                        box-shadow: 0.3px 0.3px 1px black;
+            #products{
+
+
+
+                .productField-flex{
+                    justify-content: start;
+                    overflow-y:auto;
+                    height: auto;
+                    flex-wrap: nowrap;
+                    
+                    ::-webkit-scrollbar {
+                        width: 8px;
+                        height: 12px;
+                    }
+
+                    .productButton{
+                        background-color: rgb(156, 205, 177);
+                        p{
+                            margin: 0 0 0 4px;
+                        }
                     }
                 }
 
-                #customer-row2{
-                    height: 25%;
-                    display: flex;
-                    padding-top: 3px;
-                    align-items: baseline;
-                    width: 100%;
-
-                    p{
-                        margin: 0;
-                        text-align: center;
+                .productButton:first-child:last-child {
+                    align-self: center;
+                    img{
                         width: 100%;
                     }
+                    
                 }
+
             }
 
         }
