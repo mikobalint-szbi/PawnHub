@@ -107,7 +107,7 @@
         <table id="main">
             <thead>
                 <th class="col1">Összeg</th>
-                <th class="col2">Megköttetett</th>
+                <th class="col2"><span class="concDate">Megköttetett</span><span class="expDate-inner"><span title="Megköttetett">Megk. </span>| Lejár</span></th>
                 <th class="col3">Lejár</th>
                 <th class="col4">Kamat</th>
                 <th class="col5">Ügyfél</th>
@@ -119,7 +119,10 @@
                 {#each {length: 17} as _, i}
                 <div class="row" href="">
                     <td class="col1" href="" tabindex="0" on:click={() => open_popup("customerPopup",false,false)}>1 300 000 Ft</td>
-                    <td class="col2"  on:click={() => open_popup("customerPopup",false,false)}>2024.03.10.</td>
+                    <td class="col2"  on:click={() => open_popup("customerPopup",false,false)}>
+                        <p>2024.03.10.</p>
+                        <p class="expDate-inner">2025.01.20.</p>
+                    </td>
                     <td class="col3"  on:click={() => open_popup("customerPopup",false,false)}>2025.01.20.</td>
                     <td class="col4" on:click={() => open_popup("customerPopup",false,false)}>100%</td>
                     <td class="col5">
@@ -158,7 +161,12 @@
 <style lang="scss">
     
     @media (min-width: 0px) {
-
+        .expDate-inner{
+            display: none;
+        }
+        .concDate{
+            display: inline;
+        }
 
 
     }
@@ -203,16 +211,20 @@
             flex-wrap: wrap;
             max-width: 432px;
             align-items: center;
-            justify-content: center;
+            justify-content: left;
             gap: 5px;
+
         }
         tr{
             display: flex;
             flex-direction: column;
+            border: 1px solid black;
         }
         td{
-            display: block;
+            display: flex;
             width: 210px;
+            border: none !important;
+            justify-content: center;
         }
         th{
             display: none;
@@ -232,8 +244,8 @@
     @media (min-width: 596px) {
 
         .col1{ width: 161px; max-width: 161px;}
-        .col2{ display: none;}
-        .col3{ width: 130px; max-width: 130px;}
+        .col2{ width: 130px; max-width: 130px;}
+        .col3{ display: none;}
         .col4{ width: 77px; max-width: 77px; display: table-cell;}
         .col5{ width: 193px; max-width: 193px;}
         .col6{ display: none;}
@@ -255,6 +267,7 @@
         td{
             display: table-cell;
             width: 210px;
+            border: 1px solid rgb(106, 137, 116) !important;
         }
         th{
             display: table-cell;
@@ -265,16 +278,27 @@
             }
         }
 
+        .expDate-inner{
+            display: inline !important;
+
+        }
+        .concDate{
+            display: none;
+        }
+        
+
     }
     @media (min-width: 768px) {
 
-        .col1{ width: 170px; max-width: 170px;}
-        .col2{ width: 150px; max-width: 150px; display: table-cell;}
-        .col3{ width: 150px; max-width: 150px;}
-        .col4{ width: 87px; max-width: 87px;}
-        .col5{ width: 183px; max-width: 183px;}
-        .col6{ display: none;}
+        .col1{ width: 140px; max-width: 140px;}
+        .col2{ width: 127px; max-width: 127px;}
+        .col3{ display: none;}
+        .col4{ width: 72px; max-width: 72px;}
+        .col5{ width: 150px; max-width: 150px;}
+        .col6{ width: 251px; max-width: 251px; display: table-cell;}
         .col7{ display: none;}
+
+
 
 
         #headDiv-lower{
@@ -286,7 +310,7 @@
 
         .col1{ width: 150px; max-width: 150px;}
         .col2{ width: 130px; max-width: 130px;}
-        .col3{ width: 130px; max-width: 130px;}
+        .col3{ width: 130px; max-width: 130px; display: table-cell;}
         .col4{ width: 77px; max-width: 77px;}
         .col5{ width: 150px; max-width: 150px;}
         .col6{ width: 331px; max-width: 331px; display: table-cell;}
@@ -300,6 +324,14 @@
 
         #headDiv-lower{
             width: 968px;
+        }
+
+        .expDate-inner{
+            display: none !important;
+        }
+        .concDate{
+            display: inline;
+            text-align: justify;
         }
 
     }
@@ -330,6 +362,10 @@
                     font-size: 20px;
                     text-align: right !important;
                     padding: 0 6px;
+
+                    p{
+                        margin: 6px 0;
+                    }
                 }
 
                 td.col1{
