@@ -122,7 +122,7 @@
 
                     </td>
                     <td class="col5">
-                        <div class="flex">
+                        <div class="customerField-flex">
                             <img src="IMG/Global/no-profile-image.png" alt="">
                             <p>Péld Aladár</p>
                         </div>
@@ -317,34 +317,7 @@
                     
                 }
                 td.col5{
-                    .flex{
-                        width: 100%;
-                        height: 100% !important;
-                        display: flex;
-                        align-content: center;
-                        justify-content: center;
-                        flex-direction: column;
 
-                        img{
-                            width: 60%;
-                            align-self: center;
-                            margin: 4px;
-                            background-color: rgb(161, 213, 179);
-                            border: 1px solid black;
-                            border-radius: 4px;
-                            box-shadow: 0.3px 0.3px 1px black;
-                        
-
-
-                            
-                        }
-                        p{
-                            font-size: 14px;
-                            margin: 2px 2px;
-                            text-align: center;
-                        }
-
-                    }
                 }
                 
             }
