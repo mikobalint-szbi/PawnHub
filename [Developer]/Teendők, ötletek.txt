@@ -1,0 +1,10 @@
+
+Új termék hozzáadása:
+- Az adósságot és az ügyfelet is ki kell választani valahogy: vagy a listából választasz, vagy újat hozol létre.
+- A comboBox elég csicska megoldás volna. Kellene egy ügyfélkiválasztó, egy adósságkiválasztó és egy termékkiválasztó popup.
+↓
+A tablePage-ek alapját használnám fel, csak kisebb elemekkel és minden sorban egy Kiválasztás gombbal.
+
+
+
+

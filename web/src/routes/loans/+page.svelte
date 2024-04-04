@@ -114,7 +114,7 @@
                 <th class="col6">Termékek</th>
                 <th class="col7">Megjegyzés</th>
             </thead>
-            <tbody>
+
 
                 {#each {length: 17} as _, i}
                 <div class="row" href="">
@@ -149,7 +149,7 @@
                 {/each}
 
                 
-            </tbody>
+
         </table>
     </div>
 
@@ -190,13 +190,38 @@
 
     @media (min-width: 468px) {
 
-        .col1{ width: 161px; max-width: 161px;}
-        .col2{ display: none;}
-        .col3{ width: 130px; max-width: 130px;}
-        .col4{ width: 77px; max-width: 77px;}
-        .col5{ width: 193px; max-width: 193px;}
         .col6{ display: none;}
         .col7{ display: none;}
+
+        // hol tartottam:
+        // - Az 596 pixeles nézetetben a lejárat és a megköttetés dátumát egy cellába kellene sűrítenem.
+        // - Nevetségesnek hat, ha egy kisebb nézeten több adat látszik, mint az eggyel nagyobbon (A 468-ason rajta van a megkötés dátuma)
+
+        table, tbody{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            max-width: 432px;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+        tr{
+            display: flex;
+            flex-direction: column;
+        }
+        td{
+            display: block;
+            width: 210px;
+        }
+        th{
+            display: none;
+        }
+        .customerField-flex{
+            img{
+                display: none;
+            }
+        }
 
         #headDiv-lower{
             width: 432px;
@@ -209,13 +234,35 @@
         .col1{ width: 161px; max-width: 161px;}
         .col2{ display: none;}
         .col3{ width: 130px; max-width: 130px;}
-        .col4{ width: 77px; max-width: 77px;}
+        .col4{ width: 77px; max-width: 77px; display: table-cell;}
         .col5{ width: 193px; max-width: 193px;}
         .col6{ display: none;}
         .col7{ display: none;}
 
         #headDiv-lower{
             width: 561px;
+        }
+
+        
+        table, tbody{
+            display: table;
+            max-width: unset;
+        }
+
+        tr{
+            display: table-row;
+        }
+        td{
+            display: table-cell;
+            width: 210px;
+        }
+        th{
+            display: table-cell;
+        }
+        .customerField-flex{
+            img{
+                display: block;
+            }
         }
 
     }
