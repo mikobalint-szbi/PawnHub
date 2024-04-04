@@ -54,7 +54,7 @@
             </a>
         </div>
         <div id="h-col2">
-            <h1>Ügyfelek</h1>
+            <h1>Adósságok</h1>
 
 
         </div>
@@ -159,37 +159,16 @@
     
     @media (min-width: 0px) {
 
-        .col1{ width: 90px; max-width: 90px;}
-        .col2{ width: 140px; max-width: 140px;}
-        .col3{ display: none; }
-        .col4{ display: none;}
-        .col5{ display: none;}
-        .col6{ display: none;}
-        .col7{ display: none;}
-        .col8{ display: none;} 
+
 
     }
     @media (min-width: 300px) {
-        .col1{ width: 100px; max-width: 100px;}
-        .col2{ width: 160px; max-width: 160px;}
-        .col3{ display: none; }
-        .col4{ display: none;}
-        .col5{ display: none;}
-        .col6{ display: none;}
-        .col7{ display: none;}
-        .col8{ display: none;} 
+
     
     }
     @media (min-width: 340px) {
 
-        .col1{ width: 100px; max-width: 100px;}
-        .col2{ width: 200px; max-width: 200px;}
-        .col3{ display: none; }
-        .col4{ display: none;}
-        .col5{ display: none;}
-        .col6{ display: none;}
-        .col7{ display: none;}
-        .col8{ display: none;} 
+
 
         #headDiv-lower{
             width: 300px;
@@ -200,14 +179,7 @@
 
     @media (min-width: 404px) {
 
-        .col1{ width: 90px; max-width: 90px;}
-        .col2{ width: 140px; max-width: 140px;}
-        .col3{ display: none; }
-        .col4{ display: none;}
-        .col5{ display: none;}
-        .col6{ display: none;}
-        .col6{ width: 130px; max-width: 130px; display: table-cell;}
-        .col8{ display: none;} 
+
 
         #headDiv-lower{
             width: 360px;
@@ -218,14 +190,13 @@
 
     @media (min-width: 468px) {
 
-        .col1{ width: 115px; max-width: 115px;}
-        .col2{ width: 187px; max-width: 187px;}
-        .col3{ display: none; }
-        .col4{ display: none;}
-        .col5{ display: none;}
+        .col1{ width: 161px; max-width: 161px;}
+        .col2{ display: none;}
+        .col3{ width: 130px; max-width: 130px;}
+        .col4{ width: 77px; max-width: 77px;}
+        .col5{ width: 193px; max-width: 193px;}
         .col6{ display: none;}
-        .col6{ width: 130px; max-width: 130px; display: table-cell;}
-        .col8{ display: none;} 
+        .col7{ display: none;}
 
         #headDiv-lower{
             width: 432px;
@@ -235,13 +206,13 @@
     /* Small devices (portrait tablets and large phones, 600px and up) */
     @media (min-width: 596px) {
 
-        .col1{ width: 110px; max-width: 110px;}
-        .col2{ width: 156px; max-width: 156px;}
-        .col3{ display: none; }
-        .col4{ display: none;}
-        .col5{ display: none;}
-        .col6{ width: 130px; max-width: 130px; display: table-cell;}
-        .col7{ width: 165px; max-width: 165px; display: table-cell;}
+        .col1{ width: 161px; max-width: 161px;}
+        .col2{ display: none;}
+        .col3{ width: 130px; max-width: 130px;}
+        .col4{ width: 77px; max-width: 77px;}
+        .col5{ width: 193px; max-width: 193px;}
+        .col6{ display: none;}
+        .col7{ display: none;}
 
         #headDiv-lower{
             width: 561px;
@@ -250,13 +221,13 @@
     }
     @media (min-width: 768px) {
 
-        .col1{ width: 110px; max-width: 110px;}
-        .col2{ width: 156px; max-width: 156px;}
-        .col3{ display: none;}
-        .col4{ width: 135px; max-width: 135px; display: table-cell;}
-        .col5{ display: none;}
-        .col6{ width: 130px; max-width: 130px; display: table-cell;}
-        .col7{ width: 210px; max-width: 210px; display: table-cell;}
+        .col1{ width: 170px; max-width: 170px;}
+        .col2{ width: 150px; max-width: 150px; display: table-cell;}
+        .col3{ width: 150px; max-width: 150px;}
+        .col4{ width: 87px; max-width: 87px;}
+        .col5{ width: 183px; max-width: 183px;}
+        .col6{ display: none;}
+        .col7{ display: none;}
 
 
         #headDiv-lower{
@@ -266,13 +237,19 @@
     /* Large devices (laptops/desktops, 992px and up) */
     @media (min-width: 992px) {
 
-        .col1{ width: 110px; max-width: 110px;}
-        .col2{ width: 145px; max-width: 145px;}
-        .col3{ width: 140px; max-width: 140px; display: table-cell;}
-        .col4{ width: 135px; max-width: 135px;}
-        .col5{ width: 130px; max-width: 130px; display: table-cell;}
-        .col6{ width: 130px; max-width: 130px; }
-        .col7{ width: 178px; max-width: 178px; }
+        .col1{ width: 150px; max-width: 150px;}
+        .col2{ width: 130px; max-width: 130px;}
+        .col3{ width: 130px; max-width: 130px;}
+        .col4{ width: 77px; max-width: 77px;}
+        .col5{ width: 150px; max-width: 150px;}
+        .col6{ width: 331px; max-width: 331px; display: table-cell;}
+        .col7{ display: none;}
+
+        .customerField-flex{
+            img{
+                width: 90%;
+            }
+        }
 
         #headDiv-lower{
             width: 968px;
@@ -285,10 +262,10 @@
         .col1{ width: 150px; max-width: 150px;}
         .col2{ width: 130px; max-width: 130px;}
         .col3{ width: 130px; max-width: 130px;}
-        .col4{ width: 85px; max-width: 85px;}
+        .col4{ width: 77px; max-width: 77px;}
         .col5{ width: 150px; max-width: 150px;}
-        .col6{ width: 240px; max-width: 240px;}
-        .col7{ width: 230px; max-width: 230px;}
+        .col6{ width: 300px; max-width: 300px;}
+        .col7{ width: 261px; max-width: 261px; display: table-cell;}
 
         #headDiv-lower{
             width: 1198px;
@@ -305,7 +282,7 @@
                 td.col1, td.col2, td.col3, td.col4{
                     font-size: 20px;
                     text-align: right !important;
-                    padding: 0 10px;
+                    padding: 0 6px;
                 }
 
                 td.col1{
@@ -313,36 +290,7 @@
                 }
 
 
-                td.col3{
-                    padding-left: 5px;
-                    padding-right: 5px;
-                }
-
-
-                td.col1{
-                    display: table-cell;
-                    text-align: center;
-                    vertical-align: middle !important;
-                    padding-top: 7px;
-                    img{
-                        background-color: rgb(161, 213, 179);
-                        width: 90%;
-                        border: 1px solid black;
-                        border-radius: 4px;
-                        box-shadow: 0.3px 0.3px 1px black;
-                    }
-                }
                 .col6{
-                    .loanField-sum{
-                        font-size: 13px;
-                        margin: 2px 0;
-                        text-align: center;
-                        display: none;
-                    }
-
-
-                }
-                .col7{
                     .productField-flex{
                         
                         .loanField-more{
