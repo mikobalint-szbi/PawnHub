@@ -62,6 +62,22 @@
         #options{
             gap: 20px;
         }
+
+        #welcome{
+            h2{
+                font-size: 18px; 
+            }
+            p{
+                font-size: 16px;
+            }
+        }
+        .titleBox{
+            font-size: 21px;
+        }
+        .imageBox{
+            padding: 20px;
+            padding-bottom: 8px;
+        }
     }
     @media (min-width: 350px) {
 
@@ -72,6 +88,48 @@
             gap: 13px;
         }
 
+        #welcome{
+            h2{
+                font-size: 21px; 
+            }
+            p{
+                font-size: 16px;
+            }
+        }
+
+        .titleBox{
+            font-size: 16px;
+        }
+
+    }
+    @media (min-width: 404px) {
+
+        #welcome{
+            h2{
+                font-size: 23px; 
+            }
+            p{
+                font-size: 17px;
+            }
+        }
+
+        .titleBox{
+            font-size: 18px;
+        }
+
+    }
+    @media (min-width: 468px) {
+
+        #welcome{
+            h2{
+                font-size: 28px;
+            }
+
+        }
+
+        .titleBox{
+            font-size: 19px;
+        }
     }
     /* Small devices (portrait tablets and large phones, 600px and up) */
     @media (min-width: 600px) {
@@ -82,6 +140,21 @@
             gap: 20px;
         }
 
+        #welcome{
+            h2{
+                font-size: 35px;
+            }
+            p{
+                font-size: 21px;
+            }
+        }
+
+        .titleBox{
+            font-size: 25px;
+        }
+        .imageBox{
+            padding: 30px;
+        }
     }
     /* Large devices (laptops/desktops, 992px and up) */
     @media (min-width: 992px) {
@@ -91,6 +164,11 @@
         }
         #options{
             gap: 15px;
+            height: 75%;
+        }
+
+        #body{
+            height: 100%;
         }
 
 
@@ -109,10 +187,12 @@
     }
 
     #body{
-        height: 100%;
-        width: 100vw;
+
+        width: 100%;
         margin: auto;
-        min-height: fit-content;
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 0;
 
         #welcome{
             height: 25%;
@@ -121,19 +201,18 @@
             align-items: center;
             align-content: center;
             justify-content: center;
-            width: 100vw;
+            width: 100%;
             flex-direction: column;
+            min-height: fit-content;
 
             h2{
                 text-align: center;
-                font-size: 35px;
                 font-weight: 400;
-                width: 100vw;
+                width: 100%;
                 margin: 0;
             }
             p{
                 margin: 0;
-                font-size: 20px;
             }
         }
 
@@ -144,8 +223,8 @@
             justify-content: center;
             align-items: top;
             align-content: top;
-            height: 75%;
             padding: 50px;
+            min-height: fit-content;
 
             .optionBox {
                 -webkit-transition:  -webkit-transform .2s ease-out;
@@ -177,7 +256,6 @@
                 .imageBox{
                     width: 100%;
                     height: 80%;
-                    padding: 30px;
 
                     .image{
                         width: 100%;
@@ -189,7 +267,6 @@
 
                     h3{
                         text-align: center;
-                        font-size: 25px;
                         font-weight: 400;
                         margin-top: 0;
                         margin-bottom: 20px;

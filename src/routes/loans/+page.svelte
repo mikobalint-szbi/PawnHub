@@ -111,7 +111,7 @@
                 <th class="col3">Lejár</th>
                 <th class="col4">Kamat</th>
                 <th class="col5">Ügyfél</th>
-                <th class="col6">Termékek</th>
+                <th class="col6">Zálogtermékek</th>
                 <th class="col7">Megjegyzés</th>
             </thead>
 
