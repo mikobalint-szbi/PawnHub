@@ -25,9 +25,9 @@
         
         for (let i = 0; i < col6.length; i++) {
 
-            if (col6.item(i).querySelector(".col6-flex").childElementCount <= 1){
+            if (col6.item(i).querySelector(".loanField-flex").childElementCount > 1){
 
-                col6.item(i).querySelector("p.loanField-sum").style.display = "none"
+                col6.item(i).querySelector("p.loanField-sum").style.display = "block"
             
             }
         }
@@ -126,26 +126,37 @@
                     <td class="col4" on:click={() => open_popup("customerPopup",false,false)}>+36 12 345 6789</td>
                     <td class="col5">2750 Nagykőrös. Szent Benedek u. 8.</td>
                     <td class="col6">
-                        <div class="col6-flex">
+                        <div class="loanField-flex">
                             <button>
-                                <img src="IMG/Home/loans.png" alt="Kölcsön">
-                                <p title="Pénzösszeg" class="col6-money">1 300 000 Ft</p>
-                                <p title="Megköttetett" class="col6-concludion">2024.03.22.</p>
-                                <p title="Lejár" class="col6-expiration">2025.01.30.</p>
-                                <p title="Kamat" class="col6-interest">5%</p>
+                                <p title="Pénzösszeg" class="loanField-money">1 300 000 Ft</p>
+                                <p title="Megköttetett" class="loanField-concludion">2024.03.22.</p>
+                                <p title="Lejár" class="loanField-expiration">2025.01.30.</p>
+                                <p title="Kamat" class="loanField-interest">5%</p>
                             </button>
                             <button>
                                 <img src="IMG/Home/loans.png" alt="Kölcsön">
-                                <p title="Pénzösszeg" class="col6-money">1 300 000 Ft</p>
-                                <p title="Megköttetett" class="col6-concludion">2024.03.22.</p>
-                                <p title="Lejár" class="col6-expiration">2025.01.30.</p>
-                                <p title="Kamat" class="col6-interest">5%</p>
+                                <p title="Pénzösszeg" class="loanField-money">1 300 000 Ft</p>
+                                <p title="Megköttetett" class="loanField-concludion">2024.03.22.</p>
+                                <p title="Lejár" class="loanField-expiration">2025.01.30.</p>
+                                <p title="Kamat" class="loanField-interest">5%</p>
                             </button>
 
                         </div>
                         <p class="loanField-sum" title="Összesen">Össz.: 1 300 000 Ft</p>
                     </td>
-                    <td class="col7" on:click={() => open_popup("customerPopup",false,false)}></td>
+                    <td class="col7" on:click={() => open_popup("customerPopup",false,false)}>
+                        <div class="productField-flex">
+                            <div class="productButton">
+                                <img src="IMG/Global/no-image.png" alt="">
+                                <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
+                            </div>
+                            <div class="productButton">
+                                <img src="IMG/Global/no-image.png" alt="">
+                                <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
+                            </div>
+                            <p class="loanField-more">...és további X db termék</p>
+                        </div>
+                    </td>
                 </div>
                 {/each}
 
@@ -285,11 +296,11 @@
 
         .col1{ width: 130px; max-width: 130px;}
         .col2{ width: 180px; max-width: 180px;}
-        .col3{ width: 263px; max-width: 263px;}
+        .col3{ width: 223px; max-width: 223px;}
         .col4{ width: 135px; max-width: 135px;}
         .col5{ width: 150px; max-width: 150px;}
         .col6{ width: 130px; max-width: 130px;}
-        .col7{ width: 210px; max-width: 210px;}
+        .col7{ width: 250px; max-width: 250px;}
 
         #headDiv-lower{
             width: 1198px;
@@ -331,45 +342,21 @@
                         font-size: 13px;
                         margin: 2px 0;
                         text-align: center;
+                        display: none;
                     }
 
-                    .col6-flex{
-                        width: 100%;
-                        height: 100% !important;
-                        max-width: 100% !important;
-                        max-height: 100% !important;
-                        display: flex;
-                        align-content: center;
-                        justify-content: center;
-                        flex-wrap: wrap;
-                        padding: 4px;
-                        flex-direction: column;
-                        gap: 6px;
 
-                        button{
-                            box-sizing: border-box;
-                            z-index: 100;
-                            width: 98%;
-
-                            img{
-                                width: 30%;
-                                display: none;
-                            }
-
-                            p{
-                                margin: 0;
-                                font-size: 15px;
-                                color: rgb(89, 129, 103);
-                            }
-                            .col6-money{
-                                color: black;
-                                font-size: 17px;
-                                margin-bottom: 3px;
-                                margin-top: 1px;
-                            }
+                }
+                .col7{
+                    .productField-flex{
+                        
+                        .loanField-more{
+                            font-size: 13px;
+                            margin: 2px 0;
+                            text-align: center;
                         }
-                    }
 
+                    }
                 }
                 
             }
