@@ -105,7 +105,7 @@
 
     <div id="main-container">
         <table id="main">
-            <thead>
+            <tr class="thead">
                 <th class="col1">Összeg</th>
                 <th class="col2"><span class="concDate">Megköttetett</span><span class="expDate-inner"><span title="Megköttetett">Megk. </span>| Lejár</span></th>
                 <th class="col3">Lejár</th>
@@ -113,9 +113,7 @@
                 <th class="col5">Ügyfél</th>
                 <th class="col6">Zálogtermékek</th>
                 <th class="col7">Megjegyzés</th>
-            </thead>
-
-
+            </tr>
                 {#each {length: 17} as _, i}
                 <div class="row" href="">
                     <td class="col1" href="" tabindex="0" on:click={() => open_popup("customerPopup",false,false)}>1 300 000 Ft</td>
@@ -161,11 +159,46 @@
 <style lang="scss">
     
     @media (min-width: 0px) {
+
+        .col6{ display: none;}
+        .col7{ display: none;}
+
+
         .expDate-inner{
             display: none;
         }
         .concDate{
             display: inline;
+        }
+
+        table{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            max-width: 432px;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+
+        }
+        .row{
+            display: flex;
+            flex-direction: column;
+            border: 1px solid black;
+        }
+        td{
+            display: flex;
+            width: 90vw;
+            border: none !important;
+            justify-content: center;
+        }
+        th, .thead{
+            display: none;
+        }
+        .customerField-flex{
+            img{
+                display: none;
+            }
         }
 
 
@@ -205,35 +238,13 @@
         // - Az 596 pixeles nézetetben a lejárat és a megköttetés dátumát egy cellába kellene sűrítenem.
         // - Nevetségesnek hat, ha egy kisebb nézeten több adat látszik, mint az eggyel nagyobbon (A 468-ason rajta van a megkötés dátuma)
 
-        table, tbody{
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            max-width: 432px;
-            align-items: center;
-            justify-content: left;
-            gap: 5px;
-
-        }
-        tr{
-            display: flex;
-            flex-direction: column;
-            border: 1px solid black;
-        }
         td{
-            display: flex;
             width: 210px;
-            border: none !important;
-            justify-content: center;
         }
-        th{
-            display: none;
+        table{
+            justify-content: left;
         }
-        .customerField-flex{
-            img{
-                display: none;
-            }
-        }
+
 
         #headDiv-lower{
             width: 432px;
@@ -260,7 +271,6 @@
             display: table;
             max-width: unset;
         }
-
         tr{
             display: table-row;
         }
@@ -272,11 +282,15 @@
         th{
             display: table-cell;
         }
+        .thead{
+            display: table-row;
+        }
         .customerField-flex{
             img{
                 display: block;
             }
         }
+
 
         .expDate-inner{
             display: inline !important;
