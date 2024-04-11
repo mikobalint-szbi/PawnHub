@@ -121,10 +121,10 @@
                     <td class="col1" href="" tabindex="0" on:click={() => open_popup("customerPopup",false,false)}>
                         <img src="IMG/Global/no-profile-image.png" alt="">
                     </td>
-                    <td class="col2"  on:click={() => open_popup("customerPopup",false,false)}>Teszt Elek</td>
-                    <td class="col3"  on:click={() => open_popup("customerPopup",false,false)}>szoftvert.tesztelek@mail.org</td>
+                    <td class="col2" on:click={() => open_popup("customerPopup",false,false)}>Teszt Elek</td>
+                    <td class="col3" on:click={() => open_popup("customerPopup",false,false)}>szoftvert.tesztelek@mail.org</td>
                     <td class="col4" on:click={() => open_popup("customerPopup",false,false)}>+36 12 345 6789</td>
-                    <td class="col5">2750 Nagykőrös. Szent Benedek u. 8.</td>
+                    <td class="col5" on:click={() => open_popup("customerPopup",false,false)}>2750 Nagykőrös. Szent Benedek u. 8.</td>
                     <td class="col6">
                         <div class="loanField-flex">
                             <button>
@@ -144,13 +144,15 @@
                         </div>
                         <p class="loanField-sum" title="Összesen">Össz.: 1 300 000 Ft</p>
                     </td>
-                    <td class="col7" on:click={() => open_popup("customerPopup",false,false)}>
+                    <td class="col7">
                         <div class="productField-flex">
-                            <div class="productButton">
+                            <!-- svelte-ignore a11y-click-events-have-key-events -->
+                            <div class="productButton"  on:click={() => open_popup("productPopup",false,false)} role="button" tabindex="0">
                                 <img src="IMG/Global/no-image.png" alt="">
                                 <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
                             </div>
-                            <div class="productButton">
+                            <!-- svelte-ignore a11y-click-events-have-key-events -->
+                            <div class="productButton" on:click={() => open_popup("productPopup",false,false)} role="button" tabindex="0">
                                 <img src="IMG/Global/no-image.png" alt="">
                                 <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
                             </div>

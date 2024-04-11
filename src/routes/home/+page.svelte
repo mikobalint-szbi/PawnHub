@@ -41,10 +41,10 @@
     
         <a class="optionBox" href="archive">
             <div class="imageBox">
-                <img class="image" src="IMG/Home/archive.png" alt="Archívum">
+                <img class="image" src="IMG/Home/settings.png" alt="Archívum">
             </div>
             <div class="titleBox">
-                <h3 class="title">Archívum</h3>
+                <h3 class="title">Beállítások</h3>
             </div>
         </a>
 

@@ -90,7 +90,7 @@
 
         </div>
         <div id="hl-col3">
-            <button id="add-button" on:click={() => open_popup("customerPopup",true,false)}>
+            <button id="add-button" on:click={() => open_popup("loanPopup",true,false)}>
                 <div id="add-col1">
                     <img src="IMG/Global/add.png" alt="Hozzáadás" title="Hozzáadás">
                 </div>
@@ -116,34 +116,34 @@
             </tr>
                 {#each {length: 17} as _, i}
                 <div class="row" href="">
-                    <td class="col1" href="" tabindex="0" on:click={() => open_popup("customerPopup",false,false)}>1 300 000 Ft</td>
-                    <td class="col2"  on:click={() => open_popup("customerPopup",false,false)}>
+                    <td class="col1" href="" tabindex="0" on:click={() => open_popup("loanPopup",false,false)}>1 300 000 Ft</td>
+                    <td class="col2"  on:click={() => open_popup("loanPopup",false,false)}>
                         <p>2024.03.10.</p>
                         <p class="expDate-inner">2025.01.20.</p>
                     </td>
-                    <td class="col3"  on:click={() => open_popup("customerPopup",false,false)}>2025.01.20.</td>
-                    <td class="col4" on:click={() => open_popup("customerPopup",false,false)}>100%</td>
+                    <td class="col3"  on:click={() => open_popup("loanPopup",false,false)}>2025.01.20.</td>
+                    <td class="col4" on:click={() => open_popup("loanPopup",false,false)}>100%</td>
                     <td class="col5">
 
-                        <div class="customerField-flex">
+                        <div class="customerField-flex" tabindex="0" on:click={() => open_popup("customerPopup",false,false)}>
                             <img src="IMG/Global/no-profile-image.png" alt="">
                             <p>Péld Aladár</p>
                         </div>
                     </td>
                     <td class="col6">
                         <div class="productField-flex">
-                            <div class="productButton">
+                            <div class="productButton"  tabindex="0" on:click={() => open_popup("productPopup",false,false)}>
                                 <img src="IMG/Global/no-image.png" alt="">
                                 <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
                             </div>
-                            <div class="productButton">
+                            <div class="productButton"  tabindex="0" on:click={() => open_popup("productPopup",false,false)}>
                                 <img src="IMG/Global/no-image.png" alt="">
                                 <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
                             </div>
                             <p class="loanField-more">...és további X db termék</p>
                         </div>
                     </td>
-                    <td class="col7" on:click={() => open_popup("customerPopup",false,false)}>
+                    <td class="col7" on:click={() => open_popup("loanPopup",false,false)}>
                         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores eaque numquam sit, minima cupiditate quisquam consequatur, aspernatur repellendus quos esse laudantium quia veniam, perspiciatis odio impedit ad nobis non. Laboriosam!
                     </td>
                 </div>

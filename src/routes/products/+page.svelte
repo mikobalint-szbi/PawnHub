@@ -121,7 +121,7 @@
                         </div>
 
                     </td>
-                    <td class="col5">
+                    <td class="col5" on:click={() => open_popup("customerPopup",false,false)}>
                         <div class="customerField-flex">
                             <img src="IMG/Global/no-profile-image.png" alt="">
                             <p>Péld Aladár</p>
