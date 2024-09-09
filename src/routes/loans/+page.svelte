@@ -25,9 +25,9 @@
         
         for (let i = 0; i < col6.length; i++) {
 
-            if (col6.item(i).querySelector(".loanField-flex").childElementCount > 1){
+            if (col6.item(i).querySelector(".productField-flex").childElementCount > 1){
 
-                col6.item(i).querySelector("p.loanField-sum").style.display = "block"
+                col6.item(i).querySelector("p.productField-more").style.display = "block"
             
             }
         }
@@ -38,7 +38,6 @@
 </script>
 
 <section id="body">
-
 
     <div id="head-div">
         <div id="h-col1">
@@ -99,10 +98,11 @@
                 </div>
             </button>
         </div>
-        
-    
     </div>
 
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
+    <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+    <!-- svelte-ignore a11y-no-static-element-interactions -->
     <div id="main-container">
         <table id="main">
             <tr class="thead">
@@ -140,7 +140,7 @@
                                 <img src="IMG/Global/no-image.png" alt="">
                                 <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
                             </div>
-                            <p class="loanField-more">...és további X db termék</p>
+                            <p class="productField-more">...és további X db termék.</p>
                         </div>
                     </td>
                     <td class="col7" on:click={() => open_popup("loanPopup",false,false)}>
@@ -390,9 +390,9 @@
                 .col6{
                     .productField-flex{
                         
-                        .loanField-more{
+                        .productField-more{
                             font-size: 13px;
-                            margin: 2px 0;
+                            margin: -5px 0 -4px 0;
                             text-align: center;
                         }
 
