@@ -106,8 +106,8 @@
     <div id="main-container">
         <table id="main">
             <tr class="thead">
-                <th class="col1" title="Kölcsönadott összeg">Kölcsönadott ö.</th>
-                <th class="col2" title="Visszakérendő összeg">Visszakérendő ö.</th>
+                <th class="col1" title="Kölcsönadott összeg"><span class="moneyLent">Kölcsönadott</span><span class="moneyBack-inner"><span title="Kölcsönadott összeg">Kölcs. </span>| <span title="Visszakérendő összeg" class="green">Vissz.</span></span></th>
+                <th class="col2" title="Visszakérendő összeg">Visszakérendő</th>
                 <th class="col3"><span class="concDate">Megköttetett</span><span class="expDate-inner"><span title="Megköttetett">Megk. </span>| Lejár</span></th>
                 <th class="col4">Lejár</th>
                 <th class="col5">Kamat</th>
@@ -117,11 +117,14 @@
             </tr>
                 {#each {length: 17} as _, i}
                 <div class="row" href="">
-                    <td class="col1" href="" tabindex="0" on:click={() => open_popup("loanPopup",false,false)}>1 300 000 Ft</td>
-                    <td class="col2" href="" tabindex="0" on:click={() => open_popup("loanPopup",false,false)}>1 500 000 Ft</td>
+                    <td class="col1" href="" tabindex="0" on:click={() => open_popup("loanPopup",false,false)}>
+                        <p title="Kölcsönadott összeg">1 300 000 Ft</p>
+                        <p class="moneyBack-inner green" title="Visszakérendő összeg">1 500 000 Ft</p>
+                    </td>
+                    <td class="col2 green" href="" tabindex="0" on:click={() => open_popup("loanPopup",false,false)}>1 500 000 Ft</td>
                     <td class="col3"  on:click={() => open_popup("loanPopup",false,false)}>
-                        <p>2024.03.10.</p>
-                        <p class="expDate-inner">2025.01.20.</p>
+                        <p title="Megköttetett">2024.03.10.</p>
+                        <p class="expDate-inner" title="Lejár">2025.01.20.</p>
                     </td>
                     <td class="col4"  on:click={() => open_popup("loanPopup",false,false)}>2025.01.20.</td>
                     <td class="col5" on:click={() => open_popup("loanPopup",false,false)}>100%</td>
@@ -146,7 +149,7 @@
                         </div>
                     </td>
                     <td class="col8" on:click={() => open_popup("loanPopup",false,false)}>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores eaque numquam sit, minima cupiditate quisquam consequatur, aspernatur repellendus quos esse laudantium quia veniam, perspiciatis odio impedit ad nobis non. Laboriosam!
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores eaque numquam sit, minima cupiditate quisquam consequatur, aspernatur repellendus quos esse laudantium quia veniam...
                     </td>
                 </div>
                 {/each}
@@ -166,10 +169,10 @@
         .col8{ display: none;}
 
 
-        .expDate-inner{
+        .expDate-inner, .moneyBack-inner{
             display: none;
         }
-        .concDate{
+        .concDate, .moneyLent{
             display: inline;
         }
 
@@ -295,11 +298,11 @@
         }
 
 
-        .expDate-inner{
+        .expDate-inner, .moneyBack-inner{
             display: inline !important;
 
         }
-        .concDate{
+        .concDate, .moneyLent{
             display: none;
         }
         
@@ -307,33 +310,36 @@
     }
     @media (min-width: 768px) {
 
-        .col1{ width: 140px; max-width: 140px;}
-        .col2{ width: 140px; max-width: 140px;}
-        .col3{ width: 127px; max-width: 127px;}
+        .col1{ width: 135px; max-width: 135px;}
+        .col2{ display: none;}
+        .col3{ width: 114px; max-width: 114px;}
         .col4{ display: none;}
-        .col5{ width: 72px; max-width: 72px;}
+        .col5{ width: 60px; max-width: 60px;}
         .col6{ width: 150px; max-width: 150px;}
         .col7{ width: 251px; max-width: 251px; display: table-cell;}
         .col8{ display: none;}
-
-
-
-
+        //10 13 12
         #headDiv-lower{
             width: 741px;
         }
+
+
     }
     /* Large devices (laptops/desktops, 992px and up) */
     @media (min-width: 992px) {
 
-        .col1{ width: 150px; max-width: 150px;}
-        .col2{ width: 150px; max-width: 150px;}
-        .col3{ width: 130px; max-width: 130px;}
-        .col4{ width: 130px; max-width: 130px; display: table-cell;}
-        .col5{ width: 77px; max-width: 77px;}
-        .col6{ width: 150px; max-width: 150px;}
-        .col7{ width: 331px; max-width: 331px; display: table-cell;}
+        .col1{ width: 135px; max-width: 135px;}
+        .col2{ width: 135px; max-width: 135px; display: table-cell;}
+        .col3{ width: 112px; max-width: 112px;}
+        .col4{ width: 112px; max-width: 112px; display: table-cell;}
+        .col5{ width: 60px; max-width: 60px;}
+        .col6{ width: 130px; max-width: 130px;}
+        .col7{ width: 283px; max-width: 283px; display: table-cell;}
         .col8{ display: none;}
+
+        #headDiv-lower{
+            width: 968px;
+        }
 
         .customerField-flex{
             img{
@@ -341,14 +347,12 @@
             }
         }
 
-        #headDiv-lower{
-            width: 968px;
-        }
 
-        .expDate-inner{
+
+        .expDate-inner, .moneyBack-inner{
             display: none !important;
         }
-        .concDate{
+        .concDate, .moneyLent{
             display: inline;
             text-align: justify;
         }
@@ -357,18 +361,19 @@
     /* Extra large devices (large laptops and desktops, 1200px and up) */
     @media (min-width: 1230px) {
 
-        .col1{ width: 150px; max-width: 150px;}
-        .col2{ width: 150px; max-width: 150px;}
-        .col3{ width: 130px; max-width: 130px;}
-        .col4{ width: 130px; max-width: 130px;}
-        .col5{ width: 77px; max-width: 77px;}
-        .col6{ width: 150px; max-width: 150px;}
-        .col7{ width: 300px; max-width: 300px;}
-        .col8{ width: 261px; max-width: 261px; display: table-cell;}
+        .col1{ width: 135px; max-width: 135px;}
+        .col2{ width: 135px; max-width: 135px;}
+        .col3{ width: 112px; max-width: 112px;}
+        .col4{ width: 112px; max-width: 112px;}
+        .col5{ width: 60px; max-width: 60px;}
+        .col6{ width: 130px; max-width: 130px;}
+        .col7{ width: 270px; max-width: 270px;}
+        .col8{ width: 244px; max-width: 244px; display: table-cell;}
 
         #headDiv-lower{
             width: 1198px;
         }
+
     }
 
 
@@ -379,7 +384,6 @@
             #main{
 
                 td.col1, td.col2, td.col3, td.col4, td.col5{
-                    font-size: 20px;
                     text-align: right !important;
                     padding: 0 6px;
 
@@ -387,6 +391,23 @@
                         margin: 6px 0;
                     }
                 }
+
+                td.col1, td.col2 {
+
+                    font-size: 20px;
+                }
+
+                .green{
+                    color: rgb(26, 110, 60);
+                    
+                }
+
+                td.col3, td.col4, td.col5 {
+
+                    font-size: 18px;
+                }
+
+
 
                 td.col1, td.col2{
                     font-weight: 500;
