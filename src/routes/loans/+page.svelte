@@ -21,13 +21,13 @@
 
     onMount(() =>{
 
-        let col6 = document.querySelectorAll("td.col6")
+        let col7 = document.querySelectorAll("td.col7")
         
-        for (let i = 0; i < col6.length; i++) {
+        for (let i = 0; i < col7.length; i++) {
 
-            if (col6.item(i).querySelector(".productField-flex").childElementCount > 1){
+            if (col7.item(i).querySelector(".productField-flex").childElementCount > 1){
 
-                col6.item(i).querySelector("p.productField-more").style.display = "block"
+                col7.item(i).querySelector("p.productField-more").style.display = "block"
             
             }
         }
@@ -106,31 +106,33 @@
     <div id="main-container">
         <table id="main">
             <tr class="thead">
-                <th class="col1">Összeg</th>
-                <th class="col2"><span class="concDate">Megköttetett</span><span class="expDate-inner"><span title="Megköttetett">Megk. </span>| Lejár</span></th>
-                <th class="col3">Lejár</th>
-                <th class="col4">Kamat</th>
-                <th class="col5">Ügyfél</th>
-                <th class="col6">Zálogtermékek</th>
-                <th class="col7">Megjegyzés</th>
+                <th class="col1" title="Kölcsönadott összeg">Kölcsönadott ö.</th>
+                <th class="col2" title="Visszakérendő összeg">Visszakérendő ö.</th>
+                <th class="col3"><span class="concDate">Megköttetett</span><span class="expDate-inner"><span title="Megköttetett">Megk. </span>| Lejár</span></th>
+                <th class="col4">Lejár</th>
+                <th class="col5">Kamat</th>
+                <th class="col6">Ügyfél</th>
+                <th class="col7">Zálogtermékek</th>
+                <th class="col8">Megjegyzés</th>
             </tr>
                 {#each {length: 17} as _, i}
                 <div class="row" href="">
                     <td class="col1" href="" tabindex="0" on:click={() => open_popup("loanPopup",false,false)}>1 300 000 Ft</td>
-                    <td class="col2"  on:click={() => open_popup("loanPopup",false,false)}>
+                    <td class="col2" href="" tabindex="0" on:click={() => open_popup("loanPopup",false,false)}>1 500 000 Ft</td>
+                    <td class="col3"  on:click={() => open_popup("loanPopup",false,false)}>
                         <p>2024.03.10.</p>
                         <p class="expDate-inner">2025.01.20.</p>
                     </td>
-                    <td class="col3"  on:click={() => open_popup("loanPopup",false,false)}>2025.01.20.</td>
-                    <td class="col4" on:click={() => open_popup("loanPopup",false,false)}>100%</td>
-                    <td class="col5">
+                    <td class="col4"  on:click={() => open_popup("loanPopup",false,false)}>2025.01.20.</td>
+                    <td class="col5" on:click={() => open_popup("loanPopup",false,false)}>100%</td>
+                    <td class="col6">
 
                         <div class="customerField-flex" tabindex="0" on:click={() => open_popup("customerPopup",false,false)}>
                             <img src="IMG/Global/no-profile-image.png" alt="">
                             <p>Péld Aladár</p>
                         </div>
                     </td>
-                    <td class="col6">
+                    <td class="col7">
                         <div class="productField-flex">
                             <div class="productButton"  tabindex="0" on:click={() => open_popup("productPopup",false,false)}>
                                 <img src="IMG/Global/no-image.png" alt="">
@@ -143,7 +145,7 @@
                             <p class="productField-more">...és további X db termék.</p>
                         </div>
                     </td>
-                    <td class="col7" on:click={() => open_popup("loanPopup",false,false)}>
+                    <td class="col8" on:click={() => open_popup("loanPopup",false,false)}>
                         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores eaque numquam sit, minima cupiditate quisquam consequatur, aspernatur repellendus quos esse laudantium quia veniam, perspiciatis odio impedit ad nobis non. Laboriosam!
                     </td>
                 </div>
@@ -160,8 +162,8 @@
     
     @media (min-width: 0px) {
 
-        .col6{ display: none;}
         .col7{ display: none;}
+        .col8{ display: none;}
 
 
         .expDate-inner{
@@ -231,8 +233,8 @@
 
     @media (min-width: 468px) {
 
-        .col6{ display: none;}
         .col7{ display: none;}
+        .col8{ display: none;}
 
         // hol tartottam:
         // - Az 596 pixeles nézetetben a lejárat és a megköttetés dátumát egy cellába kellene sűrítenem.
@@ -255,12 +257,13 @@
     @media (min-width: 596px) {
 
         .col1{ width: 161px; max-width: 161px;}
-        .col2{ width: 130px; max-width: 130px;}
-        .col3{ display: none;}
-        .col4{ width: 77px; max-width: 77px; display: table-cell;}
-        .col5{ width: 193px; max-width: 193px;}
-        .col6{ display: none;}
+        .col2{ width: 161px; max-width: 161px;}
+        .col3{ width: 130px; max-width: 130px;}
+        .col4{ display: none;}
+        .col5{ width: 77px; max-width: 77px; display: table-cell;}
+        .col6{ width: 193px; max-width: 193px;}
         .col7{ display: none;}
+        .col8{ display: none;}
 
         #headDiv-lower{
             width: 561px;
@@ -305,12 +308,13 @@
     @media (min-width: 768px) {
 
         .col1{ width: 140px; max-width: 140px;}
-        .col2{ width: 127px; max-width: 127px;}
-        .col3{ display: none;}
-        .col4{ width: 72px; max-width: 72px;}
-        .col5{ width: 150px; max-width: 150px;}
-        .col6{ width: 251px; max-width: 251px; display: table-cell;}
-        .col7{ display: none;}
+        .col2{ width: 140px; max-width: 140px;}
+        .col3{ width: 127px; max-width: 127px;}
+        .col4{ display: none;}
+        .col5{ width: 72px; max-width: 72px;}
+        .col6{ width: 150px; max-width: 150px;}
+        .col7{ width: 251px; max-width: 251px; display: table-cell;}
+        .col8{ display: none;}
 
 
 
@@ -323,12 +327,13 @@
     @media (min-width: 992px) {
 
         .col1{ width: 150px; max-width: 150px;}
-        .col2{ width: 130px; max-width: 130px;}
-        .col3{ width: 130px; max-width: 130px; display: table-cell;}
-        .col4{ width: 77px; max-width: 77px;}
-        .col5{ width: 150px; max-width: 150px;}
-        .col6{ width: 331px; max-width: 331px; display: table-cell;}
-        .col7{ display: none;}
+        .col2{ width: 150px; max-width: 150px;}
+        .col3{ width: 130px; max-width: 130px;}
+        .col4{ width: 130px; max-width: 130px; display: table-cell;}
+        .col5{ width: 77px; max-width: 77px;}
+        .col6{ width: 150px; max-width: 150px;}
+        .col7{ width: 331px; max-width: 331px; display: table-cell;}
+        .col8{ display: none;}
 
         .customerField-flex{
             img{
@@ -353,12 +358,13 @@
     @media (min-width: 1230px) {
 
         .col1{ width: 150px; max-width: 150px;}
-        .col2{ width: 130px; max-width: 130px;}
+        .col2{ width: 150px; max-width: 150px;}
         .col3{ width: 130px; max-width: 130px;}
-        .col4{ width: 77px; max-width: 77px;}
-        .col5{ width: 150px; max-width: 150px;}
-        .col6{ width: 300px; max-width: 300px;}
-        .col7{ width: 261px; max-width: 261px; display: table-cell;}
+        .col4{ width: 130px; max-width: 130px;}
+        .col5{ width: 77px; max-width: 77px;}
+        .col6{ width: 150px; max-width: 150px;}
+        .col7{ width: 300px; max-width: 300px;}
+        .col8{ width: 261px; max-width: 261px; display: table-cell;}
 
         #headDiv-lower{
             width: 1198px;
@@ -372,7 +378,7 @@
 
             #main{
 
-                td.col1, td.col2, td.col3, td.col4{
+                td.col1, td.col2, td.col3, td.col4, td.col5{
                     font-size: 20px;
                     text-align: right !important;
                     padding: 0 6px;
@@ -382,12 +388,12 @@
                     }
                 }
 
-                td.col1{
+                td.col1, td.col2{
                     font-weight: 500;
                 }
 
 
-                .col6{
+                .col7{
                     .productField-flex{
                         
                         .productField-more{

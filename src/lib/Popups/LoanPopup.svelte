@@ -25,7 +25,17 @@
             <div id="popup-grid">
 
                 <div id="loans" class="popupGrid-element">
-                    <div class="loanField-flex">
+
+                    <div id="money-lent" class="popupGrid-element">
+                        <label for="p-moneyLent" class="popup-label">Összeg:</label>
+                        <div class="pv-row">
+                            <input type="number" class="popup-input money" id="p-estimatedValue">
+                            <p>Ft</p>
+                        </div>
+                    </div>
+
+                    
+                    <!--div class="loanField-flex">
                         <button>
 
                             <label for="" class="popup-label" style="margin-top: 60px;">Pénzösszeg</label>
@@ -71,9 +81,9 @@
                             <p title="Megköttetett" class="loanField-concludion">2024.03.22.</p>
                             <p title="Lejár" class="loanField-expiration">2025.01.30.</p>
                             <p title="Kamat" class="loanField-interest">5%</p>
-                        </button-->
+                        </button>
 
-                    </div>
+                    </div-->
 
                 </div>
                 
