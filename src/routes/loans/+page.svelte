@@ -122,7 +122,7 @@
                         <p class="moneyBack-inner green" title="Visszakérendő összeg">1 500 000 Ft</p>
                         <p class="interest-inner" title="Kamat">100%</p>
                     </td>
-                    <td class="col2 green" href="" tabindex="0" on:click={() => open_popup("loanPopup",false,false)}>1 500 000 Ft</td>
+                    <td class="col2 green" href="" tabindex="-1" on:click={() => open_popup("loanPopup",false,false)}>1 500 000 Ft</td>
                     <td class="col3"  on:click={() => open_popup("loanPopup",false,false)}>
                         <p title="Megköttetett">2024.03.10.</p>
                         <p class="expDate-inner" title="Lejár">2025.01.20.</p>
@@ -258,12 +258,27 @@
         // - Az 596 pixeles nézetetben a lejárat és a megköttetés dátumát egy cellába kellene sűrítenem.
         // - Nevetségesnek hat, ha egy kisebb nézeten több adat látszik, mint az eggyel nagyobbon (A 468-ason rajta van a megkötés dátuma)
 
-        td{
-            width: 90vw;
-            //width: 210px;
+        .productButton p{
+            max-width: 123px !important;
+            max-height: 60px;
+            overflow: hidden;
         }
+
+        .col5{
+            padding-top: 5px !important;
+        }
+
+        td{
+            max-width: 90vw;
+            width: 210px;
+            
+        }
+
         table{
-            justify-content: center;
+            justify-self: center;
+            justify-content: stretch ;
+
+
         }
 
 
@@ -291,9 +306,12 @@
         
         .productButton p{
             max-width: 109px !important;
-            max-height: 60px;
-            overflow: hidden;
         }
+
+        .col5{
+            padding-top: 0px !important;
+        }
+
 
         p.interest-inner{
             display: block;
@@ -343,6 +361,10 @@
 
         td p {
             margin-bottom: 0 !important;
+        }
+
+        table{
+            justify-content: center;
         }
         
 
