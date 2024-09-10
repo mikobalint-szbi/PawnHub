@@ -269,16 +269,11 @@
         }
 
         td{
-            max-width: 90vw;
             width: 210px;
-            
         }
 
         table{
-            justify-self: center;
-            justify-content: stretch ;
-
-
+            justify-content: left;
         }
 
 
@@ -300,23 +295,17 @@
         .col7{ width: 196px; max-width: 196px; display: table-cell;}
         .col8{ display: none;}
 
-        #headDiv-lower{
-            width: 561px;
-        }
-        
         .productButton p{
-            max-width: 109px !important;
+            max-width: 110px !important;
+            max-height: 60px;
+            overflow: hidden;
         }
-
-        .col5{
-            padding-top: 0px !important;
-        }
-
 
         p.interest-inner{
             display: block;
         }
 
+        
         table, tbody{
             display: table;
             max-width: unset;
