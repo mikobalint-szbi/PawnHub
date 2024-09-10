@@ -106,11 +106,11 @@
     <div id="main-container">
         <table id="main">
             <tr class="thead">
-                <th class="col1" title="Kölcsönadott összeg"><span class="moneyLent">Kölcsönadott</span><span class="moneyBack-inner"><span title="Kölcsönadott összeg">Kölcs. </span>| <span title="Visszakérendő összeg" class="green">Vissz.</span></span></th>
+                <th class="col1" title="Kölcsönadott összeg"><span class="moneyLent">Kölcsönadott</span><span class="moneyBack-inner"><span title="Kölcsönadott összeg">Kölcs. </span>| <span title="Visszakérendő összeg" class="green">Vissz.</span><span class="interest-inner">| </span><span title="Kamatszázalék" class="interest-inner">Kam.</span></span></th>
                 <th class="col2" title="Visszakérendő összeg">Visszakérendő</th>
                 <th class="col3"><span class="concDate">Megköttetett</span><span class="expDate-inner"><span title="Megköttetett">Megk. </span>| Lejár</span></th>
                 <th class="col4">Lejár</th>
-                <th class="col5">Kamat</th>
+                <th class="col5" title="Kamatszázalék">Kamat</th>
                 <th class="col6">Ügyfél</th>
                 <th class="col7">Zálogtermékek</th>
                 <th class="col8">Megjegyzés</th>
@@ -120,6 +120,7 @@
                     <td class="col1" href="" tabindex="0" on:click={() => open_popup("loanPopup",false,false)}>
                         <p title="Kölcsönadott összeg">1 300 000 Ft</p>
                         <p class="moneyBack-inner green" title="Visszakérendő összeg">1 500 000 Ft</p>
+                        <p class="interest-inner" title="Kamat">100%</p>
                     </td>
                     <td class="col2 green" href="" tabindex="0" on:click={() => open_popup("loanPopup",false,false)}>1 500 000 Ft</td>
                     <td class="col3"  on:click={() => open_popup("loanPopup",false,false)}>
@@ -139,7 +140,7 @@
                         <div class="productField-flex">
                             <div class="productButton"  tabindex="0" on:click={() => open_popup("productPopup",false,false)}>
                                 <img src="IMG/Global/no-image.png" alt="">
-                                <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
+                                <p>SamsungSamsungSamsungSamsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
                             </div>
                             <div class="productButton"  tabindex="0" on:click={() => open_popup("productPopup",false,false)}>
                                 <img src="IMG/Global/no-image.png" alt="">
@@ -205,6 +206,15 @@
                 display: none;
             }
         }
+        
+        td p {
+            margin-bottom: 0 !important;
+        }
+
+        p.interest-inner{
+            font-size: 18px;
+            margin-top: 2px !important;
+        }
 
 
     }
@@ -251,6 +261,7 @@
         }
 
 
+
         #headDiv-lower{
             width: 432px;
         }
@@ -259,14 +270,20 @@
     /* Small devices (portrait tablets and large phones, 600px and up) */
     @media (min-width: 596px) {
 
-        .col1{ width: 161px; max-width: 161px;}
-        .col2{ width: 161px; max-width: 161px;}
-        .col3{ width: 130px; max-width: 130px;}
+        .col1{ width: 148px; max-width: 148px;}
+        .col2{ display: none;}
+        .col3{ width: 114px; max-width: 114px;}
         .col4{ display: none;}
-        .col5{ width: 77px; max-width: 77px; display: table-cell;}
-        .col6{ width: 193px; max-width: 193px;}
-        .col7{ display: none;}
+        .col5{ display: none; }
+        .col6{ width: 110px; max-width: 110px;}
+        .col7{ width: 200px; max-width: 200px; display: table-cell;}
         .col8{ display: none;}
+
+        .productButton p{
+            max-width: 110px !important;
+            max-height: 60px;
+            overflow: hidden;
+        }
 
         #headDiv-lower{
             width: 561px;
@@ -287,6 +304,7 @@
         }
         th{
             display: table-cell;
+            font-size: 14px;
         }
         .thead{
             display: table-row;
@@ -305,6 +323,10 @@
         .concDate, .moneyLent{
             display: none;
         }
+
+        td p {
+            margin-bottom: 0 !important;
+        }
         
 
     }
@@ -314,15 +336,29 @@
         .col2{ display: none;}
         .col3{ width: 114px; max-width: 114px;}
         .col4{ display: none;}
-        .col5{ width: 60px; max-width: 60px;}
-        .col6{ width: 150px; max-width: 150px;}
-        .col7{ width: 251px; max-width: 251px; display: table-cell;}
+        .col5{ width: 60px; max-width: 60px; display: table-cell;}
+        .col6{ width: 130px; max-width: 130px;}
+        .col7{ width: 299px; max-width: 299px; display: table-cell;}
         .col8{ display: none;}
         //10 13 12
         #headDiv-lower{
             width: 741px;
         }
 
+        .customerField-flex{
+            img{
+                width: 80%;
+            }
+        }
+
+        .interest-inner{
+            display: none;
+        }
+
+        th{
+            font-size: 16px;
+        }
+    
 
     }
     /* Large devices (laptops/desktops, 992px and up) */
@@ -341,12 +377,12 @@
             width: 968px;
         }
 
+
         .customerField-flex{
             img{
                 width: 90%;
             }
         }
-
 
 
         .expDate-inner, .moneyBack-inner{
@@ -390,7 +426,13 @@
                     p{
                         margin: 6px 0;
                     }
+
+                    p.interest-inner{
+                        font-weight: 200;
+                    }
                 }
+
+
 
                 td.col1, td.col2 {
 
@@ -402,7 +444,7 @@
                     
                 }
 
-                td.col3, td.col4, td.col5 {
+                td.col3, td.col4, td.col5{
 
                     font-size: 18px;
                 }
