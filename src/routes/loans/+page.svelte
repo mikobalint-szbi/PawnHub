@@ -166,7 +166,7 @@
     
     @media (min-width: 0px) {
 
-        .col7{ display: none;}
+        //.col7{ display: none;}
         .col8{ display: none;}
 
 
@@ -205,6 +205,9 @@
             img{
                 display: none;
             }
+            p {
+                font-size: 17px;
+            }
         }
         
         td p {
@@ -214,7 +217,9 @@
         p.interest-inner{
             font-size: 18px;
             margin-top: 2px !important;
+            display: none;
         }
+
 
 
     }
@@ -246,7 +251,7 @@
 
     @media (min-width: 468px) {
 
-        .col7{ display: none;}
+        //.col7{ display: none;}
         .col8{ display: none;}
 
         // hol tartottam:
@@ -254,10 +259,11 @@
         // - Nevetségesnek hat, ha egy kisebb nézeten több adat látszik, mint az eggyel nagyobbon (A 468-ason rajta van a megkötés dátuma)
 
         td{
-            width: 210px;
+            width: 90vw;
+            //width: 210px;
         }
         table{
-            justify-content: left;
+            justify-content: center;
         }
 
 
@@ -275,21 +281,24 @@
         .col3{ width: 114px; max-width: 114px;}
         .col4{ display: none;}
         .col5{ display: none; }
-        .col6{ width: 110px; max-width: 110px;}
-        .col7{ width: 200px; max-width: 200px; display: table-cell;}
+        .col6{ width: 100px; max-width: 100px;}
+        .col7{ width: 196px; max-width: 196px; display: table-cell;}
         .col8{ display: none;}
-
-        .productButton p{
-            max-width: 110px !important;
-            max-height: 60px;
-            overflow: hidden;
-        }
 
         #headDiv-lower{
             width: 561px;
         }
-
         
+        .productButton p{
+            max-width: 109px !important;
+            max-height: 60px;
+            overflow: hidden;
+        }
+
+        p.interest-inner{
+            display: block;
+        }
+
         table, tbody{
             display: table;
             max-width: unset;
@@ -315,6 +324,14 @@
             }
         }
 
+        .customerField-flex{
+            img{
+                width: 80%;
+            }
+            p{
+                font-size: 14px;
+            }
+        }
 
         .expDate-inner, .moneyBack-inner{
             display: inline !important;
@@ -340,9 +357,13 @@
         .col6{ width: 130px; max-width: 130px;}
         .col7{ width: 299px; max-width: 299px; display: table-cell;}
         .col8{ display: none;}
-        //10 13 12
+
         #headDiv-lower{
             width: 741px;
+        }
+
+        .productButton p{
+            max-width: 210px !important;
         }
 
         .customerField-flex{
@@ -377,6 +398,11 @@
             width: 968px;
         }
 
+        .productButton p{
+            max-width: 194px !important;
+        }
+
+
 
         .customerField-flex{
             img{
@@ -409,6 +435,12 @@
         #headDiv-lower{
             width: 1198px;
         }
+
+        .productButton p{
+            max-width: 181px !important;
+        }
+
+
 
     }
 
@@ -468,6 +500,10 @@
                     }
                 }
                 
+                .productButton p {
+                    align-self: self-start;
+                    width: 100%;
+                }
             }
         }
 

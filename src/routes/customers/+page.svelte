@@ -149,14 +149,14 @@
                             <!-- svelte-ignore a11y-click-events-have-key-events -->
                             <div class="productButton"  on:click={() => open_popup("productPopup",false,false)} role="button" tabindex="0">
                                 <img src="IMG/Global/no-image.png" alt="">
-                                <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
+                                <p>SamsungSamsungSamsungSamsungSamsungSamsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
                             </div>
                             <!-- svelte-ignore a11y-click-events-have-key-events -->
                             <div class="productButton" on:click={() => open_popup("productPopup",false,false)} role="button" tabindex="0">
                                 <img src="IMG/Global/no-image.png" alt="">
                                 <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
                             </div>
-                            <p class="loanField-more">...és további X db termék</p>
+                            <p class="productField-more">...és további X db termék</p>
                         </div>
                     </td>
                 </div>
@@ -261,6 +261,12 @@
             width: 561px;
         }
 
+        .productButton p{
+            max-width: 78px !important;
+            max-height: 60px;
+            overflow: hidden;
+        }
+
     }
     @media (min-width: 768px) {
 
@@ -276,6 +282,11 @@
         #headDiv-lower{
             width: 741px;
         }
+
+        .productButton p{
+            max-width: 121px !important;
+        }
+
     }
     /* Large devices (laptops/desktops, 992px and up) */
     @media (min-width: 992px) {
@@ -292,6 +303,11 @@
             width: 968px;
         }
 
+        .productButton p{
+            max-width: 92px !important;
+        }
+
+
     }
     /* Extra large devices (large laptops and desktops, 1200px and up) */
     @media (min-width: 1230px) {
@@ -307,6 +323,11 @@
         #headDiv-lower{
             width: 1198px;
         }
+
+        .productButton p{
+            max-width: 165px !important;
+        }
+
     }
 
 
@@ -352,9 +373,9 @@
                 .col7{
                     .productField-flex{
                         
-                        .loanField-more{
+                        .productField-more{
                             font-size: 13px;
-                            margin: 2px 0;
+                            margin: -5px 0 -4px 0;
                             text-align: center;
                         }
 
