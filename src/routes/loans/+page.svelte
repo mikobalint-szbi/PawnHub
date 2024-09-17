@@ -384,7 +384,7 @@
         }
 
         .interest-inner{
-            display: none;
+            display: none !important;
         }
 
         th{

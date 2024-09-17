@@ -6,5 +6,8 @@
 A tablePage-ek alapját használnám fel, csak kisebb elemekkel és minden sorban egy Kiválasztás gombbal.
 
 
+- Az ügyfél-popupboxban a külön termékek és adósságok szekció helyett össze kellene vonni a kettőt. A termékek nem közvetlenül az ügyfélhez tartoznak, hanem az adósságokhoz.
+
+- Kell egy értesítések oldal a zálogházas és az ügyfél fiókban egyaránt, ahol kiírja pl, hogy új adósság-kérelem érkezett, elfogadták az adósságkérelmedet, valaki meg szeretne venni valamit, jóváhagyták a vásárlásod, stb.
 
 

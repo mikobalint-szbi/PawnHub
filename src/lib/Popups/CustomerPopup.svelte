@@ -17,6 +17,11 @@
                     <img src="IMG/Global/back.png" alt="">
                     <p>Vissza</p>
                 </button>
+                <div class="popupTitle-container">
+                    <h2 class="popup-title">Ügyfél adatai</h2>
+                </div>
+
+
                 <button on:click={() => close_popup("customerPopup")} id="popup-closeButton" class="topButton">
                     <img src="IMG/Global/close.png" alt="">
                 </button>
@@ -401,6 +406,21 @@
 
 
     .popupDialog{
+
+        .popupTitle-container{
+            display: flex;
+            align-items: center;
+
+            .popup-title{
+                margin: 0;
+                font-weight: 600;
+                font-size: 20px;
+                line-height: 100%;
+
+            }
+
+        }
+
 
         #popup-grid{
             display: grid;
