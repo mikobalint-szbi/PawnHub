@@ -27,7 +27,7 @@
                     <img src="IMG/Global/no-image.png" alt="">
                 </div>
                 <div id="product-name" class="popupGrid-element">
-                    <label for="p-name" class="popup-label">Termék neve:</label>
+                    <label for="p-name" class="popup-label">Zálogtárgy neve:</label>
                     <input type="text" class="popup-input" id="p-name">
                 </div>
                 <div id="status" class="popupGrid-element">

@@ -1,12 +1,12 @@
 
-Új termék hozzáadása:
+Új zálogtárgy hozzáadása:
 - Az adósságot és az ügyfelet is ki kell választani valahogy: vagy a listából választasz, vagy újat hozol létre.
-- A comboBox elég csicska megoldás volna. Kellene egy ügyfélkiválasztó, egy adósságkiválasztó és egy termékkiválasztó popup.
+- A comboBox elég csicska megoldás volna. Kellene egy ügyfélkiválasztó, egy adósságkiválasztó és egy zálogtárgykiválasztó popup.
 ↓
 A tablePage-ek alapját használnám fel, csak kisebb elemekkel és minden sorban egy Kiválasztás gombbal.
 
 
-- Az ügyfél-popupboxban a külön termékek és adósságok szekció helyett össze kellene vonni a kettőt. A termékek nem közvetlenül az ügyfélhez tartoznak, hanem az adósságokhoz.
+- Az ügyfél-popupboxban a külön Zálogtárgyak és adósságok szekció helyett össze kellene vonni a kettőt. A Zálogtárgyak nem közvetlenül az ügyfélhez tartoznak, hanem az adósságokhoz.
 
 - Kell egy értesítések oldal a zálogházas és az ügyfél fiókban egyaránt, ahol kiírja pl, hogy új adósság-kérelem érkezett, elfogadták az adósságkérelmedet, valaki meg szeretne venni valamit, jóváhagyták a vásárlásod, stb.
 

@@ -109,7 +109,7 @@
 
                 </div>
                 <div id="products" class="popupGrid-element">
-                    <p class="popup-label">Termékek</p>
+                    <p class="popup-label">Zálogtárgyak</p>
                     <div class="productField-flex">
                         <div class="productButton">
                             <img src="IMG/Global/no-image.png" alt="">

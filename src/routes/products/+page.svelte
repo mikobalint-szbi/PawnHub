@@ -39,7 +39,7 @@
             </a>
         </div>
         <div id="h-col2">
-            <h1>Termékek</h1>
+            <h1>Zálogtárgyak</h1>
 
 
         </div>

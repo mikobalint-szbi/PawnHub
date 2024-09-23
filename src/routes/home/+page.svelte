@@ -17,7 +17,7 @@
                 <img class="image" src="IMG/Global/logo.png" alt="">
             </div>
             <div class="titleBox">
-                <h3 class="title">Termékek</h3>
+                <h3 class="title">Zálogtárgyak</h3>
             </div>
         </a>
 

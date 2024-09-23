@@ -112,7 +112,7 @@
                 <th class="col4">Lejár</th>
                 <th class="col5" title="Kamatszázalék">Kamat</th>
                 <th class="col6">Ügyfél</th>
-                <th class="col7">Zálogtermékek</th>
+                <th class="col7">ZálogZálogtárgyak</th>
                 <th class="col8">Megjegyzés</th>
             </tr>
                 {#each {length: 17} as _, i}
@@ -146,7 +146,7 @@
                                 <img src="IMG/Global/no-image.png" alt="">
                                 <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
                             </div>
-                            <p class="productField-more">...és további X db termék.</p>
+                            <p class="productField-more">...és további X db zálogtárgy.</p>
                         </div>
                     </td>
                     <td class="col8" on:click={() => open_popup("loanPopup",false,false)}>

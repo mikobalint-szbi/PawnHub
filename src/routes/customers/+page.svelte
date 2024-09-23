@@ -112,7 +112,7 @@
                 <th class="col4">Telefon</th>
                 <th class="col5">Lakcím</th>
                 <th class="col6">Adósságok</th>
-                <th class="col7">Termékek</th>
+                <th class="col7">Zálogtárgyak</th>
             </thead>
             <tbody>
 
@@ -156,7 +156,7 @@
                                 <img src="IMG/Global/no-image.png" alt="">
                                 <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
                             </div>
-                            <p class="productField-more">...és további X db termék</p>
+                            <p class="productField-more">...és további X db zálogtárgy</p>
                         </div>
                     </td>
                 </div>
