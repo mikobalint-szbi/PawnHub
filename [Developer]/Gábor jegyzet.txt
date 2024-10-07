@@ -1,8 +1,9 @@
 Feladatspecifikáció
 
 Rövid ismertetés
-program célja
-felhasznált progremozási nyelvek, keretrendszerek
-modulok
-megjelenés
-funkciók
+A eszközeg célja
+Műszaki megvalósítás: felhasznált programozási nyelvek, keretrendszerek
+Alkotóelemek
+Megjelenés
+Funkcionalitás
+
