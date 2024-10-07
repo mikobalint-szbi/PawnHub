@@ -1,0 +1,8 @@
+Feladatspecifikáció
+
+Rövid ismertetés
+program célja
+felhasznált progremozási nyelvek, keretrendszerek
+modulok
+megjelenés
+funkciók
