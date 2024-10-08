@@ -189,14 +189,15 @@
         }
         .row{
             display: flex;
-            flex-direction: column;
             border: 1px solid black;
+            flex-direction: column;
+            max-width: 80vw;
         }
         td{
             display: flex;
-            width: 90vw;
             border: none !important;
             justify-content: center;
+
         }
         th, .thead{
             display: none;
@@ -221,9 +222,23 @@
         }
 
 
+        .productButton{
+            max-width: 100% !important;
+            width: 100% !important;
+            
+
+            p {
+
+                max-height: 60px;
+                overflow: hidden;
+            }
+        }
+
+
 
     }
     @media (min-width: 300px) {
+
 
     
     }
@@ -257,6 +272,10 @@
         // hol tartottam:
         // - Az 596 pixeles nézetetben a lejárat és a megköttetés dátumát egy cellába kellene sűrítenem.
         // - Nevetségesnek hat, ha egy kisebb nézeten több adat látszik, mint az eggyel nagyobbon (A 468-ason rajta van a megkötés dátuma)
+
+        .row {
+            display: table-row;
+        }
 
         .productButton p{
             max-width: 123px !important;
@@ -294,6 +313,10 @@
         .col6{ width: 100px; max-width: 100px;}
         .col7{ width: 196px; max-width: 196px; display: table-cell;}
         .col8{ display: none;}
+
+        #headDiv-lower{
+            width: 559px;
+        }
 
         .productButton p{
             max-width: 110px !important;
