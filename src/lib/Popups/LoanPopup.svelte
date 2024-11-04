@@ -33,14 +33,14 @@
                 </div>
 
                 <div id="money-back" class="popupGrid-element">
-                    <label for="p-moneyBack" class="popup-label">Visszakérendő összeg:</label>
+                    <label for="p-moneyBack" class="popup-label">Visszatérítendő összeg:</label>
                     <div class="pv-row">
                         <p> 15 000 000 Ft</p>
                     </div>
                 </div>
                 
                 <div id="start-date" class="popupGrid-element">
-                    <label for="p-startDate" class="popup-label">Megköttetés dátuma:</label>
+                    <label for="p-startDate" class="popup-label">Megkötés dátuma:</label>
                     <div class="pv-row">
                         <input type="date" class="popup-input money" id="p-startDate">
                     </div>
@@ -54,7 +54,7 @@
                 </div>
 
                 <div id="interest" class="popupGrid-element">
-                    <label for="p-interest" class="popup-label">Kölcsönadott összeg:</label>
+                    <label for="p-interest" class="popup-label">Kamatszázalék:</label>
                     <div class="pv-row">
                         <input type="number" class="popup-input money" id="p-interest">
                         <p>Ft</p>
@@ -65,6 +65,16 @@
                     <label for="p-description" class="popup-label">Leírás:</label>
                     <textarea type="text" class="popup-input" id="p-description"></textarea>
                 </div>
+
+                <div id="customer" class="popupGrid-element">
+                    <div id="customer-row1">
+                        <img src="IMG/Global/no-profile-image.png" alt="">
+                    </div>
+                    <div id="customer-row2">
+                        <p>Péld Aladárné Teszt Ilona unokahúga</p>
+                    </div>
+                </div>
+
 
                 <div id="products" class="popupGrid-element">
                     <p class="popup-label">Zálogtárgyak</p>
@@ -104,14 +114,6 @@
                     </div>
                 </div>
 
-                <div id="customer" class="popupGrid-element">
-                    <div id="customer-row1">
-                        <img src="IMG/Global/no-profile-image.png" alt="">
-                    </div>
-                    <div id="customer-row2">
-                        <p>Péld Aladárné Teszt Ilona unokahúga</p>
-                    </div>
-                </div>
 
 
                     
@@ -120,7 +122,7 @@
 
                         <label for="" class="popup-label" style="margin-top: 60px;">Pénzösszeg</label>
                         <input type="text">
-                        <label for="" class="popup-label">Megköttetés</label>
+                        <label for="" class="popup-label">Megkötés</label>
                         <input type="date">
                         <label for="" class="popup-label">Lejárat</label>
                         <input type="date">
@@ -183,36 +185,40 @@
 
     @media (min-width: 0px) {
         
-        #image{
-            grid-row: 1 / 5;
+        #money-lent{
+            grid-row: -1 / -1;
+            grid-column: -1 / -1;
         }
-
+        #money-back{
+            grid-row: -1 / -1;
+            grid-column: -1 / -1;
+        }
+        #start-date{
+            grid-row: -1 / -1;
+            grid-column: -1 / -1;
+        }
+        #exp-date{
+            grid-row: -1 / -1;
+            grid-column: -1 / -1;
+        }
+        #interest{
+            grid-row: -1 / -1;
+            grid-column: -1 / -1;
+        }
         #description{
-            grid-row: 11 / 14;
+            grid-row: -1 / -1;
+            grid-column: -1 / -1;
         }
-
-        #location{
-            grid-row: 14 / 16;
-        }
-
-        #loan{
-            grid-row: 1 / 10;
-            grid-column: 1 / -1;
-
-            #loanBox{
-                #lb-part1{
-                    width: 60%;
-                }
-                #lb-part2{
-                    width: 40%;
-                }
-            }
-
-        }
-
         #customer{
-            grid-row: 19 / 23;
+            grid-row: -1 / -1;
+            grid-column: -1 / -1;
         }
+        #products{
+            grid-row: -1 / -1;
+            grid-column: -1 / -1;
+        }
+
+
 
         .money{
             width: 93%;
@@ -221,32 +227,37 @@
     }
     @media (min-width: 340px) {
 
-        #image{
-            grid-row: 1 / 6;
+        #money-lent{
+            grid-row: -1 / -1;
+            grid-column: -1 / -1;
         }
-
-        
+        #money-back{
+            grid-row: -1 / -1;
+            grid-column: -1 / -1;
+        }
+        #start-date{
+            grid-row: -1 / -1;
+            grid-column: -1 / -1;
+        }
+        #exp-date{
+            grid-row: -1 / -1;
+            grid-column: -1 / -1;
+        }
+        #interest{
+            grid-row: -1 / -1;
+            grid-column: -1 / -1;
+        }
         #description{
-            grid-row: 12 / 15;
+            grid-row: -1 / -1;
+            grid-column: -1 / -1;
         }
-
-        #location{
-            grid-row: 15 / 17;
-        }
-
-        #loan{
-
-
-            #lb-part1{
-                    width: 55%;
-                }
-                #lb-part2{
-                    width: 45%;
-                }
-        }
-
         #customer{
-            grid-row: 20 / 24;
+            grid-row: -1 / -1;
+            grid-column: -1 / -1;
+        }
+        #products{
+            grid-row: -1 / -1;
+            grid-column: -1 / -1;
         }
 
         #submitButton{
@@ -258,50 +269,44 @@
     /* Small devices (portrait tablets and large phones, 600px and up) */
     @media (min-width: 596px) {
 
-        
-        #image{
-            grid-row: 1 / 4;
-            grid-column: 1 / 4;
-
-        }
-        #customer-name{
-            grid-row: 1 / 2;
-            grid-column:  4 / 10;
-
-        }
-        #address{
-            grid-row: 2 / 3;
-            grid-column:  4 / 10;
-        }
-        #phone{
-            grid-row: 4 / 5;
-            grid-column: 1 / 6;
-        }
-        #email{
-            grid-row: 5 / 6;
-            grid-column: 1 / 6;
+        #popup-grid, #popup-div{
+            width: 520px !important;	
+            height: calc(800px * 0.8) !important;
+            grid-template-rows: repeat(10, 1fr);
+            grid-template-columns: repeat(9, 1fr);
         }
 
-        #debt{
-            grid-row: 3 / 4;
-            grid-column: 4 / 6;
+        #money-lent{
+            grid-row: -1 / -1;
+            grid-column: -1 / -1;
         }
-
-        #note{
-            grid-row: 6 / 9;
-            grid-column: 1 / 6;
+        #money-back{
+            grid-row: -1 / -1;
+            grid-column: -1 / -1;
         }
-        #loans{
-
-            #loanBox{
-                flex-direction: column;
-            }
+        #start-date{
+            grid-row: -1 / -1;
+            grid-column: -1 / -1;
         }
-
+        #exp-date{
+            grid-row: -1 / -1;
+            grid-column: -1 / -1;
+        }
+        #interest{
+            grid-row: -1 / -1;
+            grid-column: -1 / -1;
+        }
+        #description{
+            grid-row: -1 / -1;
+            grid-column: -1 / -1;
+        }
+        #customer{
+            grid-row: -1 / -1;
+            grid-column: -1 / -1;
+        }
         #products{
-            grid-row: 3 / 9;
-            grid-column: 6 / 11;
-            
+            grid-row: -1 / -1;
+            grid-column: -1 / -1;
         }
 
         
@@ -313,104 +318,46 @@
     /* Large devices (laptops/desktops, 992px and up) */
     @media (min-width: 992px) {
 
-        #image{
-            grid-row: 1 / 4;
-            grid-column: 1 / 4;
-
-        }
-        #customer-name{
-            grid-row: 1 / 2;
-            grid-column:  4 / -1;
-
-        }
-        #address{
-            grid-row: 2 / 3;
-            grid-column:  4 / -1;
-        }
-        #phone{
-            grid-row: 4 / 5;
-            grid-column: 1 / 7;
-        }
-        #email{
-            grid-row: 5 / 6;
-            grid-column: 1 / 7;
-        }
-
-        #debt{
-            grid-row: 3 / 4;
-            grid-column: 4 / 7;
-        }
-
-        #note{
-            grid-row: 6 / 9;
-            grid-column: 1 / 7;
-        }
-        #loans{
-
-            #loanBox{
-                flex-direction: column;
-            }
-
-            .loanField-flex button:first-child:last-child {
-                height: 99%;
-                display: flex;
-                align-self: center;
-                flex-direction: column;
-                align-items: center;
-                gap: 5px;
-
-
-                img{
-                    display: block;
-                    width: 100%;
-                    margin: 12px 0 15px 0;
-
-                }
-
-            }
-
-            .loanField-flex button:first-child:nth-last-child(2),
-            .loanField-flex button:first-child:nth-last-child(2) ~ button {
-                height: 49%;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                img{
-                    display: block;
-                    width: 72%;
-                    margin: 7px 0 7px 0;
-
-                }
-
-            }
-
-            .loanField-flex button:first-child:nth-last-child(3),
-            .loanField-flex button:first-child:nth-last-child(3) ~ button {
-                height: 32%;
-                display: flex;
-                align-self: center;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .loanField-flex button:first-child:nth-last-child(4),
-            .loanField-flex button:first-child:nth-last-child(4) ~ button {
-                align-self: center;
-                margin-top: 1px;
-            }
-        }
-
-        #products{
-            grid-row: 3 / 9;
-            grid-column: 9 / -1;
-            
-        }
-
         #popup-grid, #popup-div{
-            width: 840px;
+            width: 800px !important;
+            height: calc(800px * 0.69) !important;
+            grid-template-rows: repeat(7, 1fr);
+            grid-template-columns: repeat(12, 1fr);
+
         }
 
+        #money-lent{
+            grid-row: 1 / 2;
+            grid-column: 1 / 9;
+        }
+        #money-back{
+            grid-row: 2 / 3;
+            grid-column: 3 / 9;
+        }
+        #start-date{
+            grid-row: 3 / 4;
+            grid-column: 1 / 9;
+        }
+        #exp-date{
+            grid-row: 4 / 5;
+            grid-column: 1 / 9;
+        }
+        #interest{
+            grid-row: 2 / 3;
+            grid-column: 1 / 3;
+        }
+        #description{
+            grid-row: 5 / 8;
+            grid-column: 1 / 9;
+        }
+        #customer{
+            grid-row: 5 / 8;
+            grid-column: 9 / 14;
+        }
+        #products{
+            grid-row: 1 / 5;
+            grid-column: 9 / 14;
+        }
 
 
     }
@@ -437,124 +384,12 @@
 
             }
 
-            
-            #image{
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                cursor: pointer;
-
-                img{
-                    background-color: rgb(160, 206, 180);
-                    max-width: 94%;
-                    max-height: 94%;
-                    border: 1px solid black;
-                    border-radius: 4px;
-                    box-shadow: 0.3px 0.3px 1px black;
-                }
-
-            }
-            #customer-name{
-
-                input{
-                    width: 100%;
-                }
-            }
-            #note{
-                padding: 8px;
-
-            }
-
-            
-
-            #debt{
-                #debtOutput{
-                    margin: 0;
-                    font-size: 26px;
-                    font-weight: 500;
-                    text-align: end;
-                    width: 100%;
-                    padding-right: 3px;
-                }
-            }
-
-            #loans{
-                .popup-label{
-                    margin-bottom: 2px;
-                }
-                .loanField-flex{
-                    padding: 2px;
-                    justify-content: start;
-                    overflow-y: auto;
-                    flex-wrap: nowrap;
-                }
-
-            }
-
-            .productField-flex::-webkit-scrollbar, .loanField-flex::-webkit-scrollbar {
-                    width: 7px;
-                    height: 8px;
-                }
-
-            #products{
-
-
-
-                .productField-flex{
-                    justify-content: start;
-                    overflow-y:auto;
-                    height: auto;
-                    flex-wrap: nowrap;
-                    
-                    ::-webkit-scrollbar {
-                        width: 8px;
-                        height: 12px;
-                    }
-
-                    .productButton{
-                        background-color: rgb(156, 205, 177);
-                        p{
-                            margin: 0 0 0 4px;
-                        }
-                    }
-                }
-
-                .productButton:first-child:last-child {
-                    align-self: center;
-                    img{
-                        width: 100%;
-                    }
-                    
-                }
-
-            }
+    
 
         }
     
     }
 
-    #loans{
-            grid-row: 1 / 10;
-            grid-column: 1 / -1;
-
-            p{
-                font-size: 50px;
-            }
-            input{
-                width: 400px;
-                font-size: 20px;
-            }
-
-            button{
-                border:  none;
-                background-color: rgba(0,0,0,0) !important;
-            }
-
-            label{
-                margin-top: 8px;
-                margin-bottom: -2px !important;
-            }
-    }
 
 
 </style>

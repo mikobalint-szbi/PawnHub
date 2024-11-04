@@ -76,6 +76,43 @@ th{
 	}
 }
 
+
+.productField-flex::-webkit-scrollbar, .loanField-flex::-webkit-scrollbar {
+	width: 7px;
+	height: 8px;
+}
+
+#products{
+
+.productField-flex{
+	justify-content: start;
+	overflow-y:auto;
+	height: auto;
+	flex-wrap: nowrap;
+	
+	::-webkit-scrollbar {
+		width: 8px;
+		height: 12px;
+	}
+
+	.productButton{
+		background-color: rgb(156, 205, 177);
+		p{
+			margin: 0 0 0 4px;
+		}
+	}
+}
+
+.productButton:first-child:last-child {
+	align-self: center;
+	img{
+		width: 100%;
+	}
+	
+}
+
+}
+
 .row{
 	display: table-row;
 }

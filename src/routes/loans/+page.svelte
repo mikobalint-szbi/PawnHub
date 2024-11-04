@@ -106,8 +106,8 @@
     <div id="main-container">
         <table id="main">
             <tr class="thead">
-                <th class="col1" title="Kölcsönadott összeg"><span class="moneyLent">Kölcsönadott</span><span class="moneyBack-inner"><span title="Kölcsönadott összeg">Kölcs. </span>| <span title="Visszakérendő összeg" class="green">Vissz.</span><span class="interest-inner">| </span><span title="Kamatszázalék" class="interest-inner">Kam.</span></span></th>
-                <th class="col2" title="Visszakérendő összeg">Visszakérendő</th>
+                <th class="col1" title="Kölcsönadott összeg"><span class="moneyLent">Kölcsönadott</span><span class="moneyBack-inner"><span title="Kölcsönadott összeg">Kölcs. </span>| <span title="Visszatérítendő összeg" class="green">Vissz.</span><span class="interest-inner">| </span><span title="Kamatszázalék" class="interest-inner">Kam.</span></span></th>
+                <th class="col2" title="Visszatérítendő összeg">Visszatérítendő</th>
                 <th class="col3"><span class="concDate">Megköttetett</span><span class="expDate-inner"><span title="Megköttetett">Megk. </span>| Lejár</span></th>
                 <th class="col4">Lejár</th>
                 <th class="col5" title="Kamatszázalék">Kamat</th>
@@ -119,7 +119,7 @@
                 <div class="row" href="">
                     <td class="col1" href="" tabindex="0" on:click={() => open_popup("loanPopup",false,false)}>
                         <p title="Kölcsönadott összeg">1 300 000 Ft</p>
-                        <p class="moneyBack-inner green" title="Visszakérendő összeg">1 500 000 Ft</p>
+                        <p class="moneyBack-inner green" title="Visszatérítendő összeg">1 500 000 Ft</p>
                         <p class="interest-inner" title="Kamat">100%</p>
                     </td>
                     <td class="col2 green" href="" tabindex="-1" on:click={() => open_popup("loanPopup",false,false)}>1 500 000 Ft</td>
