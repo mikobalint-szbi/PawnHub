@@ -113,7 +113,6 @@
                     <div id="customer-row2">
                         <p>Péld Aladárné Teszt Ilona unokahúga</p>
                     </div>
-
                 </div>
 
             </div>
