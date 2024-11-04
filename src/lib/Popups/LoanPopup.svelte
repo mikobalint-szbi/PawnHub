@@ -24,68 +24,147 @@
 
             <div id="popup-grid">
 
-                <div id="loans" class="popupGrid-element">
+                <div id="money-lent" class="popupGrid-element">
+                    <label for="p-moneyLent" class="popup-label">Kölcsönadott összeg:</label>
+                    <div class="pv-row">
+                        <input type="number" class="popup-input money" id="p-moneyLent">
+                        <p>Ft</p>
+                    </div>
+                </div>
 
-                    <div id="money-lent" class="popupGrid-element">
-                        <label for="p-moneyLent" class="popup-label">Összeg:</label>
-                        <div class="pv-row">
-                            <input type="number" class="popup-input money" id="p-estimatedValue">
-                            <p>Ft</p>
+                <div id="money-back" class="popupGrid-element">
+                    <label for="p-moneyBack" class="popup-label">Visszakérendő összeg:</label>
+                    <div class="pv-row">
+                        <p> 15 000 000 Ft</p>
+                    </div>
+                </div>
+                
+                <div id="start-date" class="popupGrid-element">
+                    <label for="p-startDate" class="popup-label">Megköttetés dátuma:</label>
+                    <div class="pv-row">
+                        <input type="date" class="popup-input money" id="p-startDate">
+                    </div>
+                </div>
+
+                <div id="exp-date" class="popupGrid-element">
+                    <label for="p-expDate" class="popup-label">Lejárat dátuma:</label>
+                    <div class="pv-row">
+                        <input type="date" class="popup-input money" id="p-expDate">
+                    </div>
+                </div>
+
+                <div id="interest" class="popupGrid-element">
+                    <label for="p-interest" class="popup-label">Kölcsönadott összeg:</label>
+                    <div class="pv-row">
+                        <input type="number" class="popup-input money" id="p-interest">
+                        <p>Ft</p>
+                    </div>
+                </div>
+
+                <div id="description" class="popupGrid-element">
+                    <label for="p-description" class="popup-label">Leírás:</label>
+                    <textarea type="text" class="popup-input" id="p-description"></textarea>
+                </div>
+
+                <div id="products" class="popupGrid-element">
+                    <p class="popup-label">Zálogtárgyak</p>
+                    <div class="productField-flex">
+                        <div class="productButton">
+                            <img src="IMG/Global/no-image.png" alt="">
+                            <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
+                        </div>
+                        <div class="productButton">
+                            <img src="IMG/Global/no-image.png" alt="">
+                            <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
+                        </div>
+                        <div class="productButton">
+                            <img src="IMG/Global/no-image.png" alt="">
+                            <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
+                        </div>
+                        <div class="productButton">
+                            <img src="IMG/Global/no-image.png" alt="">
+                            <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
+                        </div>
+                        <div class="productButton">
+                            <img src="IMG/Global/no-image.png" alt="">
+                            <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
+                        </div>
+                        <div class="productButton">
+                            <img src="IMG/Global/no-image.png" alt="">
+                            <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
+                        </div>
+                        <div class="productButton">
+                            <img src="IMG/Global/no-image.png" alt="">
+                            <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
+                        </div>
+                        <div class="productButton">
+                            <img src="IMG/Global/no-image.png" alt="">
+                            <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
                         </div>
                     </div>
+                </div>
+
+                <div id="customer" class="popupGrid-element">
+                    <div id="customer-row1">
+                        <img src="IMG/Global/no-profile-image.png" alt="">
+                    </div>
+                    <div id="customer-row2">
+                        <p>Péld Aladárné Teszt Ilona unokahúga</p>
+                    </div>
+                </div>
+
 
                     
-                    <!--div class="loanField-flex">
-                        <button>
+                <!--div class="loanField-flex">
+                    <button>
 
-                            <label for="" class="popup-label" style="margin-top: 60px;">Pénzösszeg</label>
-                            <input type="text">
-                            <label for="" class="popup-label">Megköttetés</label>
-                            <input type="date">
-                            <label for="" class="popup-label">Lejárat</label>
-                            <input type="date">
-                            <label for="" class="popup-label">Kamat</label>
-                            <input type="number">
-                        </button>
-                        <!--button>
-                            <img src="IMG/Home/loans.png" alt="Kölcsön">
-                            <p title="Pénzösszeg" class="loanField-money">1 300 000 Ft</p>
-                            <p title="Megköttetett" class="loanField-concludion">2024.03.22.</p>
-                            <p title="Lejár" class="loanField-expiration">2025.01.30.</p>
-                            <p title="Kamat" class="loanField-interest">5%</p>
-                        </button>
-                        <button>
-                            <img src="IMG/Home/loans.png" alt="Kölcsön">
-                            <p title="Pénzösszeg" class="loanField-money">1 300 000 Ft</p>
-                            <p title="Megköttetett" class="loanField-concludion">2024.03.22.</p>
-                            <p title="Lejár" class="loanField-expiration">2025.01.30.</p>
-                            <p title="Kamat" class="loanField-interest">5%</p>
-                        </button>
-                        <button>
-                            <img src="IMG/Home/loans.png" alt="Kölcsön">
-                            <p title="Pénzösszeg" class="loanField-money">1 300 000 Ft</p>
-                            <p title="Megköttetett" class="loanField-concludion">2024.03.22.</p>
-                            <p title="Lejár" class="loanField-expiration">2025.01.30.</p>
-                            <p title="Kamat" class="loanField-interest">5%</p>
-                        </button>
-                        <!--button>
-                            <img src="IMG/Home/loans.png" alt="Kölcsön">
-                            <p title="Pénzösszeg" class="loanField-money">1 300 000 Ft</p>
-                            <p title="Megköttetett" class="loanField-concludion">2024.03.22.</p>
-                            <p title="Lejár" class="loanField-expiration">2025.01.30.</p>
-                            <p title="Kamat" class="loanField-interest">5%</p>
-                        </button>
-                        <button>
-                            <img src="IMG/Home/loans.png" alt="Kölcsön">
-                            <p title="Pénzösszeg" class="loanField-money">1 300 000 Ft</p>
-                            <p title="Megköttetett" class="loanField-concludion">2024.03.22.</p>
-                            <p title="Lejár" class="loanField-expiration">2025.01.30.</p>
-                            <p title="Kamat" class="loanField-interest">5%</p>
-                        </button>
+                        <label for="" class="popup-label" style="margin-top: 60px;">Pénzösszeg</label>
+                        <input type="text">
+                        <label for="" class="popup-label">Megköttetés</label>
+                        <input type="date">
+                        <label for="" class="popup-label">Lejárat</label>
+                        <input type="date">
+                        <label for="" class="popup-label">Kamat</label>
+                        <input type="number">
+                    </button>
+                    <!--button>
+                        <img src="IMG/Home/loans.png" alt="Kölcsön">
+                        <p title="Pénzösszeg" class="loanField-money">1 300 000 Ft</p>
+                        <p title="Megköttetett" class="loanField-concludion">2024.03.22.</p>
+                        <p title="Lejár" class="loanField-expiration">2025.01.30.</p>
+                        <p title="Kamat" class="loanField-interest">5%</p>
+                    </button>
+                    <button>
+                        <img src="IMG/Home/loans.png" alt="Kölcsön">
+                        <p title="Pénzösszeg" class="loanField-money">1 300 000 Ft</p>
+                        <p title="Megköttetett" class="loanField-concludion">2024.03.22.</p>
+                        <p title="Lejár" class="loanField-expiration">2025.01.30.</p>
+                        <p title="Kamat" class="loanField-interest">5%</p>
+                    </button>
+                    <button>
+                        <img src="IMG/Home/loans.png" alt="Kölcsön">
+                        <p title="Pénzösszeg" class="loanField-money">1 300 000 Ft</p>
+                        <p title="Megköttetett" class="loanField-concludion">2024.03.22.</p>
+                        <p title="Lejár" class="loanField-expiration">2025.01.30.</p>
+                        <p title="Kamat" class="loanField-interest">5%</p>
+                    </button>
+                    <!--button>
+                        <img src="IMG/Home/loans.png" alt="Kölcsön">
+                        <p title="Pénzösszeg" class="loanField-money">1 300 000 Ft</p>
+                        <p title="Megköttetett" class="loanField-concludion">2024.03.22.</p>
+                        <p title="Lejár" class="loanField-expiration">2025.01.30.</p>
+                        <p title="Kamat" class="loanField-interest">5%</p>
+                    </button>
+                    <button>
+                        <img src="IMG/Home/loans.png" alt="Kölcsön">
+                        <p title="Pénzösszeg" class="loanField-money">1 300 000 Ft</p>
+                        <p title="Megköttetett" class="loanField-concludion">2024.03.22.</p>
+                        <p title="Lejár" class="loanField-expiration">2025.01.30.</p>
+                        <p title="Kamat" class="loanField-interest">5%</p>
+                    </button>
 
-                    </div-->
+                </div-->
 
-                </div>
                 
             </div>
 
