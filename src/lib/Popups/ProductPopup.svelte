@@ -17,6 +17,9 @@
                     <img src="IMG/Global/back.png" alt="">
                     <p>Vissza</p>
                 </button>
+                <div class="popupTitle-container">
+                    <h2 class="popup-title">A termék adatai</h2>
+                </div>
                 <button on:click={() => close_popup("productPopup")} id="popup-closeButton" class="topButton">
                     <img src="IMG/Global/close.png" alt="">
                 </button>
@@ -68,7 +71,7 @@
                     <label for="p-payedValue" class="popup-label">Kifizetett érték:</label>
                     <div class="pv-row">
                         <input type="number" class="popup-input money" id="p-payedValue">
-                        <p>Ft</p>
+                        <p class="p-current">Ft</p>
                     </div>
 
                 </div>
@@ -76,7 +79,7 @@
                     <label for="p-estimatedValue" class="popup-label">Becsült érték:</label>
                     <div class="pv-row">
                         <input type="number" class="popup-input money" id="p-estimatedValue">
-                        <p>Ft</p>
+                        <p class="p-current">Ft</p>
                     </div>
                 </div>
                 <div id="description" class="popupGrid-element">
@@ -357,20 +360,7 @@
     .popupDialog{
 
         #popup-grid{
-            display: grid;
 
-            .popupGrid-element{
-                border: 0.5px solid rgb(106, 137, 116);
-                display: flex;
-                flex-direction: column;
-                align-items: start;
-                justify-content: center;
-                padding: 6px;
-
-
-            }
-
-            
             #image{
                 display: flex;
                 justify-content: center;
@@ -467,6 +457,14 @@
 
         }
     
+    }
+
+    #p-payedValue, #p-estimatedValue{
+        text-align: right; 
+        font-size: 22px;
+    }
+    .p-current{
+        font-size: 22px;
     }
 
 

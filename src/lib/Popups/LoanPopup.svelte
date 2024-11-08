@@ -13,13 +13,23 @@
     <div id="marginner">
         <div id="popup-inner">
             <div id="topRow">
-                <button on:click={() => close_popup("loanPopup")} id="popup-backButton" class="topButton">
-                    <img src="IMG/Global/back.png" alt="">
-                    <p>Vissza</p>
-                </button>
-                <button on:click={() => close_popup("loanPopup")} id="popup-closeButton" class="topButton">
-                    <img src="IMG/Global/close.png" alt="">
-                </button>
+                <div id="topRow-col1">
+                    <button on:click={() => close_popup("loanPopup")} id="popup-backButton" class="topButton">
+                        <img src="IMG/Global/back.png" alt="">
+                        <p>Vissza</p>
+                    </button>
+                </div>
+                <div id="topRow-col2">
+                    <div class="popupTitle-container">
+                        <h2 class="popup-title">Az adósság adatai</h2>
+                    </div>
+                </div>
+                <div id="topRow-col3">
+                    <button on:click={() => close_popup("loanPopup")} id="popup-closeButton" class="topButton">
+                        <img src="IMG/Global/close.png" alt="">
+                    </button>
+                </div>
+
             </div>
 
             <div id="popup-grid">
@@ -28,14 +38,14 @@
                     <label for="p-moneyLent" class="popup-label">Kölcsönadott összeg:</label>
                     <div class="pv-row">
                         <input type="number" class="popup-input money" id="p-moneyLent">
-                        <p>Ft</p>
+                        <p class="p-current">Ft</p>
                     </div>
                 </div>
 
                 <div id="money-back" class="popupGrid-element">
                     <label for="p-moneyBack" class="popup-label">Visszatérítendő összeg:</label>
                     <div class="pv-row">
-                        <p> 15 000 000 Ft</p>
+                        <p id="p-moneyBack"> 15 000 000 Ft</p>
                     </div>
                 </div>
                 
@@ -57,7 +67,7 @@
                     <label for="p-interest" class="popup-label">Kamatszázalék:</label>
                     <div class="pv-row">
                         <input type="number" class="popup-input money" id="p-interest">
-                        <p>Ft</p>
+                        <p class="p-current">%</p>
                     </div>
                 </div>
 
@@ -371,17 +381,28 @@
     .popupDialog{
 
         #popup-grid{
-            display: grid;
 
-            .popupGrid-element{
-                border: 0.5px solid rgb(106, 137, 116);
-                display: flex;
-                flex-direction: column;
-                align-items: start;
-                justify-content: center;
-                padding: 6px;
+            #money-back{
+                #p-moneyBack{
+                    font-weight: 500;
+                    color: rgb(26, 110, 60);
+                    font-size: 25px;
+                    margin-top: -4px;
+                    margin-right: 12px;
+                    text-align: right;
+                    width: 100%;
+                    
+                }
+            }
 
+            #p-interest, #p-moneyLent{
+                font-size: 24px;
+                text-align: right; 
 
+            }
+
+            .p-current{
+                font-size: 24px;
             }
 
     

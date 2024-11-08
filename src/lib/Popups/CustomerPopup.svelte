@@ -20,8 +20,6 @@
                 <div class="popupTitle-container">
                     <h2 class="popup-title">Ügyfél adatai</h2>
                 </div>
-
-
                 <button on:click={() => close_popup("customerPopup")} id="popup-closeButton" class="topButton">
                     <img src="IMG/Global/close.png" alt="">
                 </button>
@@ -407,36 +405,8 @@
 
     .popupDialog{
 
-        .popupTitle-container{
-            display: flex;
-            align-items: center;
-
-            .popup-title{
-                margin: 0;
-                font-weight: 600;
-                font-size: 20px;
-                line-height: 100%;
-
-            }
-
-        }
-
-
         #popup-grid{
-            display: grid;
 
-            .popupGrid-element{
-                border: 0.5px solid rgb(106, 137, 116);
-                display: flex;
-                flex-direction: column;
-                align-items: start;
-                justify-content: center;
-                padding: 6px;
-
-
-            }
-
-            
             #image{
                 display: flex;
                 justify-content: center;

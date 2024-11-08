@@ -54,8 +54,7 @@
         </div>
         <div id="h-col2">
             <h1>Adósságok</h1>
-
-
+            
         </div>
         <div id="h-col3">
         </div>
@@ -117,7 +116,7 @@
             </tr>
                 {#each {length: 17} as _, i}
                 <div class="row" href="">
-                    <td class="col1" href="" tabindex="0" on:click={() => open_popup("loanPopup",false,false)}>
+                    <td class="col1" href="" tabindex="0" on:click={() => open_popup("loanPopup",false,true)}>
                         <p title="Kölcsönadott összeg">1 300 000 Ft</p>
                         <p class="moneyBack-inner green" title="Visszatérítendő összeg">1 500 000 Ft</p>
                         <p class="interest-inner" title="Kamat">100%</p>

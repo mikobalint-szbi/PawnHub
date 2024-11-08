@@ -42,76 +42,10 @@ th{
 	cursor: default;
 }
 
-#customer{
-
-	#customer-row1{
-		display: flex;
-		height: 75%;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-
-		img{
-			background-color: rgb(160, 206, 180);
-			max-width: 94%;
-			max-height: 94%;
-			border: 1px solid black;
-			border-radius: 4px;
-			box-shadow: 0.3px 0.3px 1px black;
-		}
-	}
-
-	#customer-row2{
-		height: 25%;
-		display: flex;
-		padding-top: 3px;
-		align-items: baseline;
-		width: 100%;
-
-		p{
-			margin: 0;
-			text-align: center;
-			width: 100%;
-		}
-	}
-}
-
-
-.productField-flex::-webkit-scrollbar, .loanField-flex::-webkit-scrollbar {
-	width: 7px;
-	height: 8px;
-}
-
-#products{
-
-.productField-flex{
-	justify-content: start;
-	overflow-y:auto;
-	height: auto;
-	flex-wrap: nowrap;
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { 
+	margin-left: 2px;
 	
-	::-webkit-scrollbar {
-		width: 8px;
-		height: 12px;
-	}
-
-	.productButton{
-		background-color: rgb(156, 205, 177);
-		p{
-			margin: 0 0 0 4px;
-		}
-	}
-}
-
-.productButton:first-child:last-child {
-	align-self: center;
-	img{
-		width: 100%;
-	}
-	
-}
-
-}
+} 
 
 .row{
 	display: table-row;

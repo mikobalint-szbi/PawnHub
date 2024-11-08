@@ -38,15 +38,11 @@ export function open_popup(popupID, create, backButton){
 
     if (backButton){
         document.getElementById("popup-backButton").style.display = "flex"
-        document.getElementById("topRow").style.justifyContent = "space-between"
     }
     else{
         document.getElementById("popup-backButton").style.display = "none"
-        document.getElementById("topRow").style.justifyContent = "end"
+
     }
-
-
-
 
     let popup = document.getElementById(popupID)
 

@@ -75,7 +75,7 @@
 
         </div>
         <div id="hl-col3">
-            <button id="add-button" on:click={() => open_popup("productPopup",true,false)}>
+            <button id="add-button" on:click={() => open_popup("productPopup",true,true)}>
                 <div id="add-col1">
                     <img src="IMG/Global/add.png" alt="Hozzáadás" title="Hozzáadás">
                 </div>

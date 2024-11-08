@@ -1,4 +1,5 @@
 
+
 Új zálogtárgy hozzáadása:
 - Az adósságot és az ügyfelet is ki kell választani valahogy: vagy a listából választasz, vagy újat hozol létre.
 - A comboBox elég csicska megoldás volna. Kellene egy ügyfélkiválasztó, egy adósságkiválasztó és egy zálogtárgykiválasztó popup.
