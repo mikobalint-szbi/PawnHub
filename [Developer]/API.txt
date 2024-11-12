@@ -2,16 +2,22 @@
 
 login
 
-get/items/all
+get/items/
 get/items/{shopID}
 |
 get/item/{itemID}
 
-get/users/all
-get/users/shops
-get/users/customers
+get/users/
+get/users/shops/
+get/users/customers/
+get/users/customers/{shopID}
 |
 get/user/{userID}
+
+
+
+
+
 
 
 
