@@ -3,19 +3,31 @@
 login
 
 get/items/
+
 get/items/{shopID}
+    {
+		pawned: [],
+		sale: [],
+		archived: []
+	}
 |
 get/item/{itemID}
 
 get/users/
-get/users/shops/
-get/users/customers/
-get/users/customers/{shopID}
-|
+get/shops/
+get/customers/
+get/customers/{shopID}
+    {
+		aktív: []
+		inaktív: []
+	}
+
 get/user/{userID}
 
+get/loans/
+get/loans/{userID}
 
-
+get/loan/{loanID}
 
 
 
