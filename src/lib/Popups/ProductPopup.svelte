@@ -62,8 +62,8 @@
                     <select id="p-condition" class="popup-input">
                         <option value="">🔵 Használatlan</option>
                         <option value="">🟢 Kiváló</option>
-                        <option value="">🟠 Jó</option>
-                        <option value="">🟡 Kielégítő</option>
+                        <option value="">🟡 Jó</option>
+                        <option value="">🟠 Kielégítő</option>
                         <option value="">🔴 Lehasznált</option>
                     </select>
                 </div>

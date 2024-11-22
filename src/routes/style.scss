@@ -45,7 +45,15 @@ th{
 input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { 
 	margin-left: 2px;
 	
-} 
+}
+
+#hl-col2{
+	display: flex;
+	flex-direction: column;
+}
+#headDiv-lower{
+	height: 100px !important;
+}
 
 .row{
 	display: table-row;

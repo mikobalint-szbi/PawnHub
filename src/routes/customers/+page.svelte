@@ -70,6 +70,18 @@
         </div>
         <div id="hl-col2">
 
+            <div>
+                <select name="" id="">
+                    <option value="name">Név</option>
+                    <option value="email">E-mail</option>
+                    <option value="phone">Telefon</option>
+                    <option value="address">Lakcím</option>
+                    <option value="products">Zálogtárgy</option>
+                </select>
+                <input type="text">
+                <button>Keresés</button>
+            </div>
+
             <div id="product-status">
                 <!-- svelte-ignore a11y-click-events-have-key-events -->
                 <!-- svelte-ignore a11y-no-static-element-interactions -->
@@ -87,8 +99,9 @@
                     <p>Összes</p>
                 </div>
             </div>
-
         </div>
+
+
         <div id="hl-col3">
             <button id="add-button" on:click={() => open_popup("customerPopup",true,false)}>
                 <div id="add-col1">
