@@ -19,6 +19,8 @@ for l in extend:
 with open("locations.csv","r",encoding="utf-8") as f:
     locations = f.read().split("\n")
 
+with open("locsAndCounties.csv", "w", encoding="utf-8") as f:
+    f.write('')
 
 with open("locsAndCounties.csv", "a", encoding="utf-8") as f:
 
@@ -27,18 +29,29 @@ with open("locsAndCounties.csv", "a", encoding="utf-8") as f:
 
         if len(s) == 3:
 
+            sett = s[2]
+
+            if "," in sett:
+                print(sett,end="→")
+                sett = sett[:sett.index(",")]
+                print(sett)
+
             found = False
 
             for key, value in settlements.items():
 
-                if key.strip() == s[2].strip():
+                if key.strip() == sett.strip():
                     s.append(value)
                     found = True
                     break
 
             if not found:
-                s.append("NEMTALÁLTAMSEMMIT")
+                if "Budapest" in sett:
+                    s.append("1")
+                else:
+                    s.append("NEMTALÁLTAMSEMMIT")
 
+            s[2] = sett
             f.write(f"{';'.join(s)}\n")
 
         else:
