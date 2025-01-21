@@ -68,6 +68,18 @@
         </div>
         <div id="hl-col2">
 
+            <div id="searchBox">
+                <select name="" id="">
+                    <option value="name">Név</option>
+                    <option value="email">E-mail</option>
+                    <option value="phone">Telefon</option>
+                    <option value="address">Lakcím</option>
+                    <option value="products">Zálogtárgy</option>
+                </select>
+                <input type="text">
+                <button>Keresés</button>
+            </div>
+
             <div id="product-status">
                 <!-- svelte-ignore a11y-click-events-have-key-events -->
                 <!-- svelte-ignore a11y-no-static-element-interactions -->

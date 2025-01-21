@@ -346,27 +346,6 @@
 
     #body{
 
-        #searchBox{
-            
-            margin-bottom: 5px;
-            
-            input, select, button {
-                height: 30px;
-            }
-
-            input {
-                width: 235px;
-            }
-            button {
-                border-radius: 0 7px 7px 0;
-            }
-            select {
-                border-radius: 7px 0 0 7px;
-            }
-
-
-        }
-
         #main-container{
 
             #main{
