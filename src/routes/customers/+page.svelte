@@ -1,5 +1,6 @@
 <script>
     import {open_popup, close_popup, save_popup} from "$lib/Popups/functions.js";
+    import Pages from '$lib/Pages.svelte';
     import { onMount } from "svelte";
   
 
@@ -179,6 +180,8 @@
             </tbody>
         </table>
     </div>
+
+    <Pages currentPage="3" numOfPages="10"/>
 
 </section>
 

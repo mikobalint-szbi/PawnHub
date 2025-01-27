@@ -7,6 +7,8 @@
 	import ImageViewer from '$lib/Popups/ImageViewer.svelte';
 	import CustomerPopup from '$lib/Popups/CustomerPopup.svelte';
 	import LoanPopup from '$lib/Popups/LoanPopup.svelte';
+
+
 </script>
 
 <div class="app">
