@@ -70,11 +70,9 @@
 
             <div id="searchBox">
                 <select name="" id="">
-                    <option value="name">Név</option>
-                    <option value="email">E-mail</option>
-                    <option value="phone">Telefon</option>
-                    <option value="address">Lakcím</option>
-                    <option value="products">Zálogtárgy</option>
+                    <option value="customer">Ügyfél</option>
+                    <option value="item">Zálogtárgy</option>
+                    <option value="notes">Leírás</option>
                 </select>
                 <input type="text">
                 <button>Keresés</button>

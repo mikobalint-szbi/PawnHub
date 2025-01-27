@@ -57,10 +57,40 @@
     @media (min-width: 0px) {
 
         .optionBox{
-            width: 90%;
+            width: 100%;
+            flex-direction: row;
+            height: 80px;
+
+
+            .imageBox{
+                width: 30%;
+                height: 100%;
+                padding: 6px;
+                display: flex;
+                align-items: center;
+
+                .image{
+                    width: 100%;
+                }
+            }
+            .titleBox{
+                width: 70%;
+                height: 100% !important;
+                display: flex;
+                padding-left: 14px;
+                
+                align-items: center !important;
+
+                h3{
+                    font-weight: 400;
+                    margin-top: 0;
+                    margin-bottom: 0;
+                    font-size: 1em;
+                }
+            }
         }
         #options{
-            gap: 20px;
+            gap: 10px;
         }
 
         #welcome{
@@ -81,9 +111,7 @@
     }
     @media (min-width: 350px) {
 
-        .optionBox{
-            width: 47%;
-        }
+
         #options{
             gap: 13px;
         }
@@ -97,9 +125,11 @@
             }
         }
 
-        .titleBox{
-            font-size: 16px;
+        .imageBox{
+            padding: 12px !important;
         }
+
+
 
     }
     @media (min-width: 404px) {
@@ -116,6 +146,36 @@
         .titleBox{
             font-size: 18px;
         }
+        .optionBox{
+            flex-direction: column;
+            width: 47%;
+            height: fit-content;
+
+        .imageBox{
+            width: 100%;
+            height: 80%;
+            padding: 20px;
+
+            .image{
+                width: 100%;
+            }
+        }
+        .titleBox{
+            width: 100%;
+            height: 20%;
+            display: block;
+            padding-left: 0px;
+
+            h3{
+                text-align: center;
+                font-weight: 400;
+                margin-top: 0;
+                margin-bottom: 20px;
+
+                font-size: 19px;
+            }
+        }
+        }
 
     }
     @media (min-width: 468px) {
@@ -127,8 +187,8 @@
 
         }
 
-        .titleBox{
-            font-size: 19px;
+        .titleBox h3{
+            font-size: 22px !important;
         }
     }
     /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -177,8 +237,13 @@
     @media (min-width: 1200px) {
 
         .optionBox{
-            width: 15%;
+            width: 16%;
+
+            .title {
+                font-size: 25px !important;
+            }
         }
+
         #options{
             gap: 20px;
         }
@@ -249,29 +314,11 @@
                 border-radius: 7px;
                 background-color: rgb(161, 213, 179);
                 display: flex;
-                flex-direction: column;
-                height: fit-content;
+
+
                 box-shadow: 0.5px 0.5px 2px black;
 
-                .imageBox{
-                    width: 100%;
-                    height: 80%;
 
-                    .image{
-                        width: 100%;
-                    }
-                }
-                .titleBox{
-                    width: 100%;
-                    height: 20%;
-
-                    h3{
-                        text-align: center;
-                        font-weight: 400;
-                        margin-top: 0;
-                        margin-bottom: 20px;
-                    }
-                }
             }
 
 

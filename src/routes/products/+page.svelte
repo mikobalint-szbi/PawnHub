@@ -55,6 +55,19 @@
         </div>
         <div id="hl-col2">
 
+            <div id="searchBox">
+                <select name="" id="">
+                    <option value="name">Név</option>
+                    <option value="category">Kategória</option>
+                    <option value="customer">Ügyfél</option>
+                    <option value="condition">Állapot</option>
+                    <option value="notes">Leírás</option>
+                    <option value="location">Hely</option>
+                </select>
+                <input type="text">
+                <button>Keresés</button>
+            </div>
+
             <div id="product-status">
                 <!-- svelte-ignore a11y-click-events-have-key-events -->
                 <!-- svelte-ignore a11y-no-static-element-interactions -->

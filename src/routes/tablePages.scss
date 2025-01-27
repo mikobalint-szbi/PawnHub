@@ -98,12 +98,49 @@
         }
     }
 
+    #searchBox{
+            
+        margin-bottom: 1px;
+        margin-top: 4px;
+        
+        input, select, button {
+            height: 30px;
+        }
+
+        select, button {
+            width: 70px;
+        }
+    
+        input {
+            width: 81px;
+        }
+        button {
+            border-radius: 0 7px 7px 0;
+        }
+        select {
+            border-radius: 7px 0 0 7px;
+        }
+    
+    }
+
 
 
 }
 @media (min-width: 300px) {
     #product-status, #add-button{
         width: 260px;
+    }
+
+    #searchBox{
+
+        select, button {
+            width: 70px;
+        }
+    
+        input {
+            width: 112px;
+        }
+    
     }
     
 }
@@ -145,6 +182,24 @@
                 }
             }
         }
+
+        select, button {
+            width: 80px;
+        }
+    }
+
+    
+    #searchBox{
+        margin-bottom: 5px;
+
+        select, button {
+            width: 80px;
+        }
+    
+        input {
+            width: 102px;
+        }
+    
     }
 
 
@@ -162,6 +217,14 @@
         }
     }
 
+    #searchBox{
+    
+        input {
+            width: 132px;
+        }
+    
+    }
+
 }
 @media (min-width: 468px) {
     #product-status, #add-button{
@@ -170,20 +233,10 @@
 
     #searchBox{
             
-        margin-bottom: 5px;
-        
-        input, select, button {
-            height: 30px;
-        }
-    
+        margin-top: 0px;
+
         input {
-            width: 165px;
-        }
-        button {
-            border-radius: 0 7px 7px 0;
-        }
-        select {
-            border-radius: 7px 0 0 7px;
+            width: 162px;
         }
     
     
@@ -277,21 +330,13 @@
     }
 
     #searchBox{
-            
-        margin-bottom: 5px;
-        
-        input, select, button {
-            height: 30px;
-        }
     
         input {
-            width: 185px;
+            width: 161px;
         }
-        button {
-            border-radius: 0 7px 7px 0;
-        }
-        select {
-            border-radius: 7px 0 0 7px;
+
+        button, select {
+            width: 90px;
         }
     
     
@@ -330,21 +375,9 @@
     #searchBox{
             
         margin-bottom: 5px;
-        
-        input, select, button {
-            height: 30px;
-        }
     
         input {
-            width: 223px;
-        }
-        button {
-            width: 84px;
-            border-radius: 0 7px 7px 0;
-        }
-        select {
-            width: 84px;
-            border-radius: 7px 0 0 7px;
+            width: 211px;
         }
     
     
