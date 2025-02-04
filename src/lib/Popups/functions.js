@@ -37,10 +37,10 @@ export function open_popup(popupID, create, backButton){
     }
 
     if (backButton){
-        document.getElementById("popup-backButton").style.display = "flex"
+        document.getElementById(popupID + "-backButton").style.visibility = "visible"
     }
     else{
-        document.getElementById("popup-backButton").style.display = "none"
+        document.getElementById(popupID + "-backButton").style.visibility = "hidden"
 
     }
 
