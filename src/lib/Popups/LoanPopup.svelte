@@ -14,7 +14,7 @@
         <div id="popup-inner">
             <div id="topRow">
                 <div id="topRow-col1">
-                    <button onclick={() => close_popup("loanPopup")} id="popup-backButton" class="topButton">
+                    <button on:click={() => close_popup("loanPopup")} id="popup-backButton" class="topButton">
                         <img src="IMG/Global/back.png" alt="">
                         <p>Vissza</p>
                     </button>
@@ -25,7 +25,7 @@
                     </div>
                 </div>
                 <div id="topRow-col3">
-                    <button onclick={() => close_popup("loanPopup")} id="popup-closeButton" class="topButton">
+                    <button on:click={() => close_popup("loanPopup")} id="popup-closeButton" class="topButton">
                         <img src="IMG/Global/close.png" alt="">
                     </button>
                 </div>
@@ -181,7 +181,7 @@
             </div>
 
             <div id="bottomRow">
-                <button onclick={() => save_popup("loanPopup")} id="submitButton" class="bottomButton">
+                <button on:click={() => save_popup("loanPopup")} id="submitButton" class="bottomButton">
                     <img src="IMG/Global/save.png" alt="" id="submitImg">
                     <p id="submitText">Módosítások mentése</p>
                 </button>

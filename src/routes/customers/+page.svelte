@@ -1,4 +1,3 @@
-<!-- @migration-task Error while migrating Svelte code: `<th>` is invalid inside `<thead>` -->
 <script>
     import {open_popup, close_popup, save_popup} from "$lib/Popups/functions.js";
     import Pages from '$lib/Pages.svelte';
@@ -121,28 +120,26 @@
     <div id="main-container">
         <table id="main">
             <thead>
-                <tr>
-                    <th class="col1">Kép</th>
-                    <th class="col2">Név</th>
-                    <th class="col3">E-mail</th>
-                    <th class="col4">Telefon</th>
-                    <th class="col5">Lakcím</th>
-                    <th class="col6">Adósságok</th>
-                    <th class="col7">Zálogtárgyak</th>
-                </tr>
+                <th class="col1">Kép</th>
+                <th class="col2">Név</th>
+                <th class="col3">E-mail</th>
+                <th class="col4">Telefon</th>
+                <th class="col5">Lakcím</th>
+                <th class="col6">Adósságok</th>
+                <th class="col7">Zálogtárgyak</th>
             </thead>
             <tbody>
 
                 {#each {length: 17} as _, i}
                 <div class="row" href="">
-                    <a class="tdata col1" href="" tabindex="0" on:click={() => open_popup("customerPopup",false,false)}>
+                    <td class="col1" href="" tabindex="0" on:click={() => open_popup("customerPopup",false,false)}>
                         <img src="IMG/Global/no-profile-image.png" alt="">
-                    </a>
-                    <a class="tdata col2" on:click={() => open_popup("customerPopup",false,false)}>Teszt Elek</a>
-                    <a class="tdata col3" on:click={() => open_popup("customerPopup",false,false)}>szoftvert.tesztelek@mail.org</a>
-                    <a class="tdata col4" on:click={() => open_popup("customerPopup",false,false)}>+36 12 345 6789</a>
-                    <a class="tdata col5" on:click={() => open_popup("customerPopup",false,false)}>2750 Nagykőrös. Szent Benedek u. 8.</a>
-                    <a class="tdata col6">
+                    </td>
+                    <td class="col2" on:click={() => open_popup("customerPopup",false,false)}>Teszt Elek</td>
+                    <td class="col3" on:click={() => open_popup("customerPopup",false,false)}>szoftvert.tesztelek@mail.org</td>
+                    <td class="col4" on:click={() => open_popup("customerPopup",false,false)}>+36 12 345 6789</td>
+                    <td class="col5" on:click={() => open_popup("customerPopup",false,false)}>2750 Nagykőrös. Szent Benedek u. 8.</td>
+                    <td class="col6">
                         <div class="loanField-flex">
                             <button>
                                 <p title="Pénzösszeg" class="loanField-money">1 300 000 Ft</p>
@@ -160,8 +157,8 @@
 
                         </div>
                         <p class="loanField-sum" title="Összesen">Össz.: 1 300 000 Ft</p>
-                    </a>
-                    <a class="tdata col7">
+                    </td>
+                    <td class="col7">
                         <div class="productField-flex">
                             <!-- svelte-ignore a11y-click-events-have-key-events -->
                             <div class="productButton"  on:click={() => open_popup("productPopup",false,false)} role="button" tabindex="0">
@@ -175,7 +172,7 @@
                             </div>
                             <p class="productField-more">...és további X db zálogtárgy</p>
                         </div>
-                    </a>
+                    </td>
                 </div>
                 {/each}
 
@@ -188,4 +185,224 @@
 
 </section>
 
-<style lang="scss">/*$$__STYLE_CONTENT__$$*/</style>
+<style lang="scss">
+    
+    @media (min-width: 0px) {
+
+        .col1{ width: 90px; max-width: 90px;}
+        .col2{ width: 140px; max-width: 140px;}
+        .col3{ display: none; }
+        .col4{ display: none;}
+        .col5{ display: none;}
+        .col6{ display: none;}
+        .col7{ display: none;}
+        .col8{ display: none;} 
+
+    }
+    @media (min-width: 300px) {
+        .col1{ width: 100px; max-width: 100px;}
+        .col2{ width: 160px; max-width: 160px;}
+        .col3{ display: none; }
+        .col4{ display: none;}
+        .col5{ display: none;}
+        .col6{ display: none;}
+        .col7{ display: none;}
+        .col8{ display: none;} 
+    
+    }
+    @media (min-width: 340px) {
+
+        .col1{ width: 100px; max-width: 100px;}
+        .col2{ width: 200px; max-width: 200px;}
+        .col3{ display: none; }
+        .col4{ display: none;}
+        .col5{ display: none;}
+        .col6{ display: none;}
+        .col7{ display: none;}
+        .col8{ display: none;} 
+
+        #headDiv-lower{
+            width: 300px;
+        }
+
+
+    }
+
+    @media (min-width: 404px) {
+
+        .col1{ width: 90px; max-width: 90px;}
+        .col2{ width: 140px; max-width: 140px;}
+        .col3{ display: none; }
+        .col4{ display: none;}
+        .col5{ display: none;}
+        .col6{ display: none;}
+        .col6{ width: 130px; max-width: 130px; display: table-cell;}
+        .col8{ display: none;} 
+
+        #headDiv-lower{
+            width: 360px;
+        }
+
+
+    }
+
+    @media (min-width: 468px) {
+
+        .col1{ width: 115px; max-width: 115px;}
+        .col2{ width: 187px; max-width: 187px;}
+        .col3{ display: none; }
+        .col4{ display: none;}
+        .col5{ display: none;}
+        .col6{ display: none;}
+        .col6{ width: 130px; max-width: 130px; display: table-cell;}
+        .col8{ display: none;} 
+
+        #headDiv-lower{
+            width: 432px;
+        }
+
+    }
+    /* Small devices (portrait tablets and large phones, 600px and up) */
+    @media (min-width: 596px) {
+
+        .col1{ width: 110px; max-width: 110px;}
+        .col2{ width: 156px; max-width: 156px;}
+        .col3{ display: none; }
+        .col4{ display: none;}
+        .col5{ display: none;}
+        .col6{ width: 130px; max-width: 130px; display: table-cell;}
+        .col7{ width: 165px; max-width: 165px; display: table-cell;}
+
+        #headDiv-lower{
+            width: 561px;
+        }
+
+        .productButton p{
+            max-width: 78px !important;
+            max-height: 60px;
+            overflow: hidden;
+        }
+
+    }
+    @media (min-width: 768px) {
+
+        .col1{ width: 110px; max-width: 110px;}
+        .col2{ width: 156px; max-width: 156px;}
+        .col3{ display: none;}
+        .col4{ width: 135px; max-width: 135px; display: table-cell;}
+        .col5{ display: none;}
+        .col6{ width: 130px; max-width: 130px; display: table-cell;}
+        .col7{ width: 210px; max-width: 210px; display: table-cell;}
+
+
+        #headDiv-lower{
+            width: 741px;
+        }
+
+        .productButton p{
+            max-width: 121px !important;
+        }
+
+    }
+    /* Large devices (laptops/desktops, 992px and up) */
+    @media (min-width: 992px) {
+
+        .col1{ width: 110px; max-width: 110px;}
+        .col2{ width: 145px; max-width: 145px;}
+        .col3{ width: 140px; max-width: 140px; display: table-cell;}
+        .col4{ width: 135px; max-width: 135px;}
+        .col5{ width: 130px; max-width: 130px; display: table-cell;}
+        .col6{ width: 130px; max-width: 130px; }
+        .col7{ width: 178px; max-width: 178px; }
+
+        #headDiv-lower{
+            width: 968px;
+        }
+
+        .productButton p{
+            max-width: 92px !important;
+        }
+
+
+    }
+    /* Extra large devices (large laptops and desktops, 1200px and up) */
+    @media (min-width: 1230px) {
+
+        .col1{ width: 130px; max-width: 130px;}
+        .col2{ width: 180px; max-width: 180px;}
+        .col3{ width: 223px; max-width: 223px;}
+        .col4{ width: 135px; max-width: 135px;}
+        .col5{ width: 150px; max-width: 150px;}
+        .col6{ width: 130px; max-width: 130px;}
+        .col7{ width: 250px; max-width: 250px;}
+
+        #headDiv-lower{
+            width: 1198px;
+        }
+
+        .productButton p{
+            max-width: 165px !important;
+        }
+
+    }
+
+
+    #body{
+
+        #main-container{
+
+            #main{
+
+                td.col2{
+                    font-weight: 400;
+                }
+
+                td.col3{
+                    padding-left: 5px;
+                    padding-right: 5px;
+                }
+
+
+                td.col1{
+                    display: table-cell;
+                    text-align: center;
+                    vertical-align: middle !important;
+                    padding-top: 7px;
+                    img{
+                        background-color: rgb(161, 213, 179);
+                        width: 90%;
+                        border: 1px solid black;
+                        border-radius: 4px;
+                        box-shadow: 0.3px 0.3px 1px black;
+                    }
+                }
+                .col6{
+                    .loanField-sum{
+                        font-size: 13px;
+                        margin: 2px 0;
+                        text-align: center;
+                        display: none;
+                    }
+
+
+                }
+                .col7{
+                    .productField-flex{
+                        
+                        .productField-more{
+                            font-size: 13px;
+                            margin: -5px 0 -4px 0;
+                            text-align: center;
+                        }
+
+                    }
+                }
+                
+            }
+        }
+
+    }
+
+
+
+</style>
