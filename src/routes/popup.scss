@@ -188,6 +188,8 @@
 	}
 
 	.productButton{
+		display: flex;
+		justify-content: left;
 		background-color: rgb(156, 205, 177);
 		p{
 			margin: 0 0 0 4px;

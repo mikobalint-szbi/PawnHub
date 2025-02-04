@@ -88,6 +88,13 @@
                             <p title="Lejár" class="loanField-expiration">2025.01.30.</p>
                             <p title="Kamat" class="loanField-interest">5%</p>
                         </button>
+                        <button>
+                            <img src="IMG/Home/loans.png" alt="Kölcsön">
+                            <p title="Pénzösszeg" class="loanField-money">1 300 000 Ft</p>
+                            <p title="Megköttetett" class="loanField-concludion">2024.03.22.</p>
+                            <p title="Lejár" class="loanField-expiration">2025.01.30.</p>
+                            <p title="Kamat" class="loanField-interest">5%</p>
+                        </button>
                         <!--button>
                             <img src="IMG/Home/loans.png" alt="Kölcsön">
                             <p title="Pénzösszeg" class="loanField-money">1 300 000 Ft</p>
@@ -161,71 +168,51 @@
 <style lang="scss">
 
     @media (min-width: 0px) {
+
+        #popup-grid, #popup-div{
+            grid-template-rows: repeat(21, 65px);
+        }
         
         #image{
             grid-row: 1 / 5;
         }
 
-        #description{
-            grid-row: 11 / 14;
+        #customer-name{
+            grid-row: 5 / 6;
         }
 
-        #location{
-            grid-row: 14 / 16;
+        #address{
+            grid-row: 6 / 7;
         }
 
-        #loan{
-            grid-row: 16 / 19;
+        #phone {
+            grid-row: 7 / 8;
+        }
 
-            #loanBox{
-                #lb-part1{
-                    width: 60%;
-                }
-                #lb-part2{
-                    width: 40%;
-                }
-            }
+        #email {
+            grid-row: 8 / 9;
+        }
+
+        #debt {
+            grid-row: 9 / 10;
+        }
+
+        #loans {
+            grid-row:  10 / 14;
+        }
+
+        #products{
+            grid-row: 14 / 18;
 
         }
 
-        #customer{
-            grid-row: 19 / 23;
+        #note{
+            grid-row: 18 / 22;
         }
 
-        .money{
-            width: 93%;
-        }
 
     }
     @media (min-width: 340px) {
-
-        #image{
-            grid-row: 1 / 6;
-        }
-
-        
-        #description{
-            grid-row: 12 / 15;
-        }
-
-        #location{
-            grid-row: 15 / 17;
-        }
-
-        #loan{
-            grid-row: 17 / 20;
-
-            #lb-part1{
-                    width: 55%;
-                }
-                #lb-part2{
-                    width: 45%;
-                }
-        }
-
-        #customer{
-            grid-row: 20 / 24;
-        }
 
         #submitButton{
             font-size: 19.5px;
@@ -236,6 +223,11 @@
     /* Small devices (portrait tablets and large phones, 600px and up) */
     @media (min-width: 596px) {
 
+        #popup-grid, #popup-div{
+
+            grid-template-rows: repeat(10, 1fr);
+            grid-template-columns: repeat(9, 1fr);
+        }
         
         #image{
             grid-row: 1 / 4;
@@ -262,16 +254,16 @@
 
         #debt{
             grid-row: 3 / 4;
-            grid-column: 4 / 6;
+            grid-column: 4 / 10;
         }
 
         #note{
-            grid-row: 6 / 9;
+            grid-row: 6 / 11;
             grid-column: 1 / 6;
         }
         #loans{
-            grid-row: 9 / 11;
-            grid-column: 1 / 10;
+            grid-row: 4 / 7;
+            grid-column: 6 / 10;
 
             #loanBox{
                 flex-direction: column;
@@ -279,7 +271,7 @@
         }
 
         #products{
-            grid-row: 3 / 9;
+            grid-row: 7 / 11;
             grid-column: 6 / 11;
             
         }
@@ -293,6 +285,12 @@
     /* Large devices (laptops/desktops, 992px and up) */
     @media (min-width: 992px) {
 
+        #popup-grid, #popup-div{
+            
+            grid-template-rows: repeat(8, 1fr);
+            grid-template-columns: repeat(11, 1fr);
+        }
+
         #image{
             grid-row: 1 / 4;
             grid-column: 1 / 4;
@@ -309,25 +307,25 @@
         }
         #phone{
             grid-row: 4 / 5;
-            grid-column: 1 / 7;
+            grid-column: 1 / 5;
         }
         #email{
             grid-row: 5 / 6;
-            grid-column: 1 / 7;
+            grid-column: 1 / 5;
         }
 
         #debt{
             grid-row: 3 / 4;
-            grid-column: 4 / 7;
+            grid-column: 4 / 8;
         }
 
         #note{
             grid-row: 6 / 9;
-            grid-column: 1 / 7;
+            grid-column: 1 / 8;
         }
         #loans{
-            grid-row: 3 / 9;
-            grid-column: 7 / 9;
+            grid-row: 4 / 6;
+            grid-column: 5 / 8;
 
             #loanBox{
                 flex-direction: column;
@@ -385,7 +383,7 @@
 
         #products{
             grid-row: 3 / 9;
-            grid-column: 9 / -1;
+            grid-column: 8 / -1;
             
         }
 
