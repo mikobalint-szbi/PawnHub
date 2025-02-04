@@ -181,7 +181,7 @@
         </table>
     </div>
 
-    <Pages currentPage="3" numOfPages="10"/>
+    <Pages currentPage="4" numOfPages="7"/>
 
 </section>
 

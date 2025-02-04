@@ -1,6 +1,8 @@
 <script>
     
-    let { currentPage, numOfPages } = $props();
+    export let numOfPages;
+    export let currentPage;
+
     
 </script>
 
@@ -9,8 +11,14 @@
         <img src="IMG/Global/left-arrow.png" alt="">
     </div>
 
-    {#each {length: 5} as _, i}
-        <div class="pageNum">{i+1}</div>
+    {#each {length: numOfPages} as _, i}
+
+        {#if i+1 == currentPage}
+            <div class="pageNum active">{i+1}</div>
+        {:else}
+            <div class="pageNum">{i+1}</div>
+        {/if}
+
     {/each}
 
     <div id="pageRight" class="pageArrow">
@@ -18,32 +26,49 @@
     </div>
 </div>
 
+<p class="message">Összesen {numOfPages} oldal.</p>
+
 
 <style lang="scss">
 
     #pages {
         display: flex;
         margin-top: -11px;
-        margin-bottom: 25px;
         gap: 3px;
         
         div {
             display: flex;
             height: 30px;
             width: 30px;
-            border: 1px solid black;
+            border: 1px solid rgb(59, 68, 62);
             align-items: center;
             justify-content: center;
+            border-radius: 3px;
+        }
+
+        div.active {
+            background-color: rgb(128, 204, 154);
+            font-weight: bold;
         }
 
         .pageArrow {
-            
-            padding: 6px;
+
+            border: none;
+            width: 20px;
+            padding: 8px;
             
             img {
                 height: 100%;
             }
         }
     }
+
+    .message {
+        margin: 0;
+        margin-bottom: 25px;
+        margin-top: 6px;
+        font-size: 14px;
+    }
+
 
 </style>
