@@ -7,6 +7,8 @@
 	import ImageViewer from '$lib/Popups/ImageViewer.svelte';
 	import CustomerPopup from '$lib/Popups/CustomerPopup.svelte';
 	import LoanPopup from '$lib/Popups/LoanPopup.svelte';
+	/** @type {{children?: import('svelte').Snippet}} */
+	let { children } = $props();
 
 
 </script>
@@ -22,7 +24,7 @@
 			<LoanPopup/>
 		</section>
 
-		<slot />
+		{@render children?.()}
 
 	<footer>
 		

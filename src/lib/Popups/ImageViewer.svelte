@@ -7,11 +7,11 @@
     <div id="marginner">
         <div id="popup-inner">
             <div id="topRow">
-                <button on:click={() => close_popup("imageViewer")} id="popup-backButton" class="topButton">
+                <button onclick={() => close_popup("imageViewer")} id="popup-backButton" class="topButton">
                     <img src="IMG/Global/back.png" alt="">
                     <p>Vissza</p>
                 </button>
-                <button on:click={() => close_popup("imageViewer")} id="popup-closeButton" class="topButton">
+                <button onclick={() => close_popup("imageViewer")} id="popup-closeButton" class="topButton">
                     <img src="IMG/Global/close.png" alt="">
                 </button>
             </div>
@@ -33,11 +33,11 @@
             </div>
 
             <div id="bottomRow">
-                <button on:click={() => {}} id="replaceButton" class="bottomButton">
+                <button onclick={() => {}} id="replaceButton" class="bottomButton">
                     <img src="IMG/Global/replace.png" alt="" id="submitImg">
                     <p id="submitText">Csere</p>
                 </button>
-                <button on:click={() => {}} id="deleteButton" class="bottomButton">
+                <button onclick={() => {}} id="deleteButton" class="bottomButton">
                     <img src="IMG/Global/delete.png" alt="" id="submitImg">
                     <p id="submitText">Törlés</p>
                 </button>

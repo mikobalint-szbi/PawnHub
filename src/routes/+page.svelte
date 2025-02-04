@@ -65,7 +65,7 @@
 
         <div id="registerPromotion-div">
             <a href="#registerBox">
-                <button id="registerPromotion" on:click={() => switchtoRegister(true)}>Regisztráljon hozzánk még ma!</button>
+                <button id="registerPromotion" onclick={() => switchtoRegister(true)}>Regisztráljon hozzánk még ma!</button>
             </a>
             <p id="regDriector">🠦 Tekintsen a képernyő jobb oldalára! 🠦</p>
         </div>
@@ -79,7 +79,7 @@
             <input type="text" name="l-username" id="l-username">
             <label for="l-password">Jelszó:</label>
             <input type="password" name="l-password" id="l-password">
-            <button id="login" on:click={loginHandler}>Bejelentkezés</button>
+            <button id="login" onclick={loginHandler}>Bejelentkezés</button>
         </div>
 
         <div id="registerBox" class="formBox">
@@ -99,10 +99,10 @@
             <button id="register">Regisztráció</button>
         </div>
 
-        <!-- svelte-ignore a11y-invalid-attribute -->
-        <p id="toRegister-p">Regisztrálni szeretne? <a href="#" on:click={() => switchtoRegister(false)}>Kattintson ide!</a></p>
-        <!-- svelte-ignore a11y-invalid-attribute -->
-        <p id="toLogin-p">Már van PawnHub-fiókja? <a href="#" on:click={switchtoLogin}>Kattintson ide!</a></p>
+        <!-- svelte-ignore a11y_invalid_attribute -->
+        <p id="toRegister-p">Regisztrálni szeretne? <a href="#" onclick={() => switchtoRegister(false)}>Kattintson ide!</a></p>
+        <!-- svelte-ignore a11y_invalid_attribute -->
+        <p id="toLogin-p">Már van PawnHub-fiókja? <a href="#" onclick={switchtoLogin}>Kattintson ide!</a></p>
 
     </div>
 

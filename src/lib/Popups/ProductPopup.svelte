@@ -13,14 +13,14 @@
     <div id="marginner">
         <div id="popup-inner">
             <div id="topRow">
-                <button on:click={() => close_popup("productPopup")} id="popup-backButton" class="topButton">
+                <button onclick={() => close_popup("productPopup")} id="popup-backButton" class="topButton">
                     <img src="IMG/Global/back.png" alt="">
                     <p>Vissza</p>
                 </button>
                 <div class="popupTitle-container">
                     <h2 class="popup-title">A termék adatai</h2>
                 </div>
-                <button on:click={() => close_popup("productPopup")} id="popup-closeButton" class="topButton">
+                <button onclick={() => close_popup("productPopup")} id="popup-closeButton" class="topButton">
                     <img src="IMG/Global/close.png" alt="">
                 </button>
             </div>
@@ -121,7 +121,7 @@
             </div>
 
             <div id="bottomRow">
-                <button on:click={() => save_popup("productPopup")} id="submitButton" class="bottomButton">
+                <button onclick={() => save_popup("productPopup")} id="submitButton" class="bottomButton">
                     <img src="IMG/Global/save.png" alt="" id="submitImg">
                     <p id="submitText">Módosítások mentése</p>
                 </button>
