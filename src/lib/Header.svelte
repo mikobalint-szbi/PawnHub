@@ -6,7 +6,14 @@
         <h3>PawnHub</h3>
     </a>
 
+    <div id="rightBox">
+        <div id="menuBox">
+            adflkj
+        </div>
+        <div id="userBox">
 
+        </div>
+    </div>
 
 
 </div>
@@ -21,7 +28,7 @@
         align-items: center;
         box-shadow: 0px 0.8px 3px black;
         z-index: 300;
-
+        justify-content: space-between;
 
         h3{
             font-size: 35px;
