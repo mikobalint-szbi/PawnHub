@@ -14,7 +14,7 @@
         <div id="popup-inner">
             <div id="topRow">
                 <div id="topRow-col1">
-                    <button on:click={() => close_popup("loanPopup")} id="popup-backButton" class="topButton">
+                    <button on:click={() => close_popup("loanPopup")} id="loanPopup-backButton" class="topButton popup-backButton">
                         <img src="IMG/Global/back.png" alt="">
                         <p>Vissza</p>
                     </button>

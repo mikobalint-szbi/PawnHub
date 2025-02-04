@@ -13,7 +13,7 @@
     <div id="marginner">
         <div id="popup-inner">
             <div id="topRow">
-                <button on:click={() => close_popup("productPopup")} id="productPopup-backButton" class="topButton">
+                <button on:click={() => close_popup("productPopup")} id="productPopup-backButton" class="topButton popup-backButton">
                     <img src="IMG/Global/back.png" alt="">
                     <p>Vissza</p>
                 </button>
