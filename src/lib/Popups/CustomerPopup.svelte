@@ -157,7 +157,7 @@
             <div id="bottomRow">
                 <button on:click={() => save_popup("customerPopup")} id="submitButton" class="bottomButton">
                     <img src="IMG/Global/save.png" alt="" id="submitImg">
-                    <p id="submitText">Módosítások mentése</p>
+                    <p id="customerPopup-submitText" class="submitText">Módosítások mentése</p>
                 </button>
             </div>
         </div>

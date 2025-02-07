@@ -91,9 +91,11 @@
                 <div id="products" class="popupGrid-element">
                     <p class="popup-label">Zálogtárgyak</p>
                     <div class="productField-flex">
-                        <div class="productButton">
-                            <img src="IMG/Global/no-image.png" alt="">
-                            <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
+                        <!-- svelte-ignore a11y-click-events-have-key-events -->
+                        <!-- svelte-ignore a11y-no-static-element-interactions -->
+                        <div class="productButton newItem" on:click={()=> open_popup("productChooser",false, false)}>
+                            <img src="IMG/Global/add.png" alt="">
+                            <p class="">Termék hozzáadása</p>
                         </div>
                         <div class="productButton">
                             <img src="IMG/Global/no-image.png" alt="">
@@ -185,7 +187,7 @@
             <div id="bottomRow">
                 <button on:click={() => save_popup("loanPopup")} id="submitButton" class="bottomButton">
                     <img src="IMG/Global/save.png" alt="" id="submitImg">
-                    <p id="submitText">Módosítások mentése</p>
+                    <p id="loanPopup-submitText" class="submitText">Módosítások mentése</p>
                 </button>
             </div>
         </div>

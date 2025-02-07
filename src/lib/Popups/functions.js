@@ -25,14 +25,15 @@ export function save_popup(popupID){
 
 export function open_popup(popupID, create, backButton){
 
-    if (popupID != "imageViewer"){
+    if (["productPopup","loanPopup","customerPopup"].includes(popupID)){
 
         if (create){
-            document.getElementById("submitText").innerHTML = "Mentés"
+
+            document.getElementById(popupID + "-submitText").innerHTML = "Mentés"
             
         }
         else{
-            document.getElementById("submitText").innerHTML = "Módosítások mentése"
+            document.getElementById(popupID + "-submitText").innerHTML = "Módosítások mentése"
         }
     }
 

@@ -7,6 +7,7 @@
 	import ImageViewer from '$lib/Popups/ImageViewer.svelte';
 	import CustomerPopup from '$lib/Popups/CustomerPopup.svelte';
 	import LoanPopup from '$lib/Popups/LoanPopup.svelte';
+	import ProductChooser from '$lib/Popups/ProductChooser.svelte';
 
 
 </script>
@@ -20,6 +21,7 @@
 			<CustomerPopup/>
 			<ImageViewer/>
 			<LoanPopup/>
+			<ProductChooser/>
 		</section>
 
 		<slot />
