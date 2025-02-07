@@ -122,7 +122,7 @@
                 <th class="col5" title="Kamatszázalék">Kamat</th>
                 <th class="col6">Ügyfél</th>
                 <th class="col7">Zálogtárgyak</th>
-                <th class="col8">Megjegyzés</th>
+                <th class="col8">Leírás</th>
             </tr>
                 {#each {length: 17} as _, i}
                 <div class="row" href="">
