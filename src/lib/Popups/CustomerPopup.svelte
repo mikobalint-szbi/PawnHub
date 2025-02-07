@@ -18,7 +18,7 @@
                     <p>Vissza</p>
                 </button>
                 <div class="popupTitle-container">
-                    <h2 class="popup-title">Ügyfél adatai</h2>
+                    <h2 class="popup-title">Ügyfél</h2>
                 </div>
                 <button on:click={() => close_popup("customerPopup")} id="popup-closeButton" class="topButton">
                     <img src="IMG/Global/close.png" alt="">

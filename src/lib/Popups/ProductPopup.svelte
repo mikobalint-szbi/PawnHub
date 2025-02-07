@@ -18,7 +18,7 @@
                     <p>Vissza</p>
                 </button>
                 <div class="popupTitle-container">
-                    <h2 class="popup-title">A termék adatai</h2>
+                    <h2 class="popup-title">Termék</h2>
                 </div>
                 <button on:click={() => close_popup("productPopup")} id="popup-closeButton" class="topButton">
                     <img src="IMG/Global/close.png" alt="">
@@ -38,7 +38,6 @@
                     <select id="p-status" class="popup-input">
                         <option value="" id="p-status-opt1">🔒 Zálog</option>
                         <option value="">💰 Eladó</option>
-                        <option value="">🗃️ Archivált</option>
                     </select>
                 </div>
                 <div id="category" class="popupGrid-element">

@@ -21,7 +21,7 @@
                 </div>
                 <div id="topRow-col2">
                     <div class="popupTitle-container">
-                        <h2 class="popup-title">Az adósság adatai</h2>
+                        <h2 class="popup-title">Adósság</h2>
                     </div>
                 </div>
                 <div id="topRow-col3">
@@ -48,6 +48,14 @@
                         <p id="p-moneyBack"> 15 000 000 Ft</p>
                     </div>
                 </div>
+
+                <div id="interest" class="popupGrid-element">
+                    <label for="p-interest" class="popup-label">Kamatszázalék:</label>
+                    <div class="pv-row">
+                        <input type="number" class="popup-input money" id="p-interest">
+                        <p class="p-current">%</p>
+                    </div>
+                </div>
                 
                 <div id="start-date" class="popupGrid-element">
                     <label for="p-startDate" class="popup-label">Megkötés dátuma:</label>
@@ -63,13 +71,7 @@
                     </div>
                 </div>
 
-                <div id="interest" class="popupGrid-element">
-                    <label for="p-interest" class="popup-label">Kamatszázalék:</label>
-                    <div class="pv-row">
-                        <input type="number" class="popup-input money" id="p-interest">
-                        <p class="p-current">%</p>
-                    </div>
-                </div>
+
 
                 <div id="description" class="popupGrid-element">
                     <label for="p-description" class="popup-label">Leírás:</label>
@@ -195,37 +197,47 @@
 
     @media (min-width: 0px) {
         
+        #popup-grid {
+            grid-template-rows: repeat(16, 65px);
+        }
+ 
         #money-lent{
-            grid-row: -1 / -1;
-            grid-column: -1 / -1;
+            grid-row: 1 / 2;
+            grid-column: 1 / 1;
         }
         #money-back{
-            grid-row: -1 / -1;
-            grid-column: -1 / -1;
+            grid-row: 3 / 4;
+            grid-column: 1 / 1;
+
         }
         #start-date{
-            grid-row: -1 / -1;
-            grid-column: -1 / -1;
+            grid-row: 4 / 5;
+            grid-column: 1 / 1;
+
         }
         #exp-date{
-            grid-row: -1 / -1;
-            grid-column: -1 / -1;
+            grid-row: 5 / 6;
+            grid-column: 1 / 1;
+
         }
         #interest{
-            grid-row: -1 / -1;
-            grid-column: -1 / -1;
+            grid-row: 2 / 3;
+            grid-column: 1 / 1;
         }
         #description{
-            grid-row: -1 / -1;
-            grid-column: -1 / -1;
+            grid-row: 13 / 17;
+            grid-column: 1 / 1;
+
         }
         #customer{
-            grid-row: -1 / -1;
-            grid-column: -1 / -1;
+            grid-row: 6 / 9;
+            grid-column: 1 / 1;
+
         }
         #products{
-            grid-row: -1 / -1;
-            grid-column: -1 / -1;
+            grid-row: 9 / 13;
+            grid-column: 1 / 1;
+
         }
 
 
@@ -237,92 +249,56 @@
     }
     @media (min-width: 340px) {
 
-        #money-lent{
-            grid-row: -1 / -1;
-            grid-column: -1 / -1;
-        }
-        #money-back{
-            grid-row: -1 / -1;
-            grid-column: -1 / -1;
-        }
-        #start-date{
-            grid-row: -1 / -1;
-            grid-column: -1 / -1;
-        }
-        #exp-date{
-            grid-row: -1 / -1;
-            grid-column: -1 / -1;
-        }
-        #interest{
-            grid-row: -1 / -1;
-            grid-column: -1 / -1;
-        }
-        #description{
-            grid-row: -1 / -1;
-            grid-column: -1 / -1;
-        }
-        #customer{
-            grid-row: -1 / -1;
-            grid-column: -1 / -1;
-        }
-        #products{
-            grid-row: -1 / -1;
-            grid-column: -1 / -1;
-        }
-
-        #submitButton{
-            font-size: 19.5px;
-        }
 
 
     }
     /* Small devices (portrait tablets and large phones, 600px and up) */
     @media (min-width: 596px) {
 
-        #popup-grid, #popup-div{
-            width: 520px !important;	
-            height: calc(800px * 0.8) !important;
+        #popup-grid {
+            grid-template-columns: repeat(8, 1fr);
             grid-template-rows: repeat(10, 1fr);
-            grid-template-columns: repeat(9, 1fr);
         }
 
         #money-lent{
-            grid-row: -1 / -1;
-            grid-column: -1 / -1;
+            grid-row: 1 / 2;
+            grid-column: 1 / 9;
         }
         #money-back{
-            grid-row: -1 / -1;
-            grid-column: -1 / -1;
+            grid-row: 2 / 3;
+            grid-column: 3 / 9;
         }
         #start-date{
-            grid-row: -1 / -1;
-            grid-column: -1 / -1;
+            grid-row: 3 / 4;
+            grid-column: 1 / 5;
         }
         #exp-date{
-            grid-row: -1 / -1;
-            grid-column: -1 / -1;
+            grid-row: 3 / 4;
+            grid-column: 5 / 9;
         }
         #interest{
-            grid-row: -1 / -1;
-            grid-column: -1 / -1;
+            grid-row: 2 / 3;
+            grid-column: 1 / 3;
         }
         #description{
-            grid-row: -1 / -1;
-            grid-column: -1 / -1;
+            grid-row: 8 / 11;
+            grid-column: 1 / 9;
+
         }
         #customer{
-            grid-row: -1 / -1;
-            grid-column: -1 / -1;
+            grid-row: 4 / 8;
+            grid-column: 1 / 4;
         }
         #products{
-            grid-row: -1 / -1;
-            grid-column: -1 / -1;
-        }
+            grid-row: 4 / 8;
+            grid-column: 4 / 10;
 
+        }
         
 
     }
     @media (min-width: 768px) {
+
 
     }   
     /* Large devices (laptops/desktops, 992px and up) */

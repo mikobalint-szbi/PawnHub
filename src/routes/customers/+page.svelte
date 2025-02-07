@@ -196,7 +196,8 @@
         .col5{ display: none;}
         .col6{ display: none;}
         .col7{ display: none;}
-        .col8{ display: none;} 
+        .col8{ display: none;}
+
 
     }
     @media (min-width: 300px) {
@@ -401,6 +402,12 @@
             }
         }
 
+    }
+
+    table#main{
+
+        //background-color: rgb(170, 216, 184);
+        box-shadow: 1px 1px 4px black;
     }
 
 

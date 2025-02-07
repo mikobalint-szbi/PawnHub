@@ -19,6 +19,15 @@
         }
     }
 
+    .popup-backButton{
+        width: 38px !important;
+        
+        p {
+            display: none !important;
+        }
+
+    }
+
     #h-col1, #h-col3{
         width: 25%;
         display: flex;
@@ -182,10 +191,6 @@
                 }
             }
         }
-
-        select, button {
-            width: 80px;
-        }
     }
 
     
@@ -260,6 +265,12 @@
         }
     }
 
+    table#main{
+
+        //background-color: rgb(170, 216, 184);
+        box-shadow: 1px 1px 4px black;
+    }
+
     #product-status{
         width: 350px;
     }
@@ -269,6 +280,16 @@
             height: 50px;
             width: 53px;
         }
+    }
+
+    .popup-backButton{
+
+        width: 94px !important;
+
+        p {
+            display: block !important;
+        }
+
     }
 
     #headDiv-lower{
@@ -738,12 +759,7 @@
 
 }
 
-table#main{
 
-    //background-color: rgb(170, 216, 184);
-    box-shadow: 1px 1px 4px black;
-
-}
 
 
 
