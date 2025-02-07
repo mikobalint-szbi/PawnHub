@@ -39,12 +39,12 @@
             </div>
         </a>
     
-        <a class="optionBox" href="archive">
+        <a class="optionBox" href="messages">
             <div class="imageBox">
-                <img class="image" src="IMG/Home/settings.png" alt="Archívum">
+                <img class="image" src="IMG/Home/messages.png" alt="Archívum">
             </div>
             <div class="titleBox">
-                <h3 class="title">Beállítások</h3>
+                <h3 class="title">Üzenetek</h3>
             </div>
         </a>
 
