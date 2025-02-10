@@ -92,7 +92,7 @@
                 <!-- svelte-ignore a11y-click-events-have-key-events -->
                 <!-- svelte-ignore a11y-no-static-element-interactions -->
                 <div id="ps-option3" class="ps-option"  on:click={psOption3_clicked} tabindex="0" role="button">
-                    <p>Archivált</p>
+                    <p>Összes</p>
                 </div>
             </div>
 

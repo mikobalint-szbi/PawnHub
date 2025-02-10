@@ -27,7 +27,7 @@
 
         if (body.style.display == "" || body.style.display == "none"){
 
-            let l = document.querySelectorAll(".mBody, .mFooter")
+            let l = document.querySelectorAll(".mBody.existing, .mFooter.existing")
             l.forEach((e)=>{
                 e.style.display = "none"
             })
@@ -41,6 +41,34 @@
             footer.style.display = "none"
         }
 
+
+    }
+
+    function open_newMessage(receiver,topic,content,customerRequest,overWrite){
+
+        let newMessage = document.querySelector(".message.new")
+
+        if (newMessage.style.display == "" || newMessage.style.display == "none" || overWrite){
+
+            newMessage.style.display = "flex"
+            document.querySelector("input#receiver").value = receiver
+            document.querySelector("input#topic").value = topic
+            document.querySelector("textarea#messageBody").textContent = content
+            document.querySelector("input#customerRequest").checked = customerRequest
+
+        }
+
+        window.scrollTo(0, 0);
+
+    }
+
+    function close_newMessage(){
+
+        document.querySelector(".message.new").style.display = "none"
+        document.querySelector("input#receiver").value = ""
+        document.querySelector("input#topic").value = ""
+        document.querySelector("textarea#messageBody").textContent = ""
+        document.querySelector("input#customerRequest").checked = false
 
     }
 
@@ -68,7 +96,7 @@
             </a>
         </div>
         <div id="h-col2">
-            <h1>Üzenetek</h1>
+            <h1 id="pageTitle">Üzenetek</h1>
 
 
         </div>
@@ -115,7 +143,7 @@
 
 
         <div id="hl-col3">
-            <button id="add-button" on:click={() => open_popup("customerPopup",true,false)}>
+            <button id="add-button" on:click={()=>open_newMessage("","","",false,false)}>
                 <div id="add-col1">
                     <img src="IMG/Global/add.png" alt="Levélírás" title="Levélírás">
                 </div>
@@ -130,12 +158,40 @@
 
     <div id="main-container">
         
+        <div class="message new">
+            <div class="mHeader new">
+                <div class="col1 mhCol">
+                    <img src="IMG/Messages/out.png" alt="">
+                </div>
+                <div class="col2 mhCol" alt="Feladó" title="Feladó">
+                    <input type="text" name="receiver" id="receiver" placeholder="Címzett" alt="Címzett" class="messageInput">
+                </div>
+                <div class="col3 mhCol" alt="Tárgy" title="Tárgy">
+                    <input type="text" name="topic" id="topic" placeholder="Tárgy" alt="Tárgy" class="messageInput">
+                </div>
+                <div class="col4 mhCol" alt="Dátum" title="Dátum">2025.02.07.</div>
+            </div>
+            <div class="mBody new" id="mBody-new">
+                <textarea name="messageBody" id="messageBody" placeholder="Ide írhatja az üzenet szövegét..."></textarea>
+                <input type="checkbox" name="customerRequest" id="customerRequest"><label for="customerRequest">Küldés ügyfélkérelemként</label>
+            </div>
+            <div class="mFooter new" id="mFooter-new">
+                <button>
+                    <img src="IMG/Messages/send.png" alt="">
+                    <p>Küldés</p>
+                </button>
+                <button on:click={close_newMessage}>
+                    <img src="IMG/Global/delete.png" alt="" >
+                    <p>Elvetés</p>
+                </button>
+            </div>
+        </div>
 
         {#each {length: 27} as _, i}
         <!-- svelte-ignore a11y-click-events-have-key-events -->
         <!-- svelte-ignore a11y-no-static-element-interactions -->
-        <div class="message {i % 3 == 0 ? 'incoming' : ''}" id="message{i}" on:click={()=>toggle_message(i)}>
-            <div class="mHeader">
+        <div class="message {i % 3 == 0 ? 'incoming' : ''} existing" id="message{i}" on:click={()=>toggle_message(i)}>
+            <div class="mHeader existing">
                 <div class="col1 mhCol">
                     <img src="IMG/Messages/out.png" alt="">
                 </div>
@@ -143,7 +199,7 @@
                 <div class="col3 mhCol" alt="Tárgy" title="Tárgy">Tárgy</div>
                 <div class="col4 mhCol" alt="Dátum" title="Dátum">2025.02.07.</div>
             </div>
-            <div class="mBody" id="mBody{i}">
+            <div class="mBody existing" id="mBody{i}">
                 <p>
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum, veritatis ipsum! Harum aperiam ipsam aliquam ipsum voluptas dolorem blanditiis iusto quaerat! Quasi explicabo officiis quisquam, impedit dolor id iusto adipisci.<br>   
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum, veritatis ipsum! Harum aperiam ipsam aliquam ipsum voluptas dolorem blanditiis iusto quaerat! Quasi explicabo officiis quisquam, impedit dolor id iusto adipisci.  <br>  
@@ -153,14 +209,14 @@
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum, veritatis ipsum! Harum aperiam ipsam aliquam ipsum voluptas dolorem blanditiis iusto quaerat! Quasi explicabo officiis quisquam, impedit dolor id iusto adipisci.    
                 </p>
             </div>
-            <div class="mFooter" id="mFooter{i}">
-                <button>
+            <div class="mFooter existing" id="mFooter{i}">
+                <button on:click={()=>open_newMessage("FeladóNeve","Re: Tárgy","",false,true)}>
                     <img src="IMG/Messages/mail.png" alt="">
                     <p>Válasz</p>
                 </button>
-                <button>
+                <button  on:click={()=>open_newMessage("FeladóNeve","Re: Tárgy","",true,true)}>
                     <img src="IMG/Home/customers.png" alt="">
-                    <p>Felvétel az ügyfelek közé</p>
+                    <p>{Math.random() > 0.3 ? "Felvétel az ügyfelek közé" : "Ügyfélkérelem elfogadása"}</p>
                 </button>
                 <button>
                     <img src="IMG/Global/delete.png" alt="">
@@ -250,9 +306,16 @@
     }
     @media (min-width: 768px) {
 
-        .mHeader .col3{
-            width: 80%;
+        .mHeader {
+            .col2{
+                width: 30%;
 
+
+            }
+            .col3{
+                width: 70%;
+
+            }
         }
 
 
@@ -340,6 +403,7 @@
                 }
             }
 
+
             .mFooter {
                 display: flex;
                 justify-content: center;
@@ -366,6 +430,44 @@
                         font-size: 16px;
                     }
                 }
+            }
+
+
+        }
+
+        .message.new {
+            margin-top: -2px;
+            margin-bottom: 20px;
+            display: none;
+
+            .mHeader.new {
+                .col3 {
+                    border: none;
+                }
+
+                .col4 {
+                    display: none;
+                }
+
+                .messageInput {
+                    height: 30px;
+                    width: 100%;
+                    font-size: 16px;
+                }
+            }
+
+            .mBody.new {
+                display: block;
+
+                textarea {
+                    height: 360px;
+                    width: 100%;
+                    font-size: 17px;
+                    padding: 4px 5px;
+                }
+            }
+            .mFooter.new {
+                display: flex;
             }
         }
     }
