@@ -31,32 +31,32 @@
 
     <div id="headDiv-lower">
 
-        <div id="hl-col1">
-
-        </div>
-        <div id="hl-col2">
-
-            <div id="searchBox">
-                <select name="" id="">
-                    <option value="name">Név</option>
-                    <option value="category">Kategória</option>
-                    <option value="customer">Ügyfél</option>
-                    <option value="condition">Állapot</option>
-                    <option value="notes">Leírás</option>
-                    <option value="location">Hely</option>
-                </select>
-                <input type="text">
-                <button>Keresés</button>
+        <div id="searchBox">
+            <div class="row1">
+                <input type="text" id="searchBar" placeholder="Keresés...">
             </div>
-
-
-
+            <div class="row2">
+                <div class="col1">
+                    <label for="selectCategory">Kategória:</label>
+                    <select name="selectCategory" id="selectCategory"></select>
+                </div>
+                <div class="col2">
+                    <label for=""></label>
+                    <input type="number">
+                    <label for=""></label>
+                    <input type="number" name="" id="">
+                </div>
+            </div>
+            <div class="row3">
+                <h4>Keresés helye</h4>
+            </div>
+            <div class="row4">
+                <select name="selectCounty" id="selectCounty"></select>
+                <input type="text" placeholder="Város hozzáadása...">
+                <div id="selectedSettlements"></div>
+            </div>
         </div>
-        <div id="hl-col3">
-    
-        </div>
-        
-    
+
     </div>
 
     <div id="main-container">
@@ -106,10 +106,43 @@
 
     #body{
 
-        #main-container{
+        #headDiv-lower {
+
+            height: fit-content;
+            display: flex;
+            justify-content: center;
+
+            #searchBox {
+                border: 1px solid black;
+                padding: 10px;
+
+                .row1 {
+                    #searchBar {
+                        width: 100%;
+                    }
+                }
+                .row2 {
+                    display: flex;
+
+                    .col1 {
+                        width: 50%;
+                        display: flex;
+                        border: 1px solid black;
+
+                    }
+                    .col2 {
+                        width: 50%;
+                        display: flex;
+                        border: 1px solid black;
+                    }
+                }
+
+            }
+
 
 
         }
+
 
     }
 
