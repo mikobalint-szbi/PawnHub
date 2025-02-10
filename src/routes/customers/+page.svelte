@@ -87,12 +87,12 @@
                 <!-- svelte-ignore a11y-click-events-have-key-events -->
                 <!-- svelte-ignore a11y-no-static-element-interactions -->
                 <div id="ps-option1" class="ps-option active" on:click={psOption1_clicked} tabindex="0" role="button">
-                    <p>Aktív</p>
+                    <p>Fiókkal rendelkező</p>
                 </div>
                 <!-- svelte-ignore a11y-click-events-have-key-events -->
                 <!-- svelte-ignore a11y-no-static-element-interactions -->
                 <div id="ps-option2" class="ps-option"  on:click={psOption2_clicked} tabindex="0" role="button">
-                    <p>Inaktív</p>
+                    <p>Fiók nélküli</p>
                 </div>
                 <!-- svelte-ignore a11y-click-events-have-key-events -->
                 <!-- svelte-ignore a11y-no-static-element-interactions -->
@@ -198,6 +198,9 @@
         .col7{ display: none;}
         .col8{ display: none;}
 
+        #headDiv-lower {
+            height: 125px !important;
+        }
 
     }
     @media (min-width: 300px) {
@@ -276,6 +279,7 @@
 
         #headDiv-lower{
             width: 561px;
+            height: 85px !important;
         }
 
         .productButton p{
@@ -409,6 +413,11 @@
         //background-color: rgb(170, 216, 184);
         box-shadow: 1px 1px 4px black;
     }
+
+    #product-status {
+        height: 50px !important;
+    }
+
 
 
 
