@@ -1,6 +1,6 @@
 <script>
     import {open_popup, close_popup, save_popup} from "$lib/Popups/functions.js";
-    import Pages from '$lib/Pages.svelte';
+    import PageSelector from '$lib/PageSelector.svelte';
     import { onMount } from "svelte";
   
 

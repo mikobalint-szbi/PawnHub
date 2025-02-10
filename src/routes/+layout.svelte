@@ -10,7 +10,6 @@
 	import ProductChooser from '$lib/Popups/ProductChooser.svelte';
 	import CustomerChooser from '$lib/Popups/CustomerChooser.svelte';
 
-
 </script>
 
 <div class="app">
