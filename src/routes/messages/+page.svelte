@@ -179,16 +179,106 @@
 
 <style lang="scss">
 
-    #headDiv-lower {
-        width: 70%;
-        max-width: 1000px;
+        
+    @media (min-width: 0px) {
+        
+        #main-container, #headDiv-lower {
+            width: 90%;
+            max-width: 1000px;
+        }
+
+        .mHeader {
+            .col2{
+                width: 40%;
+
+
+            }
+            .col3{
+                width: 40%;
+
+            }
+        }
+
     }
+    @media (min-width: 300px) {
+
+
+
+    }
+    @media (min-width: 340px) {
+
+
+    }
+    @media (min-width: 404px) {
+
+        .mHeader {
+            .col2{
+                width: 40%;
+
+
+            }
+            .col3{
+                width: 50%;
+
+            }
+        }
+        
+
+        
+    }
+    @media (min-width: 468px) {
+
+
+    }
+    /* Small devices (portrait tablets and large phones, 600px and up) */
+    @media (min-width: 596px) {
+
+        .mHeader {
+            .col2{
+                width: 40%;
+
+
+            }
+            .col3{
+                width: 70%;
+
+            }
+        }
+
+
+
+    }
+    @media (min-width: 768px) {
+
+        .mHeader .col3{
+            width: 80%;
+
+        }
+
+
+    }   
+    /* Large devices (laptops/desktops, 992px and up) */
+    @media (min-width: 992px) {
+
+        #main-container, #headDiv-lower {
+            width: 70%;
+            max-width: 1000px;
+        }
+
+
+    }
+    /* Extra large devices (large laptops and desktops, 1200px and up) */
+    @media (min-width: 1230px) {
+        
+        
+    }
+
+
     
     #main-container {
         margin-top: 0px;
         margin-bottom: 30px;
-        width: 70%;
-        max-width: 1000px;
+
 
         .message.incoming{
             background-color: rgb(154, 209, 173);
@@ -211,6 +301,7 @@
                     padding-right: 6px;
                     display: flex;
                     align-items: center;
+                    overflow: hidden;
                 }
                 
                 .col1{
@@ -225,12 +316,10 @@
                     }
                 }
                 .col2{
-                    width: 20%;
                     border-right: 1px solid black;
 
                 }
                 .col3{
-                    width: 80%;
                     border-right: 1px solid black;
                 }
                 .col4{
