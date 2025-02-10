@@ -1,5 +1,7 @@
 <script>
 
+    let isCustomer = true
+
 </script>
 
 <section id="body">
@@ -17,16 +19,16 @@
                 <img class="image" src="IMG/Global/logo.png" alt="">
             </div>
             <div class="titleBox">
-                <h3 class="title">Zálogtárgyak</h3>
+                <h3 class="title">{isCustomer ? "Termékek" : "Zálogtárgyak"}</h3>
             </div>
         </a>
 
-        <a class="optionBox" href="customers">
+        <a class="optionBox" href="{isCustomer ? 'shops' : 'customers'}">
             <div class="imageBox">
-                <img class="image" src="IMG/Home/customers.png" alt="Ügyfelek">
+                <img class="image" src="{isCustomer ? 'IMG/Home/shops.png' : 'IMG/Home/customers.png'}" alt="Ügyfelek">
             </div>
             <div class="titleBox">
-                <h3 class="title">Ügyfelek</h3>
+                <h3 class="title">{isCustomer ? "Zálogházak" : "Ügyfelek"}</h3>
             </div>
         </a>
     
