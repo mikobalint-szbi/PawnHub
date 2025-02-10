@@ -107,6 +107,45 @@
 
     <div id="main-container">
         
+        {#each {length: 17} as _, i}
+        <div class="productCard">
+            <div class="row1">
+                <div class="col1">
+                    <img src="IMG/Global/no-image.png" alt="Termék fotója">
+                </div>
+                <div class="col2">
+                    <h3 class="productTitle" title="Termék neve">Termék neve</h3>
+                    <p class="productCategory">Karóra</p>
+                    <p class="productDescription">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum rerum exercitationem iste voluptate aperiam dolor qui animi quis fugiat magnam assumenda distinctio, consequuntur corrupti expedita sit autem iusto provident! Dicta?
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+
+                    </p>
+                    <div class="innerRow">
+                        <div class="productLocation">
+                            <p class="productShop">Tóth Pista Zálogház és Ékszerüzlet</p>
+                            <p class="productSettlement">Nagykőrös</p>
+                        </div>
+                        <div class="productPrice">
+                            <p >30 000 000 Ft</p>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        {/each}
+
     </div>
 
 </section>
@@ -154,7 +193,7 @@
 
         #headDiv-lower {
 
-            height: fit-content;
+            height: auto !important;
             display: flex;
             justify-content: center;
 
@@ -164,6 +203,9 @@
                 height: fit-content;
                 border-radius: 7px;
                 box-shadow: 1px 1px 2px black;
+                width: 80%;
+                max-width: 1000px;
+                margin-bottom: 20px;
 
                 fieldset {
                     border: 1px solid rgb(106, 137, 116);
@@ -268,6 +310,86 @@
 
         }
 
+
+        #main-container {
+            width: 80%;
+            max-width: 1000px;
+            margin-bottom: 30px;
+
+
+            .productCard {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid black;
+                margin-bottom: 10px;
+                border-radius: 7px;
+                box-shadow: 1px 1px 2px black;
+
+                .row1 {
+                    width: 100%;
+                    display: flex;
+                    gap: 15px;
+
+                    .col1 {
+                        width: 25%;
+
+
+                        img {
+                            width: 100%;
+                            border: 1px solid black;
+                        }
+                    }
+                    .col2 {
+                        width: 75%;
+                        padding-right: 10px;
+                        display: flex;
+                        flex-direction: column;
+
+                        .productTitle {
+                            margin-top: 5px;
+                            margin-bottom: 0px;
+                        }
+                        .productCategory {
+                            margin-top: -4px;
+                            margin-bottom: 3px;
+                        }
+                        .productDescription {
+                            max-height: 125px;
+                            overflow: hidden;
+                            margin: 0;
+                            margin-bottom: 20px;
+                        }
+
+                        .innerRow {
+                            display: flex;
+                            width: 100%;
+                            border: 1px solid blue;
+                            margin-top: auto;
+
+
+                            .productLocation {
+                                width: 50%;
+
+                                p {
+                                    margin: 0;
+                                }
+                            }
+                            .productPrice {
+                                display: flex;
+                                justify-content: end;
+
+                                width: 50%;
+
+                                p {
+                                    font-size: 36px;
+                                    margin: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
 
     }
 

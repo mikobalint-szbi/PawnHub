@@ -1,5 +1,7 @@
 
 Teendők:
+- Customer termékkereső oldala
+- Termék adatlapja
 - Sorbarendezés comboBox elkészítése (mi alapján, ASC/DESC)
 - Pluszgombok a megfelelő popupokhoz, amik megnyitják a Termék- vagy az ügyfélválasztót
 - Ahol pluszgomb van, ott törlésgombnak is kell lennie
