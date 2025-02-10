@@ -115,6 +115,7 @@
             <div id="searchBox">
                 <select name="" id="">
                     <option value="name">Feladó</option>
+                    <option value="name">Címzett</option>
                     <option value="email">Tárgy</option>
                     <option value="phone">Tartalom</option>
                 </select>

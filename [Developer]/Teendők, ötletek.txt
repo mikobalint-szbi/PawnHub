@@ -3,8 +3,6 @@ Teendők:
 - Sorbarendezés comboBox elkészítése (mi alapján, ASC/DESC)
 - Pluszgombok a megfelelő popupokhoz, amik megnyitják a Termék- vagy az ügyfélválasztót
 - Ahol pluszgomb van, ott törlésgombnak is kell lennie
-- LoanPopup reszponzivitása bef
-- Levelező page létrehozása
 - kis user profil box a fejléc jobb oldalára
 
 

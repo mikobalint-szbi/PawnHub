@@ -321,10 +321,10 @@
 
         #note{
             grid-row: 6 / 9;
-            grid-column: 1 / 8;
+            grid-column: 1 / 5;
         }
         #loans{
-            grid-row: 4 / 6;
+            grid-row: 4 / 9;
             grid-column: 5 / 8;
 
             #loanBox{
