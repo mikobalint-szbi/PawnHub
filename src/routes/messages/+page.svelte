@@ -438,6 +438,7 @@
         .message.new {
             margin-top: -2px;
             margin-bottom: 20px;
+
             display: none;
 
             .mHeader.new {
@@ -464,6 +465,7 @@
                     width: 100%;
                     font-size: 17px;
                     padding: 4px 5px;
+                    resize: none;
                 }
             }
             .mFooter.new {

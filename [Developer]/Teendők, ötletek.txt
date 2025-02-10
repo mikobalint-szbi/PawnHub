@@ -1,9 +1,5 @@
 
 Teendők:
-- Levelek mobilnézet
-- Új levél írása box
-- Termékválasztó popup készítése
-- Ügyfélválasztó popup készítése
 - Pluszgombok a megfelelő popupokhoz, amik megnyitják a Termék- vagy az ügyfélválasztót
 - Ahol pluszgomb van, ott törlésgombnak is kell lennie
 - LoanPopup reszponzivitása bef

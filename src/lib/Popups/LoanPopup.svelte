@@ -32,6 +32,7 @@
 
             </div>
 
+            <!-- svelte-ignore a11y-no-static-element-interactions -->
             <div id="popup-grid">
 
                 <div id="money-lent" class="popupGrid-element">
@@ -78,7 +79,8 @@
                     <textarea type="text" class="popup-input" id="p-description"></textarea>
                 </div>
 
-                <div id="customer" class="popupGrid-element">
+                <!-- svelte-ignore a11y-click-events-have-key-events -->
+                <div id="customer" class="popupGrid-element" on:click={()=>open_popup("customerChooser",false, false)}>
                     <div id="customer-row1">
                         <img src="IMG/Global/no-profile-image.png" alt="">
                     </div>
@@ -387,6 +389,10 @@
 
         }
     
+    }
+
+    #customer {
+        cursor: pointer;
     }
 
 

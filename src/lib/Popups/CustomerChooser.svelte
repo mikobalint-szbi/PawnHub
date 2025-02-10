@@ -3,24 +3,24 @@
     import {onMount} from 'svelte';
 
     onMount(()=>{
-	    document.getElementById("image").addEventListener('click', () => {close_popup("productChooser"); open_popup("imageViewer")} )
+	    document.getElementById("image").addEventListener('click', () => {close_popup("customerChooser"); open_popup("imageViewer")} )
     });
 
 
 </script>
 
-<dialog id="productChooser" class="popupDialog">
+<dialog id="customerChooser" class="popupDialog">
     <div id="marginner">
         <div id="popup-inner">
             <div id="topRow">
-                <button on:click={() => close_popup("productChooser")} id="productChooser-backButton" class="topButton popup-backButton">
+                <button on:click={() => close_popup("customerChooser")} id="customerChooser-backButton" class="topButton popup-backButton">
                     <img src="IMG/Global/back.png" alt="">
                     <p>Vissza</p>
                 </button>
                 <div class="popupTitle-container">
-                    <h2 class="popup-title">Termékválasztó</h2>
+                    <h2 class="popup-title">Ügyfélválasztó</h2>
                 </div>
-                <button on:click={() => close_popup("productChooser")} id="popup-closeButton" class="topButton">
+                <button on:click={() => close_popup("customerChooser")} id="popup-closeButton" class="topButton">
                     <img src="IMG/Global/close.png" alt="">
                 </button>
             </div>
@@ -34,34 +34,24 @@
                     </div>
                 </div>
 
-                <div id="productResults">
+                <div id="customerResults">
 
                     {#each {length: 4} as _, i}
-                    <div class="productResult">
-                        <img src="IMG/Global/no-image.png" alt="">
-                        <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
+                    <div class="customerResult">
+                        <img src="IMG/Global/no-profile-image.png" alt="">
+                        <p>Péld Aladárné Teszt Ilona unokahúga</p>
                     </div>
                     {/each}
 
-                    <div class="productResult selected">
-                        <img src="IMG/Global/no-image.png" alt="">
-                        <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
-                    </div>
-
-                    <div class="productResult">
-                        <img src="IMG/Global/no-image.png" alt="">
-                        <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
-                    </div>
-
-                    <div class="productResult selected">
-                        <img src="IMG/Global/no-image.png" alt="">
-                        <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
+                    <div class="customerResult selected">
+                        <img src="IMG/Global/no-profile-image.png" alt="">
+                        <p>Péld Aladárné Teszt Ilona unokahúga</p>
                     </div>
 
                     {#each {length: 14} as _, i}
-                    <div class="productResult">
-                        <img src="IMG/Global/no-image.png" alt="">
-                        <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
+                    <div class="customerResult">
+                        <img src="IMG/Global/no-profile-image.png" alt="">
+                        <p>Péld Aladárné Teszt Ilona unokahúga</p>
                     </div>
                     {/each}
 
@@ -70,7 +60,7 @@
             </div>
 
             <div id="bottomRow">
-                <button on:click={() => save_popup("productChooser")} id="submitButton" class="bottomButton">
+                <button on:click={() => save_popup("customerChooser")} id="submitButton" class="bottomButton">
                     <img src="IMG/Global/select.png" alt="" id="submitImg">
                     <p id="submitText">Kiválasztás</p>
                 </button>
@@ -93,7 +83,7 @@
             width: 80%;
         }
 
-        #productResults {
+        #customerResults {
             grid-row: 2 / -1;
             grid-column: 1 / -1;
         }
@@ -164,12 +154,12 @@
 
         }
 
-        #productResults {
+        #customerResults {
 
             overflow-y: scroll;
             border-top: 1px solid black;
 
-            .productResult {
+            .customerResult {
 
                 background-color: rgb(161, 213, 179);
                 display: flex;
@@ -197,7 +187,7 @@
                 }
             }
 
-            .productResult.selected{
+            .customerResult.selected{
                 background-color: rgb(124, 190, 147);
             }
         }
