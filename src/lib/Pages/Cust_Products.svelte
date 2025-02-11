@@ -187,6 +187,30 @@
         
         }
 
+        #searchBox {
+            .row2{
+                flex-direction: column;
+
+                .col1, .col2 {
+                    width: 100%;
+                }
+                .col2 {
+                    input {
+                        width: 45%;
+                    }
+                }
+            }
+        }
+
+        #searchBox {
+            .row3 {
+                flex-direction: column;
+
+                select, input {
+                    width: 100%;
+                }
+            }
+        }
 
     }
     @media (min-width: 300px) {
@@ -212,11 +236,38 @@
         .productCard .row1 {
             flex-direction: row;
         }
+
+        #searchBox {
+            .row3 {
+                flex-direction: row;
+
+                select, input {
+                    width: 50%;
+                }
+            }
+        }
     
     }
     @media (min-width: 468px) {
 
-   
+        #searchBox {
+            .row2{
+                flex-direction: row;
+                
+                .col1, .col2 {
+                    width: 50%;
+                }
+                .col2 {
+                    input {
+                        width: 40%;
+                    }
+
+                }
+                .col1 {
+                    padding-right: 4px;
+                }
+            }
+        }
 
         .productLocation {
             margin-bottom: 0;
@@ -349,9 +400,8 @@
                     gap: 10px;
                     
                     .col1 {
-                        width: 50%;
+
                         display: flex;
-                        padding-right: 4px;
                         gap: 4px;
                         align-items: baseline;
 
@@ -365,7 +415,6 @@
 
                     }
                     .col2 {
-                        width: 50%;
                         display: flex;
                         justify-content: end;
                         align-items: baseline;
@@ -373,7 +422,6 @@
 
 
                         input {
-                            width: 40%;
                             text-align: end;
                         }
                     }
@@ -386,10 +434,10 @@
 
                     select {
                         border-radius: 0;
-                        width: 50%;
+
                     }
                     input {
-                        width: 50%;
+
                     }
 
 
