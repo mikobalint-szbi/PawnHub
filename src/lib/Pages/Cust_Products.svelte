@@ -85,11 +85,20 @@
                         </optgroup>
                     </select>
 
-                    <input type="text" placeholder="Írja be a város(rész) nevét!">
+                    <input type="text" placeholder="Írja be a város nevét!">
                 </div>
                 <div class="row4">
                     <div id="selectedSettlements">                
-                    
+                        {#each {length: 17} as _, i}
+                        <div class="settlTag" title="Kattintson a törléshez!">
+                            <p class="name">
+                                {Array("Nagykőrös","Jászfelsőszentgyörgy", "Kiskunfélegyháza", "Szob", "Kocsér", "Tiszakécske")[Math.floor(Math.random() * 6)]}
+                            </p>
+                            <button class="delButton">
+                                <img src="IMG/Global/close.png" alt="">
+                            </button>
+                        </div>
+                        {/each}
                     </div>
                 </div>
             </fieldset>
@@ -449,6 +458,42 @@
                         display: flex;
                         background-color: rgb(199, 238, 217);
                         border: 1px solid black;
+                        flex-wrap: wrap;
+                        row-gap: 6px;
+                        column-gap: 4px;
+                        padding: 6px;
+                        overflow: hidden;
+
+                        .settlTag {
+                            display: flex;
+                            background-color: rgb(128, 204, 154);
+                            padding: 3px;
+                            padding-left: 12px;
+                            padding-right: 8px;
+                            gap: 6px;
+                            align-items: center;
+                            border-radius: 20px;
+                            border: 1px solid rgb(106, 137, 116);
+                            cursor: pointer;
+
+                            .name {
+                                margin: 0;
+                            }
+                            .delButton {
+                                height: 16px;
+                                width: 16px;
+                                border-radius: 100%;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                border: 1px solid rgb(101, 145, 109);
+                                background-color: rgb(110, 153, 125);
+
+                                img {
+                                    width: 100%;
+                                }
+                            }
+                        }
                     }
                 }
 

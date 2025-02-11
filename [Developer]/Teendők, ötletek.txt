@@ -1,5 +1,8 @@
 
 Teendők:
+- Customer product page:
+	• "Hozzáadás" gomb a városnév textInput jobb oldalára
+	• dropdown menü a városkereső textInputhoz
 - Bejelentkezés page frissítése, hogy mindkét fél tudjon külön regisztrálni
 - Customer termékkereső oldala
 - Termék adatlapja
