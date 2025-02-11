@@ -167,7 +167,7 @@
         }
 
         .productCard .row1 {
-            //flex-direction: column;
+            flex-direction: column;
         }
 
         .productTitle {
@@ -175,16 +175,23 @@
             font-size: 16px;
         }
 
-
-    }
-    @media (min-width: 300px) {
+        .productLocation {
+            margin-bottom: 8px;
+        }
 
         .productPrice {
             width: 100%;
             p {
-                font-size: 20px;
+                font-size: 30px;
             }
+        
         }
+
+
+    }
+    @media (min-width: 300px) {
+
+
 
     
     }
@@ -201,15 +208,19 @@
             }
         
         }
-    
-    }
-    @media (min-width: 468px) {
 
         .productCard .row1 {
             flex-direction: row;
         }
+    
+    }
+    @media (min-width: 468px) {
 
+   
 
+        .productLocation {
+            margin-bottom: 0;
+        }
 
 
         .productCard .row1 .col1 {
@@ -439,6 +450,7 @@
                 margin-bottom: 10px;
                 border-radius: 7px;
                 box-shadow: 1px 1px 2px black;
+                cursor: pointer;
 
                 .row1 {
                     width: 100%;

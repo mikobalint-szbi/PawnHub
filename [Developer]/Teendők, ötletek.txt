@@ -1,5 +1,6 @@
 
 Teendők:
+- Bejelentkezés page frissítése, hogy mindkét fél tudjon külön regisztrálni
 - Customer termékkereső oldala
 - Termék adatlapja
 - Sorbarendezés comboBox elkészítése (mi alapján, ASC/DESC)
