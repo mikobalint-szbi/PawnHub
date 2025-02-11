@@ -1,5 +1,45 @@
 <script>
 
+import { onMount } from "svelte";
+
+function open_settlDropdown(){
+    
+    let dropdown = document.getElementById("dropdownContent")
+    let input = document.getElementById("settlInput")
+    dropdown.style.width = input.offsetWidth + "px"
+    
+    console.log(input.value)
+
+    if (input.value != ""){ 
+
+        dropdown.style.display = "block"
+
+        if (input.value.length >= 2){
+            // API-kérés:
+            // Lekéri az összeset, ami a megadott két betűvel kezdődik,
+            // azután, amíg az első két betű nem változik, a JS maga végzi a szűrést a harmadik betűtől fogva
+        }
+
+    }
+    else {
+        dropdown.style.display = "none"
+    }
+
+}
+
+onMount(()=> {
+
+	document.getElementById("settlInput").addEventListener('keyup', open_settlDropdown)
+
+    //document.onkeypress = open_settlDropdown
+
+    window.addEventListener("resize", ()=> {
+
+        document.getElementById("dropdownContent").style.width = document.getElementById("settlInput").offsetWidth + "px"
+    })
+
+})
+
 
 </script>
 
@@ -85,8 +125,18 @@
                         </optgroup>
                     </select>
 
-                    <div class="settlInput">
-                        <input type="text" placeholder="Írja be a város nevét!">
+                    <div class="settInput-box">
+                        <div class="settlDropdown">
+                            <input type="text" id="settlInput" placeholder="Írja be a város nevét!">
+                            <div id="dropdownContent">
+
+                                {#each {length: 37} as _, i}
+                                <!-- svelte-ignore a11y-missing-attribute -->
+                                <a >Link 1</a>
+                                {/each}
+                              </div>
+                        </div>
+
                         <button>Hozzáadás</button>
                     </div>
 
@@ -219,14 +269,14 @@
             .row3 {
                 flex-direction: column;
 
-                select, .settlInput {
+                select, .settInput-box {
                     width: 100%;
                 }
             }
         }
 
-        .settlInput {
-            input {
+        .settInput-box {
+            .settlDropdown {
                 width: 55% !important;
             }
             button {
@@ -243,8 +293,8 @@
     }
     @media (min-width: 340px) {
 
-        .settlInput {
-            input {
+        .settInput-box {
+            .settlDropdown {
                 width: 60% !important;
             }
             button {
@@ -267,8 +317,8 @@
             flex-direction: row;
         }
 
-        .settlInput {
-            input {
+        .settInput-box {
+            .settlDropdown {
                 width: 70% !important;
             }
             button {
@@ -325,8 +375,8 @@
             max-width: 1000px;
         }
 
-        .settlInput {
-            input {
+        .settInput-box {
+            .settlDropdown {
                 width: 78% !important;
             }
             button {
@@ -369,8 +419,8 @@
             width: 75%;
         }
 
-        .settlInput {
-            input {
+        .settInput-box {
+            .settlDropdown {
                 width: 65% !important;
             }
             button {
@@ -382,7 +432,7 @@
             .row3 {
                 flex-direction: row;
 
-                select, .settlInput {
+                select, .settInput-box {
                     width: 50%;
                 }
             }
@@ -406,8 +456,8 @@
             width: 50%;
         }
 
-        .settlInput {
-            input {
+        .settInput-box {
+            .settlDropdown {
                 width: 72% !important;
             }
             button {
@@ -507,14 +557,41 @@
                         border-radius: 0;
                         font-size: 16px;
                     }
-                    .settlInput {
+                    .settInput-box {
                         display: flex;
                         gap: 3px;
 
-                        input {
+                        .settlDropdown {
+                            input {
+                                border-radius: 5px 0 0 5px;
+                                padding-left: 4px;
+                                width: 100% !important;
+                            }
 
-                            border-radius: 5px 0 0 5px;
-                            padding-left: 4px;
+                            #dropdownContent {
+                                display: none;
+                                position: absolute;
+                                background-color: #f1f1f1;
+                                width: 100%;
+                                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                                z-index: 1;
+                                max-height: 397px;
+                                overflow-y: auto;
+                                background-color: rgb(199, 238, 217);
+                                border-bottom: 1px solid rgb(106, 137, 116);
+
+                                a {
+                                    color: black;
+                                    padding: 5px 8px;
+                                    border: 1px solid rgb(106, 137, 116);
+                                    border-bottom: none;
+                                    font-size: 16px;
+                                    text-decoration: none;
+                                    display: block;
+                                }
+                            }
+                            
+
                         }
                         button {
                             border-radius: 0 5px 5px 0;
