@@ -73,25 +73,8 @@
     
             <div id="searchBox">
                 <div class="row1">
-                    <input type="text" id="searchBar" placeholder="Termék neve...">
+                    <input type="text" id="searchBar" placeholder="Zálogház neve...">
                 </div>
-                <div class="row2">
-                    <div class="col1">
-                        <label for="selectCategory">Kategória:</label>
-                        <select name="selectCategory" id="selectCategory">
-                            <option value="">Az összes kategória</option>
-                        </select>
-                    </div>
-                    <div class="col2">
-                        <label for="">Ár: </label>
-                        <input type="number" name="minPrice" id="minPrice" placeholder="Min.">
-                        <label for="">&ndash;</label>
-                        <input type="number" name="maxPrice" id="maxPrice" placeholder="Max.">
-                    </div>
-                </div>
-                <!--div class="row3">
-                    <h4>Keresés helye:</h4>
-                </div-->
     
                 <fieldset>
                     <legend>Keresés helye</legend>
@@ -159,7 +142,7 @@
     
                 <div class="row5">
                     <button id="searchButton">
-                        <img src="IMG/Products/search.png" alt="">
+                        <img src="IMG/Global/search.png" alt="">
                         <p>Keresés</p>
                     </button>
                 </div>
@@ -171,15 +154,14 @@
         <div id="main-container">
             
             {#each {length: 17} as _, i}
-            <div class="productCard">
+            <div class="shopCard">
                 <div class="row1">
                     <div class="col1">
-                        <img src="IMG/Global/no-image.png" alt="Termék fotója">
+                        <img src="IMG/Shops/no-shop-image.png" alt="Zálogház fotója">
                     </div>
                     <div class="col2">
-                        <h3 class="productTitle" title="Termék neve">Termék neve Termék neve Termék neve Termék neve Termék neve Termék neve Termék neve Termék neve </h3>
-                        <p class="productCategory">Karóra</p>
-                        <p class="productDescription">
+                        <h3 class="shopTitle" title="Zálogház neve">Zálogház neve Zálogház neve Zálogház neve Zálogház neve Zálogház neve Zálogház neve Zálogház neve Zálogház neve </h3>
+                        <p class="shopDescription">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum rerum exercitationem iste voluptate aperiam dolor qui animi quis fugiat magnam assumenda distinctio, consequuntur corrupti expedita sit autem iusto provident! Dicta?
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. 
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. 
@@ -194,12 +176,9 @@
     
                         </p>
                         <div class="innerRow">
-                            <div class="productLocation">
-                                <p class="productShop">Tóth Pista Zálogház és Ékszerüzlet</p>
-                                <p class="productSettlement">Nagykőrös</p>
-                            </div>
-                            <div class="productPrice">
-                                <p >30 000 000 Ft</p>
+                            <div class="shopLocation">
+                                <p class="shopShop">Tóth Pista Zálogház és Ékszerüzlet</p>
+                                <p class="shopSettlement">Nagykőrös</p>
                             </div>
     
                         </div>
@@ -217,7 +196,7 @@
         
         @media (min-width: 0px) {
     
-            .productDescription {
+            .shopDescription {
                 display: none;
             }
     
@@ -229,42 +208,19 @@
                 width: 90%;
             }
     
-            .productCard .row1 {
+            .shopCard .row1 {
                 flex-direction: column;
             }
     
-            .productTitle {
+            .shopTitle {
                 max-height: 46px;
                 font-size: 16px;
             }
     
-            .productLocation {
+            .shopLocation {
                 margin-bottom: 8px;
             }
-    
-            .productPrice {
-                width: 100%;
-                p {
-                    font-size: 30px;
-                }
-            
-            }
-    
-            #searchBox {
-                .row2{
-                    flex-direction: column;
-    
-                    .col1, .col2 {
-                        width: 100%;
-                    }
-                    .col2 {
-                        input {
-                            width: 45%;
-                        }
-                    }
-                }
-            }
-    
+
             #searchBox {
                 .row3 {
                     flex-direction: column;
@@ -306,14 +262,7 @@
         }
         @media (min-width: 404px) {
     
-            .productPrice {
-                p {
-                    font-size: 24px;
-                }
-            
-            }
-    
-            .productCard .row1 {
+            .shopCard .row1 {
                 flex-direction: row;
             }
     
@@ -330,42 +279,27 @@
         @media (min-width: 468px) {
     
             #searchBox {
-                .row2{
-                    flex-direction: row;
-                    
-                    .col1, .col2 {
-                        width: 50%;
-                    }
-                    .col2 {
-                        input {
-                            width: 40%;
-                        }
-    
-                    }
-                    .col1 {
-                        padding-right: 4px;
-                    }
-                }
+
             }
     
-            .productLocation {
+            .shopLocation {
                 margin-bottom: 0;
             }
     
     
-            .productCard .row1 .col1 {
+            .shopCard .row1 .col1 {
                 width: 35%;
             }
-            .productCard .row1 .col2 {
+            .shopCard .row1 .col2 {
                 width: 65%;
             }
-    
+
     
         }
         /* Small devices (portrait tablets and large phones, 600px and up) */
         @media (min-width: 596px) {
     
-            .productTitle {
+            .shopTitle {
                 max-height: 46px;
                 font-size: 16px;
             }
@@ -393,18 +327,12 @@
                 max-width: 1000px;
             }
     
-            .productTitle {
-                max-height: 52px;
-                font-size: 18px;
+            .shopTitle {
+                max-height: 56px;
+                font-size: 20px;
             }
-    
-            .productPrice {
-                width: 40%;
-                p {
-                    font-size: 26px;
-                }
-            }
-            .productLocation {
+
+            .shopLocation {
                 width: 60%;
             }
     
@@ -412,10 +340,10 @@
                 flex-direction: row;
             }
     
-            .productCard .row1 .col1 {
+            .shopCard .row1 .col1 {
                 width: 25%;
             }
-            .productCard .row1 .col2 {
+            .shopCard .row1 .col2 {
                 width: 75%;
             }
     
@@ -441,21 +369,11 @@
         }
         /* Large devices (laptops/desktops, 992px and up) */
         @media (min-width: 992px) {
-            .productDescription {
+            .shopDescription {
                 max-height: 85px;
                 display: block;
             }
-    
-            .productPrice {
-                p {
-                    font-size: 38px;
-                }
-            }
-    
-            .productPrice, .productLocation {
-                width: 50%;
-            }
-    
+
             .settInput-box {
                 .settlDropdown {
                     width: 72% !important;
@@ -469,7 +387,7 @@
         /* Extra large devices (large laptops and desktops, 1200px and up) */
         @media (min-width: 1230px) {
     
-            .productDescription {
+            .shopDescription {
                 max-height: 105px;
             }
     
@@ -506,6 +424,8 @@
                     }
     
                     .row1 {
+                        margin-bottom: 8px;
+
                         #searchBar {
                             width: 100%;
                             border-radius: 4px 4px 0 0;
@@ -514,39 +434,7 @@
                             padding: 0 8px;
                         }
                     }
-                    .row2 {
-                        display: flex;
-                        padding: 10px 0;
-                        gap: 10px;
-                        
-                        .col1 {
-    
-                            display: flex;
-                            gap: 4px;
-                            align-items: baseline;
-    
-                            p {
-                                width: 50%;
-                            }
-                            select {
-                                width: 100%;
-                                border-radius: 0 !important;
-                                font-size: 16px;
-                            }
-    
-                        }
-                        .col2 {
-                            display: flex;
-                            justify-content: end;
-                            align-items: baseline;
-                            gap: 5px;
-    
-    
-                            input {
-                                text-align: end;
-                            }
-                        }
-                    }
+                    
     
                     .row3 {
                         display: flex;
@@ -687,7 +575,7 @@
                 margin-bottom: 30px;
     
     
-                .productCard {
+                .shopCard {
                     width: 100%;
                     padding: 10px;
                     border: 1px solid black;
@@ -706,6 +594,8 @@
                                 width: 100%;
                                 border: 1px solid black;
                                 border-radius: 4px;
+                                background-color: rgb(161, 213, 179);
+
                             }
                         }
                         .col2 {
@@ -713,19 +603,14 @@
                             display: flex;
                             flex-direction: column;
     
-                            .productTitle {
+                            .shopTitle {
                                 margin-top: 5px;
-                                margin-bottom: 0px;
+                                margin-bottom: 6px;
                                 font-weight: 500;
                                 overflow: hidden;
                             }
-                            .productCategory {
-                                margin-top: -3px;
-                                margin-bottom: 3px;
-                                font-size: 14px;
-                                color: rgb(87, 104, 92);
-                            }
-                            .productDescription {
+
+                            .shopDescription {
                                 overflow: hidden;
                                 margin: 0;
                                 margin-bottom: 20px;
@@ -740,7 +625,7 @@
                                 margin-top: auto;
     
     
-                                .productLocation {
+                                .shopLocation {
     
                                     p {
                                         margin: 0;
@@ -749,15 +634,15 @@
     
                                     }
     
-                                    .productShop {
+                                    .shopShop {
     
                                     }
-                                    .productSettlement {
+                                    .shopSettlement {
                                         font-weight: 500;
                                     }
     
                                 }
-                                .productPrice {
+                                .shopPrice {
                                     display: flex;
                                     justify-content: end;
                                     align-items: center;

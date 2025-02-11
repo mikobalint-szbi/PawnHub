@@ -159,7 +159,7 @@ onMount(()=> {
 
             <div class="row5">
                 <button id="searchButton">
-                    <img src="IMG/Products/search.png" alt="">
+                    <img src="IMG/Global/search.png" alt="">
                     <p>Keresés</p>
                 </button>
             </div>
@@ -394,8 +394,8 @@ onMount(()=> {
         }
 
         .productTitle {
-            max-height: 52px;
-            font-size: 18px;
+            max-height: 56px;
+            font-size: 20px;
         }
 
         .productPrice {
@@ -706,6 +706,7 @@ onMount(()=> {
                             width: 100%;
                             border: 1px solid black;
                             border-radius: 4px;
+                            background-color: rgb(161, 213, 179);
                         }
                     }
                     .col2 {
