@@ -114,7 +114,7 @@
                     <img src="IMG/Global/no-image.png" alt="Termék fotója">
                 </div>
                 <div class="col2">
-                    <h3 class="productTitle" title="Termék neve">Termék neve</h3>
+                    <h3 class="productTitle" title="Termék neve">Termék neve Termék neve Termék neve Termék neve Termék neve Termék neve Termék neve Termék neve </h3>
                     <p class="productCategory">Karóra</p>
                     <p class="productDescription">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum rerum exercitationem iste voluptate aperiam dolor qui animi quis fugiat magnam assumenda distinctio, consequuntur corrupti expedita sit autem iusto provident! Dicta?
@@ -154,42 +154,160 @@
     
     @media (min-width: 0px) {
 
+        .productDescription {
+            display: none;
+        }
+
+        .innerRow {
+            flex-direction: column;
+        }
+
+        #main-container, #searchBox {
+            width: 90%;
+        }
+
+        .productCard .row1 {
+            //flex-direction: column;
+        }
+
+        .productTitle {
+            max-height: 46px;
+            font-size: 16px;
+        }
+
+
     }
     @media (min-width: 300px) {
+
+        .productPrice {
+            width: 100%;
+            p {
+                font-size: 20px;
+            }
+        }
 
     
     }
     @media (min-width: 340px) {
 
+
+
     }
     @media (min-width: 404px) {
 
+        .productPrice {
+            p {
+                font-size: 24px;
+            }
+        
+        }
     
     }
     @media (min-width: 468px) {
 
+        .productCard .row1 {
+            flex-direction: row;
+        }
+
+
+
+
+        .productCard .row1 .col1 {
+            width: 35%;
+        }
+        .productCard .row1 .col2 {
+            width: 65%;
+        }
 
     }
     /* Small devices (portrait tablets and large phones, 600px and up) */
     @media (min-width: 596px) {
 
+        .productTitle {
+            max-height: 46px;
+            font-size: 16px;
+        }
+
+        #main-container, #searchBox {
+            width: 87%;
+            max-width: 1000px;
+        }
+
+
+
     }
     @media (min-width: 768px) {
 
+        #main-container, #searchBox {
+            width: 80%;
+            max-width: 1000px;
+        }
+
+        .productTitle {
+            max-height: 52px;
+            font-size: 18px;
+        }
+
+        .productPrice {
+            width: 40%;
+            p {
+                font-size: 26px;
+            }
+        }
+        .productLocation {
+            width: 60%;
+        }
+
+        .innerRow {
+            flex-direction: row;
+        }
+
+        .productCard .row1 .col1 {
+            width: 25%;
+        }
+        .productCard .row1 .col2 {
+            width: 75%;
+        }
+        
 
     }
     /* Large devices (laptops/desktops, 992px and up) */
     @media (min-width: 992px) {
+        .productDescription {
+            max-height: 85px;
+            display: block;
+        }
 
+        .productPrice {
+            p {
+                font-size: 38px;
+            }
+        }
 
+        .productPrice, .productLocation {
+            width: 50%;
+        }
     }
     /* Extra large devices (large laptops and desktops, 1200px and up) */
     @media (min-width: 1230px) {
+
+        .productDescription {
+            max-height: 105px;
+        }
 
     }
 
 
     #body{
+
+        #head-div {
+            margin-bottom: 8px;
+            #h-col2 {
+                h1 {
+                    margin: 0 !important;
+                }
+            }
+        }
 
         #headDiv-lower {
 
@@ -203,8 +321,6 @@
                 height: fit-content;
                 border-radius: 7px;
                 box-shadow: 1px 1px 2px black;
-                width: 80%;
-                max-width: 1000px;
                 margin-bottom: 20px;
 
                 fieldset {
@@ -312,8 +428,7 @@
 
 
         #main-container {
-            width: 80%;
-            max-width: 1000px;
+
             margin-bottom: 30px;
 
 
@@ -331,16 +446,13 @@
                     gap: 15px;
 
                     .col1 {
-                        width: 25%;
-
-
                         img {
                             width: 100%;
                             border: 1px solid black;
+                            border-radius: 4px;
                         }
                     }
                     .col2 {
-                        width: 75%;
                         padding-right: 10px;
                         display: flex;
                         flex-direction: column;
@@ -348,40 +460,57 @@
                         .productTitle {
                             margin-top: 5px;
                             margin-bottom: 0px;
+                            font-weight: 500;
+                            overflow: hidden;
                         }
                         .productCategory {
-                            margin-top: -4px;
+                            margin-top: -3px;
                             margin-bottom: 3px;
+                            font-size: 14px;
+                            color: rgb(87, 104, 92);
                         }
                         .productDescription {
-                            max-height: 125px;
                             overflow: hidden;
                             margin: 0;
                             margin-bottom: 20px;
+                            font-size: 15px;
+                            color: rgb(28, 31, 29);
+
                         }
 
                         .innerRow {
                             display: flex;
                             width: 100%;
-                            border: 1px solid blue;
                             margin-top: auto;
 
 
                             .productLocation {
-                                width: 50%;
 
                                 p {
                                     margin: 0;
+                                    font-size: 15px;
+                                    color: rgb(35, 61, 46);
+
                                 }
+
+                                .productShop {
+
+                                }
+                                .productSettlement {
+                                    font-weight: 500;
+                                }
+
                             }
                             .productPrice {
                                 display: flex;
                                 justify-content: end;
+                                align-items: center;
 
-                                width: 50%;
+
 
                                 p {
-                                    font-size: 36px;
+                                    color: rgb(26, 110, 60);
+                                    font-weight: 400;
                                     margin: 0;
                                 }
                             }
