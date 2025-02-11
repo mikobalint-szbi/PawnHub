@@ -85,7 +85,11 @@
                         </optgroup>
                     </select>
 
-                    <input type="text" placeholder="Írja be a város nevét!">
+                    <div class="settlInput">
+                        <input type="text" placeholder="Írja be a város nevét!">
+                        <button>Hozzáadás</button>
+                    </div>
+
                 </div>
                 <div class="row4">
                     <div id="selectedSettlements">                
@@ -215,9 +219,18 @@
             .row3 {
                 flex-direction: column;
 
-                select, input {
+                select, .settlInput {
                     width: 100%;
                 }
+            }
+        }
+
+        .settlInput {
+            input {
+                width: 55% !important;
+            }
+            button {
+                width: 45% !important;
             }
         }
 
@@ -230,6 +243,14 @@
     }
     @media (min-width: 340px) {
 
+        .settlInput {
+            input {
+                width: 60% !important;
+            }
+            button {
+                width: 40% !important;
+            }
+        }
 
 
     }
@@ -246,13 +267,12 @@
             flex-direction: row;
         }
 
-        #searchBox {
-            .row3 {
-                flex-direction: row;
-
-                select, input {
-                    width: 50%;
-                }
+        .settlInput {
+            input {
+                width: 70% !important;
+            }
+            button {
+                width: 30% !important;
             }
         }
     
@@ -290,6 +310,7 @@
             width: 65%;
         }
 
+
     }
     /* Small devices (portrait tablets and large phones, 600px and up) */
     @media (min-width: 596px) {
@@ -304,6 +325,14 @@
             max-width: 1000px;
         }
 
+        .settlInput {
+            input {
+                width: 78% !important;
+            }
+            button {
+                width: 22% !important;
+            }
+        }
 
 
     }
@@ -339,7 +368,25 @@
         .productCard .row1 .col2 {
             width: 75%;
         }
+
+        .settlInput {
+            input {
+                width: 65% !important;
+            }
+            button {
+                width: 35% !important;
+            }
+        }
         
+        #searchBox {
+            .row3 {
+                flex-direction: row;
+
+                select, .settlInput {
+                    width: 50%;
+                }
+            }
+        }
 
     }
     /* Large devices (laptops/desktops, 992px and up) */
@@ -358,6 +405,16 @@
         .productPrice, .productLocation {
             width: 50%;
         }
+
+        .settlInput {
+            input {
+                width: 72% !important;
+            }
+            button {
+                width: 28% !important;
+            }
+        }
+
     }
     /* Extra large devices (large laptops and desktops, 1200px and up) */
     @media (min-width: 1230px) {
@@ -401,6 +458,10 @@
                 .row1 {
                     #searchBar {
                         width: 100%;
+                        border-radius: 4px 4px 0 0;
+                        height: 40px;
+                        font-size: 22px;
+                        padding: 0 8px;
                     }
                 }
                 .row2 {
@@ -420,6 +481,7 @@
                         select {
                             width: 100%;
                             border-radius: 0 !important;
+                            font-size: 16px;
                         }
 
                     }
@@ -443,10 +505,22 @@
 
                     select {
                         border-radius: 0;
-
+                        font-size: 16px;
                     }
-                    input {
+                    .settlInput {
+                        display: flex;
+                        gap: 3px;
 
+                        input {
+
+                            border-radius: 5px 0 0 5px;
+                            padding-left: 4px;
+                        }
+                        button {
+                            border-radius: 0 5px 5px 0;
+
+
+                        }
                     }
 
 

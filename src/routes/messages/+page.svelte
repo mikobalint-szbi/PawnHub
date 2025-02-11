@@ -230,7 +230,7 @@
 
     </div>
 
-    <Pages currentPage={3} numOfPages={3}/>
+    <PageSelector currentPage={3} numOfPages={3}/>
 
 </section>
 
