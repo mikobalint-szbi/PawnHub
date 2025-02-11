@@ -234,8 +234,8 @@ onMount(()=> {
         }
 
         .productTitle {
-            max-height: 46px;
-            font-size: 16px;
+            max-height: 50px;
+            font-size: 18px;
         }
 
         .productLocation {
@@ -366,8 +366,8 @@ onMount(()=> {
     @media (min-width: 596px) {
 
         .productTitle {
-            max-height: 46px;
-            font-size: 16px;
+            max-height: 54px;
+            font-size: 19px;
         }
 
         #main-container, #searchBox {
@@ -442,7 +442,7 @@ onMount(()=> {
     /* Large devices (laptops/desktops, 992px and up) */
     @media (min-width: 992px) {
         .productDescription {
-            max-height: 85px;
+            max-height: 83px;
             display: block;
         }
 

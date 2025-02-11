@@ -177,8 +177,9 @@
                         </p>
                         <div class="innerRow">
                             <div class="shopLocation">
-                                <p class="shopShop">Tóth Pista Zálogház és Ékszerüzlet</p>
                                 <p class="shopSettlement">Nagykőrös</p>
+                                <p class="shopAddress">Nursiai Hosszúnevű Szent Szent Szent Szent Szent Benedek u. 337.</p>
+
                             </div>
     
                         </div>
@@ -213,8 +214,8 @@
             }
     
             .shopTitle {
-                max-height: 46px;
-                font-size: 16px;
+                max-height: 51px;
+                font-size: 18px;
             }
     
             .shopLocation {
@@ -237,6 +238,12 @@
                 }
                 button {
                     width: 45% !important;
+                }
+            }
+
+            .shopLocation {
+                .shopSettlement {
+                    font-size: 18px !important;
                 }
             }
     
@@ -300,8 +307,8 @@
         @media (min-width: 596px) {
     
             .shopTitle {
-                max-height: 46px;
-                font-size: 16px;
+                max-height: 59px;
+                font-size: 22px;
             }
     
             #main-container, #searchBox {
@@ -317,6 +324,8 @@
                     width: 22% !important;
                 }
             }
+
+
     
     
         }
@@ -328,12 +337,16 @@
             }
     
             .shopTitle {
-                max-height: 56px;
-                font-size: 20px;
+                max-height: 59px;
+                font-size: 22px;
             }
 
             .shopLocation {
-                width: 60%;
+                width: 100%;
+
+                .shopSettlement {
+                    font-size: 22px !important;
+                }
             }
     
             .innerRow {
@@ -370,7 +383,7 @@
         /* Large devices (laptops/desktops, 992px and up) */
         @media (min-width: 992px) {
             .shopDescription {
-                max-height: 85px;
+                max-height: 83px;
                 display: block;
             }
 
@@ -382,13 +395,24 @@
                     width: 28% !important;
                 }
             }
+
+            .shopLocation {
+                .shopSettlement {
+                    font-size: 24px !important;
+                }
+            }
+
+            .shopTitle {
+                max-height: 65px;
+                font-size: 24px;
+            }
     
         }
         /* Extra large devices (large laptops and desktops, 1200px and up) */
         @media (min-width: 1230px) {
     
             .shopDescription {
-                max-height: 105px;
+                max-height: 102px;
             }
     
         }
@@ -623,22 +647,27 @@
                                 display: flex;
                                 width: 100%;
                                 margin-top: auto;
-    
+
     
                                 .shopLocation {
-    
+                                    display: flex;
+                                    flex-direction: column;
+
                                     p {
                                         margin: 0;
-                                        font-size: 15px;
+  
                                         color: rgb(35, 61, 46);
-    
+                                        text-align: right;
                                     }
-    
-                                    .shopShop {
-    
-                                    }
+
                                     .shopSettlement {
                                         font-weight: 500;
+
+
+                                    }
+    
+                                    .shopAddress {
+                                        font-size: 16px;
                                     }
     
                                 }
