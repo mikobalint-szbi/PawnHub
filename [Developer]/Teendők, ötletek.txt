@@ -1,7 +1,10 @@
 
 Teendők:
+- Az Ügyfél felülethez egy non-editable Loan és Product popupot készíteni (inputok helyett p), ahol a Customer mezőt kicserélem nekik Shop mezőre
+- Customer's Product popup mobilnézet javítása
 - Zálogház adatlapja
 - Termék adatlapja
+- A Customer's Loan page-nél a zálogos oszlopra kattintva a zálogház PawnHub-oldalára jutunk
 - Bejelentkezés page frissítése, hogy mindkét fél tudjon külön regisztrálni
 - Sorbarendezés comboBox elkészítése (mi alapján, ASC/DESC)
 - Pluszgombok a megfelelő popupokhoz, amik megnyitják a Termék- vagy az ügyfélválasztót
