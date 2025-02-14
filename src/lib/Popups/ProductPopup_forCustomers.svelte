@@ -109,6 +109,7 @@
         
         #image{
             grid-row: 1 / 5;
+
         }
 
         #description{
@@ -172,8 +173,6 @@
     }
     /* Small devices (portrait tablets and large phones, 600px and up) */
     @media (min-width: 596px) {
-
-
 
         #image{
             grid-row: 1 / 4;
@@ -411,10 +410,12 @@
 
                 #shop-row1{
                     display: flex;
-                    height: 75%;
-                    align-items: center;
+                        
+                    align-items: end;
                     justify-content: center;
                     width: 100%;
+                    padding-bottom: 5px;
+
 
                     img{
                         background-color: rgb(160, 206, 180);

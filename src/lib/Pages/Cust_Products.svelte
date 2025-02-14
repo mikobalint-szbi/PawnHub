@@ -35,7 +35,10 @@ onMount(()=> {
 
     window.addEventListener("resize", ()=> {
 
-        document.getElementById("dropdownContent").style.width = document.getElementById("settlInput").offsetWidth + "px"
+        if (document.getElementById("dropdownContent") != null){
+
+            document.getElementById("dropdownContent").style.width = document.getElementById("settlInput").offsetWidth + "px"
+        }
     })
 
 })

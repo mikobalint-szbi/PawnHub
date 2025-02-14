@@ -218,6 +218,20 @@
             padding: 30px;
         }
     }
+    @media (min-width: 768px) {
+
+        .optionBox{
+            width: 39%;
+        }
+
+    }
+    @media (min-width: 868px) {
+
+        .optionBox{
+            width: 32%;
+        }
+
+    }
     /* Large devices (laptops/desktops, 992px and up) */
     @media (min-width: 992px) {
         
