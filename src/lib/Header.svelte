@@ -165,7 +165,7 @@
         #rightBox {
             height: 100%;
             padding: 7px;
-            margin-right: 3px;
+            margin-right: 7px;
             width: 60px;
 
             #userBox{

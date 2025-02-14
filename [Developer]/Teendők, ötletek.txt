@@ -3,7 +3,7 @@ Teendők:
 - Customer's Product popup mobilnézet javítása
 - Zálogház adatlapja
 - Termék adatlapja
-- Fiókbeállítások oldal
+- Fiókbeállítások oldal Zálogosoknak és Ügyfeleknek (a zálogos a saját homePage-ét is ott tudja szerkeszteni)
 - A Customer's Loan page-nél a zálogos oszlopra kattintva a zálogház PawnHub-oldalára jutunk
 - Bejelentkezés page frissítése, hogy mindkét fél tudjon külön regisztrálni
 - Sorbarendezés comboBox elkészítése (mi alapján, ASC/DESC)

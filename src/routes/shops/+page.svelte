@@ -157,7 +157,9 @@
         <div id="main-container">
             
             {#each {length: 17} as _, i}
-            <div class="shopCard">
+            <!-- svelte-ignore a11y-click-events-have-key-events -->
+            <!-- svelte-ignore a11y-no-static-element-interactions -->
+            <div class="shopCard" on:click={()=>location.assign('shop')}>
                 <div class="row1">
                     <div class="col1">
                         <img src="IMG/Shops/no-shop-image.png" alt="Zálogház fotója">
