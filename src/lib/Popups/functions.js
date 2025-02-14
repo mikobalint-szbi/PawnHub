@@ -45,6 +45,11 @@ export function open_popup(popupID, create, backButton){
 
     }
 
+    if (document.getElementById("userDropdown") != null){
+
+        document.getElementById("userDropdown").style.display = "none"
+    }
+
     let popup = document.getElementById(popupID)
 
 
