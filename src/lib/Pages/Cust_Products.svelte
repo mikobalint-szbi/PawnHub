@@ -220,37 +220,9 @@ onMount(()=> {
     
     @media (min-width: 0px) {
 
-        .productDescription {
-            display: none;
-        }
-
-        .innerRow {
-            flex-direction: column;
-        }
 
         #main-container, #searchBox {
             width: 90%;
-        }
-
-        .productCard .row1 {
-            flex-direction: column;
-        }
-
-        .productTitle {
-            max-height: 50px;
-            font-size: 18px;
-        }
-
-        .productLocation {
-            margin-bottom: 8px;
-        }
-
-        .productPrice {
-            width: 100%;
-            p {
-                font-size: 30px;
-            }
-        
         }
 
         #searchBox {
@@ -309,17 +281,6 @@ onMount(()=> {
     }
     @media (min-width: 404px) {
 
-        .productPrice {
-            p {
-                font-size: 24px;
-            }
-        
-        }
-
-        .productCard .row1 {
-            flex-direction: row;
-        }
-
         .settInput-box {
             .settlDropdown {
                 width: 70% !important;
@@ -351,27 +312,9 @@ onMount(()=> {
             }
         }
 
-        .productLocation {
-            margin-bottom: 0;
-        }
-
-
-        .productCard .row1 .col1 {
-            width: 35%;
-        }
-        .productCard .row1 .col2 {
-            width: 65%;
-        }
-
-
     }
     /* Small devices (portrait tablets and large phones, 600px and up) */
     @media (min-width: 596px) {
-
-        .productTitle {
-            max-height: 54px;
-            font-size: 19px;
-        }
 
         #main-container, #searchBox {
             width: 87%;
@@ -396,32 +339,6 @@ onMount(()=> {
             max-width: 1000px;
         }
 
-        .productTitle {
-            max-height: 56px;
-            font-size: 20px;
-        }
-
-        .productPrice {
-            width: 40%;
-            p {
-                font-size: 26px;
-            }
-        }
-        .productLocation {
-            width: 60%;
-        }
-
-        .innerRow {
-            flex-direction: row;
-        }
-
-        .productCard .row1 .col1 {
-            width: 25%;
-        }
-        .productCard .row1 .col2 {
-            width: 75%;
-        }
-
         .settInput-box {
             .settlDropdown {
                 width: 65% !important;
@@ -444,20 +361,6 @@ onMount(()=> {
     }
     /* Large devices (laptops/desktops, 992px and up) */
     @media (min-width: 992px) {
-        .productDescription {
-            max-height: 83px;
-            display: block;
-        }
-
-        .productPrice {
-            p {
-                font-size: 38px;
-            }
-        }
-
-        .productPrice, .productLocation {
-            width: 50%;
-        }
 
         .settInput-box {
             .settlDropdown {
@@ -472,9 +375,7 @@ onMount(()=> {
     /* Extra large devices (large laptops and desktops, 1200px and up) */
     @media (min-width: 1230px) {
 
-        .productDescription {
-            max-height: 105px;
-        }
+
 
     }
 
@@ -689,95 +590,6 @@ onMount(()=> {
 
             margin-bottom: 30px;
 
-
-            .productCard {
-                width: 100%;
-                padding: 10px;
-                border: 1px solid black;
-                margin-bottom: 10px;
-                border-radius: 7px;
-                box-shadow: 1px 1px 2px black;
-                cursor: pointer;
-
-                .row1 {
-                    width: 100%;
-                    display: flex;
-                    gap: 15px;
-
-                    .col1 {
-                        img {
-                            width: 100%;
-                            border: 1px solid black;
-                            border-radius: 4px;
-                            background-color: rgb(161, 213, 179);
-                        }
-                    }
-                    .col2 {
-                        padding-right: 10px;
-                        display: flex;
-                        flex-direction: column;
-
-                        .productTitle {
-                            margin-top: 5px;
-                            margin-bottom: 0px;
-                            font-weight: 500;
-                            overflow: hidden;
-                        }
-                        .productCategory {
-                            margin-top: -3px;
-                            margin-bottom: 3px;
-                            font-size: 14px;
-                            color: rgb(87, 104, 92);
-                        }
-                        .productDescription {
-                            overflow: hidden;
-                            margin: 0;
-                            margin-bottom: 20px;
-                            font-size: 15px;
-                            color: rgb(28, 31, 29);
-
-                        }
-
-                        .innerRow {
-                            display: flex;
-                            width: 100%;
-                            margin-top: auto;
-
-
-                            .productLocation {
-
-                                p {
-                                    margin: 0;
-                                    font-size: 15px;
-                                    color: rgb(35, 61, 46);
-
-                                }
-
-                                .productShop {
-
-                                }
-                                .productSettlement {
-                                    font-weight: 500;
-                                }
-
-                            }
-                            .productPrice {
-                                display: flex;
-                                justify-content: end;
-                                align-items: center;
-
-
-
-                                p {
-                                    color: rgb(26, 110, 60);
-                                    font-weight: 400;
-                                    margin: 0;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
         }
 
     }

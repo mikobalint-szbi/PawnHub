@@ -109,6 +109,44 @@
                 </div>
                 <div class="pageContent" id="pageContent2">
     
+                    {#each {length: 17} as _, i}
+                    <div class="productCard">
+                        <div class="row1">
+                            <div class="col1">
+                                <img src="IMG/Global/no-image.png" alt="Termék fotója">
+                            </div>
+                            <div class="col2">
+                                <h3 class="productTitle" title="Termék neve">Termék neve Termék neve Termék neve Termék neve Termék neve Termék neve Termék neve Termék neve </h3>
+                                <p class="productCategory">Karóra</p>
+                                <p class="productDescription">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum rerum exercitationem iste voluptate aperiam dolor qui animi quis fugiat magnam assumenda distinctio, consequuntur corrupti expedita sit autem iusto provident! Dicta?
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            
+                                </p>
+                                <div class="innerRow">
+                                    <div class="productLocation">
+                                        <p class="productShop">Tóth Pista Zálogház és Ékszerüzlet</p>
+                                        <p class="productSettlement">Nagykőrös</p>
+                                    </div>
+                                    <div class="productPrice">
+                                        <p >30 000 000 Ft</p>
+                                    </div>
+            
+                                </div>
+            
+                            </div>
+                        </div>
+                    </div>
+                    {/each}
                 </div>
             </div>
 
@@ -311,6 +349,7 @@
                 }
                 #pageContent2 {
                     display: none;
+                    flex-direction: column;
                 }
 
 
