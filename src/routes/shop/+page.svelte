@@ -36,7 +36,7 @@
             </div>
             <div class="col2">
                 <div class="nameField">
-                    <p class="name">Tóth Pista Zálogház és Ékszerüzlet</p>
+                    <p class="name">Tóth Pista Zálogház és Ékszerüzlet Ékszerüzlet Ékszerüzlet Ékszerüzlet Ékszerüzlet</p>
                     <p class="estab">Alapítva: 2015</p>
                 </div>
                 <div class="contactsField">
@@ -197,7 +197,7 @@
 
         #main-container {
             min-height: 100vh;
-            max-width: 1000px;
+            max-width: 1200px;
             width: 80%;
             margin-top: 60px;
             display: flex;
@@ -210,20 +210,27 @@
             }
 
             #mRow1 {
-                height: 350px;
-                gap: 10px;
+                min-height: 350px !important;
+                gap: 18px;
+
+                box-shadow: 1px -0.5px 1px rgba($color: black, $alpha: 0.3),
+                                -1px -0.5px 1px rgba($color: black, $alpha: 0.3);
+                padding: 20px;
+                border: 1px solid rgb(141, 141, 141);
+                border-bottom: none;
 
 
                 .col1 {
 
-                    width: 40%;
-                    width: 360px;
+                    min-width: 350px;
+                    width: 350px;
                     display: flex;
                     justify-content: start;
+                    flex: 0 0 360px;
                     
 
                     img {
-                        height: 100%;
+                        width: 100%;
                         background-color: rgb(161, 213, 179);
                         border: 1px solid black;
                         border-radius: 5px;
@@ -232,7 +239,7 @@
                 }
                 .col2 {
 
-                    flex-grow: 10;
+                    flex-grow: 1;
                     display: flex;
                     flex-direction: column;
                     gap: 10px;
@@ -242,6 +249,7 @@
                             margin: 0;
                             font-weight: 500;
                             font-size: 30px;
+
                         }
                         .estab {
                             margin-top: -3px;
