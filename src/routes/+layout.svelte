@@ -3,7 +3,6 @@
 	import './style.scss';
 	import './popup.scss';
 	import './tablePages.scss';
-	import './productCard.scss';
 	import ProductPopup from '$lib/Popups/ProductPopup.svelte';
 	import ImageViewer from '$lib/Popups/ImageViewer.svelte';
 	import CustomerPopup from '$lib/Popups/CustomerPopup.svelte';
