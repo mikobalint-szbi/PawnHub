@@ -105,10 +105,78 @@
                         Odio nesciunt, voluptatum expedita itaque placeat deleniti esse, debitis dolorem reprehenderit aspernatur officiis quibusdam cumque, maxime quisquam vel ipsam optio officia? Tempore, placeat! Praesentium recusandae, neque magnam quaerat quas non?
                         Fugiat sint, numquam nostrum dolorem eius facere quae amet soluta dolorum! Distinctio aspernatur sint, nihil atque natus veritatis quos magnam. Officia possimus quaerat pariatur aliquid eos quo quasi ut fuga?
                         Animi harum, voluptates maxime saepe quidem neque cumque iure, fugiat repudiandae voluptas expedita rerum nam, dolore laborum recusandae et ducimus? Quam aliquam recusandae voluptate molestias consequuntur, doloremque libero maxime odio!
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita iure magnam, necessitatibus sint nostrum doloremque consectetur sit amet eos soluta cum, debitis ut distinctio nihil eaque alias deserunt dolorum cumque?
+                        Autem beatae rerum optio fugiat minus laboriosam id neque harum, tenetur, quia sint ad voluptate hic eum, et fugit corporis ex! Atque incidunt eius esse cum quos perspiciatis aliquam accusamus?
+                        Odio nesciunt, voluptatum expedita itaque placeat deleniti esse, debitis dolorem reprehenderit aspernatur officiis quibusdam cumque, maxime quisquam vel ipsam optio officia? Tempore, placeat! Praesentium recusandae, neque magnam quaerat quas non?
+                        Fugiat sint, numquam nostrum dolorem eius facere quae amet soluta dolorum! Distinctio aspernatur sint, nihil atque natus veritatis quos magnam. Officia possimus quaerat pariatur aliquid eos quo quasi ut fuga?
+                        Animi harum, voluptates maxime saepe quidem neque cumque iure, fugiat repudiandae voluptas expedita rerum nam, dolore laborum recusandae et ducimus? Quam aliquam recusandae voluptate molestias consequuntur, doloremque libero maxime odio!
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita iure magnam, necessitatibus sint nostrum doloremque consectetur sit amet eos soluta cum, debitis ut distinctio nihil eaque alias deserunt dolorum cumque?
+                        Autem beatae rerum optio fugiat minus laboriosam id neque harum, tenetur, quia sint ad voluptate hic eum, et fugit corporis ex! Atque incidunt eius esse cum quos perspiciatis aliquam accusamus?
+                        Odio nesciunt, voluptatum expedita itaque placeat deleniti esse, debitis dolorem reprehenderit aspernatur officiis quibusdam cumque, maxime quisquam vel ipsam optio officia? Tempore, placeat! Praesentium recusandae, neque magnam quaerat quas non?
+                        Fugiat sint, numquam nostrum dolorem eius facere quae amet soluta dolorum! Distinctio aspernatur sint, nihil atque natus veritatis quos magnam. Officia possimus quaerat pariatur aliquid eos quo quasi ut fuga?
+                        Animi harum, voluptates maxime saepe quidem neque cumque iure, fugiat repudiandae voluptas expedita rerum nam, dolore laborum recusandae et ducimus? Quam aliquam recusandae voluptate molestias consequuntur, doloremque libero maxime odio!
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita iure magnam, necessitatibus sint nostrum doloremque consectetur sit amet eos soluta cum, debitis ut distinctio nihil eaque alias deserunt dolorum cumque?
+                        Autem beatae rerum optio fugiat minus laboriosam id neque harum, tenetur, quia sint ad voluptate hic eum, et fugit corporis ex! Atque incidunt eius esse cum quos perspiciatis aliquam accusamus?
+                        Odio nesciunt, voluptatum expedita itaque placeat deleniti esse, debitis dolorem reprehenderit aspernatur officiis quibusdam cumque, maxime quisquam vel ipsam optio officia? Tempore, placeat! Praesentium recusandae, neque magnam quaerat quas non?
+                        Fugiat sint, numquam nostrum dolorem eius facere quae amet soluta dolorum! Distinctio aspernatur sint, nihil atque natus veritatis quos magnam. Officia possimus quaerat pariatur aliquid eos quo quasi ut fuga?
+                        Animi harum, voluptates maxime saepe quidem neque cumque iure, fugiat repudiandae voluptas expedita rerum nam, dolore laborum recusandae et ducimus? Quam aliquam recusandae voluptate molestias consequuntur, doloremque libero maxime odio!
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita iure magnam, necessitatibus sint nostrum doloremque consectetur sit amet eos soluta cum, debitis ut distinctio nihil eaque alias deserunt dolorum cumque?
+                        Autem beatae rerum optio fugiat minus laboriosam id neque harum, tenetur, quia sint ad voluptate hic eum, et fugit corporis ex! Atque incidunt eius esse cum quos perspiciatis aliquam accusamus?
+                        Odio nesciunt, voluptatum expedita itaque placeat deleniti esse, debitis dolorem reprehenderit aspernatur officiis quibusdam cumque, maxime quisquam vel ipsam optio officia? Tempore, placeat! Praesentium recusandae, neque magnam quaerat quas non?
+                        Fugiat sint, numquam nostrum dolorem eius facere quae amet soluta dolorum! Distinctio aspernatur sint, nihil atque natus veritatis quos magnam. Officia possimus quaerat pariatur aliquid eos quo quasi ut fuga?
+                        Animi harum, voluptates maxime saepe quidem neque cumque iure, fugiat repudiandae voluptas expedita rerum nam, dolore laborum recusandae et ducimus? Quam aliquam recusandae voluptate molestias consequuntur, doloremque libero maxime odio!
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita iure magnam, necessitatibus sint nostrum doloremque consectetur sit amet eos soluta cum, debitis ut distinctio nihil eaque alias deserunt dolorum cumque?
+                        Autem beatae rerum optio fugiat minus laboriosam id neque harum, tenetur, quia sint ad voluptate hic eum, et fugit corporis ex! Atque incidunt eius esse cum quos perspiciatis aliquam accusamus?
+                        Odio nesciunt, voluptatum expedita itaque placeat deleniti esse, debitis dolorem reprehenderit aspernatur officiis quibusdam cumque, maxime quisquam vel ipsam optio officia? Tempore, placeat! Praesentium recusandae, neque magnam quaerat quas non?
+                        Fugiat sint, numquam nostrum dolorem eius facere quae amet soluta dolorum! Distinctio aspernatur sint, nihil atque natus veritatis quos magnam. Officia possimus quaerat pariatur aliquid eos quo quasi ut fuga?
+                        Animi harum, voluptates maxime saepe quidem neque cumque iure, fugiat repudiandae voluptas expedita rerum nam, dolore laborum recusandae et ducimus? Quam aliquam recusandae voluptate molestias consequuntur, doloremque libero maxime odio!
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita iure magnam, necessitatibus sint nostrum doloremque consectetur sit amet eos soluta cum, debitis ut distinctio nihil eaque alias deserunt dolorum cumque?
+                        Autem beatae rerum optio fugiat minus laboriosam id neque harum, tenetur, quia sint ad voluptate hic eum, et fugit corporis ex! Atque incidunt eius esse cum quos perspiciatis aliquam accusamus?
+                        Odio nesciunt, voluptatum expedita itaque placeat deleniti esse, debitis dolorem reprehenderit aspernatur officiis quibusdam cumque, maxime quisquam vel ipsam optio officia? Tempore, placeat! Praesentium recusandae, neque magnam quaerat quas non?
+                        Fugiat sint, numquam nostrum dolorem eius facere quae amet soluta dolorum! Distinctio aspernatur sint, nihil atque natus veritatis quos magnam. Officia possimus quaerat pariatur aliquid eos quo quasi ut fuga?
+                        Animi harum, voluptates maxime saepe quidem neque cumque iure, fugiat repudiandae voluptas expedita rerum nam, dolore laborum recusandae et ducimus? Quam aliquam recusandae voluptate molestias consequuntur, doloremque libero maxime odio!
                     </p>
                 </div>
                 <div class="pageContent" id="pageContent2">
     
+                    {#each {length: 17} as _, i}
+                    <div class="productCard">
+                        <div class="row1">
+                            <div class="col1">
+                                <img src="IMG/Global/no-image.png" alt="Termék fotója">
+                            </div>
+                            <div class="col2">
+                                <h3 class="productTitle" title="Termék neve">Termék neve Termék neve Termék neve Termék neve Termék neve Termék neve Termék neve Termék neve </h3>
+                                <p class="productCategory">Karóra</p>
+                                <p class="productDescription">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum rerum exercitationem iste voluptate aperiam dolor qui animi quis fugiat magnam assumenda distinctio, consequuntur corrupti expedita sit autem iusto provident! Dicta?
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            
+                                </p>
+                                <div class="innerRow">
+                                    <div class="productLocation">
+                                        <p class="productShop">Tóth Pista Zálogház és Ékszerüzlet</p>
+                                        <p class="productSettlement">Nagykőrös</p>
+                                    </div>
+                                    <div class="productPrice">
+                                        <p >30 000 000 Ft</p>
+                                    </div>
+            
+                                </div>
+            
+                            </div>
+                        </div>
+                    </div>
+                    {/each}
                 </div>
             </div>
 
@@ -185,6 +253,7 @@
                         flex-direction: column;
                         padding-left: 30px;
                         gap: 8px;
+                        margin-bottom: 15px;
 
                         .contactRow {
                             display: flex;
@@ -255,6 +324,10 @@
                                 -1px -0.5px 1px rgba($color: black, $alpha: 0.3),
                                 0px 0.8px 0px rgba($color: black, $alpha: 0.3);
 
+                    padding-top: 20px;
+                    padding-bottom: 20px;
+                    padding-right: 6px;
+                    
                     .pageTags {
                         display: flex;
                         
@@ -266,7 +339,7 @@
                             width: 130px;
                             text-align: center;
                             height: 39px;
-                            margin-top: -40px;
+                            margin-top: -60px;
                             margin-left: -1px;
                             cursor: pointer;
                             background-color: rgb(164, 199, 175);
@@ -297,8 +370,29 @@
                     }
 
                     .pageContent {
+                        padding: 5px 20px;
 
-                        padding: 20px;
+                        max-height: 90vh;
+                        min-height: 500px;
+                        overflow: auto;
+
+                    }
+
+                    
+                    #pageContent1 {
+
+                    }
+                    #pageContent2 {
+                        display: none;
+                        flex-direction: column;
+
+                        .productCard {
+                            background-color: rgb(161, 213, 179);
+
+                            .productImage {
+                                background-color: rgb(160, 206, 180);
+                            }
+                        }
 
                     }
                 }
@@ -306,12 +400,6 @@
 
 
 
-                #pageContent1 {
-
-                }
-                #pageContent2 {
-                    display: none;
-                }
 
 
                 p {
