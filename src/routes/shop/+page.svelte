@@ -22,6 +22,9 @@
     function close_newMessage () {
         document.getElementById("pageTag3").style.display = "none"
         togglePages("pageTag1")
+        document.querySelector("input#receiver").value = ""
+        document.querySelector("input#topic").value = ""
+        document.querySelector("textarea#messageBody").textContent = ""
     }
 
     function open_newMessage () {
@@ -64,7 +67,8 @@
 
         <div id="mRow1" class="mRow">
             <div class="col1">
-                <img src="IMG/Shops/no-shop-image.png" alt="">
+                <div class="image"></div>
+
             </div>
             <div class="col2">
                 <div class="nameField">
@@ -218,7 +222,7 @@
                             <div class="col1 mhCol">
                                 <img src="IMG/Messages/out.png" alt="">
                             </div>
-                            <div class="col2 mhCol" alt="Feladó" title="Feladó">
+                            <div class="col2 mhCol" alt="Címzett" title="Címzett">
                                 <input type="text" name="receiver" id="receiver" placeholder="Címzett" alt="Címzett" class="messageInput" disabled>
                             </div>
                             <div class="col3 mhCol" alt="Tárgy" title="Tárgy">
@@ -254,6 +258,79 @@
 </section>
 <style lang="scss">
 
+        
+    @media (min-width: 0px) {
+        
+
+    }
+    @media (min-width: 300px) {
+
+
+    }
+    @media (min-width: 340px) {
+
+
+    }
+    @media (min-width: 404px) {
+
+        
+    }
+    @media (min-width: 468px) {
+
+
+    }
+    /* Small devices (portrait tablets and large phones, 600px and up) */
+    @media (min-width: 596px) {
+
+
+    }
+    @media (min-width: 768px) {
+
+    }   
+    /* Large devices (laptops/desktops, 992px and up) */
+    @media (min-width: 992px) {
+
+        #main-container, #head-div {
+            width: 95%;
+        }
+
+    }
+    @media (min-width: 1111px){
+
+        #main-container, #head-div {
+            width: 90%;
+        }
+
+        #mRow1 {
+            .col1 {
+                flex-grow: 6;
+            }
+            .col2 {
+                flex-grow: 8;
+            }
+        }
+    }
+    /* Extra large devices (large laptops and desktops, 1200px and up) */
+    @media (min-width: 1230px) {
+        
+        #main-container, #head-div {
+            width: 80%;
+        }
+
+        #mRow1 {
+            .col1 {
+                flex-grow: 5;
+            }
+            .col2 {
+                flex-grow: 8;
+            }
+        }
+
+
+        
+    }
+
+
     #body {
         width: 100%;
         display: flex;
@@ -261,7 +338,6 @@
 
         #head-div {
             max-width: 1200px;
-            width: 80%;
 
             #h-col1 {
                 justify-content: start;
@@ -271,7 +347,6 @@
         #main-container {
             min-height: 100vh;
             max-width: 1200px;
-            width: 80%;
             margin-top: 15px;
             display: flex;
             flex-direction: column;
@@ -297,24 +372,25 @@
 
                 .col1 {
 
-                    min-width: 350px;
-                    width: 350px;
                     display: flex;
                     justify-content: start;
-                    flex: 0 0 360px;
+                    flex-basis: 0;
                     
 
-                    img {
+                    .image {
                         width: 100%;
                         background-color: rgb(161, 213, 179);
                         border: 1px solid black;
                         border-radius: 5px;
+                        background-image: url("IMG/Shops/no-shop-image.png");
+                        background-size: cover;
+                        background-position: center;
                     }
 
                 }
                 .col2 {
+                    flex-basis: 0;
 
-                    flex-grow: 1;
                     display: flex;
                     flex-direction: column;
                     gap: 10px;

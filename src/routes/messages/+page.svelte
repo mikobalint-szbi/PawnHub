@@ -135,7 +135,7 @@
                 <div class="col1 mhCol">
                     <img src="IMG/Messages/out.png" alt="">
                 </div>
-                <div class="col2 mhCol" alt="Feladó" title="Feladó">
+                <div class="col2 mhCol" alt="Címzett" title="Címzett">
                     <input type="text" name="receiver" id="receiver" placeholder="Címzett" alt="Címzett" class="messageInput">
                 </div>
                 <div class="col3 mhCol" alt="Tárgy" title="Tárgy">
