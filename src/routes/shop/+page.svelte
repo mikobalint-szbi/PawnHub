@@ -204,6 +204,15 @@
             flex-direction: column;
             margin-bottom: 30px;
 
+            box-shadow: 1px -0.5px 1px rgba($color: black, $alpha: 0.3),
+                        -1px -0.5px 1px rgba($color: black, $alpha: 0.3),
+                        0px 0.8px 0px rgba($color: black, $alpha: 0.3);
+
+                padding: 20px;
+                border: 1px solid rgb(141, 141, 141);
+                //border-bottom: none;
+                border-radius: 4px;
+
             .mRow {
                 width: 100%;
                 display: flex;
@@ -212,13 +221,6 @@
             #mRow1 {
                 min-height: 350px !important;
                 gap: 18px;
-
-                box-shadow: 1px -0.5px 1px rgba($color: black, $alpha: 0.3),
-                                -1px -0.5px 1px rgba($color: black, $alpha: 0.3);
-                padding: 20px;
-                border: 1px solid rgb(141, 141, 141);
-                border-bottom: none;
-
 
                 .col1 {
 
@@ -387,9 +389,9 @@
                     }
 
                     
-                    #pageContent1 {
+                    /*#pageContent1 {
 
-                    }
+                    }*/
                     #pageContent2 {
                         display: none;
                         flex-direction: column;

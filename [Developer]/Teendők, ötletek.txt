@@ -1,6 +1,8 @@
 
 Teendők:
+- Shop page responsivity
 - Shop page visszagomb ‼️
+- Product page (shop page másolata)
 - Customer's Product popup mobilnézet javítása
 - Zálogház adatlapja
 - Termék adatlapja
