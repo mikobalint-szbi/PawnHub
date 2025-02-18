@@ -2,7 +2,6 @@
     import {open_newMessage, close_newMessage} from "$lib/Scripts/newMessage.js";
     import PageSelector from '$lib/PageSelector.svelte';
     import { onMount } from "svelte";
-  
 
     function psOption1_clicked(){
         document.getElementById("ps-option1").classList.add("active")
@@ -272,6 +271,10 @@
         margin-top: 0px;
         margin-bottom: 30px;
 
+    }
+
+    .message.new {
+        display: none;
     }
 
 

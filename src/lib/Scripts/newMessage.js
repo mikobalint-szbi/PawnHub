@@ -24,4 +24,6 @@ export function close_newMessage(){
     document.querySelector("textarea#messageBody").textContent = ""
     document.querySelector("input#customerRequest").checked = false
 
+
+
 }

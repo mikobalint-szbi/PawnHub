@@ -14,7 +14,8 @@ Teendők:
 - Ahol pluszgomb van, ott törlésgombnak is kell lennie
 - animáció az userProfileBox dropdownjának megjelenítésére és eltüntetésére
 
-
+Miután lesz backend:
+- A Shop és Product page-eknél a címzett mindig az aktuális zálogház legyen, és át se lehessen írni
 
 --------------------------------------
 

@@ -17,8 +17,18 @@
 
         document.getElementById("pageContent" + id).style.display = "flex"
 
-
     }
+
+    function close_newMessage () {
+        document.getElementById("pageTag3").style.display = "none"
+        togglePages("pageTag1")
+    }
+
+    function open_newMessage () {
+        document.getElementById("pageTag3").style.display = "block"
+        togglePages("pageTag3")
+    }
+
 
     onMount(()=>{
         document.querySelectorAll(".pageTag").forEach((e)=>{
@@ -96,7 +106,7 @@
                     </div>
                 </div>
                 <div class="buttonField">
-                    <button id="sendMessage">
+                    <button id="sendMessage" on:click={open_newMessage}>
                         <img src="IMG/Messages/mail.png" alt="Üzenet küldése">
                         <p>Üzenet küldése</p>
                     </button>
@@ -203,7 +213,33 @@
                 </div>
                 <div class="pageContent" id="pageContent3">
                     
-                    hello
+                    <div class="message new">
+                        <div class="mHeader new">
+                            <div class="col1 mhCol">
+                                <img src="IMG/Messages/out.png" alt="">
+                            </div>
+                            <div class="col2 mhCol" alt="Feladó" title="Feladó">
+                                <input type="text" name="receiver" id="receiver" placeholder="Címzett" alt="Címzett" class="messageInput" disabled>
+                            </div>
+                            <div class="col3 mhCol" alt="Tárgy" title="Tárgy">
+                                <input type="text" name="topic" id="topic" placeholder="Tárgy" alt="Tárgy" class="messageInput">
+                            </div>
+                            <div class="col4 mhCol" alt="Dátum" title="Dátum">2025.02.07.</div>
+                        </div>
+                        <div class="mBody new" id="mBody-new">
+                            <textarea name="messageBody" id="messageBody" placeholder="Ide írhatja az üzenet szövegét..."></textarea>
+                        </div>
+                        <div class="mFooter new" id="mFooter-new">
+                            <button>
+                                <img src="IMG/Messages/send.png" alt="">
+                                <p>Küldés</p>
+                            </button>
+                            <button on:click={close_newMessage}>
+                                <img src="IMG/Global/delete.png" alt="" >
+                                <p>Elvetés</p>
+                            </button>
+                        </div>
+                    </div>   
                     
                 </div>
             </div>
@@ -410,6 +446,9 @@
                             font-weight: 500;
                             
                         }
+                        #pageTag3 {
+                            display: none;
+                        }
 
                         .pageTag:last-child{
                             border-right: 1px solid rgb(141, 141, 141) !important;
@@ -441,6 +480,18 @@
                             }
                         }
 
+                    }
+
+                    #pageContent3 {
+                        display: flex;
+                        padding-bottom: 0;
+
+                        .message.new {
+                            display: flex;
+                            width: 100%;
+                            height: 100%;
+                            margin-bottom: 5px;
+                        }
                     }
                 }
 
