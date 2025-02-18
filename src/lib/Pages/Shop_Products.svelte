@@ -1,5 +1,5 @@
 <script>
-    import {open_popup, close_popup, save_popup} from "$lib/Popups/functions.js";
+    import {open_popup, close_popup, save_popup} from "$lib/Scripts/popup.js";
 
     function psOption1_clicked(){
         document.getElementById("ps-option1").classList.add("active")

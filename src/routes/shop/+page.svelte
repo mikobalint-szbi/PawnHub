@@ -28,6 +28,28 @@
     })
 </script>
 <section id="body">
+
+    <div id="head-div">
+        <div id="h-col1">
+            <!-- svelte-ignore a11y-click-events-have-key-events -->
+            <!-- svelte-ignore a11y-no-static-element-interactions -->
+            <a id="back" on:click={()=>window.history.go(-1)}>
+                <button>
+                    <div id="b-col1">
+                        <img src="IMG/Global/back.png" alt="Vissza" title="Vissza">
+                    </div>
+                    <div id="b-col2">
+                        <p id="back-p">Vissza</p>
+                    </div>
+                </button>
+            </a>
+        </div>
+        <div id="h-col2">
+        </div>
+        <div id="h-col3">
+        </div>
+    </div>
+
     <div id="main-container">
 
         <div id="mRow1" class="mRow">
@@ -87,6 +109,7 @@
                 <div class="pageTags">
                     <div class="pageTag active" id="pageTag1">Bemutatkozás</div>
                     <div class="pageTag" id="pageTag2">Árukészlet</div>
+                    <div class="pageTag" id="pageTag3">Üzenet</div>
                 </div>
                 <div class="pageContent" id="pageContent1">
                     <p>
@@ -178,6 +201,11 @@
                     </div>
                     {/each}
                 </div>
+                <div class="pageContent" id="pageContent3">
+                    
+                    hello
+                    
+                </div>
             </div>
 
 
@@ -195,11 +223,20 @@
         display: flex;
         justify-content: center;
 
+        #head-div {
+            max-width: 1200px;
+            width: 80%;
+
+            #h-col1 {
+                justify-content: start;
+            }
+        }
+
         #main-container {
             min-height: 100vh;
             max-width: 1200px;
             width: 80%;
-            margin-top: 60px;
+            margin-top: 15px;
             display: flex;
             flex-direction: column;
             margin-bottom: 30px;
