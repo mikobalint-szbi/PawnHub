@@ -12,6 +12,10 @@
         }
     }
 
+    .mBody {
+        padding: 5px;
+    }
+
 }
 @media (min-width: 300px) {
 
@@ -19,6 +23,9 @@
 }
 @media (min-width: 340px) {
 
+    .mBody {
+        padding: 15px;
+    }
 
 }
 @media (min-width: 404px) {
@@ -34,10 +41,15 @@
 
         }
     }
+
+
     
 }
 @media (min-width: 468px) {
 
+    .mBody {
+        padding: 25px;
+    }
 
 }
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -135,7 +147,6 @@
     }
 
     .mBody {
-        padding: 25px;
         padding-bottom: 5px;
         display: none;
         border-top: 1px solid black;

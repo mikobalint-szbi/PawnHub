@@ -1,9 +1,7 @@
 
 Teendők:
-- Shop page responsivity
-- Shop page NewMessage box ‼️
-- Product page (shop page másolata)
 - Customer's imageViewer popup
+- Product page (shop page másolata)
 - Customer's Product popup mobilnézet javítása
 - Zálogház adatlapja
 - Termék adatlapja

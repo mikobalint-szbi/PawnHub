@@ -140,7 +140,7 @@
                     <td class="col5" on:click={() => open_popup("loanPopup_forCustomers",false,false)}>100%</td>
                     <td class="col6">
 
-                        <div class="shopField-flex" tabindex="0" on:click={() => {/*Zálogház PawnHub-lapjának megnyitása */}}>
+                        <div class="shopField-flex" tabindex="0" on:click={()=>location.assign('shop')}>
                             <img src="IMG/Shops/no-shop-image.png" alt="">
                             <p>Tóth Pista Zálogház és Ékszerüzlet</p>
                         </div>

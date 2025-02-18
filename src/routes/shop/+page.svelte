@@ -1,5 +1,6 @@
 <script>
     import { onMount } from "svelte";
+    import {open_popup, close_popup} from "$lib/Scripts/popup.js"
 
     function togglePages(id) {
 
@@ -24,7 +25,7 @@
         togglePages("pageTag1")
         document.querySelector("input#receiver").value = ""
         document.querySelector("input#topic").value = ""
-        document.querySelector("textarea#messageBody").textContent = ""
+        document.querySelector("textarea#messageBody").value = ""
     }
 
     function open_newMessage () {
@@ -32,12 +33,36 @@
         togglePages("pageTag3")
     }
 
+    function resizing () {
+
+
+        let w = document.getElementById("main-container").offsetWidth
+        document.getElementById("head-div").style.width = w +"px"
+
+        w = w - (40+10+2*20)
+
+        document.querySelectorAll(".contactRow .value").forEach((e)=>{
+
+            e.style.maxWidth = w + "px"
+
+        })
+    }
+
 
     onMount(()=>{
+        resizing()
+
         document.querySelectorAll(".pageTag").forEach((e)=>{
 
             e.addEventListener("click", ()=> togglePages(e.id))
-        })  
+        })
+
+        window.addEventListener("resize", ()=> {
+            resizing()
+ 
+        })
+
+        open_popup("imageViewer")
     })
 </script>
 <section id="body">
@@ -72,7 +97,7 @@
             </div>
             <div class="col2">
                 <div class="nameField">
-                    <p class="name">Tóth Pista Zálogház és Ékszerüzlet Ékszerüzlet Ékszerüzlet Ékszerüzlet Ékszerüzlet</p>
+                    <p class="name">Tóth Pista Zálogház és Ékszerüzlet</p>
                     <p class="estab">Alapítva: 2015</p>
                 </div>
                 <div class="contactsField">
@@ -261,37 +286,227 @@
         
     @media (min-width: 0px) {
         
+        #main-container, #head-div {
+            width: 95%;
+        }
 
+        #main-container {
+            padding: 4px;
+        }
+        .pageContent {
+            padding: 5px 6px;
+        }
+        #pageContent1 {
+            padding: 5px 8px;
+        }
+
+        #mRow1 {
+            flex-direction: column;
+
+            .col1 {
+                .image {
+                    height: 200px;
+                }
+            }
+            .col2 {
+
+            }
+        }
+
+        .buttonField button {
+            width: 100%;
+        }
+
+        #mRow2 {
+            margin-top: 45px;
+        }
+
+        .buttonField button {
+            p {
+                font-size: 22px;
+            }
+        }
+
+        .buttonField, .contactsField, #mRow1 .col2{
+            padding: 0 4px;
+        }
+        #mRow1 .col1  {
+            padding: 4px;
+        }
     }
     @media (min-width: 300px) {
+
+        #mRow1 {
+
+            .col1 {
+                .image {
+                    height: 235px;
+                }
+            }
+            .col2 {
+
+            }
+        }
+
+        .nameField .name {
+            font-size: 22px;
+        }
+
+
+
+
+        
 
 
     }
     @media (min-width: 340px) {
 
+        #mRow1 {
+
+            .col1 {
+                .image {
+                    height: 285px;
+                }
+            }
+            .col2 {
+
+            }
+        }
+
+        .buttonField button {
+            p {
+                font-size: 25px;
+            }
+        }
 
     }
     @media (min-width: 404px) {
+
+        .pageContent {
+            padding: 5px 10px;
+        }
+
+        #main-container {
+            padding: 10px;
+        }
+
+        #mRow1 {
+
+            .col1 {
+                .image {
+                    height: 340px;
+                }
+            }
+            .col2 {
+
+            }
+        }
+
+        .nameField .name {
+            font-size: 25px;
+        }
+
+        .buttonField, .contactsField, #mRow1 .col1, #mRow1 .col2 {
+            padding: 0;
+        }
 
         
     }
     @media (min-width: 468px) {
 
+        #mRow1 {
+
+            .col1 {
+                .image {
+                    height: 420px;
+                }
+            }
+            .col2 {
+
+            }
+        }
 
     }
     /* Small devices (portrait tablets and large phones, 600px and up) */
     @media (min-width: 596px) {
 
+        #mRow1 {
+
+            .col1 {
+                .image {
+                    height: 550px;
+                }
+            }
+            .col2 {
+
+            }
+        }
+
+        .contactsField {
+            padding-left: 30px;
+        }
+
+        .nameField .name {
+            font-size: 30px;
+        }
+
+        
+        .buttonField button {
+            width: 420px;
+        }
+
+        .pageContent {
+            max-height: 80vh;
+            padding: 5px 20px;
+        }
+
+        .pageContainer {
+            padding-right: 5px;
+        }
+
+        #main-container {
+            padding: 20px;
+        }
+        
 
     }
     @media (min-width: 768px) {
 
+        #mRow1 {
+            flex-direction: row;
+
+            .col1 {
+                flex-grow: 6;
+
+                .image {
+                    height: unset;
+                }
+            }
+            .col2 {
+                flex-grow: 8;
+            }
+        }
+
+        #mRow2 {
+            margin-top: 30px;
+        }
+
+        .buttonField button {
+            width: 340px;
+        }
+
+ 
     }   
     /* Large devices (laptops/desktops, 992px and up) */
     @media (min-width: 992px) {
+        #mRow1 {
 
-        #main-container, #head-div {
-            width: 95%;
+            .col1 {
+                flex-grow: 10;
+            }
+            .col2 {
+                flex-grow: 16;
+            }
         }
 
     }
@@ -301,14 +516,6 @@
             width: 90%;
         }
 
-        #mRow1 {
-            .col1 {
-                flex-grow: 6;
-            }
-            .col2 {
-                flex-grow: 8;
-            }
-        }
     }
     /* Extra large devices (large laptops and desktops, 1200px and up) */
     @media (min-width: 1230px) {
@@ -319,10 +526,10 @@
 
         #mRow1 {
             .col1 {
-                flex-grow: 5;
+                flex-grow: 9;
             }
             .col2 {
-                flex-grow: 8;
+                flex-grow: 16;
             }
         }
 
@@ -356,10 +563,10 @@
                         -1px -0.5px 1px rgba($color: black, $alpha: 0.3),
                         0px 0.8px 0px rgba($color: black, $alpha: 0.3);
 
-                padding: 20px;
-                border: 1px solid rgb(141, 141, 141);
-                //border-bottom: none;
-                border-radius: 4px;
+
+            border: 1px solid rgb(141, 141, 141);
+            //border-bottom: none;
+            border-radius: 4px;
 
             .mRow {
                 width: 100%;
@@ -375,6 +582,7 @@
                     display: flex;
                     justify-content: start;
                     flex-basis: 0;
+
                     
 
                     .image {
@@ -390,7 +598,6 @@
                 }
                 .col2 {
                     flex-basis: 0;
-
                     display: flex;
                     flex-direction: column;
                     gap: 10px;
@@ -399,7 +606,6 @@
                         .name {
                             margin: 0;
                             font-weight: 500;
-                            font-size: 30px;
 
                         }
                         .estab {
@@ -410,7 +616,7 @@
                     .contactsField {
                         display: flex;
                         flex-direction: column;
-                        padding-left: 30px;
+
                         gap: 8px;
                         margin-bottom: 15px;
 
@@ -422,6 +628,8 @@
                             .icon {
                                 width: 40px;
                                 height: 40px;
+                                min-width: 40px;
+                                max-width: 40px;
                                 border: 1px solid rgb(84, 131, 100);
                                 display: flex;
                                 justify-content: center;
@@ -438,6 +646,13 @@
                                 font-size: 19px;
                                 text-decoration: none;
                                 color:  black !important;
+
+                                white-space: pre-wrap; /* css-3 */
+                                white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+                                white-space: -pre-wrap; /* Opera 4-6 */
+                                white-space: -o-pre-wrap; /* Opera 7 */
+                                word-wrap: break-word; /* Internet Explorer 5.5+ */
+                                overflow-wrap: break-word;
                             }
 
                         }
@@ -450,7 +665,6 @@
 
                         button {
                             height: 50px;
-                            width: 330px;
                             display: flex;
                             align-items: center;
                             padding: 5px;
@@ -464,7 +678,7 @@
 
                             p {
                                 margin: 0;
-                                font-size: 25px;
+
                             }
                         }
                     }
@@ -474,7 +688,6 @@
 
             #mRow2 {
                 flex-direction: column;
-                margin-top: 30px;
 
                 .pageContainer {
                     border: 1px solid rgb(141, 141, 141);
@@ -485,7 +698,7 @@
 
                     padding-top: 20px;
                     padding-bottom: 20px;
-                    padding-right: 6px;
+
                     
                     .pageTags {
                         display: flex;
@@ -532,9 +745,7 @@
                     }
 
                     .pageContent {
-                        padding: 5px 20px;
 
-                        max-height: 90vh;
                         min-height: 500px;
                         overflow: auto;
 
@@ -559,7 +770,7 @@
                     }
 
                     #pageContent3 {
-                        display: flex;
+                        display: none;
                         padding-bottom: 0;
 
                         .message.new {

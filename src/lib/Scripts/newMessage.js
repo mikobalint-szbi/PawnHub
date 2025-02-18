@@ -7,7 +7,7 @@ export function open_newMessage(receiver,topic,content,customerRequest,overWrite
         newMessage.style.display = "flex"
         document.querySelector("input#receiver").value = receiver
         document.querySelector("input#topic").value = topic
-        document.querySelector("textarea#messageBody").textContent = content
+        document.querySelector("textarea#messageBody").value = content
         document.querySelector("input#customerRequest").checked = customerRequest
 
     }
@@ -21,7 +21,7 @@ export function close_newMessage(){
     document.querySelector(".message.new").style.display = "none"
     document.querySelector("input#receiver").value = ""
     document.querySelector("input#topic").value = ""
-    document.querySelector("textarea#messageBody").textContent = ""
+    document.querySelector("textarea#messageBody").value = ""
     document.querySelector("input#customerRequest").checked = false
 
 
