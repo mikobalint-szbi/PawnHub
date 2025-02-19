@@ -1,5 +1,60 @@
 <script>
     import {open_popup, close_popup, save_popup} from "$lib/Scripts/popup.js";
+    import { onMount } from "svelte";
+
+    function getNum(str){
+        return Number(str.match(/[\d.]+/g)?.join('') || '')
+    }
+
+    function initial_sizing() {
+        let img = document.getElementById("popup-img")
+        let styles = getComputedStyle(img)
+
+        if (getNum(styles.height) > getNum(styles.width)) {
+
+            img.style.setProperty("height", "95%", "important");
+            img.style.setProperty("width", "unset", "important");
+
+        }
+        else {
+            img.style.setProperty("height", "unset", "important");
+            img.style.setProperty("width", "97%", "important");
+
+        }
+    }
+
+    function resize_image(ratio){
+        let img = document.getElementById("popup-img")
+        let imgStyles = getComputedStyle(img)
+        let h = getNum(imgStyles.height)
+        let w = getNum(imgStyles.width)
+
+        /*let container = document.getElementById("popup-div")
+        let ch = container.clientHeight
+        let cw = container.clientWidth*/
+
+        img.style.setProperty("height", h*ratio + "px", "important");
+        img.style.setProperty("width", w*ratio + "px", "important");
+
+        /*if (ratio < 1) {
+
+            if (h >= w && h < ch-170) {
+                console.log(h < ch-170)
+                img.style.setProperty("height", "95%", "important");
+                img.style.setProperty("width", "unset", "important");
+            }
+            else if (w >= h && w < cw-170) {
+                img.style.setProperty("height", "unset", "important");
+                img.style.setProperty("width", "97%", "important");
+            }
+        }*/
+
+
+    }
+
+    onMount(()=>{
+        initial_sizing()
+    })
 
 </script>
 
@@ -34,12 +89,18 @@
 
             <div id="bottomRow">
                 <button on:click={() => {}} id="replaceButton" class="bottomButton">
-                    <img src="IMG/Global/replace.png" alt="" id="submitImg">
-                    <p id="submitText">Csere</p>
+                    <img src="IMG/Global/upload.png" alt="" id="replaceImg">
+                    <p id="submitText">{Math.random() > 0.5 ? "Képfeltöltés" : "Csere"}</p>
                 </button>
                 <button on:click={() => {}} id="deleteButton" class="bottomButton">
-                    <img src="IMG/Global/delete.png" alt="" id="submitImg">
+                    <img src="IMG/Global/delete.png" alt="" id="deleteImg">
                     <p id="submitText">Törlés</p>
+                </button>
+                <button on:click={()=>resize_image(1 / 1.20)} id="minusButton" class="bottomButton thin">
+                    <img src="IMG/Global/minus.png" alt="" id="minusImg">
+                </button>
+                <button on:click={()=>resize_image(1.20)} id="plusButton" class="bottomButton thin">
+                    <img src="IMG/Global/plus.png" alt="" id="plusImg">
                 </button>
             </div>
         </div>
@@ -64,6 +125,7 @@
             font-size: 19px;
             width: 110px;
         }
+
 
         #image{
             grid-row: 1 / 5;
@@ -90,7 +152,7 @@
 
         .bottomButton{
             font-size: 23px;
-            width: 180px;
+            width: 195px;
             column-gap: 3px;
         }
 
@@ -144,25 +206,61 @@
         height: 70%;
     }
 
+    .bottomButton.thin {
+        width: 50px;
+        display: flex;
+        justify-content: center !important;
 
-        #popup-div{
-            display: flex;
-
-            align-items: center;
-            justify-content: center;
-
-        
-            #popup-img{
-                background-color: rgb(160, 206, 180);
-                scale: 1.5;
-                max-width: 63% !important;
-                max-height: 62% !important;
-                border: 1px solid black;
-                border-radius: 4px;
-                box-shadow: 0.3px 0.3px 1px black;
-            }
-
+        img {
+            margin: 0 !important;
+            height: 70% !important;
         }
+    }
+
+    #deleteButton {
+        margin-left: -5px
+    }
+
+    #minusButton {
+        margin-left: 5px;
+    }
+
+    #plusButton {
+        margin-left: -5px;
+    }
+
+
+
+    .popupDialog {
+        #marginner {
+            #popup-inner {
+
+                #popup-div{
+
+                    display: flex;
+
+                    align-items: center;
+                    justify-content: center;
+                    overflow: auto;
+
+                    #popup-img{
+                        background-color: rgb(160, 206, 180);
+                        height: 95% !important;
+                        // ↑ 100 100-nak kellene lennie
+                        border: 1px solid black;
+                        border-radius: 4px;
+                        box-shadow: 0.3px 0.3px 1px black;
+
+                    }
+
+                }
+
+            }
+        }
+    }
+
+
+
     
 
 

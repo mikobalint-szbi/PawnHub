@@ -1,5 +1,10 @@
 
 Teendők:
+- ImageViewer:
+	• legyen már marginja annak a szerencsétlen képnek nagyításkor
+	• több kép is lehessen → Képléptetőt megcsinálni
+	• ennek a popupnak is legyen felül title-je
+	• a végén a reszponzivitást ellenőrizni
 - Customer's imageViewer popup
 - Product page (shop page másolata)
 - Customer's Product popup mobilnézet javítása
@@ -15,6 +20,9 @@ Teendők:
 
 Miután lesz backend:
 - A Shop és Product page-eknél a címzett mindig az aktuális zálogház legyen, és át se lehessen írni
+
+Fejlesztés
+
 
 --------------------------------------
 
