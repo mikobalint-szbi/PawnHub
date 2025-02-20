@@ -42,7 +42,7 @@
                 <p class="userName">TesztElek</p>
                 <p class="userEmail">szoftvert.kitunoen.tesztelek@mail.org</p>
                 <div class="buttons">
-                    <button>
+                    <button on:click={()=>location.assign('settings')}>
                         <img src="IMG/Global/settings.png" alt="Fiók kezelése">
                         <p>Fiók kezelése</p>
                     </button>

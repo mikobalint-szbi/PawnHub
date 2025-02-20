@@ -702,6 +702,7 @@
                     
                     .pageTags {
                         display: flex;
+                        padding-left: 0.3px;
                         
                         .pageTag {
                             border: 1px solid rgb(141, 141, 141);
