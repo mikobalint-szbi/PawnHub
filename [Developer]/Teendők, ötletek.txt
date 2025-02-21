@@ -1,5 +1,14 @@
 
+http://infojegyzet.hu/webszerkesztes/dokumentacio
+
 Teendők:
+- Beállítások:
+	• profilkép-mező
+
+- #1: Backendben a county python projekt merge-elését befejezni ‼️
+
+- A Customers táblázatban a non-userek még mindig nincsenek más színnel jelölve
+- A bejelentkezési felületen a regisztrációs gomb egy másik, beállításokhoz hasonló adatlapra linkel át, aminek a tetején van egy switch, hogy customer vagy shop szeretnél lenni
 - ImageViewer:
 	• legyen már marginja annak a szerencsétlen képnek nagyításkor
 	• több kép is lehessen → Képléptetőt megcsinálni
@@ -21,7 +30,8 @@ Teendők:
 Miután lesz backend:
 - A Shop és Product page-eknél a címzett mindig az aktuális zálogház legyen, és át se lehessen írni
 
-Fejlesztés
+Fejlesztési lehetőségek:
+- a boltokat lehessen értékelni
 
 
 --------------------------------------

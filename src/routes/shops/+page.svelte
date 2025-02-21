@@ -7,8 +7,6 @@
         let dropdown = document.getElementById("dropdownContent")
         let input = document.getElementById("settlInput")
         dropdown.style.width = input.offsetWidth + "px"
-        
-        console.log(input.value)
     
         if (input.value != ""){ 
     

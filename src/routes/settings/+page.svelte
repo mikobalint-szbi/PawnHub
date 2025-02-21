@@ -2,48 +2,15 @@
 
     import { onMount } from "svelte";
     
-    function open_settlDropdown(){
-        
-        let dropdown = document.getElementById("dropdownContent")
-        let input = document.getElementById("settlInput")
-        dropdown.style.width = input.offsetWidth + "px"
-        
-        console.log(input.value)
-    
-        if (input.value != ""){ 
-    
-            dropdown.style.display = "block"
-    
-            if (input.value.length >= 2){
-                // API-kérés:
-                // Lekéri az összeset, ami a megadott két betűvel kezdődik,
-                // azután, amíg az első két betű nem változik, a JS maga végzi a szűrést a harmadik betűtől fogva
-            }
-    
-        }
-        else {
-            dropdown.style.display = "none"
-        }
-    
-    }
-    
+
+
     onMount(()=> {
     
-        document.getElementById("settlInput").addEventListener('keyup', open_settlDropdown)
-    
-        //document.onkeypress = open_settlDropdown
-    
-        window.addEventListener("resize", ()=> {
-    
-            if (document.getElementById("dropdownContent") != null){
 
-                document.getElementById("dropdownContent").style.width = document.getElementById("settlInput").offsetWidth + "px"
-            }
-        })
-    
     })
     
-    
+    let isCustomer = true
+
     </script>
     
     <section id="body">
@@ -75,6 +42,153 @@
     
         <div id="main-container">
             
+            <div class="cardGroup">
+                <h3 class="cgTitle">Profilkép</h3>
+                <div class="cgBody profile">
+                    <img src="IMG/Global/no-profile-image.png" alt="">
+
+                </div>
+                <div class="cgFoot">
+                    <button>Profilkép törlése</button>
+                    <button>Új profilkép feltöltése</button>
+                </div>
+            </div>
+
+            {#if isCustomer}
+                <div class="cardGroup">
+                    <h3 class="cgTitle">Személyes adatok</h3>
+                    <div class="cgBody">
+                        <div class="cgRow">
+                            <label for="customerName" class="cgLabel">Teljes név:</label>
+                            <input type="text" class="cgInput" id="customerName">
+                        </div>
+                        <div class="cgRow">
+                            <label for="birthDate" class="cgLabel">Születési dátum:</label>
+                            <input type="date" class="cgInput" id="birthDate">
+                        </div>
+                        <div class="cgRow">
+                            <label for="idCardNum" class="cgLabel">Személyi igazolvány száma:</label>
+                            <input type="text" class="cgInput" id="idCardNum">
+                        </div>
+                        <div class="cgRow">
+                            <label for="idCardExp" class="cgLabel">Személyi igazolvány lejárati dátuma:</label>
+                            <input type="date" class="cgInput" id="idCardExp">
+                        </div>
+                    </div>
+                    <div class="cgFoot">
+                        <button>Módosítások mentése</button>
+                    </div>
+                </div>
+            {:else}
+                <div class="cardGroup">
+                    <h3 class="cgTitle">A zálogház adatai</h3>
+                    <div class="cgBody">
+                        <div class="cgRow">
+                            <label for="shopName" class="cgLabel">Cégnév:</label>
+                            <input type="text" class="cgInput" id="shopName">
+                        </div>
+                        <div class="cgRow">
+                            <label for="taxId" class="cgLabel">Adószám:</label>
+                            <input type="text" class="cgInput" id="taxId">
+                        </div>
+                        <div class="cgRow">
+                            <label for="estYear" class="cgLabel">Alapítás éve:</label>
+                            <input type="number" class="cgInput" id="estYear">
+                        </div>
+                        <div class="cgRow">
+                            <label for="intro" class="cgLabel">Bemutatkozószöveg:</label>
+                            <textarea name="inro" class="cgInput" id="intro"></textarea>
+                        </div>
+                    </div>
+                    <div class="cgFoot">
+                        <button>Módosítások mentése</button>
+                    </div>
+                </div>
+            {/if}
+
+
+
+            {#if isCustomer}
+                <div class="cardGroup">
+                    <h3 class="cgTitle">Elérhetőségek</h3>
+                    <div class="cgBody">
+                        <div class="cgRow">
+                            <label for="cust-email" class="cgLabel">E-mail-cím:</label>
+                            <input type="email" class="cgInput" id="cust-email">
+                        </div>
+                        <div class="cgRow">
+                            <label for="cust-phone" class="cgLabel">Telefonszám:</label>
+                            <input type="phone" class="cgInput" id="cust-phone">
+                        </div>
+                        <div class="cgRow">
+                            <label for="cust-shippingAddress" class="cgLabel">Szállítási cím:</label>
+                            <input type="text" class="cgInput" id="cust-shippingAddress">
+                        </div>
+                        <div class="cgRow">
+                            <label for="cust-billingAddress" class="cgLabel">Számlázási cím:</label>
+                            <input type="text" class="cgInput" id="cust-billingAddress">
+                        </div>
+                        <div class="cgRow">
+                            <label for="cust-billingAddress" class="cgLabel">Iban-számlaszám:</label>
+                            <input type="text" class="cgInput" id="cust-billingAddress">
+                        </div>
+                    </div>
+                    <div class="cgFoot">
+                        <button>Módosítások mentése</button>
+                    </div>
+                </div>
+            {:else}
+                <div class="cardGroup">
+                    <h3 class="cgTitle">Elérhetőségek</h3>
+                    <div class="cgBody">
+                        <div class="cgRow">
+                            <label for="shop-email" class="cgLabel">E-mail-cím:</label>
+                            <input type="email" class="cgInput" id="shop-email">
+                        </div>
+                        <div class="cgRow">
+                            <label for="shop-phone" class="cgLabel">Telefonszám:</label>
+                            <input type="phone" class="cgInput" id="shop-phone">
+                        </div>
+                        <div class="cgRow">
+                            <label for="shop-settlement" class="cgLabel">Település:</label>
+                            <input type="text" class="cgInput" id="shop-settlement">
+                        </div>
+                        <div class="cgRow">
+                            <label for="shop-address" class="cgLabel">Utca, házszám:</label>
+                            <input type="text" class="cgInput" id="shop-address">
+                        </div>
+                        <div class="cgRow">
+                            <label for="shop-billingAddress" class="cgLabel">Iban-számlaszám:</label>
+                            <input type="text" class="cgInput" id="shop-billingAddress">
+                        </div>
+                    </div>
+                    <div class="cgFoot">
+                        <button>Módosítások mentése</button>
+                    </div>
+                </div>
+            {/if}
+
+            <div class="cardGroup">
+                <h3 class="cgTitle">Jelszó módosítása</h3>
+                <div class="cgBody">
+                    <div class="cgRow">
+                        <label for="oldPassword" class="cgLabel">Régi jelszó:</label>
+                        <input type="password" class="cgInput" id="oldPassword">
+                    </div>
+                    <div class="cgRow">
+                        <label for="newPassword1" class="cgLabel">Új jelszó:</label>
+                        <input type="password" class="cgInput" id="newPassword1">
+                    </div>
+                    <div class="cgRow">
+                        <label for="newPassword2" class="cgLabel">Új jelszó még egyszer:</label>
+                        <input type="password" class="cgInput" id="newPassword2">
+                    </div>
+                </div>
+                <div class="cgFoot">
+                    <button>Jelszó módosítása</button>
+                </div>
+            </div>
+
         </div>
     
     </section>
@@ -110,7 +224,7 @@
     
             #main-container{
                 width: 87%;
-                max-width: 1000px;
+                max-width: 1200px;
             }
 
     
@@ -119,7 +233,7 @@
     
             #main-container {
                 width: 80%;
-                max-width: 1000px;
+
             }
     
         }
@@ -151,7 +265,96 @@
             #main-container {
     
                 margin-bottom: 30px;
-                border: 1px solid black;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+
+
+
+                .cardGroup {
+                    border: 1px solid black;
+                    width: calc(50% - 5px)!important;
+                    padding: 10px;
+                    display: flex;
+                    flex-direction: column;
+                    border-radius: 3px;
+                    box-shadow: 1px 1px 2px black;
+
+                    .cgTitle {
+                        margin-top: 3px;
+                        margin-bottom: 8px;
+                        font-weight: 600;
+                        font-size: 20px;
+                    }
+                    .cgBody{
+                        width: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 4px;
+                        justify-content: center;
+                        height: 100%;
+
+
+                        .cgRow{
+                            display: flex;
+                            flex-direction: column;
+                            width: 100%;
+
+                            .cgLabel {
+                                flex-grow: 1;
+                                display: block;
+                                font-size: 15px;
+                            }
+
+                            .cgInput {
+                                width: 100%;
+                                height: 32px;
+                                font-size: 19px;
+                                padding-left: 4px;
+                            }
+
+                            textarea.cgInput {
+                                resize: none;
+                                height: 300px;
+                            }
+                        }
+
+                    }
+
+                    .cgBody.profile {
+                        align-items: center;
+                        padding: 5px;
+                        img {
+                            max-height: 250px;
+                            width: fit-content;
+                            background-color: rgb(161, 213, 179);
+                            border-radius: 4px;
+                            box-shadow: 0.3px 0.3px 1px black;
+                            border: 1px solid black;
+                        }
+                    }
+
+                    .cgFoot {
+
+                        margin-top: auto;
+                        justify-content: center;
+                        flex-direction: row;
+
+                        button {
+                            width: 100%;
+                            height: 38px;
+                            font-size: 20px;
+                            padding: 4px 12px;
+                            margin-top: 7px;
+                            border-radius: 3px;
+                        }
+                        button:first-child {
+                            margin-top: 15px;
+                        }
+                        
+                    }
+                }
+
 
             }
     
