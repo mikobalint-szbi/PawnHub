@@ -43,14 +43,19 @@
         <div id="main-container">
             
             <div class="cardGroup">
-                <h3 class="cgTitle">Profilkép</h3>
+                <h3 class="cgTitle profile">Profilkép</h3>
                 <div class="cgBody profile">
                     <img src="IMG/Global/no-profile-image.png" alt="">
-
                 </div>
-                <div class="cgFoot">
-                    <button>Profilkép törlése</button>
-                    <button>Új profilkép feltöltése</button>
+                <div class="cgFoot profile">
+                    <button>
+                        <img src="IMG/Global/upload.png" alt="">
+                        <p>Új profilkép feltöltése</p>
+                    </button>
+                    <button>
+                        <img src="IMG/Global/delete.png" alt="">
+                        <p>Profilkép törlése</p>
+                    </button>
                 </div>
             </div>
 
@@ -76,7 +81,10 @@
                         </div>
                     </div>
                     <div class="cgFoot">
-                        <button>Módosítások mentése</button>
+                        <button>
+                            <img src="IMG/Global/save.png" alt="">
+                            <p>Módosítások mentése</p>
+                        </button>
                     </div>
                 </div>
             {:else}
@@ -101,7 +109,10 @@
                         </div>
                     </div>
                     <div class="cgFoot">
-                        <button>Módosítások mentése</button>
+                        <button>
+                            <img src="IMG/Global/save.png" alt="">
+                            <p>Módosítások mentése</p>
+                        </button>
                     </div>
                 </div>
             {/if}
@@ -134,7 +145,10 @@
                         </div>
                     </div>
                     <div class="cgFoot">
-                        <button>Módosítások mentése</button>
+                        <button>
+                            <img src="IMG/Global/save.png" alt="">
+                            <p>Módosítások mentése</p>
+                        </button>
                     </div>
                 </div>
             {:else}
@@ -163,7 +177,10 @@
                         </div>
                     </div>
                     <div class="cgFoot">
-                        <button>Módosítások mentése</button>
+                        <button>
+                            <img src="IMG/Global/save.png" alt="">
+                            <p>Módosítások mentése</p>
+                        </button>
                     </div>
                 </div>
             {/if}
@@ -185,7 +202,10 @@
                     </div>
                 </div>
                 <div class="cgFoot">
-                    <button>Jelszó módosítása</button>
+                    <button>
+                        <img src="IMG/Global/replace.png" alt="">
+                        <p>Jelszó módosítása</p>
+                    </button>
                 </div>
             </div>
 
@@ -281,8 +301,8 @@
                     box-shadow: 1px 1px 2px black;
 
                     .cgTitle {
-                        margin-top: 3px;
-                        margin-bottom: 8px;
+                        margin-top: 0px;
+                        margin-bottom: 10px;
                         font-weight: 600;
                         font-size: 20px;
                     }
@@ -342,16 +362,35 @@
 
                         button {
                             width: 100%;
-                            height: 38px;
+                            height: 44px;
                             font-size: 20px;
                             padding: 4px 12px;
                             margin-top: 7px;
                             border-radius: 3px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            gap: 8px;
+
+                            img {
+                                height: 90%;
+                            }
+                            p {
+                                margin: 0;
+                            }
+
                         }
                         button:first-child {
                             margin-top: 15px;
                         }
                         
+                    }
+
+                    .cgFoot.profile {
+                        /*p {
+                            width: 200px;
+                            text-align: start;
+                        }*/
                     }
                 }
 

@@ -3,7 +3,7 @@ http://infojegyzet.hu/webszerkesztes/dokumentacio
 
 Teendők:
 - Beállítások:
-	• profilkép-mező
+	• reszponzivitás, mobilnézet
 
 - #1: Backendben a county python projekt merge-elését befejezni ‼️
 
