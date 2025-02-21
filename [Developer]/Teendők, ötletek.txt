@@ -3,7 +3,8 @@ http://infojegyzet.hu/webszerkesztes/dokumentacio
 
 Teendők:
 - Beállítások:
-	• reszponzivitás, mobilnézet
+	• reszponzivitás: mobilnézetben vannak még kisebb hibák pl a gombok betűméretei, szélessége
+	• iscustomer=false esetén a profilképnek más legyen a max-height-ja
 
 - #1: Backendben a county python projekt merge-elését befejezni ‼️
 

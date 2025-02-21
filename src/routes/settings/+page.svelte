@@ -32,7 +32,7 @@
                 </a>
             </div>
             <div id="h-col2">
-                <h1>Fiókbeállítások</h1>
+                <h1>Beállítások</h1>
     
     
             </div>
@@ -42,7 +42,7 @@
     
         <div id="main-container">
             
-            <div class="cardGroup">
+            <div class="cardGroup" id="cgProfile">
                 <h3 class="cgTitle profile">Profilkép</h3>
                 <div class="cgBody profile">
                     <img src="IMG/Global/no-profile-image.png" alt="">
@@ -60,7 +60,7 @@
             </div>
 
             {#if isCustomer}
-                <div class="cardGroup">
+                <div class="cardGroup" id="cgCustData">
                     <h3 class="cgTitle">Személyes adatok</h3>
                     <div class="cgBody">
                         <div class="cgRow">
@@ -88,7 +88,7 @@
                     </div>
                 </div>
             {:else}
-                <div class="cardGroup">
+                <div class="cardGroup" id="cgShopData">
                     <h3 class="cgTitle">A zálogház adatai</h3>
                     <div class="cgBody">
                         <div class="cgRow">
@@ -117,10 +117,8 @@
                 </div>
             {/if}
 
-
-
             {#if isCustomer}
-                <div class="cardGroup">
+                <div class="cardGroup" id="cgCustContacts">
                     <h3 class="cgTitle">Elérhetőségek</h3>
                     <div class="cgBody">
                         <div class="cgRow">
@@ -152,7 +150,7 @@
                     </div>
                 </div>
             {:else}
-                <div class="cardGroup">
+                <div class="cardGroup" id="cgShopContacts">
                     <h3 class="cgTitle">Elérhetőségek</h3>
                     <div class="cgBody">
                         <div class="cgRow">
@@ -185,7 +183,7 @@
                 </div>
             {/if}
 
-            <div class="cardGroup">
+            <div class="cardGroup" id="cgPassword">
                 <h3 class="cgTitle">Jelszó módosítása</h3>
                 <div class="cgBody">
                     <div class="cgRow">
@@ -218,7 +216,11 @@
         @media (min-width: 0px) {
     
             #main-container{
-                width: 90%;
+                width: 95%;
+            }
+
+            .cardGroup {
+                width: calc(100%)!important;
             }
     
         }
@@ -243,7 +245,7 @@
         @media (min-width: 596px) {
     
             #main-container{
-                width: 87%;
+                width: 90%;
                 max-width: 1200px;
             }
 
@@ -252,14 +254,35 @@
         @media (min-width: 768px) {
     
             #main-container {
-                width: 80%;
+                width: 90%;
 
+            }
+
+            .cardGroup {
+                width: calc(50% - 4px)!important;
+            }
+
+            #cgProfile {
+                order: 1;
+            }
+            #cgCustData, #cgShopData {
+                order: 3;
+            }
+            #cgCustContacts, #cgShopContacts {
+                order: 2;
+            }
+            #cgPassword {
+                order: 4;
             }
     
         }
         /* Large devices (laptops/desktops, 992px and up) */
         @media (min-width: 992px) {
     
+            #main-container {
+                width: 80%;
+
+            }
 
         }
         /* Extra large devices (large laptops and desktops, 1200px and up) */
@@ -285,15 +308,15 @@
             #main-container {
     
                 margin-bottom: 30px;
+                margin-top: 5px;
                 display: flex;
                 flex-wrap: wrap;
-                gap: 10px;
+                gap: 8px;
 
 
 
                 .cardGroup {
                     border: 1px solid black;
-                    width: calc(50% - 5px)!important;
                     padding: 10px;
                     display: flex;
                     flex-direction: column;
@@ -345,7 +368,7 @@
                         align-items: center;
                         padding: 5px;
                         img {
-                            max-height: 250px;
+                                max-height: 250px;
                             width: fit-content;
                             background-color: rgb(161, 213, 179);
                             border-radius: 4px;
