@@ -112,12 +112,7 @@
             <input type="password" name="l-password" id="l-password">
             <button id="login" on:click={loginHandler}>Bejelentkezés</button>
         </div>
-
-
-
-        <!-- svelte-ignore a11y-invalid-attribute -->
-        <p id="toRegister-p">Regisztrálni szeretne? <a 
-            href='{sessionStorage.getItem("loginSwitch") == "1" ? "/register?for=customer" : "/register?for=shop"}'>Kattintson ide!</a></p>
+        
     </div>
 
 </section>
