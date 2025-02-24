@@ -9,6 +9,7 @@
 
 
     onMount(()=>{
+        sessionStorage.setItem("loginSwitch",1)
 
         document.querySelector(".switch #opt1").addEventListener("click",(e)=>{
             document.querySelector(".switch #opt2").classList.remove("active")
@@ -16,6 +17,8 @@
 
             document.getElementById("page1").style.display = "block"
             document.getElementById("page2").style.display = "none"
+
+            sessionStorage.setItem("loginSwitch",1)
         })
         document.querySelector(".switch #opt2").addEventListener("click",(e)=>{
             document.querySelector(".switch #opt1").classList.remove("active")
@@ -23,6 +26,8 @@
 
             document.getElementById("page1").style.display = "none"
             document.getElementById("page2").style.display = "block"
+
+            sessionStorage.setItem("loginSwitch",2)
         })
     })
 
@@ -59,20 +64,11 @@
                 <li><b>Bárhonnan</b>, bármilyen méretű eszközön elérheti saját fiókját és adatait.</li>
             </ul>
     
-            <h3 class="none">Mit kérünk cserébe?</h3>
-            <p class="none">Engedélyt:</p>
-            <ul class="none">
-                <li>Személyes adatainak eltulajdonítására.</li>
-                <li>Névjegyeinek és emailjeinek időnkénti áttekintésére.</li>
-                <li>Webkamerájának és mikrofonjának rendszeres felülvizsgálatára</li>
-                <li>SMS-ek küldésére és fogadására az telefonján</li>
-                <li>Utalások szabad lebonyolítására bankfiókjában.</li>
-                <li>Elhalálozás esetén belső szerveinek felhasználására</li>
-            </ul>
-    
             <div id="registerPromotion-div">
-                <a href="#registerBox">
-                    <button id="registerPromotion" on:click={() => location.assign("/register")}>Regisztráljon hozzánk még ma!</button>
+
+                <!-- svelte-ignore a11y-missing-attribute -->
+                <a href="/register?for=customer">
+                    <button id="registerPromotion">Regisztráljon hozzánk még ma!</button>
                 </a>
                 <p id="regDriector">🠦 Tekintsen a képernyő jobb oldalára! 🠦</p>
             </div>
@@ -97,20 +93,9 @@
                 <li><b>Bárhonnan</b>, bármilyen méretű eszközön elérheti saját fiókját és adatait.</li>
             </ul>
     
-            <h3 class="none">Mit kérünk cserébe?</h3>
-            <p class="none">Engedélyt:</p>
-            <ul class="none">
-                <li>Személyes adatainak eltulajdonítására.</li>
-                <li>Névjegyeinek és emailjeinek időnkénti áttekintésére.</li>
-                <li>Webkamerájának és mikrofonjának rendszeres felülvizsgálatára</li>
-                <li>SMS-ek küldésére és fogadására az telefonján</li>
-                <li>Utalások szabad lebonyolítására bankfiókjában.</li>
-                <li>Elhalálozás esetén belső szerveinek felhasználására</li>
-            </ul>
-    
             <div id="registerPromotion-div">
-                <a href="#registerBox">
-                    <button id="registerPromotion" on:click={() => location.assign("/register")}>Regisztráljon hozzánk még ma!</button>
+                <a href="/register?for=shop">
+                    <button id="registerPromotion">Regisztráljon hozzánk még ma!</button>
                 </a>
                 <p id="regDriector">🠦 Tekintsen a képernyő jobb oldalára! 🠦</p>
             </div>
@@ -131,8 +116,8 @@
 
 
         <!-- svelte-ignore a11y-invalid-attribute -->
-        <p id="toRegister-p">Regisztrálni szeretne? <a href="#" on:click={() => location.assign("register")}>Kattintson ide!</a></p>
-
+        <p id="toRegister-p">Regisztrálni szeretne? <a 
+            href='{sessionStorage.getItem("loginSwitch") == "1" ? "/register?for=customer" : "/register?for=shop"}'>Kattintson ide!</a></p>
     </div>
 
 </section>

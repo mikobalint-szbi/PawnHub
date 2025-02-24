@@ -29,8 +29,8 @@
 
                 <div id="popupSearchBox-container" class="">
                     <div id="popupSearchBox">
-                        <label for="searchInput" class="popup-label">Keresés:</label>
-                        <input type="text" class="" id="searchInput">
+                        <label for="searchInput2" class="popup-label">Keresés:</label>
+                        <input type="text" class="searchInput" id="searchInput2">
                     </div>
                 </div>
 
@@ -151,7 +151,7 @@
                     flex-direction: column;
                     justify-content: center;
 
-                    #searchInput{
+                    .searchInput{
                         width: 100%;
                         height: 34px;
                         font-size: 22px;

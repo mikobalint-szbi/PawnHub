@@ -1,15 +1,29 @@
 <script>
 
     import { onMount } from "svelte";
-    
+
+
     export let isRegistration;
     export let isCustomer;
 
     onMount(()=> {
     
+        if (isRegistration) {
 
+            document.querySelectorAll(".register-hide").forEach((e) => {
+                e.style.display = "none"
+            });
+            document.querySelectorAll(".register-show.unset").forEach((e) => {
+                e.setAttribute('style', 'display:unset !important');
+            });
+            document.querySelectorAll(".register-show.flex").forEach((e) => {
+                e.setAttribute('style', 'display:flex !important');
+            });
+
+
+        }
+        console.log(isRegistration)
     })
-    
 
 
     </script>
@@ -81,7 +95,7 @@
                         </div>
                     </div>
                     <div class="cgFoot">
-                        <button>
+                        <button class="register-hide">
                             <img src="IMG/Global/save.png" alt="">
                             <p>Módosítások mentése</p>
                         </button>
@@ -109,7 +123,7 @@
                         </div>
                     </div>
                     <div class="cgFoot">
-                        <button>
+                        <button class="register-hide">
                             <img src="IMG/Global/save.png" alt="">
                             <p>Módosítások mentése</p>
                         </button>
@@ -143,7 +157,7 @@
                         </div>
                     </div>
                     <div class="cgFoot">
-                        <button>
+                        <button class="register-hide">
                             <img src="IMG/Global/save.png" alt="">
                             <p>Módosítások mentése</p>
                         </button>
@@ -175,7 +189,7 @@
                         </div>
                     </div>
                     <div class="cgFoot">
-                        <button>
+                        <button class="register-hide">
                             <img src="IMG/Global/save.png" alt="">
                             <p>Módosítások mentése</p>
                         </button>
@@ -184,29 +198,39 @@
             {/if}
 
             <div class="cardGroup" id="cgPassword">
-                <h3 class="cgTitle">Jelszó módosítása</h3>
+                <h3 class="cgTitle">{isRegistration ? "Hitelesítés" : "Jelszó módosítása"}</h3>
                 <div class="cgBody">
-                    <div class="cgRow">
+                    <div class="cgRow register-hide">
                         <label for="oldPassword" class="cgLabel">Régi jelszó:</label>
                         <input type="password" class="cgInput" id="oldPassword">
                     </div>
+                    <div class="cgRow register-show unset">
+                        <label for="username" class="cgLabel">Felhasználónév:</label>
+                        <input type="text" class="cgInput" id="username">
+                    </div>
                     <div class="cgRow">
-                        <label for="newPassword1" class="cgLabel">Új jelszó:</label>
+                        <label for="newPassword1" class="cgLabel">{isRegistration ? "Jelszó:" : "Új jelszó"}</label>
                         <input type="password" class="cgInput" id="newPassword1">
                     </div>
                     <div class="cgRow">
-                        <label for="newPassword2" class="cgLabel">Új jelszó még egyszer:</label>
+                        <label for="newPassword2" class="cgLabel">{isRegistration ? "Jelszó" : "Új jelszó"} még egyszer:</label>
                         <input type="password" class="cgInput" id="newPassword2">
                     </div>
                 </div>
                 <div class="cgFoot">
-                    <button>
+                    <button class="register-hide">
                         <img src="IMG/Global/replace.png" alt="">
                         <p>Jelszó módosítása</p>
                     </button>
                 </div>
             </div>
 
+        </div>
+        <div class="bottom">
+            <button class="register-show flex">
+                <img src="IMG/Global/select.png" alt="">
+                <p>Regisztráció</p>
+            </button>
         </div>
     
     </section>
@@ -429,7 +453,39 @@
 
 
             }
+
+            .bottom {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 30px;
+                margin-top: -5px;
+
+                button {
+
+                    padding: 0px 30px;
+                    border-radius: 3px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 14px;
+                    height: 60px;
+
+                    img {
+                        height: 65%;
+                    }
+                    p {
+                        font-size: 30px;
+                    }
+
+                }
+            }
     
+        }
+
+        .register-show {
+            display: none !important;
         }
     
     
