@@ -41,58 +41,21 @@
 
         <div class="page" id="page1">
 
-            <h2>Zálogházak irányítása egyszerűbben mint valaha.</h2>
-            <p>Ön is zálogháztulajdonos, akinek <b>elege van </b> a papíralapú adminisztráció  <b>fáradalmas munkájából? </b> </p>
-            <p>Nincs megelégedve üzlete <b> szervezettségével? </b></p>
-            <p>Szüksége lenne egy kiterjedt online ügyfélkörre, de nem áll módjában saját webshopot készíteni?</p>
-            <p>
-                <b>Ez esetben a lehető legjobb helyen jár.</b> Munkatársaink <b>sok évtizednyi</b> fáradalmas munkát fektettek a lehető legtökéletesebb zálogházmenedzsment-szoftver struktúrájának kidolgozásába, valamint a tervek művészi precizitású megvalósításába csak azért, hogy Önnek mostantól fogva <b>kényelmesebben </b> és <b>hatékonyabban</b> menjen az üzletvezetés.
-            </p>
-               
-    
-            <h3>Mit kínálunk önnek?</h3>
-            <ul id="offer">
-                <li>Könnyedén <b>átláthatja </b> és kezelheti zálogházába érkező <b>ügyfelek</b> és <b>értéktárgyak</b> adatait, valamint zálogházáhan megköttetett <b> hitelek </b> táblázatát.</li>
-                <li><b>Sokezres létszámú</b> online <b>ügyfélkör</b> számára meghirdetheti kínált termékeit és szolgáltatásait.</li>
-                <li><b>Képeket tölthet fel</b> ügyfeleiről, illetve meghirdetett vagy éppen zálogban tartott értéktárgyairól ezzel tökéletesítve zálogháza átláthatóságát.</li>
-                <li><b>Bárhonnan</b>, bármilyen méretű eszközön elérheti saját fiókját és adatait.</li>
-            </ul>
-    
-            <h3 class="none">Mit kérünk cserébe?</h3>
-            <p class="none">Engedélyt:</p>
-            <ul class="none">
-                <li>Személyes adatainak eltulajdonítására.</li>
-                <li>Névjegyeinek és emailjeinek időnkénti áttekintésére.</li>
-                <li>Webkamerájának és mikrofonjának rendszeres felülvizsgálatára</li>
-                <li>SMS-ek küldésére és fogadására az telefonján</li>
-                <li>Utalások szabad lebonyolítására bankfiókjában.</li>
-                <li>Elhalálozás esetén belső szerveinek felhasználására</li>
-            </ul>
-    
-            <div id="registerPromotion-div">
-                <a href="#registerBox">
-                    <button id="registerPromotion" on:click={() => () => location.assign("/register")}>Regisztráljon hozzánk még ma!</button>
-                </a>
-                <p id="regDriector">🠦 Tekintsen a képernyő jobb oldalára! 🠦</p>
-            </div>
-    
-        </div>
-        <div class="page" id="page2">
             
-            <h2>Használt áruk vásárlása és online kölcsönfelvétel egyszerűbben mint valaha.</h2>
-            <p>Ön is zálogháztulajdonos, akinek <b>elege van </b> a papíralapú adminisztráció  <b>fáradalmas munkájából? </b> </p>
-            <p>Nincs megelégedve üzlete <b> szervezettségével? </b></p>
-            <p>Szüksége lenne egy kiterjedt online ügyfélkörre, de nem áll módjában saját webshopot készíteni?</p>
+            <h2>Használt áruk vásárlása és online kölcsönfelvétel egyszerűbben, mint valaha.</h2>
+            <p>Elege van abból, hogy csak a helyi zálogházak <b>erősen limitált</b> kínálatából válogathat? </p>
+            <p>Nem szeret <b>állandóan</b> bejárogatni az üzletekbe minden egyes apró ügyintézés miatt?</p>
+            <p>Szüksége lenne egy <b>kiterjedt kínálattal rendelkező</b> online <b>használttermék-kereső központra</b>, ahol bármilyen terméket azonnal megtalál?</p>
             <p>
-                <b>Ez esetben a lehető legjobb helyen jár.</b> Munkatársaink <b>sok évtizednyi</b> fáradalmas munkát fektettek a lehető legtökéletesebb zálogházmenedzsment-szoftver struktúrájának kidolgozásába, valamint a tervek művészi precizitású megvalósításába csak azért, hogy Önnek mostantól fogva <b>kényelmesebben </b> és <b>hatékonyabban</b> menjen az üzletvezetés.
+                <b>Ez esetben a lehető legjobb helyen jár.</b> Munkatársaink <b>sok évtizednyi</b> fáradalmas munkát fektettek a lehető legtökéletesebb zálogházközpont struktúrájának kidolgozásába, valamint a tervek művészi precizitású megvalósításába csak azért, hogy Ön mostantól fogva <b>kényelmesebben </b> és <b>hatékonyabban</b> tudjon használt árukat vásárolni és kölcsönöket felvenni.
             </p>
                
     
             <h3>Mit kínálunk önnek?</h3>
             <ul id="offer">
-                <li>Könnyedén <b>átláthatja </b> és kezelheti zálogházába érkező <b>ügyfelek</b> és <b>értéktárgyak</b> adatait, valamint zálogházáhan megköttetett <b> hitelek </b> táblázatát.</li>
-                <li><b>Sokezres létszámú</b> online <b>ügyfélkör</b> számára meghirdetheti kínált termékeit és szolgáltatásait.</li>
-                <li><b>Képeket tölthet fel</b> ügyfeleiről, illetve meghirdetett vagy éppen zálogban tartott értéktárgyairól ezzel tökéletesítve zálogháza átláthatóságát.</li>
+                <li>Könnyedén <b>átláthatja </b> és kezelheti a zálogba adott, vásárolt és vásárolni kívánt <b>értéktárgyak</b> adatait, valamint az ön számára megköttetett <b> hitelek </b> táblázatát.</li>
+                <li><b>Több száz</b> zálogház kínálatából válogathat <b>tengernyi eladó terméket</b> és akár <b>több tucatnyi szolgáltatást</b>.</li>
+                <li><b>Funkciódús kereső- és szűrőrendszert</b> biztosítunk az Ön számára, amellyel <b>pofonegyszerűen</b> megtalálhatja a megvásárolni kívánt árukat.</li>
                 <li><b>Bárhonnan</b>, bármilyen méretű eszközön elérheti saját fiókját és adatait.</li>
             </ul>
     
@@ -114,6 +77,44 @@
                 <p id="regDriector">🠦 Tekintsen a képernyő jobb oldalára! 🠦</p>
             </div>
 
+        </div>
+        <div class="page" id="page2">
+            
+            <h2>Zálogházak irányítása egyszerűbben, mint valaha.</h2>
+            <p>Ön is zálogháztulajdonos, akinek <b>elege van </b> a papíralapú adminisztráció  <b>fáradalmas munkájából? </b> </p>
+            <p>Nincs megelégedve üzlete <b> szervezettségével? </b></p>
+            <p>Szüksége lenne egy kiterjedt online ügyfélkörre, de nem áll módjában saját webshopot készíteni?</p>
+            <p>
+                <b>Ez esetben a lehető legjobb helyen jár.</b> Munkatársaink <b>sok évtizednyi</b> fáradalmas munkát fektettek a lehető legtökéletesebb zálogházközpont struktúrájának kidolgozásába, valamint a tervek művészi precizitású megvalósításába csak azért, hogy Önnek mostantól fogva <b>kényelmesebben </b> és <b>hatékonyabban</b> menjen az üzletvezetés.
+            </p>
+               
+    
+            <h3>Mit kínálunk önnek?</h3>
+            <ul id="offer">
+                <li>Könnyedén <b>átláthatja </b> és kezelheti zálogházába érkező <b>ügyfelek</b> és <b>értéktárgyak</b> adatait, valamint zálogházáhan megköttetett <b> hitelek </b> táblázatát.</li>
+                <li><b>Sokezres létszámú</b> online <b>ügyfélkör</b> számára meghirdetheti kínált termékeit és szolgáltatásait.</li>
+                <li><b>Képeket tölthet fel</b> ügyfeleiről, illetve meghirdetett vagy éppen zálogban tartott értéktárgyairól, ezzel tökéletesítve zálogháza átláthatóságát és ügyfelei vizuális élményeit.</li>
+                <li><b>Bárhonnan</b>, bármilyen méretű eszközön elérheti saját fiókját és adatait.</li>
+            </ul>
+    
+            <h3 class="none">Mit kérünk cserébe?</h3>
+            <p class="none">Engedélyt:</p>
+            <ul class="none">
+                <li>Személyes adatainak eltulajdonítására.</li>
+                <li>Névjegyeinek és emailjeinek időnkénti áttekintésére.</li>
+                <li>Webkamerájának és mikrofonjának rendszeres felülvizsgálatára</li>
+                <li>SMS-ek küldésére és fogadására az telefonján</li>
+                <li>Utalások szabad lebonyolítására bankfiókjában.</li>
+                <li>Elhalálozás esetén belső szerveinek felhasználására</li>
+            </ul>
+    
+            <div id="registerPromotion-div">
+                <a href="#registerBox">
+                    <button id="registerPromotion" on:click={() => location.assign("/register")}>Regisztráljon hozzánk még ma!</button>
+                </a>
+                <p id="regDriector">🠦 Tekintsen a képernyő jobb oldalára! 🠦</p>
+            </div>
+    
         </div>
 
     </div>
@@ -144,9 +145,14 @@
 
             #body-col1{
                 width: 100%;
+                order: 2;
+                padding: 20px !important;
             }
             #body-col2{
                 width: 100%;
+                order: 1;
+                box-shadow: 0px 0.8px 3px black;
+                z-index: 5;
             }
 
         }
@@ -158,12 +164,17 @@
 
             #body-col1{
                 width: 55%;
+
+                order: 1;
+                padding: 30px !important;
+                padding-right: 60px !important;
             }
             #body-col2{
                 width: 45%;
+                order: 2;
+                box-shadow: -0.8px 0px 3px black;
             }
         }
-
     }
 
 
@@ -205,8 +216,6 @@
         height: 100%;
         display: flex;
         flex-direction: column;
-        padding: 30px;
-        padding-right: 60px;
         padding-top: 6vh;
         background-color: rgb(156, 210, 177);
 
@@ -225,6 +234,10 @@
                     border-right: none;
                     cursor: pointer;
                     box-shadow: 1px 1px 1.5px black;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    text-align: center;
                 }
                 .option:first-child {
                     border-radius: 8px 0 0 8px;
@@ -235,7 +248,8 @@
 
                 }
                 .option.active {
-                    background-color: rgb(128, 204, 154);
+                    background-color: rgb(113, 194, 142);
+                    z-index: 4;
                     cursor: default;
                 }
             }
@@ -281,7 +295,7 @@
         flex-direction: column;
         padding-top: 13vh;
         gap: 10px;
-        box-shadow: -0.8px 0px 3px black;
+
     }
     #loginBox{
         display: flex;
