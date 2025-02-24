@@ -9,12 +9,11 @@
 
     })
     
-    let isCustomer = true
+    let isCustomer = false
 
     </script>
     
     <section id="body">
-    
     
         <div id="head-div">
             <div id="h-col1">
@@ -43,18 +42,18 @@
         <div id="main-container">
             
             <div class="cardGroup" id="cgProfile">
-                <h3 class="cgTitle profile">Profilkép</h3>
+                <h3 class="cgTitle profile">{isCustomer ? "Profilkép" : "Zálogház fényképe"}</h3>
                 <div class="cgBody profile">
-                    <img src="IMG/Global/no-profile-image.png" alt="">
+                    <img src="IMG/Global/{isCustomer ? 'no-profile-image.png' : 'no-shop-image.png'}" alt="">
                 </div>
                 <div class="cgFoot profile">
                     <button>
                         <img src="IMG/Global/upload.png" alt="">
-                        <p>Új profilkép feltöltése</p>
+                        <p>Új {isCustomer ? "profilkép" : "fénykép"} feltöltése</p>
                     </button>
                     <button>
                         <img src="IMG/Global/delete.png" alt="">
-                        <p>Profilkép törlése</p>
+                        <p>{isCustomer ? "Profilkép" : "Fénykép"} törlése</p>
                     </button>
                 </div>
             </div>
@@ -222,6 +221,10 @@
             .cardGroup {
                 width: calc(100%)!important;
             }
+
+            .cgFoot button {
+                font-size: 18px;
+            }
     
         }
         @media (min-width: 300px) {
@@ -236,9 +239,15 @@
         }
         @media (min-width: 404px) {
 
+            .cgFoot button {
+                font-size: 19px;
+            }
         }
         @media (min-width: 468px) {
 
+            .cgFoot button {
+                font-size: 20px;
+            }
     
         }
         /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -358,7 +367,7 @@
 
                             textarea.cgInput {
                                 resize: none;
-                                height: 300px;
+                                height: 250px;
                             }
                         }
 
@@ -386,7 +395,7 @@
                         button {
                             width: 100%;
                             height: 44px;
-                            font-size: 20px;
+
                             padding: 4px 12px;
                             margin-top: 7px;
                             border-radius: 3px;

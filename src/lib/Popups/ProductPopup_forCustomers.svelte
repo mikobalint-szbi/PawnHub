@@ -83,7 +83,7 @@
                 </div>
                 <div id="shop" class="popupGrid-element">
                     <div id="shop-row1">
-                        <img src="IMG/Shops/no-shop-image.png" alt="">
+                        <img src="IMG/Global/no-shop-image.png" alt="">
                     </div>
                     <div id="shop-row2">
                         <p>Tóth Pista Zálogház és Ékszerüzlet</p>

@@ -590,7 +590,7 @@
                         background-color: rgb(161, 213, 179);
                         border: 1px solid black;
                         border-radius: 5px;
-                        background-image: url("IMG/Shops/no-shop-image.png");
+                        background-image: url("IMG/Global/no-shop-image.png");
                         background-size: cover;
                         background-position: center;
                     }

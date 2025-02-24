@@ -159,7 +159,7 @@
             <div class="shopCard" on:click={()=>location.assign('shop')}>
                 <div class="row1">
                     <div class="col1">
-                        <img src="IMG/Shops/no-shop-image.png" alt="Zálogház fotója">
+                        <img src="IMG/Global/no-shop-image.png" alt="Zálogház fotója">
                     </div>
                     <div class="col2">
                         <h3 class="shopTitle" title="Zálogház neve">Zálogház neve Zálogház neve Zálogház neve Zálogház neve Zálogház neve Zálogház neve Zálogház neve Zálogház neve </h3>
