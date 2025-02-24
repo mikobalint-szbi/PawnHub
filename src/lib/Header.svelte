@@ -46,7 +46,7 @@
                         <img src="IMG/Global/settings.png" alt="Fiók kezelése">
                         <p>Fiók kezelése</p>
                     </button>
-                    <button>
+                    <button on:click={()=>location.assign('/')}>
                         <img src="IMG/Global/logout.png" alt="Kijelentkezés">
                         <p>Kijelentkezés</p>
                     </button>

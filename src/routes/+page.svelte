@@ -35,9 +35,18 @@
 
 <section id="body">
     <div id="body-col1">
+        
+        <div class="switch-container">
+            <div class="switch">
+                <div class="option active" id="opt1">Regisztráció Ügyfélként</div>
+                <div class="option" id="opt2">Regisztráció Zálogháztulajdonosként</div>
+            </div>
+        </div>
+
         <h2>Zálogházak irányítása egyszerűbben mint valaha.</h2>
         <p>Ön is zálogháztulajdonos, akinek <b>elege van </b> a papíralapú adminisztráció  <b>fáradalmas munkájából? </b> </p>
         <p>Nincs megelégedve üzlete <b> szervezettségével? </b></p>
+        <p>Szüksége lenne egy kiterjedt online ügyfélkörre, de nem áll módjában saját webshopot készíteni?</p>
         <p>
             <b>Ez esetben a lehető legjobb helyen jár.</b> Munkatársaink <b>sok évtizednyi</b> fáradalmas munkát fektettek a lehető legtökéletesebb zálogházmenedzsment-szoftver struktúrájának kidolgozásába, valamint a tervek művészi precizitású megvalósításába csak azért, hogy Önnek mostantól fogva <b>kényelmesebben </b>mehessen az üzletvezetés.
         </p>
@@ -46,7 +55,6 @@
         <h3>Mit kínálunk önnek?</h3>
         <ul id="offer">
             <li>Könnyedén <b>átláthatja </b> és kezelheti zálogházába érkező <b>ügyfelek</b> és <b>értéktárgyak</b> adatait, valamint zálogházáhan megköttetett <b> hitelek </b> táblázatát.</li>
-            <li>Számontarthatja <b>egyenlegét</b>, <b>profitját</b> és <b>költségeit.</b></li>
             <li>Feljegyezheti és követheti üzlete <b>pénzmozgásait.</b></li>
             <li><b>Képeket tölthet fel</b> ügyfeleiről és értéktárgyairól, ezzel tökéletesítheti adatbázisa átláthatóságát és vizuális élményét.</li>
             <li><b>Bárhonnan</b> elérheti saját fiókját és adatait.</li>
@@ -181,6 +189,32 @@
         padding-right: 60px;
         padding-top: 6vh;
         background-color: rgb(156, 210, 177);
+
+        
+        .switch-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+
+            .switch {
+            display: flex;
+
+            .option {
+                padding: 8px 10px;
+                border: 1px solid black;
+                border-right: none;
+            }
+            .option:first-child {
+                border-radius: 14px 0 0 14px;
+            }
+            .option:last-child {
+                border-right: 1px solid black;
+                border-radius: 0 14px 14px 0;
+
+            }
+        }
+        }
+
 
         h2{
             margin-bottom: 18px;
