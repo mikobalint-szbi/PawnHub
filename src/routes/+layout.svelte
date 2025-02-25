@@ -12,7 +12,9 @@
 	import ProductChooser from '$lib/Popups/ProductChooser.svelte';
 	import CustomerChooser from '$lib/Popups/CustomerChooser.svelte';
 	import LoanPopup_forCustomers from '$lib/Popups/LoanPopup_forCustomers.svelte';
+	import LoanPopup_new_forCustomers from '$lib/Popups/LoanPopup_New_forCustomers.svelte';
 	import ProductPopup_forCustomers from '$lib/Popups/ProductPopup_forCustomers.svelte';
+    import LoanPopupNewForCustomers from '../lib/Popups/LoanPopup_New_forCustomers.svelte';
 
 </script>
 
@@ -29,6 +31,7 @@
 			<CustomerChooser/>
 			<LoanPopup_forCustomers/>
 			<ProductPopup_forCustomers/>
+			<LoanPopup_new_forCustomers/>
 		</section>
 
 		<slot />

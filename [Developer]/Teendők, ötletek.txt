@@ -2,7 +2,6 @@
 http://infojegyzet.hu/webszerkesztes/dokumentacio
 
 Teendők:
-- Customer's Loan page: Hozzáadás gomb kattintása --> Kicsi popup box: "Kölcsönfelvétel céljából kérjük, lépjen kapcsolatba egy zálogházzal. Ehhez javasoljuk Zálogházkereső oldalunkat igénybe venni, amelyet a főmenüben ér el."
 
 - Mit adjon ki akkor, ha nem vagy bejelentkezve, vagy ha be vagy, de nem olyan típusú fiókba: A layout.svelte az adott page helyett azt írja ki, hogy "Kérjük, jelentkezzen be zálogházas/ügyfél típusú fiókjába az oldal tartalmának megtekintéséhez."
 

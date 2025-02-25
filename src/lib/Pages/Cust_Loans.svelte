@@ -98,7 +98,7 @@
 
         </div>
         <div id="hl-col3">
-            <button id="add-button" on:click={() => open_popup("loanPopup_forCustomers",true,false)}>
+            <button id="add-button" on:click={() => open_popup("loanPopup_new_forCustomers",true,false)}>
                 <div id="add-col1">
                     <img src="IMG/Global/add.png" alt="Hozzáadás" title="Hozzáadás">
                 </div>
