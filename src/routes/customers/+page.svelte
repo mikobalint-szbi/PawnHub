@@ -131,7 +131,7 @@
             <tbody>
 
                 {#each {length: 17} as _, i}
-                <div class="row" href="">
+                <div class="row {Math.random() > 0.5 ? "nonuser" : ""}" href="">
                     <td class="col1" href="" tabindex="0" on:click={() => open_popup("customerPopup",false,false)}>
                         <img src="IMG/Global/no-profile-image.png" alt="">
                     </td>
@@ -403,6 +403,10 @@
                     }
                 }
                 
+            }
+
+            .row.nonuser {
+                background-color: rgb(160, 201, 175);
             }
         }
 

@@ -2,11 +2,9 @@
 http://infojegyzet.hu/webszerkesztes/dokumentacio
 
 Teendők:
+- order by selector még nincs a frontenden
+- A regisztrációs oldalra egy switch, hogy customer vagy shop szeretnél lenni
 
-- Mit adjon ki akkor, ha nem vagy bejelentkezve, vagy ha be vagy, de nem olyan típusú fiókba: A layout.svelte az adott page helyett azt írja ki, hogy "Kérjük, jelentkezzen be zálogházas/ügyfél típusú fiókjába az oldal tartalmának megtekintéséhez."
-
-- A Customers táblázatban a non-userek még mindig nincsenek más színnel jelölve
-- A bejelentkezési felületen a regisztrációs gomb egy másik, beállításokhoz hasonló adatlapra linkel át, aminek a tetején van egy switch, hogy customer vagy shop szeretnél lenni
 - ImageViewer:
 	• legyen már marginja annak a szerencsétlen képnek nagyításkor
 	• több kép is lehessen → Képléptetőt megcsinálni
