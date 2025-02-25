@@ -2,6 +2,7 @@
 http://infojegyzet.hu/webszerkesztes/dokumentacio
 
 Teendők:
+- A regisztrációs oldalon nem tűnnek el a gombok. & pageselector height/margin-bottom átírni
 - order by selector még nincs a frontenden
 - A regisztrációs oldalra egy switch, hogy customer vagy shop szeretnél lenni
 

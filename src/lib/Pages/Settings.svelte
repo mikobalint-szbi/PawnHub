@@ -6,11 +6,11 @@
     export let isRegistration;
     export let isCustomer;
 
-    onMount(()=> {
-    
+    function registrationPage(){
+        console.log("\n\n")
         if (isRegistration) {
-
             document.querySelectorAll(".register-hide").forEach((e) => {
+                e.setAttribute('style', 'display:none !important');
                 e.style.display = "none"
             });
             document.querySelectorAll(".register-show.unset").forEach((e) => {
@@ -20,9 +20,30 @@
                 e.setAttribute('style', 'display:flex !important');
             });
 
-
         }
-        console.log(isRegistration)
+
+    }
+
+    function psOption1_clicked(){
+        document.getElementById("ps-option1").classList.add("active")
+        document.getElementById("ps-option2").classList.remove("active")
+        isCustomer = true
+        registrationPage()
+    }
+    function psOption2_clicked(){
+        document.getElementById("ps-option1").classList.remove("active")
+        document.getElementById("ps-option2").classList.add("active")
+        isCustomer = false
+        registrationPage()
+    }
+
+
+
+    onMount(()=> {
+
+        registrationPage()
+
+
     })
 
 
@@ -52,6 +73,31 @@
             </div>
             <div id="h-col3">
             </div>
+        </div>
+
+        <div id="headDiv-lower" class="register-show flex">
+
+            <div id="hl-col1">
+    
+            </div>
+            <div id="hl-col2">
+    
+                <div id="product-status">
+                    <!-- svelte-ignore a11y-click-events-have-key-events -->
+                    <!-- svelte-ignore a11y-no-static-element-interactions -->
+                    <div id="ps-option1" class="ps-option active" on:click={psOption1_clicked} tabindex="0" role="button">
+                        <p>Ügyfélként</p>
+                    </div>
+                    <!-- svelte-ignore a11y-click-events-have-key-events -->
+                    <!-- svelte-ignore a11y-no-static-element-interactions -->
+                    <div id="ps-option2" class="ps-option"  on:click={psOption2_clicked} tabindex="0" role="button">
+                        <p>Zálogházként</p>
+                    </div>
+
+                </div>
+    
+            </div>
+
         </div>
     
         <div id="main-container">
@@ -152,8 +198,8 @@
                             <input type="text" class="cgInput" id="cust-billingAddress">
                         </div>
                         <div class="cgRow">
-                            <label for="cust-billingAddress" class="cgLabel">Iban-számlaszám:</label>
-                            <input type="text" class="cgInput" id="cust-billingAddress">
+                            <label for="cust-iban" class="cgLabel">Iban-számlaszám:</label>
+                            <input type="text" class="cgInput" id="cust-iban">
                         </div>
                     </div>
                     <div class="cgFoot">
@@ -336,6 +382,21 @@
                         margin: 0 !important;
                     }
                 }
+            }
+
+            #headDiv-lower {
+                display: none;
+
+                #hl-col2 {
+
+                    .ps-option{
+                        width: 50% !important;
+                    }
+                    .ps-option:last-child {
+                        border-right: none !important;
+                    }
+
+                } 
             }
     
     
