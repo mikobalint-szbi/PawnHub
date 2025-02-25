@@ -4,14 +4,14 @@
     import { page } from "$app/stores"
     import '$lib/Styles/settings.scss';
 
-    let isCustomer = true;
+    let isCustomer = false;
 
 
 
     function psOption1_clicked(){
         document.getElementById("ps-option1").classList.add("active")
         document.getElementById("ps-option2").classList.remove("active")
-        isCustomer = true
+        isCustomer = false
         window.history.pushState(null, "", "/register?for=customer");
 
     }
@@ -28,7 +28,7 @@
     onMount(()=> {
 
         if ($page.url.searchParams.get("for") == null || $page.url.searchParams.get("for") == "customer"){
-            isCustomer = true
+            isCustomer = false
         }
         else {
             isCustomer = false

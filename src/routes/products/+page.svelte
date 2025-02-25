@@ -4,7 +4,7 @@
     import Cust_Products from "$lib/Pages/Cust_Products.svelte";
     import Layout from "../+layout.svelte";
 
-    let isCustomer = true
+    let isCustomer = false
 
 </script>
 

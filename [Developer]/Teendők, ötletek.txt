@@ -2,32 +2,31 @@
 http://infojegyzet.hu/webszerkesztes/dokumentacio
 
 Teendők:
-- order by selector még nincs a frontenden
-- A regisztrációs oldalra egy switch, hogy customer vagy shop szeretnél lenni
+- Product popup footerjébe Termék törlése gomb
+- Customer popup footerjébe Ügyfél törlése gomb
+- Loan popup footerjébe Adósság törlése gomb
 
-- ImageViewer:
-	• legyen már marginja annak a szerencsétlen képnek nagyításkor
-	• több kép is lehessen → Képléptetőt megcsinálni
-	• ennek a popupnak is legyen felül title-je
-	• a végén a reszponzivitást ellenőrizni
-- Customer's imageViewer popup
+- Adüsság popup: Termék hozzáadása: válazstó popup: új termék vagy meglévő? Ugyanez customer esetében
+
+- Multifunkciós Biztos törölni szeretnéd? popup 🥹
+
 - Product page (shop page másolata)
 - Customer's Product popup mobilnézet javítása
-- Zálogház adatlapja
-- Termék adatlapja
-- Fiókbeállítások oldal Zálogosoknak és Ügyfeleknek (a zálogos a saját homePage-ét is ott tudja szerkeszteni)
-- A Customer's Loan page-nél a zálogos oszlopra kattintva a zálogház PawnHub-oldalára jutunk
-- Bejelentkezés page frissítése, hogy mindkét fél tudjon külön regisztrálni
-- Sorbarendezés comboBox elkészítése (mi alapján, ASC/DESC)
 - Pluszgombok a megfelelő popupokhoz, amik megnyitják a Termék- vagy az ügyfélválasztót
 - Ahol pluszgomb van, ott törlésgombnak is kell lennie
-- animáció az userProfileBox dropdownjának megjelenítésére és eltüntetésére
+
+
 
 Miután lesz backend:
 - A Shop és Product page-eknél a címzett mindig az aktuális zálogház legyen, és át se lehessen írni
 
-Fejlesztési lehetőségek:
-- a boltokat lehessen értékelni
+Csak ha lesz még rá időm:
+- order by selector még nincs a frontenden. Sorbarendezés comboBox elkészítése (mi alapján, ASC/DESC)
+- animáció az userProfileBox dropdownjának megjelenítésére és eltüntetésére
+- ImageViewer: legyen már marginja annak a szerencsétlen képnek nagyításkor
+
+Kuka:
+- Loan popup Zálogtárgyak szekciójában ha a Product Card fölé viszed az egeret, megjelenik a kártya jobb oldalán egy lebegő Törlés gomb, ami a Termék nevét kicsit kitakarja
 
 
 --------------------------------------
@@ -35,7 +34,7 @@ Fejlesztési lehetőségek:
 Fejlesztési lehetőségek:
 - Emailes visszaigazolás
 - Elfelejtett jelszó
-
+- a boltokat lehessen értékelni
 
 
 

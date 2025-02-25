@@ -62,7 +62,7 @@
  
         })
 
-        open_popup("imageViewer")
+        // open_popup("imageViewer")
     })
 </script>
 <section id="body">
