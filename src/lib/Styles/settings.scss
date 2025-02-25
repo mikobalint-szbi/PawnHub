@@ -1,0 +1,266 @@
+
+@media (min-width: 0px) {
+    
+    #main-container{
+        width: 95%;
+    }
+
+    .cardGroup {
+        width: calc(100%)!important;
+    }
+
+    .cgFoot button {
+        font-size: 18px;
+    }
+
+}
+@media (min-width: 300px) {
+
+
+
+
+}
+@media (min-width: 340px) {
+
+
+}
+@media (min-width: 404px) {
+
+    .cgFoot button {
+        font-size: 19px;
+    }
+}
+@media (min-width: 468px) {
+
+    .cgFoot button {
+        font-size: 20px;
+    }
+
+}
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media (min-width: 596px) {
+
+    #main-container{
+        width: 90%;
+        max-width: 1200px;
+    }
+
+
+}
+@media (min-width: 768px) {
+
+    #main-container {
+        width: 90%;
+
+    }
+
+    .cardGroup {
+        width: calc(50% - 4px)!important;
+    }
+
+    #cgProfile {
+        order: 1;
+    }
+    #cgCustData, #cgShopData {
+        order: 3;
+    }
+    #cgCustContacts, #cgShopContacts {
+        order: 2;
+    }
+    #cgPassword {
+        order: 4;
+    }
+
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media (min-width: 992px) {
+
+    #main-container {
+        width: 80%;
+
+    }
+
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media (min-width: 1230px) {
+
+
+
+}
+
+
+#body{
+
+    #head-div {
+        margin-bottom: 8px;
+        #h-col2 {
+            h1 {
+                margin: 0 !important;
+            }
+        }
+    }
+
+    #headDiv-lower {
+        display: none;
+
+        #hl-col2 {
+
+            .ps-option{
+                width: 50% !important;
+            }
+            .ps-option:last-child {
+                border-right: none !important;
+                border-radius: 0 6px 6px 0 !important;
+            }
+
+        } 
+    }
+
+
+    #main-container {
+
+        margin-bottom: 30px;
+        margin-top: 5px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+
+
+
+        .cardGroup {
+            border: 1px solid black;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            border-radius: 3px;
+            box-shadow: 1px 1px 2px black;
+
+            .cgTitle {
+                margin-top: 0px;
+                margin-bottom: 10px;
+                font-weight: 600;
+                font-size: 20px;
+            }
+            .cgBody{
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+                justify-content: center;
+                height: 100%;
+
+
+                .cgRow{
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+
+                    .cgLabel {
+                        flex-grow: 1;
+                        display: block;
+                        font-size: 15px;
+                    }
+
+                    .cgInput {
+                        width: 100%;
+                        height: 32px;
+                        font-size: 19px;
+                        padding-left: 4px;
+                    }
+
+                    textarea.cgInput {
+                        resize: none;
+                        height: 250px;
+                    }
+                }
+
+            }
+
+            .cgBody.profile {
+                align-items: center;
+                padding: 5px;
+                img {
+                        max-height: 250px;
+                    width: fit-content;
+                    background-color: rgb(161, 213, 179);
+                    border-radius: 4px;
+                    box-shadow: 0.3px 0.3px 1px black;
+                    border: 1px solid black;
+                }
+            }
+
+            .cgFoot {
+
+                margin-top: auto;
+                justify-content: center;
+                flex-direction: row;
+
+                button {
+                    width: 100%;
+                    height: 44px;
+
+                    padding: 4px 12px;
+                    margin-top: 7px;
+                    border-radius: 3px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 8px;
+
+                    img {
+                        height: 90%;
+                    }
+                    p {
+                        margin: 0;
+                    }
+
+                }
+                button:first-child {
+                    margin-top: 15px;
+                }
+                
+            }
+
+            .cgFoot.profile {
+                /*p {
+                    width: 200px;
+                    text-align: start;
+                }*/
+            }
+        }
+
+
+    }
+
+    .bottom {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 30px;
+        margin-top: -5px;
+
+        button {
+
+            padding: 0px 30px;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            height: 60px;
+
+            img {
+                height: 65%;
+            }
+            p {
+                font-size: 30px;
+            }
+
+        }
+    }
+
+}
+
+
+
