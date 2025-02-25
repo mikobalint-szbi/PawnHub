@@ -1,6 +1,6 @@
 <script>
 
-    let isCustomer = false
+    let isCustomer = true
 
 </script>
 

@@ -4,21 +4,21 @@
     import { page } from "$app/stores"
     import '$lib/Styles/settings.scss';
 
-    let isCustomer = false;
+    let isCustomer = true;
 
 
 
     function psOption1_clicked(){
         document.getElementById("ps-option1").classList.add("active")
         document.getElementById("ps-option2").classList.remove("active")
-        isCustomer = false
+        isCustomer = true
         window.history.pushState(null, "", "/register?for=customer");
 
     }
     function psOption2_clicked(){
         document.getElementById("ps-option1").classList.remove("active")
         document.getElementById("ps-option2").classList.add("active")
-        isCustomer = false
+        isCustomer = true
         window.history.pushState(null, "", "/register?for=shop");
     }
 
@@ -28,10 +28,10 @@
     onMount(()=> {
 
         if ($page.url.searchParams.get("for") == null || $page.url.searchParams.get("for") == "customer"){
-            isCustomer = false
+            isCustomer = true
         }
         else {
-            isCustomer = false
+            isCustomer = true
             psOption2_clicked()
         }
 
