@@ -60,4 +60,9 @@
 	header{
 		z-index: 100;
 	}
+
+	#popupBody {
+		padding-bottom: 20px !important;
+	}
+
 </style>

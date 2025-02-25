@@ -2,9 +2,6 @@
 http://infojegyzet.hu/webszerkesztes/dokumentacio
 
 Teendők:
-- Product popup footerjébe Termék törlése gomb
-- Customer popup footerjébe Ügyfél törlése gomb
-- Loan popup footerjébe Adósság törlése gomb
 
 - Adósság popup: Termék hozzáadása: válazstó popup: új termék vagy meglévő? Ugyanez customer esetében
 
@@ -12,8 +9,7 @@ Teendők:
 
 - Product page (shop page másolata)
 - Customer's Product popup mobilnézet javítása
-- Pluszgombok a megfelelő popupokhoz, amik megnyitják a Termék- vagy az ügyfélválasztót
-- Ahol pluszgomb van, ott törlésgombnak is kell lennie
+
 
 
 
