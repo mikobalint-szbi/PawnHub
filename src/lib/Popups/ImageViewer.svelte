@@ -90,7 +90,7 @@
                     <img src="IMG/Global/upload.png" alt="" id="replaceImg">
                     <p id="submitText">{Math.random() > 0.5 ? "Képfeltöltés" : "Csere"}</p>
                 </button>
-                <button on:click={() => {}} id="deleteButton" class="bottomButton">
+                <button on:click={() => open_popup("confirmDelete", false, false)} id="deleteButton" class="bottomButton">
                     <img src="IMG/Global/delete.png" alt="" id="deleteImg">
                     <p id="submitText">Törlés</p>
                 </button>

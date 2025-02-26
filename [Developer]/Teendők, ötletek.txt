@@ -3,10 +3,7 @@ http://infojegyzet.hu/webszerkesztes/dokumentacio
 
 Teendők:
 - A regisztráció oldal usertype switchcse valamiért nem változtatja meg az oldal tartalmát
-
-- Adósság popup: Termék hozzáadása: válazstó popup: új termék vagy meglévő? Ugyanez customer esetében
-
-- Multifunkciós Biztos törölni szeretnéd? popup 🥹
+- Az összes popupBoxon az X gomb legyen ugyanolyan széles, mint a Vissza gomb, hogy a Title középen legyen ‼️
 
 - Customer's Product popup mobilnézet javítása
 

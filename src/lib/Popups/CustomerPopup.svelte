@@ -159,7 +159,7 @@
                     <img src="IMG/Global/save.png" alt="" id="submitImg">
                     <p id="customerPopup-submitText" class="submitText">Módosítások mentése</p>
                 </button>
-                <button on:click={() => {}} id="deleteButton" class="bottomButton">
+                <button on:click={() => open_popup("confirmDelete", false, false)} id="deleteButton" class="bottomButton">
                     <img src="IMG/Global/delete.png" alt="" id="deleteImg">
                     <p id="customerPopup-deleteText" class="deleteText">Ügyfél eltávolítása</p>
                 </button>
