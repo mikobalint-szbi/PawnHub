@@ -1,6 +1,7 @@
 <script>
 
 import { onMount } from "svelte";
+import '$lib/Styles/productCard.scss';
 
 function open_settlDropdown(){
     

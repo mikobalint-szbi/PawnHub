@@ -1,7 +1,9 @@
 <script>
     import { onMount } from "svelte";
     import '$lib/Styles/shopAndProduct.scss';
-    import { getNum } from "$lib/Scripts/functions.js"
+    import '$lib/Styles/shopCard.scss';
+
+
 
     function togglePages(id) {
 
@@ -148,7 +150,7 @@
             <div class="pageContainer">
                 <div class="pageTags">
                     <div class="pageTag active" id="pageTag1">Leírás</div>
-                    <div class="pageTag" id="pageTag2">Zálogház</div>
+                    <div class="pageTag" id="pageTag2">Kínálja</div>
                     <div class="pageTag" id="pageTag3">Üzenet</div>
                 </div>
                 <div class="pageContent" id="pageContent1">
@@ -200,14 +202,14 @@
                         Animi harum, voluptates maxime saepe quidem neque cumque iure, fugiat repudiandae voluptas expedita rerum nam, dolore laborum recusandae et ducimus? Quam aliquam recusandae voluptate molestias consequuntur, doloremque libero maxime odio!
                     </p>
                 </div>
-                <div class="pageContent" id="pageContent2">
+                <div class="pageContent product" id="pageContent2">
     
                     <!-- svelte-ignore a11y-click-events-have-key-events -->
                     <!-- svelte-ignore a11y-no-static-element-interactions -->
                     <div class="shopCard" on:click={()=>location.assign('shop')}>
                         <div class="row1">
                             <div class="col1">
-                                <img src="IMG/Global/no-shop-image.png" alt="Zálogház fotója">
+                                <img src="IMG/Global/no-shop-image.png" class="shopImage" alt="Zálogház fotója">
                             </div>
                             <div class="col2">
                                 <h3 class="shopTitle" title="Zálogház neve">Zálogház neve Zálogház neve Zálogház neve Zálogház neve Zálogház neve Zálogház neve Zálogház neve Zálogház neve </h3>

@@ -2,6 +2,7 @@
 http://infojegyzet.hu/webszerkesztes/dokumentacio
 
 Teendők:
+- A Product page-ről már csak a .price reszponzivitása hiányzik
 
 - Adósság popup: Termék hozzáadása: válazstó popup: új termék vagy meglévő? Ugyanez customer esetében
 

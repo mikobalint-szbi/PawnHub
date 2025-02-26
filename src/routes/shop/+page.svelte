@@ -1,6 +1,7 @@
 <script>
     import { onMount } from "svelte";
     import '$lib/Styles/shopAndProduct.scss';
+    import '$lib/Styles/productCard.scss';
 
     function togglePages(id) {
 
@@ -202,10 +203,12 @@
                 <div class="pageContent" id="pageContent2">
     
                     {#each {length: 17} as _, i}
-                    <div class="productCard">
+                    <!-- svelte-ignore a11y-click-events-have-key-events -->
+                    <!-- svelte-ignore a11y-no-static-element-interactions -->
+                    <div class="productCard" on:click={()=>location.assign('product')}>
                         <div class="row1">
                             <div class="col1">
-                                <img src="IMG/Global/no-image.png" alt="Termék fotója">
+                                <img src="IMG/Global/no-image.png" alt="A termék fotója">
                             </div>
                             <div class="col2">
                                 <h3 class="productTitle" title="Termék neve">Termék neve Termék neve Termék neve Termék neve Termék neve Termék neve Termék neve Termék neve </h3>

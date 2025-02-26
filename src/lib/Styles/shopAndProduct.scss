@@ -508,14 +508,18 @@
                         display: none;
                         flex-direction: column;
 
-                        .productCard {
+                        .productCard, .shopCard {
                             background-color: rgb(161, 213, 179);
 
-                            .productImage {
+                            .productImage, .shopImage {
                                 background-color: rgb(160, 206, 180);
                             }
                         }
 
+                    }
+
+                    #pageContent2.product{
+                        justify-content: center;
                     }
 
                     #pageContent3 {
