@@ -61,7 +61,7 @@
 	}
 
 	#popupBody {
-		padding-bottom: 20px !important;
+
 	}
 
 </style>

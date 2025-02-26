@@ -2,13 +2,13 @@
 http://infojegyzet.hu/webszerkesztes/dokumentacio
 
 Teendők:
-- A Product page-ről már csak a .price reszponzivitása hiányzik
+- A regisztráció oldal usertype switchcse valamiért nem változtatja meg az oldal tartalmát
+- Fejlécen és a loginDropdownban a profilkép div legyen, ne img, hogy képaránya akármilyen méretű kép esetén 1:1 lehessen
 
 - Adósság popup: Termék hozzáadása: válazstó popup: új termék vagy meglévő? Ugyanez customer esetében
 
 - Multifunkciós Biztos törölni szeretnéd? popup 🥹
 
-- Product page (shop page másolata)
 - Customer's Product popup mobilnézet javítása
 
 

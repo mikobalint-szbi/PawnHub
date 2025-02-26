@@ -49,6 +49,20 @@
         #mRow1 .col1  {
             padding: 4px;
         }
+
+        .priceField-inner {
+
+            .priceLabel {
+                font-size: 16px;
+            }
+            .price {
+                font-size: 34px;
+            }
+        }
+
+        .priceField {
+            margin-bottom: 4px;
+        }
     }
     @media (min-width: 300px) {
 
@@ -67,12 +81,6 @@
         .nameField .name {
             font-size: 22px;
         }
-
-
-
-
-        
-
 
     }
     @media (min-width: 340px) {
@@ -142,9 +150,29 @@
             }
         }
 
+        .priceField-inner {
+
+            .priceLabel {
+                font-size: 16px;
+            }
+            .price {
+                font-size: 38px;
+            }
+        }
+
+        .priceField {
+            margin-bottom: 10px;
+        }
+
+
+
     }
     /* Small devices (portrait tablets and large phones, 600px and up) */
     @media (min-width: 596px) {
+
+        .priceField {
+            margin: 0;
+        }
 
         #mRow1 {
 
@@ -183,6 +211,16 @@
         #main-container {
             padding: 20px;
         }
+
+        .priceField-inner {
+
+            .priceLabel {
+                font-size: 18px;
+            }
+            .price {
+                font-size: 40px;
+            }
+        }
         
 
     }
@@ -209,6 +247,16 @@
 
         .buttonField button, .priceField {
             width: 340px;
+        }
+
+        .priceField-inner {
+
+            .priceLabel {
+                font-size: 19px;
+            }
+            .price {
+                font-size: 45px;
+            }
         }
 
  
@@ -391,15 +439,12 @@
 
                             .priceLabel {
                                 margin: 0;
-                                font-size: 19px;
                                 margin-bottom: -5px;
                             }
     
                             .price {
                                 margin: 0;
-    
                                 font-weight: 400;
-                                font-size: 45px;
                                 color: rgb(26, 110, 60);
                             }
                         }

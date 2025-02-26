@@ -2,6 +2,7 @@
 
     import { onMount } from "svelte";
     import { page } from "$app/stores"
+    import { replaceState } from "$app/navigation";
     import '$lib/Styles/settings.scss';
 
     let isCustomer = true;
@@ -12,14 +13,16 @@
         document.getElementById("ps-option1").classList.add("active")
         document.getElementById("ps-option2").classList.remove("active")
         isCustomer = true
-        window.history.pushState(null, "", "/register?for=customer");
+        // window.history.pushState(null, "", "/register?for=customer");
+        replaceState("/register?for=customer", {})
 
     }
     function psOption2_clicked(){
         document.getElementById("ps-option1").classList.remove("active")
         document.getElementById("ps-option2").classList.add("active")
         isCustomer = true
-        window.history.pushState(null, "", "/register?for=shop");
+        // window.history.pushState(null, "", "/register?for=shop");
+        replaceState("/register?for=shop", {})
     }
 
 
@@ -307,11 +310,12 @@
     }
 
     #headDiv-lower {
-        
+        display: flex !important;
+
         #hl-col2 {
             #product-status {
 
-
+                display: flex;
 
             }
         }
