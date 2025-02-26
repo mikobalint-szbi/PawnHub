@@ -31,12 +31,12 @@
 
     <div id="rightBox">
         <div id="userBox">
-            <img src="IMG/Global/no-profile-image.png" alt="Profilkép">
+            <div alt="Profilkép" class="image"></div>
         </div>
         <div id="userDropdown">
 
             <div class="col1">
-                <img src="IMG/Global/no-profile-image.png" alt="Profilkép">
+                <div alt="Profilkép" class="image"></div>
             </div>
             <div class="col2">
                 <p class="userName">TesztElek</p>
@@ -172,10 +172,15 @@
                 height: 100%;
                 cursor: pointer;
 
-                img {
-                    height: 100%;
+                .image {
+                    height: 52px;
+                    width: 52px;
                     background-color: rgb(161, 213, 179);
                     border-radius: 5000px;
+                    background-image: url("IMG/Global/no-profile-image.png");
+                    background-size: cover;
+                    background-position: center;
+                    border: 1px solid rgb(106, 137, 116);
                 }
             }
             #userDropdown {
@@ -195,12 +200,15 @@
                 .col1 {
 
 
-                    img {
+                    .image {
                         width: 100%;
+                        height: 100%;
                         border: 1px solid black;
                         border-radius: 4px;
                         background-color: rgb(161, 213, 179);
-
+                        background-image: url("IMG/sample2.1.jpg");
+                        background-size: cover;
+                        background-position: center;
                     }
                 }
                 .col2 {
