@@ -36,6 +36,11 @@
 
                 <div id="productResults">
 
+                    <!--div class="productResult newItem">
+                        <img src="IMG/Global/add.png" alt="">
+                        <p>Új termék létrehozása</p>
+                    </div-->
+
                     {#each {length: 4} as _, i}
                     <div class="productResult">
                         <img src="IMG/Global/no-image.png" alt="">
@@ -200,6 +205,17 @@
             .productResult.selected{
                 background-color: rgb(124, 190, 147);
             }
+
+            /*.productResult.newItem {
+                img {
+                    padding: 5px;
+                }
+                p {
+                    color: rgb(18, 70, 38);
+                    font-weight: 500 !important;
+                    font-size: 22px;
+                }
+            }*/
         }
     }
     

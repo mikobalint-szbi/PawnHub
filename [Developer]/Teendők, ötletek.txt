@@ -2,10 +2,14 @@
 http://infojegyzet.hu/webszerkesztes/dokumentacio
 
 Teendők:
+- A CustomerChooser és ProductChooser popupban alulra kell még egy gomb (ne kelljen átmenni a termékekhez meg vissza, ha új terméket szeretnél): Új termék létrehozása / Új ügyfél hozzáadása
 - A regisztráció oldal usertype switchcse valamiért nem változtatja meg az oldal tartalmát
 - Az összes popupBoxon az X gomb legyen ugyanolyan széles, mint a Vissza gomb, hogy a Title középen legyen ‼️
 
 - Customer's Product popup mobilnézet javítása
+
+- Lehet mégis kellene unlink lehetőség a LoanPopup Products mezőjében. (ha ráviszed az egeret, csak akkor jelenik meg az X gomb)
+	• Ha hozzáadsz véletlen egy random terméket, nem tudod eltávolítani sehogyan sem
 
 
 
