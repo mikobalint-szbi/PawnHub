@@ -1,10 +1,8 @@
 <script>
     import {open_popup, close_popup, save_popup} from "$lib/Scripts/popup.js";
     import { onMount } from "svelte";
+    import { getNum } from "$lib/Scripts/functions.js"
 
-    function getNum(str){
-        return Number(str.match(/[\d.]+/g)?.join('') || '')
-    }
 
     function initial_sizing() {
         let img = document.getElementById("popup-img")

@@ -1,6 +1,7 @@
 <script>
     import { onMount } from "svelte";
     import '$lib/Styles/shopAndProduct.scss';
+    import { getNum } from "$lib/Scripts/functions.js"
 
     function togglePages(id) {
 
@@ -35,6 +36,7 @@
 
     function resizing () {
 
+        // ContactRows:
 
         let w = document.getElementById("main-container").offsetWidth
         document.getElementById("head-div").style.width = w +"px"
@@ -46,6 +48,32 @@
             e.style.maxWidth = w + "px"
 
         })
+
+        // Title:
+
+        w = document.getElementById("main-container").offsetWidth
+        let name = document.querySelector(".name")
+
+
+        if (window.innerWidth < 596) {
+            name.style.setProperty("max-width",  (w - 20) * 1 + "px", "important")
+        }
+        else if (window.innerWidth < 768) {
+            name.style.setProperty("max-width",  (w - 40) * 1 + "px", "important")
+        }
+        else if (window.innerWidth < 992) {
+            name.style.setProperty("max-width",  (w - 40) * 0.56 + "px", "important")
+        }
+        else if (window.innerWidth < 1230) {
+            name.style.setProperty("max-width",  (w - 40) * 0.605 + "px", "important")
+        }
+        else {
+            name.style.setProperty("max-width",  (w - 40) * 0.627 + "px", "important")
+        }
+
+
+
+
     }
 
 
@@ -97,7 +125,7 @@
             </div>
             <div class="col2">
                 <div class="nameField">
-                    <p class="name">SamsungSamsungSamsungSamsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
+                    <p class="name">SamsungSamsungSamsungSamsungSamsungSamsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
                     <p class="category">Kategória</p>
                 </div>
                 <div class="priceField">
