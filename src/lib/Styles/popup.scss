@@ -79,6 +79,10 @@
 		column-gap: 12px;
 	}
 
+	#topRow-col3 {
+		width: 94px;
+	}
+
 
 
 }
@@ -127,7 +131,6 @@
 
 	margin-bottom: 4px;
 
-
 	.topButton{
 		display: flex;
 		justify-content: center;
@@ -152,6 +155,11 @@
 		height: 34px;
 		column-gap: 3px;
 	
+	}
+
+	#topRow-col3 {
+		display: flex;
+		justify-content: end;
 	}
 
 }

@@ -2,7 +2,7 @@
 http://infojegyzet.hu/webszerkesztes/dokumentacio
 
 Teendők:
-- Az összes popupBoxon az X gomb legyen ugyanolyan széles, mint a Vissza gomb, hogy a Title középen legyen ‼️
+- ImageViewer mobilnézet nincs még kész !!!!
 
 - Customer's Product popup mobilnézet javítása
 
