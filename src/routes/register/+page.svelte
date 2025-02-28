@@ -12,7 +12,7 @@
     function psOption1_clicked(){
         document.getElementById("ps-option1").classList.add("active")
         document.getElementById("ps-option2").classList.remove("active")
-        isCustomer = false
+        isCustomer = true
         // window.history.pushState(null, "", "/register?for=customer");
         replaceState("/register?for=customer", {})
 
@@ -230,20 +230,22 @@
         <div class="cardGroup" id="cgPassword">
             <h3 class="cgTitle">Hitelesítés</h3>
             <div class="cgBody">
-
-                <div class="cgRow unset">
-                    <label for="username" class="cgLabel">Felhasználónév:</label>
-                    <input type="text" class="cgInput" id="username">
-                </div>
-                <div class="cgRow">
-                    <label for="newPassword1" class="cgLabel">Jelszó:</label>
-                    <input type="password" class="cgInput" id="newPassword1">
-                </div>
-                <div class="cgRow">
-                    <label for="newPassword2" class="cgLabel">Jelszó még egyszer:</label>
-                    <input type="password" class="cgInput" id="newPassword2">
-                </div>
+                <form action="">
+                    <div class="cgRow unset">
+                        <label for="username" class="cgLabel">Felhasználónév:</label>
+                        <input type="text" class="cgInput" id="username" autocomplete="username">
+                    </div>
+                    <div class="cgRow">
+                        <label for="newPassword1" class="cgLabel">Jelszó:</label>
+                        <input type="password" class="cgInput" id="newPassword1" autocomplete="new-password">
+                    </div>
+                    <div class="cgRow">
+                        <label for="newPassword2" class="cgLabel">Jelszó még egyszer:</label>
+                        <input type="password" class="cgInput" id="newPassword2" autocomplete="new-password">
+                    </div>
+                </form>
             </div>
+
             <div class="cgFoot">
 
             </div>

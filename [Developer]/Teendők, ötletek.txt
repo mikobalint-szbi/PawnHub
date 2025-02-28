@@ -2,7 +2,6 @@
 http://infojegyzet.hu/webszerkesztes/dokumentacio
 
 Teendők:
-- A regisztráció oldal usertype switchcse valamiért nem változtatja meg az oldal tartalmát
 - Az összes popupBoxon az X gomb legyen ugyanolyan széles, mint a Vissza gomb, hogy a Title középen legyen ‼️
 
 - Customer's Product popup mobilnézet javítása
