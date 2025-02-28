@@ -32,6 +32,7 @@
 
         if ($page.url.searchParams.get("for") == null || $page.url.searchParams.get("for") == "customer"){
             isCustomer = false
+            psOption1_clicked()
         }
         else {
             isCustomer = false
