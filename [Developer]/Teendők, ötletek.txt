@@ -2,7 +2,6 @@
 http://infojegyzet.hu/webszerkesztes/dokumentacio
 
 Teendők:
-- ImageViewer mobilnézet nincs még kész !!!!
 
 - Customer's Product popup mobilnézet javítása
 

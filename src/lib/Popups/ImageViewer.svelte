@@ -86,20 +86,27 @@
             </div>
 
             <div id="bottomRow">
-                <button on:click={() => {}} id="replaceButton" class="bottomButton">
-                    <img src="IMG/Global/upload.png" alt="" id="replaceImg">
-                    <p id="submitText">{Math.random() > 0.5 ? "Képfeltöltés" : "Csere"}</p>
-                </button>
-                <button on:click={() => open_popup("confirmDelete", false, false)} id="deleteButton" class="bottomButton">
-                    <img src="IMG/Global/delete.png" alt="" id="deleteImg">
-                    <p id="submitText">Törlés</p>
-                </button>
-                <button on:click={()=>resize_image(1 / 1.20)} id="minusButton" class="bottomButton thin">
-                    <img src="IMG/Global/minus.png" alt="" id="minusImg">
-                </button>
-                <button on:click={()=>resize_image(1.20)} id="plusButton" class="bottomButton thin">
-                    <img src="IMG/Global/plus.png" alt="" id="plusImg">
-                </button>
+                <div id="br-section1" class="br-section">
+                    <button on:click={() => {}} id="replaceButton" class="bottomButton">
+                        <img src="IMG/Global/upload.png" alt="" id="replaceImg">
+                        <p id="submitText">{Math.random() > 0.5 ? "Képfeltöltés" : "Csere"}</p>
+                    </button>
+                    <button on:click={() => open_popup("confirmDelete", false, false)} id="deleteButton" class="bottomButton">
+                        <img src="IMG/Global/delete.png" alt="" id="deleteImg">
+                        <p id="submitText">Törlés</p>
+                    </button>
+                </div>
+                <div id="br-section2" class="br-section">
+                    <button on:click={()=>resize_image(1 / 1.20)} id="minusButton" class="bottomButton thin">
+                        <img src="IMG/Global/minus.png" alt="" id="minusImg">
+                        <p id="minusText">Kicsinyítés</p>
+                    </button>
+                    <button on:click={()=>resize_image(1.20)} id="plusButton" class="bottomButton thin">
+                        <img src="IMG/Global/plus.png" alt="" id="plusImg">
+                        <p id="plusText">Nagyítás</p>
+                    </button>
+                </div>
+
             </div>
         </div>
     </div>
@@ -110,29 +117,75 @@
 
     @media (min-width: 0px) {
         
+
+
         #popup-div{
-            width: 78vw !important;
-            height: 70vh !important;
+            width: 80vw !important;
             max-width: 80vw !important;
-            max-height: 70vh !important;
+            height: 60vh !important;
+            max-height: 60vh !important;
+
             height: fit-content;
 
         }
 
         .bottomButton{
             font-size: 19px;
-            width: 110px;
+
         }
 
 
         #image{
             grid-row: 1 / 5;
         }
+        
+        #bottomRow {
+            column-gap: 12px;
+            flex-direction: column;
+            height: fit-content;
 
+
+            .br-section {
+                gap: 5px;
+                height: 49px;
+                justify-content: center;
+
+                .bottomButton {
+                    width: 50%;
+                    height: unset;
+                    column-gap: 5px;
+
+                    img {
+                        margin-left: 3px;
+                        margin-right: 8px;
+                    }
+
+                    p {
+                        overflow: hidden;
+                        width: 60%;
+                        text-align: left;
+                    }
+                }
+            }
+
+            #br-section1 {
+                order: 2;
+
+            }
+            #br-section2 {
+                order: 1;
+
+
+            }
+        }
 
     }
     @media (min-width: 340px) {
 
+        #popup-div{
+            width: 82vw !important;
+            max-width: 82vw !important;
+        }
 
         #image{
             grid-row: 1 / 6;
@@ -145,13 +198,33 @@
 
 
     }
+    @media (min-width: 404px) {
+
+        #popup-div{
+            width: 82vw !important;
+            max-width: 82vw !important;
+        }
+        
+    }
+    @media (min-width: 468px) {
+
+
+    }
     /* Small devices (portrait tablets and large phones, 600px and up) */
     @media (min-width: 596px) {
 
+        #popup-div {
+            height: 70vh !important;
+            max-height: 70vh !important;
+        }
+
+        #bottomRow {
+            height: 79px !important;
+        }
+
         .bottomButton{
             font-size: 23px;
-            width: 195px;
-            column-gap: 3px;
+            column-gap: 0px;
         }
 
         #image{
@@ -161,12 +234,65 @@
 
         }
 
+        #bottomRow {
+            column-gap: 12px;
+            flex-direction: row;
+
+            .br-section {
+                gap: 4px;
+                height: unset;
+            }
+            #br-section1 {
+                order: 1;
+
+                .bottomButton {
+                    width: 175px;
+
+                    img {
+                        margin-left: 0px !important;
+                        margin-right: 0px !important;
+                    }
+
+                    p {
+                        overflow: hidden;
+                        width: unset;
+                        text-align: center;
+                    }
+
+                }
+
+
+            }
+            #br-section2 {
+                order: 5;
+
+                .bottomButton {
+                    width: 50px;
+
+                    p {
+                        display: none;
+                    }
+                }
+            }
+        }
+        
+
     }
     @media (min-width: 768px) {
+
+        #bottomRow {
+            column-gap: 20px;
+
+            .br-section {
+                gap: 6px;
+            }
+        }
 
     }   
     /* Large devices (laptops/desktops, 992px and up) */
     @media (min-width: 992px) {
+
+
 
 
         #popup-div{
@@ -197,6 +323,14 @@
 
 
 
+    #bottomRow {
+
+
+        .br-section {
+            display: flex;
+        }
+    }
+
 
 
 
@@ -214,19 +348,6 @@
             height: 70% !important;
         }
     }
-
-    #deleteButton {
-        margin-left: -5px
-    }
-
-    #minusButton {
-        margin-left: 5px;
-    }
-
-    #plusButton {
-        margin-left: -5px;
-    }
-
 
 
     .popupDialog {
