@@ -5,7 +5,7 @@
     import { replaceState } from "$app/navigation";
     import '$lib/Styles/settings.scss';
 
-    let isCustomer = false;
+    let isCustomer = true;
 
 
 
@@ -20,7 +20,7 @@
     function psOption2_clicked(){
         document.getElementById("ps-option1").classList.remove("active")
         document.getElementById("ps-option2").classList.add("active")
-        isCustomer = false
+        isCustomer = true
         // window.history.pushState(null, "", "/register?for=shop");
         replaceState("/register?for=shop", {})
     }
@@ -31,11 +31,11 @@
     onMount(()=> {
 
         if ($page.url.searchParams.get("for") == null || $page.url.searchParams.get("for") == "customer"){
-            isCustomer = false
+            isCustomer = true
             psOption1_clicked()
         }
         else {
-            isCustomer = false
+            isCustomer = true
             psOption2_clicked()
         }
 

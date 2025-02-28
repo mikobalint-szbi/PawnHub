@@ -37,7 +37,7 @@
                 </div>
                 <div id="product-name" class="popupGrid-element">
                     <label for="p-name" class="popup-label">Zálogtárgy neve:</label>
-                    <p type="text" class="pValue left" id="p-name">Zálogtárgy neveZálogtárgy neveZálogtárgy neveZálogtárgy neveZálogtárgy neveZálogtárgy neve</p>
+                    <p class="pValue left" id="p-name">Zálogtárgy neveZálogtárgy neveZálogtárgy neveZálogtárgy neveZálogtárgy neveZálogtárgy neve</p>
                 </div>
                 <div id="status" class="popupGrid-element">
                     <label for="p-status" class="popup-label">Státusz:</label>
@@ -99,10 +99,7 @@
             </div>
 
             <div id="bottomRow">
-                <button on:click={() => save_popup("productPopup_forCustomers")} id="submitButton" class="bottomButton">
-                    <img src="IMG/Global/save.png" alt="" id="submitImg">
-                    <p id="productPopup_forCustomers-submitText" class="submitText">Módosítások mentése</p>
-                </button>
+
             </div>
         </div>
     </div>
@@ -320,6 +317,10 @@
 
     .popupDialog{
 
+        #bottomRow {
+            height: 0px;
+        }
+
         #popup-grid{
 
 
@@ -336,6 +337,9 @@
                 margin-bottom: 0px !important;
                 color: rgb(98, 136, 112);
                 font-weight: 400;
+
+                scrollbar-width: thin;
+                
             }
             .pValue.left {
                 text-align: left !important;
@@ -373,8 +377,8 @@
             }
             #product-name{
 
-                input{
-                    width: 100%;
+                p {
+
                 }
             }
             #description{
@@ -397,7 +401,11 @@
                     display: flex;
 
                     justify-content: center;
+                    cursor: pointer;
 
+                    * {
+                        cursor: pointer;
+                    }
 
                     h5{
                         font-weight: 500;
