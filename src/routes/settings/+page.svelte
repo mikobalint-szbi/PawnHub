@@ -2,6 +2,7 @@
 
     import { onMount } from "svelte";
     import '$lib/Styles/settings.scss';
+    import {open_popup} from "$lib/Scripts/popup.js";
 
     let isCustomer;
 
@@ -215,7 +216,12 @@
             </div>
 
         </div>
-    
+        <div class="bottom">
+            <button on:click={() => open_popup("confirmDelete", false, false)}>
+                <img src="IMG/Global/delete.png" alt="">
+                <p>Fiók törlése</p>
+            </button>
+        </div>
     </section>
     
     <style lang="scss">

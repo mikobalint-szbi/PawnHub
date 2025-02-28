@@ -49,6 +49,8 @@
                         <p>Biztosan törölni szeretné a terméket a zálogház kínálatából?</p>
                     {:else if type == "loan"}
                         <p>Biztosan törölni szeretné az adósságot?</p>
+                    {:else if type == "account"}
+                        <p>Biztosan törölni szeretné a PawnHub-fiókját?</p>
                     {/if}
 
                 </div>

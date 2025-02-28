@@ -4,6 +4,9 @@ http://infojegyzet.hu/webszerkesztes/dokumentacio
 Teendők:
 
 - Customer's Product popup mobilnézet javítása
+                // A p-name mező tartalma hosszabb, mint a popup szélessége. Ezért lóg ki minden.
+				Megoldás: windowresize triggered JS-kód, ami mindig a popup-grid elem szélességéhez igazítja a benne lévő ÖSSZES fieldet, ha mobilnézet áll fenn
+
 
 
 

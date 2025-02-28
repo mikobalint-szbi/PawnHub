@@ -337,8 +337,8 @@
                 margin-bottom: 0px !important;
                 color: rgb(98, 136, 112);
                 font-weight: 400;
-
                 scrollbar-width: thin;
+                // A p-name mező tartalma hosszabb, mint a popup szélessége. Ezért lóg ki minden.
                 
             }
             .pValue.left {
