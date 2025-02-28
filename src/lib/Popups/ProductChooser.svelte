@@ -29,7 +29,7 @@
 
                 <div id="popupSearchBox-container" class="">
                     <div id="popupSearchBox">
-                        <label for="searchInput2" class="popup-label">Keresés:</label>
+                        <label for="searchInput2" class="popup-label">Szűrés:</label>
                         <input type="text" class="searchInput" id="searchInput2">
                     </div>
                 </div>
@@ -40,6 +40,13 @@
                         <img src="IMG/Global/add.png" alt="">
                         <p>Új termék létrehozása</p>
                     </div-->
+
+                    {#each {length: 4} as _, i}
+                    <div class="productResult selected">
+                        <img src="IMG/Global/no-image.png" alt="">
+                        <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual (alapból hozzá van már kapcsolva az adóssághoz)</p>
+                    </div>
+                    {/each}
 
                     {#each {length: 4} as _, i}
                     <div class="productResult">
@@ -75,9 +82,13 @@
             </div>
 
             <div id="bottomRow">
+                <button on:click={() => open_popup("productPopup",true,true)} id="addButton" class="bottomButton">
+                    <img src="IMG/Global/add.png" alt="" id="addImg">
+                    <p id="addText">Új termék</p>
+                </button>
                 <button on:click={() => save_popup("productChooser")} id="submitButton" class="bottomButton">
                     <img src="IMG/Global/select.png" alt="" id="submitImg">
-                    <p id="submitText">Kiválasztás</p>
+                    <p id="submitText">OK</p>
                 </button>
             </div>
         </div>

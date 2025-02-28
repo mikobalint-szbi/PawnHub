@@ -23,6 +23,7 @@
                 </div>
                 <div id="topRow-col2">
                     <div class="popupTitle-container">
+                        <!-- svelte-ignore a11y-missing-content -->
                         <h2 class="popup-title"></h2>
                     </div>
                 </div>
@@ -143,6 +144,8 @@
 
 
     .popupDialog{
+
+        margin-top: 60px !important;
 
         #popup-div{
             border: none !important;

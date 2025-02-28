@@ -29,7 +29,7 @@
 
                 <div id="popupSearchBox-container" class="">
                     <div id="popupSearchBox">
-                        <label for="searchInput1" class="popup-label">Keresés:</label>
+                        <label for="searchInput1" class="popup-label">Szűrés:</label>
                         <input type="text" class="searchInput" id="searchInput1">
                     </div>
                 </div>
@@ -60,6 +60,10 @@
             </div>
 
             <div id="bottomRow">
+                <button on:click={() => open_popup("productPopup",true,true)} id="addButton" class="bottomButton">
+                    <img src="IMG/Global/add.png" alt="" id="addImg">
+                    <p id="addText">Új ügyfél</p>
+                </button>
                 <button on:click={() => save_popup("customerChooser")} id="submitButton" class="bottomButton">
                     <img src="IMG/Global/select.png" alt="" id="submitImg">
                     <p id="submitText">Kiválasztás</p>

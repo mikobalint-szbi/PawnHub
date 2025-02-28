@@ -96,8 +96,8 @@
                         <!-- svelte-ignore a11y-click-events-have-key-events -->
                         <!-- svelte-ignore a11y-no-static-element-interactions -->
                         <div class="productButton newItem" on:click={()=> open_popup("productChooser",false, false)}>
-                            <img src="IMG/Global/add.png" alt="">
-                            <p class="">Termék hozzáadása</p>
+                            <img src={Math.random() > 0.5 ? "IMG/Global/add.png" : "IMG/Global/edit.png"} alt="">
+                            <p class="">{Math.random() > 0.5 ? "Terméklista módosítása" : "Termék hozzáadása"}</p>
                         </div>
                         <div class="productButton">
                             <img src="IMG/Global/no-image.png" alt="">
