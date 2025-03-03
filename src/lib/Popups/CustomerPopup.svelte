@@ -13,16 +13,22 @@
     <div id="marginner">
         <div id="popup-inner">
             <div id="topRow">
-                <button on:click={() => close_popup("customerPopup")} id="customerPopup-backButton" class="topButton popup-backButton">
-                    <img src="IMG/Global/back.png" alt="">
-                    <p>Vissza</p>
-                </button>
-                <div class="popupTitle-container">
-                    <h2 class="popup-title">Ügyfél</h2>
+                <div id="topRow-col1">
+                    <button on:click={() => close_popup("customerPopup")} id="customerPopup-backButton" class="topButton popup-backButton">
+                        <img src="IMG/Global/back.png" alt="">
+                        <p>Vissza</p>
+                    </button>
                 </div>
-                <button on:click={() => close_popup("customerPopup")} id="popup-closeButton" class="topButton">
-                    <img src="IMG/Global/close.png" alt="">
-                </button>
+                <div id="topRow-col2">
+                    <div class="popupTitle-container">
+                        <h2 class="popup-title">Ügyfél</h2>
+                    </div>
+                </div>
+                <div id="topRow-col3">
+                    <button on:click={() => close_popup("customerPopup")} id="popup-closeButton" class="topButton">
+                        <img src="IMG/Global/close.png" alt="">
+                    </button>
+                </div>
             </div>
 
             <div id="popup-grid">
@@ -158,6 +164,10 @@
                 <button on:click={() => save_popup("customerPopup")} id="submitButton" class="bottomButton">
                     <img src="IMG/Global/save.png" alt="" id="submitImg">
                     <p id="customerPopup-submitText" class="submitText">Módosítások mentése</p>
+                </button>
+                <button on:click={() => open_popup("confirmDelete", false, false)} id="deleteButton" class="bottomButton">
+                    <img src="IMG/Global/delete.png" alt="" id="deleteImg">
+                    <p id="customerPopup-deleteText" class="deleteText">Ügyfél eltávolítása</p>
                 </button>
             </div>
         </div>

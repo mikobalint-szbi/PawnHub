@@ -22,8 +22,13 @@ body {
 
 
 	scrollbar-color: rgb(117, 176, 137) rgb(106, 137, 116);
-	scrollbar-width: 10;
 
+	scrollbar-width: thin;
+
+}
+
+html {
+	scrollbar-width:unset;
 }
 
 button{

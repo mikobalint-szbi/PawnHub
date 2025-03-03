@@ -1,6 +1,7 @@
 <script>
 
 import { onMount } from "svelte";
+import '$lib/Styles/productCard.scss';
 
 function open_settlDropdown(){
     
@@ -173,8 +174,11 @@ onMount(()=> {
 
     <div id="main-container">
         
+
         {#each {length: 17} as _, i}
-        <div class="productCard">
+        <!-- svelte-ignore a11y-no-static-element-interactions -->
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <div class="productCard" on:click={()=>location.assign('product')}>
             <div class="row1">
                 <div class="col1">
                     <img src="IMG/Global/no-image.png" class="productImage" alt="Termék fotója">

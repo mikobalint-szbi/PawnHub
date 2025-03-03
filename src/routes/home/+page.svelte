@@ -1,7 +1,10 @@
 <script>
 
-    let isCustomer = false
+    let isCustomer = true
 
+    //import {open_popup} from "$lib/Scripts/popup.js"
+    //import {onMount} from "svelte";
+    //onMount(()=>open_popup("productChooser",false, false))
 </script>
 
 <section id="body">

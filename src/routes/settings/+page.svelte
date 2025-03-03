@@ -2,6 +2,7 @@
 
     import { onMount } from "svelte";
     import '$lib/Styles/settings.scss';
+    import {open_popup} from "$lib/Scripts/popup.js";
 
     let isCustomer;
 
@@ -186,19 +187,26 @@
             <div class="cardGroup" id="cgPassword">
                 <h3 class="cgTitle">Jelszó módosítása</h3>
                 <div class="cgBody">
-                    <div class="cgRow">
-                        <label for="oldPassword" class="cgLabel">Régi jelszó:</label>
-                        <input type="password" class="cgInput" id="oldPassword">
-                    </div>
-                    <div class="cgRow">
-                        <label for="newPassword1" class="cgLabel">Új jelszó</label>
-                        <input type="password" class="cgInput" id="newPassword1">
-                    </div>
-                    <div class="cgRow">
-                        <label for="newPassword2" class="cgLabel">Új jelszó még egyszer:</label>
-                        <input type="password" class="cgInput" id="newPassword2">
-                    </div>
+                    <form action="">
+                        <div class="cgRow unset" style="display: none;">
+                            <label for="username" class="cgLabel">Felhasználónév:</label>
+                            <input type="text" class="cgInput" id="username" autocomplete="username">
+                        </div>
+                        <div class="cgRow">
+                            <label for="oldPassword" class="cgLabel">Régi jelszó:</label>
+                            <input type="password" class="cgInput" id="oldPassword" autocomplete="current-password">
+                        </div>
+                        <div class="cgRow">
+                            <label for="newPassword1" class="cgLabel">Új jelszó</label>
+                            <input type="password" class="cgInput" id="newPassword1" autocomplete="new-password">
+                        </div>
+                        <div class="cgRow">
+                            <label for="newPassword2" class="cgLabel">Új jelszó még egyszer:</label>
+                            <input type="password" class="cgInput" id="newPassword2" autocomplete="new-password">
+                        </div>
+                    </form>
                 </div>
+
                 <div class="cgFoot">
                     <button>
                         <img src="IMG/Global/replace.png" alt="">
@@ -208,7 +216,12 @@
             </div>
 
         </div>
-    
+        <div class="bottom">
+            <button on:click={() => open_popup("confirmDelete", false, false)}>
+                <img src="IMG/Global/delete.png" alt="">
+                <p>Fiók törlése</p>
+            </button>
+        </div>
     </section>
     
     <style lang="scss">

@@ -1,7 +1,9 @@
 <script>
     import { onMount } from "svelte";
     import '$lib/Styles/shopAndProduct.scss';
-    import '$lib/Styles/productCard.scss';
+    import '$lib/Styles/shopCard.scss';
+
+
 
     function togglePages(id) {
 
@@ -36,6 +38,7 @@
 
     function resizing () {
 
+        // ContactRows:
 
         let w = document.getElementById("main-container").offsetWidth
         document.getElementById("head-div").style.width = w +"px"
@@ -47,6 +50,32 @@
             e.style.maxWidth = w + "px"
 
         })
+
+        // Title:
+
+        w = document.getElementById("main-container").offsetWidth
+        let name = document.querySelector(".name")
+
+
+        if (window.innerWidth < 596) {
+            name.style.setProperty("max-width",  (w - 20) * 1 + "px", "important")
+        }
+        else if (window.innerWidth < 768) {
+            name.style.setProperty("max-width",  (w - 40) * 1 + "px", "important")
+        }
+        else if (window.innerWidth < 992) {
+            name.style.setProperty("max-width",  (w - 40) * 0.56 + "px", "important")
+        }
+        else if (window.innerWidth < 1230) {
+            name.style.setProperty("max-width",  (w - 40) * 0.605 + "px", "important")
+        }
+        else {
+            name.style.setProperty("max-width",  (w - 40) * 0.627 + "px", "important")
+        }
+
+
+
+
     }
 
 
@@ -93,47 +122,20 @@
 
         <div id="mRow1" class="mRow">
             <div class="col1">
-                <div class="image shop"></div>
+                <div class="image product"></div>
 
             </div>
             <div class="col2">
                 <div class="nameField">
-                    <p class="name">Tóth Pista Zálogház és Ékszerüzlet</p>
-                    <p class="estab">Alapítva: 2015</p>
+                    <p class="name">SamsungSamsungSamsungSamsungSamsungSamsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
+                    <p class="category">Kategória</p>
                 </div>
-                <div class="contactsField">
-                    <div class="contactRow">
-                        <div class="icon">
-                            <img src="IMG/Shop/location.png" alt="Hely">
-                        </div>
-                        <p class="value">
-                            Nagykőrös, Szent Benedek u. 6.
-                        </p>
+                <div class="priceField">
+                    <div class="priceField-inner">
+                        <p class="priceLabel">A termék ára:</p>
+                        <p class="price">30 000 000 Ft</p>
                     </div>
-                    <div class="contactRow">
-                        <div class="icon">
-                            <img src="IMG/Shop/website.png" alt="Honlap">
-                        </div>
-                        <a class="value" href="https://www.tothpistazaloghaz.hu">
-                            tothpistazaloghaz.hu
-                        </a>
-                    </div>
-                    <div class="contactRow">
-                        <div class="icon">
-                            <img src="IMG/Shop/email.png" alt="Email">
-                        </div>
-                        <p class="value">
-                            tothpistazaloghaz@mail.org
-                        </p>
-                    </div>
-                    <div class="contactRow">
-                        <div class="icon">
-                            <img src="IMG/Shop/phone.png" alt="Telefon">
-                        </div>
-                        <p class="value">
-                            +36 12 345 6789
-                        </p>
-                    </div>
+
                 </div>
                 <div class="buttonField">
                     <button id="sendMessage" on:click={open_newMessage}>
@@ -147,8 +149,8 @@
 
             <div class="pageContainer">
                 <div class="pageTags">
-                    <div class="pageTag active" id="pageTag1">Bemutatkozás</div>
-                    <div class="pageTag" id="pageTag2">Árukészlet</div>
+                    <div class="pageTag active" id="pageTag1">Leírás</div>
+                    <div class="pageTag" id="pageTag2">Kínálja</div>
                     <div class="pageTag" id="pageTag3">Üzenet</div>
                 </div>
                 <div class="pageContent" id="pageContent1">
@@ -200,20 +202,18 @@
                         Animi harum, voluptates maxime saepe quidem neque cumque iure, fugiat repudiandae voluptas expedita rerum nam, dolore laborum recusandae et ducimus? Quam aliquam recusandae voluptate molestias consequuntur, doloremque libero maxime odio!
                     </p>
                 </div>
-                <div class="pageContent" id="pageContent2">
+                <div class="pageContent product" id="pageContent2">
     
-                    {#each {length: 17} as _, i}
                     <!-- svelte-ignore a11y-click-events-have-key-events -->
                     <!-- svelte-ignore a11y-no-static-element-interactions -->
-                    <div class="productCard" on:click={()=>location.assign('product')}>
+                    <div class="shopCard" on:click={()=>location.assign('shop')}>
                         <div class="row1">
                             <div class="col1">
-                                <img src="IMG/Global/no-image.png" alt="A termék fotója">
+                                <img src="IMG/Global/no-shop-image.png" class="shopImage" alt="Zálogház fotója">
                             </div>
                             <div class="col2">
-                                <h3 class="productTitle" title="Termék neve">Termék neve Termék neve Termék neve Termék neve Termék neve Termék neve Termék neve Termék neve </h3>
-                                <p class="productCategory">Karóra</p>
-                                <p class="productDescription">
+                                <h3 class="shopTitle" title="Zálogház neve">Zálogház neve Zálogház neve Zálogház neve Zálogház neve Zálogház neve Zálogház neve Zálogház neve Zálogház neve </h3>
+                                <p class="shopDescription">
                                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum rerum exercitationem iste voluptate aperiam dolor qui animi quis fugiat magnam assumenda distinctio, consequuntur corrupti expedita sit autem iusto provident! Dicta?
                                     Lorem ipsum dolor sit amet consectetur adipisicing elit. 
                                     Lorem ipsum dolor sit amet consectetur adipisicing elit. 
@@ -228,12 +228,10 @@
             
                                 </p>
                                 <div class="innerRow">
-                                    <div class="productLocation">
-                                        <p class="productShop">Tóth Pista Zálogház és Ékszerüzlet</p>
-                                        <p class="productSettlement">Nagykőrös</p>
-                                    </div>
-                                    <div class="productPrice">
-                                        <p >30 000 000 Ft</p>
+                                    <div class="shopLocation">
+                                        <p class="shopSettlement">Nagykőrös</p>
+                                        <p class="shopAddress">Nursiai Hosszúnevű Szent Szent Szent Szent Szent Benedek u. 337.</p>
+
                                     </div>
             
                                 </div>
@@ -241,7 +239,7 @@
                             </div>
                         </div>
                     </div>
-                    {/each}
+
                 </div>
                 <div class="pageContent" id="pageContent3">
                     

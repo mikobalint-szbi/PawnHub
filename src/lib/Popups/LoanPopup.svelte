@@ -96,8 +96,8 @@
                         <!-- svelte-ignore a11y-click-events-have-key-events -->
                         <!-- svelte-ignore a11y-no-static-element-interactions -->
                         <div class="productButton newItem" on:click={()=> open_popup("productChooser",false, false)}>
-                            <img src="IMG/Global/add.png" alt="">
-                            <p class="">Termék hozzáadása</p>
+                            <img src={Math.random() > 0.5 ? "IMG/Global/add.png" : "IMG/Global/edit.png"} alt="">
+                            <p class="">{Math.random() > 0.5 ? "Terméklista módosítása" : "Termék hozzáadása"}</p>
                         </div>
                         <div class="productButton">
                             <img src="IMG/Global/no-image.png" alt="">
@@ -190,6 +190,10 @@
                 <button on:click={() => save_popup("loanPopup")} id="submitButton" class="bottomButton">
                     <img src="IMG/Global/save.png" alt="" id="submitImg">
                     <p id="loanPopup-submitText" class="submitText">Módosítások mentése</p>
+                </button>
+                <button on:click={() => open_popup("confirmDelete", false, false)} id="deleteButton" class="bottomButton">
+                    <img src="IMG/Global/delete.png" alt="" id="deleteImg">
+                    <p id="customerPopup-deleteText" class="deleteText">Adósság törlése</p>
                 </button>
             </div>
         </div>

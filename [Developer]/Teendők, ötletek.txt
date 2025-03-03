@@ -2,23 +2,15 @@
 http://infojegyzet.hu/webszerkesztes/dokumentacio
 
 Teendők:
-- Product popup footerjébe Termék törlése gomb
-- Customer popup footerjébe Ügyfél törlése gomb
-- Loan popup footerjébe Adósság törlése gomb
 
-- Adüsság popup: Termék hozzáadása: válazstó popup: új termék vagy meglévő? Ugyanez customer esetében
-
-- Multifunkciós Biztos törölni szeretnéd? popup 🥹
-
-- Product page (shop page másolata)
-- Customer's Product popup mobilnézet javítása
-- Pluszgombok a megfelelő popupokhoz, amik megnyitják a Termék- vagy az ügyfélválasztót
-- Ahol pluszgomb van, ott törlésgombnak is kell lennie
+- Nem változtatja a linket a register page 😢
 
 
 
 Miután lesz backend:
 - A Shop és Product page-eknél a címzett mindig az aktuális zálogház legyen, és át se lehessen írni
+- Ellenőrizni, hogy egy frontendtesztelő math.randomot sem hagytam a weboldalon
+- A termék- és ügyfélkeresőnél lekorlátozni a sorok neveinek hosszát
 
 Csak ha lesz még rá időm:
 - order by selector még nincs a frontenden. Sorbarendezés comboBox elkészítése (mi alapján, ASC/DESC)

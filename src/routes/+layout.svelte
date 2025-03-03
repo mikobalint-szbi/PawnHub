@@ -3,7 +3,6 @@
 	import '$lib/Styles/style.scss';
 	import '$lib/Styles/popup.scss';
 	import '$lib/Styles/tablePages.scss';
-	import '$lib/Styles/productCard.scss';
 	import '$lib/Styles/messages.scss';
 	import ProductPopup from '$lib/Popups/ProductPopup.svelte';
 	import ImageViewer from '$lib/Popups/ImageViewer.svelte';
@@ -15,6 +14,7 @@
 	import LoanPopup_new_forCustomers from '$lib/Popups/LoanPopup_New_forCustomers.svelte';
 	import ProductPopup_forCustomers from '$lib/Popups/ProductPopup_forCustomers.svelte';
 	import AccessDenied from '$lib/Pages/AccessDenied.svelte';
+    import ConfirmDelete from '$lib/Popups/ConfirmDelete.svelte';
 
 
 	let access_granted = true
@@ -35,6 +35,7 @@
 			<LoanPopup_forCustomers/>
 			<ProductPopup_forCustomers/>
 			<LoanPopup_new_forCustomers/>
+			<ConfirmDelete type={"customer1"}/>
 		</section>
 
 		{#if access_granted}
@@ -60,4 +61,9 @@
 	header{
 		z-index: 100;
 	}
+
+	#popupBody {
+
+	}
+
 </style>

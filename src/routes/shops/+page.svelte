@@ -1,6 +1,7 @@
 <script>
 
     import { onMount } from "svelte";
+    import '$lib/Styles/shopCard.scss';
     
     function open_settlDropdown(){
         
@@ -199,29 +200,10 @@
         
         @media (min-width: 0px) {
     
-            .shopDescription {
-                display: none;
-            }
-    
-            .innerRow {
-                flex-direction: column;
-            }
+
     
             #main-container, #searchBox {
                 width: 90%;
-            }
-    
-            .shopCard .row1 {
-                flex-direction: column;
-            }
-    
-            .shopTitle {
-                max-height: 51px;
-                font-size: 18px;
-            }
-    
-            .shopLocation {
-                margin-bottom: 8px;
             }
 
             #searchBox {
@@ -243,12 +225,7 @@
                 }
             }
 
-            .shopLocation {
-                .shopSettlement {
-                    font-size: 18px !important;
-                }
-            }
-    
+
         }
         @media (min-width: 300px) {
     
@@ -271,9 +248,7 @@
         }
         @media (min-width: 404px) {
     
-            .shopCard .row1 {
-                flex-direction: row;
-            }
+
     
             .settInput-box {
                 .settlDropdown {
@@ -291,27 +266,14 @@
 
             }
     
-            .shopLocation {
-                margin-bottom: 0;
-            }
-    
-    
-            .shopCard .row1 .col1 {
-                width: 35%;
-            }
-            .shopCard .row1 .col2 {
-                width: 65%;
-            }
+
 
     
         }
         /* Small devices (portrait tablets and large phones, 600px and up) */
         @media (min-width: 596px) {
     
-            .shopTitle {
-                max-height: 59px;
-                font-size: 22px;
-            }
+
     
             #main-container, #searchBox {
                 width: 87%;
@@ -338,30 +300,6 @@
                 max-width: 1000px;
             }
     
-            .shopTitle {
-                max-height: 59px;
-                font-size: 22px;
-            }
-
-            .shopLocation {
-                width: 100%;
-
-                .shopSettlement {
-                    font-size: 22px !important;
-                }
-            }
-    
-            .innerRow {
-                flex-direction: row;
-            }
-    
-            .shopCard .row1 .col1 {
-                width: 25%;
-            }
-            .shopCard .row1 .col2 {
-                width: 75%;
-            }
-    
             .settInput-box {
                 .settlDropdown {
                     width: 65% !important;
@@ -384,10 +322,7 @@
         }
         /* Large devices (laptops/desktops, 992px and up) */
         @media (min-width: 992px) {
-            .shopDescription {
-                max-height: 83px;
-                display: block;
-            }
+
 
             .settInput-box {
                 .settlDropdown {
@@ -398,24 +333,13 @@
                 }
             }
 
-            .shopLocation {
-                .shopSettlement {
-                    font-size: 24px !important;
-                }
-            }
 
-            .shopTitle {
-                max-height: 65px;
-                font-size: 24px;
-            }
     
         }
         /* Extra large devices (large laptops and desktops, 1200px and up) */
         @media (min-width: 1230px) {
     
-            .shopDescription {
-                max-height: 102px;
-            }
+
     
         }
     
@@ -600,96 +524,6 @@
     
                 margin-bottom: 30px;
     
-    
-                .shopCard {
-                    width: 100%;
-                    padding: 10px;
-                    border: 1px solid black;
-                    margin-bottom: 10px;
-                    border-radius: 7px;
-                    box-shadow: 1px 1px 2px black;
-                    cursor: pointer;
-    
-                    .row1 {
-                        width: 100%;
-                        display: flex;
-                        gap: 15px;
-    
-                        .col1 {
-                            img {
-                                width: 100%;
-                                border: 1px solid black;
-                                border-radius: 4px;
-                                background-color: rgb(161, 213, 179);
-
-                            }
-                        }
-                        .col2 {
-                            padding-right: 10px;
-                            display: flex;
-                            flex-direction: column;
-    
-                            .shopTitle {
-                                margin-top: 5px;
-                                margin-bottom: 6px;
-                                font-weight: 500;
-                                overflow: hidden;
-                            }
-
-                            .shopDescription {
-                                overflow: hidden;
-                                margin: 0;
-                                margin-bottom: 20px;
-                                font-size: 15px;
-                                color: rgb(28, 31, 29);
-    
-                            }
-    
-                            .innerRow {
-                                display: flex;
-                                width: 100%;
-                                margin-top: auto;
-
-    
-                                .shopLocation {
-                                    display: flex;
-                                    flex-direction: column;
-
-                                    p {
-                                        margin: 0;
-  
-                                        color: rgb(35, 61, 46);
-                                        text-align: right;
-                                    }
-
-                                    .shopSettlement {
-                                        font-weight: 500;
-
-
-                                    }
-    
-                                    .shopAddress {
-                                        font-size: 16px;
-                                    }
-    
-                                }
-                                .shopPrice {
-                                    display: flex;
-                                    justify-content: end;
-                                    align-items: center;
-    
-    
-    
-                                    p {
-                                        color: rgb(26, 110, 60);
-                                        font-weight: 400;
-                                        margin: 0;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
             }
     
         }

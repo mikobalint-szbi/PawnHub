@@ -13,23 +13,29 @@
     <div id="marginner">
         <div id="popup-inner">
             <div id="topRow">
-                <button on:click={() => close_popup("customerChooser")} id="customerChooser-backButton" class="topButton popup-backButton">
-                    <img src="IMG/Global/back.png" alt="">
-                    <p>Vissza</p>
-                </button>
-                <div class="popupTitle-container">
-                    <h2 class="popup-title">Ügyfélválasztó</h2>
+                <div id="topRow-col1">
+                    <button on:click={() => close_popup("customerChooser")} id="customerChooser-backButton" class="topButton popup-backButton">
+                        <img src="IMG/Global/back.png" alt="">
+                        <p>Vissza</p>
+                    </button>
                 </div>
-                <button on:click={() => close_popup("customerChooser")} id="popup-closeButton" class="topButton">
-                    <img src="IMG/Global/close.png" alt="">
-                </button>
+                <div id="topRow-col2">
+                    <div class="popupTitle-container">
+                        <h2 class="popup-title">Ügyfélválasztó</h2>
+                    </div>
+                </div>
+                <div id="topRow-col3">
+                    <button on:click={() => close_popup("customerChooser")} id="popup-closeButton" class="topButton">
+                        <img src="IMG/Global/close.png" alt="">
+                    </button>
+                </div>
             </div>
 
             <div id="popup-grid">
 
                 <div id="popupSearchBox-container" class="">
                     <div id="popupSearchBox">
-                        <label for="searchInput1" class="popup-label">Keresés:</label>
+                        <label for="searchInput1" class="popup-label">Szűrés:</label>
                         <input type="text" class="searchInput" id="searchInput1">
                     </div>
                 </div>
@@ -60,6 +66,10 @@
             </div>
 
             <div id="bottomRow">
+                <button on:click={() => open_popup("productPopup",true,true)} id="addButton" class="bottomButton">
+                    <img src="IMG/Global/add.png" alt="" id="addImg">
+                    <p id="addText">Új ügyfél</p>
+                </button>
                 <button on:click={() => save_popup("customerChooser")} id="submitButton" class="bottomButton">
                     <img src="IMG/Global/select.png" alt="" id="submitImg">
                     <p id="submitText">Kiválasztás</p>

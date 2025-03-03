@@ -2,8 +2,38 @@
     import {open_popup, close_popup, save_popup} from "$lib/Scripts/popup.js";
     import {onMount} from 'svelte';
 
+    
+    function resize() {
+
+        const grid = document.getElementById("popup-grid");
+
+        const tr = document.querySelectorAll(".pValue")
+
+        if (grid != null && tr.length > 0){
+
+            let w = parseFloat(getComputedStyle(grid).width) - 6*2 - 5 - 12 - 5
+
+            tr.forEach((e)=> {
+                e.style.maxWidth = w + "px"
+            })
+
+
+
+        }
+    }
+
+
+
+
     onMount(()=>{
 	    document.getElementById("image").addEventListener('click', () => {close_popup("productPopup_forCustomers"); open_popup("imageViewer")} )
+
+        resize()
+
+        window.addEventListener("resize", ()=> {
+            resize()
+
+        })
     });
 
 
@@ -13,16 +43,22 @@
     <div id="marginner">
         <div id="popup-inner">
             <div id="topRow">
-                <button on:click={() => close_popup("productPopup_forCustomers")} id="productPopup_forCustomers-backButton" class="topButton popup-backButton">
-                    <img src="IMG/Global/back.png" alt="">
-                    <p>Vissza</p>
-                </button>
-                <div class="popupTitle-container">
-                    <h2 class="popup-title">Termék</h2>
+                <div id="topRow-col1">
+                    <button on:click={() => close_popup("productPopup_forCustomers")} id="productPopup_forCustomers-backButton" class="topButton popup-backButton">
+                        <img src="IMG/Global/back.png" alt="">
+                        <p>Vissza</p>
+                    </button>
                 </div>
-                <button on:click={() => close_popup("productPopup_forCustomers")} id="popup-closeButton" class="topButton">
-                    <img src="IMG/Global/close.png" alt="">
-                </button>
+                <div id="topRow-col2">
+                    <div class="popupTitle-container">
+                        <h2 class="popup-title">Termék</h2>
+                    </div>
+                </div>
+                <div id="topRow-col3">
+                    <button on:click={() => close_popup("productPopup_forCustomers")} id="popup-closeButton" class="topButton">
+                        <img src="IMG/Global/close.png" alt="">
+                    </button>
+                </div>
             </div>
 
             <div id="popup-grid">
@@ -31,7 +67,7 @@
                 </div>
                 <div id="product-name" class="popupGrid-element">
                     <label for="p-name" class="popup-label">Zálogtárgy neve:</label>
-                    <p type="text" class="pValue left" id="p-name">Zálogtárgy neveZálogtárgy neveZálogtárgy neveZálogtárgy neveZálogtárgy neveZálogtárgy neve</p>
+                    <p class="pValue left toResize" id="p-name">Zálogtárgy neveZálogtárgy neveZálogtárgy neveZálogtárgy neveZálogtárgy neveZálogtárgy neve</p>
                 </div>
                 <div id="status" class="popupGrid-element">
                     <label for="p-status" class="popup-label">Státusz:</label>
@@ -93,10 +129,7 @@
             </div>
 
             <div id="bottomRow">
-                <button on:click={() => save_popup("productPopup_forCustomers")} id="submitButton" class="bottomButton">
-                    <img src="IMG/Global/save.png" alt="" id="submitImg">
-                    <p id="productPopup_forCustomers-submitText" class="submitText">Módosítások mentése</p>
-                </button>
+
             </div>
         </div>
     </div>
@@ -106,6 +139,10 @@
 <style lang="scss">
 
     @media (min-width: 0px) {
+
+        #popup-grid {
+            grid-template-rows: repeat(4, 65px)  78px repeat(16, 65px);
+        }
         
         #image{
             grid-row: 1 / 5;
@@ -113,11 +150,11 @@
         }
 
         #description{
-            grid-row: 11 / 14;
+            grid-row: 11 / 15;
         }
 
         #loan{
-            grid-row: 16 / 19;
+            grid-row: 15 / 18;
 
             #loanBox{
                 #lb-part1{
@@ -131,7 +168,7 @@
         }
 
         #shop{
-            grid-row: 19 / 23;
+            grid-row: 18 / 22;
         }
 
         .money{
@@ -141,13 +178,17 @@
     }
     @media (min-width: 340px) {
 
+        #popup-grid {
+            grid-template-rows: repeat(5, 65px)  78px repeat(15, 65px);
+        }
+
         #image{
             grid-row: 1 / 6;
         }
 
         
         #description{
-            grid-row: 12 / 15;
+            grid-row: 12 / 17;
         }
 
         #loan{
@@ -173,6 +214,11 @@
     }
     /* Small devices (portrait tablets and large phones, 600px and up) */
     @media (min-width: 596px) {
+
+        #popup-grid {
+            grid-template-rows: repeat(10, 1fr);
+        grid-template-columns: repeat(9, 1fr);
+        }
 
         #image{
             grid-row: 1 / 4;
@@ -247,6 +293,11 @@
     /* Large devices (laptops/desktops, 992px and up) */
     @media (min-width: 992px) {
 
+        #popup-grid {
+            grid-template-rows: repeat(8, 1fr);
+            grid-template-columns: repeat(12, 1fr);
+        }
+
         #image{
             grid-row: 1 / 4;
             grid-column: 1 / 4;
@@ -314,6 +365,10 @@
 
     .popupDialog{
 
+        #bottomRow {
+            height: 0px;
+        }
+
         #popup-grid{
 
 
@@ -330,6 +385,9 @@
                 margin-bottom: 0px !important;
                 color: rgb(98, 136, 112);
                 font-weight: 400;
+                scrollbar-width: thin;
+                // A p-name mező tartalma hosszabb, mint a popup szélessége. Ezért lóg ki minden.
+                
             }
             .pValue.left {
                 text-align: left !important;
@@ -346,6 +404,10 @@
             }
             .pValue.property {
                 font-size: 18px !important;
+
+            }
+
+            .pValue#p-name {
 
             }
 
@@ -367,8 +429,8 @@
             }
             #product-name{
 
-                input{
-                    width: 100%;
+                p {
+
                 }
             }
             #description{
@@ -391,7 +453,11 @@
                     display: flex;
 
                     justify-content: center;
+                    cursor: pointer;
 
+                    * {
+                        cursor: pointer;
+                    }
 
                     h5{
                         font-weight: 500;
