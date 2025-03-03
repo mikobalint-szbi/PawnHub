@@ -2,8 +2,38 @@
     import {open_popup, close_popup, save_popup} from "$lib/Scripts/popup.js";
     import {onMount} from 'svelte';
 
+    
+    function resize() {
+
+        const grid = document.getElementById("popup-grid");
+
+        const tr = document.querySelectorAll(".pValue")
+
+        if (grid != null && tr.length > 0){
+
+            let w = parseFloat(getComputedStyle(grid).width) - 6*2 - 5 - 12 - 5
+
+            tr.forEach((e)=> {
+                e.style.maxWidth = w + "px"
+            })
+
+
+
+        }
+    }
+
+
+
+
     onMount(()=>{
 	    document.getElementById("image").addEventListener('click', () => {close_popup("productPopup_forCustomers"); open_popup("imageViewer")} )
+
+        resize()
+
+        window.addEventListener("resize", ()=> {
+            resize()
+
+        })
     });
 
 
@@ -37,7 +67,7 @@
                 </div>
                 <div id="product-name" class="popupGrid-element">
                     <label for="p-name" class="popup-label">Zálogtárgy neve:</label>
-                    <p class="pValue left" id="p-name">Zálogtárgy neveZálogtárgy neveZálogtárgy neveZálogtárgy neveZálogtárgy neveZálogtárgy neve</p>
+                    <p class="pValue left toResize" id="p-name">Zálogtárgy neveZálogtárgy neveZálogtárgy neveZálogtárgy neveZálogtárgy neveZálogtárgy neve</p>
                 </div>
                 <div id="status" class="popupGrid-element">
                     <label for="p-status" class="popup-label">Státusz:</label>
