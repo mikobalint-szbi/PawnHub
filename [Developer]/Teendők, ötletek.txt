@@ -3,7 +3,6 @@ http://infojegyzet.hu/webszerkesztes/dokumentacio
 
 Teendők:
 
-- Van egy üres terület a Customer's Product popup mobilnézetében!
 
 
 

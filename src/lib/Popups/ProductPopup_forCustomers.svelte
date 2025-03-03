@@ -139,6 +139,10 @@
 <style lang="scss">
 
     @media (min-width: 0px) {
+
+        #popup-grid {
+            grid-template-rows: repeat(4, 65px)  78px repeat(16, 65px);
+        }
         
         #image{
             grid-row: 1 / 5;
@@ -146,11 +150,11 @@
         }
 
         #description{
-            grid-row: 11 / 14;
+            grid-row: 11 / 15;
         }
 
         #loan{
-            grid-row: 16 / 19;
+            grid-row: 15 / 18;
 
             #loanBox{
                 #lb-part1{
@@ -164,7 +168,7 @@
         }
 
         #shop{
-            grid-row: 19 / 23;
+            grid-row: 18 / 22;
         }
 
         .money{
@@ -174,13 +178,17 @@
     }
     @media (min-width: 340px) {
 
+        #popup-grid {
+            grid-template-rows: repeat(5, 65px)  78px repeat(15, 65px);
+        }
+
         #image{
             grid-row: 1 / 6;
         }
 
         
         #description{
-            grid-row: 12 / 15;
+            grid-row: 12 / 17;
         }
 
         #loan{
@@ -206,6 +214,11 @@
     }
     /* Small devices (portrait tablets and large phones, 600px and up) */
     @media (min-width: 596px) {
+
+        #popup-grid {
+            grid-template-rows: repeat(10, 1fr);
+        grid-template-columns: repeat(9, 1fr);
+        }
 
         #image{
             grid-row: 1 / 4;
@@ -279,6 +292,11 @@
     }   
     /* Large devices (laptops/desktops, 992px and up) */
     @media (min-width: 992px) {
+
+        #popup-grid {
+            grid-template-rows: repeat(8, 1fr);
+            grid-template-columns: repeat(12, 1fr);
+        }
 
         #image{
             grid-row: 1 / 4;
@@ -386,6 +404,10 @@
             }
             .pValue.property {
                 font-size: 18px !important;
+
+            }
+
+            .pValue#p-name {
 
             }
 
