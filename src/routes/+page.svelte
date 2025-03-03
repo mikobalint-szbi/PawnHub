@@ -1,14 +1,59 @@
 <script>
     import {onMount} from "svelte";
+    import {apiUrl} from "$lib/Scripts/variables.js";
 
+
+    async function api (method, path, body = null) {
+
+        const apiUrl = `https://api.example.com${path}`;
+
+        // Set up the request options
+        const options = {
+            method, // The HTTP method (GET, POST, PUT, DELETE, etc.)
+            headers: {
+                'Content-Type': 'application/json', // Set content type to JSON
+            },
+        };
+
+        // If the method is POST, PUT, or PATCH, we add the body
+        if (body) {
+            options.body = JSON.stringify(body); // Convert body to JSON string
+        }
+
+        try {
+            const response = await fetch(apiUrl, options);
+
+            // Check if the response is successful
+            if (!response.ok) {
+                throw new Error(`Error: ${response.statusText}`);
+            }
+
+            // Parse and return the response JSON
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            console.error('Request failed:', error);
+            return null;
+        }
+    };
 
 
     function loginHandler(){
-        window.location.href = "home"
+        
+        fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(requestData),
+        })
+        .then(response => response.json())
+
     }
 
 
     onMount(()=>{
+        console.log(apiUrl)
         sessionStorage.setItem("loginSwitch",1)
 
         document.querySelector(".switch #opt1").addEventListener("click",(e)=>{
