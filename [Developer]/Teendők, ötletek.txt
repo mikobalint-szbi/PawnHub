@@ -4,7 +4,7 @@ http://infojegyzet.hu/webszerkesztes/dokumentacio
 Teendők:
 
 - Nem változtatja a linket a register page 😢
-
+- Sütik elfogadása popup
 
 
 Miután lesz backend:

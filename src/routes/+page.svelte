@@ -5,7 +5,7 @@
 
     async function api (method, path, body = null) {
 
-        const apiUrl = `https://api.example.com${path}`;
+        const url = `${apiUrl}${path}`;
 
         // Set up the request options
         const options = {
@@ -21,7 +21,7 @@
         }
 
         try {
-            const response = await fetch(apiUrl, options);
+            const response = await fetch(url, options);
 
             // Check if the response is successful
             if (!response.ok) {
@@ -38,22 +38,23 @@
     };
 
 
-    function loginHandler(){
+    async function loginHandler(){
         
-        fetch(apiUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(requestData),
-        })
-        .then(response => response.json())
+        let reply = await api('POST', '/login', {
+            username: "shop@test.org",
+            password: "shopPassword"
+        });
+
+        console.log(reply.user.token)
+        
+        document.cookie = `token=${reply.user.token}; path=/; secure; samesite=strict;`;
+        
 
     }
 
 
     onMount(()=>{
-        console.log(apiUrl)
+
         sessionStorage.setItem("loginSwitch",1)
 
         document.querySelector(".switch #opt1").addEventListener("click",(e)=>{
