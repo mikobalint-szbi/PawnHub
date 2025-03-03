@@ -3,7 +3,7 @@ http://infojegyzet.hu/webszerkesztes/dokumentacio
 
 Teendők:
 
-
+- Nem változtatja a linket a register page 😢
 
 
 

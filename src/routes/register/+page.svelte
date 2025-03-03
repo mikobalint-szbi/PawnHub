@@ -12,7 +12,7 @@
     function psOption1_clicked(){
         document.getElementById("ps-option1").classList.add("active")
         document.getElementById("ps-option2").classList.remove("active")
-        isCustomer = true
+        isCustomer  =  true
         // window.history.pushState(null, "", "/register?for=customer");
         replaceState("/register?for=customer", {})
 
@@ -20,7 +20,7 @@
     function psOption2_clicked(){
         document.getElementById("ps-option1").classList.remove("active")
         document.getElementById("ps-option2").classList.add("active")
-        isCustomer = true
+        isCustomer  =  false
         // window.history.pushState(null, "", "/register?for=shop");
         replaceState("/register?for=shop", {})
     }
@@ -31,11 +31,11 @@
     onMount(()=> {
 
         if ($page.url.searchParams.get("for") == null || $page.url.searchParams.get("for") == "customer"){
-            isCustomer = true
+            isCustomer  =  true
             psOption1_clicked()
         }
         else {
-            isCustomer = true
+            isCustomer  =  false
             psOption2_clicked()
         }
 

@@ -104,14 +104,17 @@
 
     </div>
     <div id="body-col2">
-        <div id="loginBox" class="formBox">
+
+        <form action="" id="loginBox" class="formBox">
             <h3>Bejelentkezés</h3>
             <label for="l-username">Felhasználónév vagy e-mail:</label>
-            <input type="text" name="l-username" id="l-username">
+            <input type="text" name="l-username" id="l-username" autocomplete="username">
             <label for="l-password">Jelszó:</label>
-            <input type="password" name="l-password" id="l-password">
+            <input type="password" name="l-password" id="l-password" autocomplete="current-password">
             <button id="login" on:click={loginHandler}>Bejelentkezés</button>
-        </div>
+        </form>
+
+
         
     </div>
 
