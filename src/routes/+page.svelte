@@ -27,7 +27,7 @@
 
             // Check if the response is successful
             if (!response.ok) {
-                throw new Error(`Error: ${response.statusText}`);
+                // throw new Error(`Error: ${response.statusText}`);
             }
 
             // Parse and return the response JSON
@@ -42,16 +42,29 @@
 
     async function loginHandler(){
         
+        let username = document.getElementById("l-username").value
+        let password = document.getElementById("l-password").value
+
         let reply = await api('POST', '/login', {
-            username: "shop@test.org",
-            password: "shopPassword"
+            username: username,
+            password: password
         });
 
-        console.log(reply)
-        
-        //document.cookie = `token=${reply.user.token}; path=/; secure; samesite=strict;`;
-        
+        if (reply.user && reply.user.isCustomer) {
+            console.log("success!")
+        }
+        else if (reply.error) {
+            let er = document.getElementById("loginError")
 
+            if (reply.error.code = "USER_NOT_FOUND") {
+                er.innerHTML = "Hibás felhasználónév vagy e-mail-cím."
+            }
+            else if (reply.error.code = "INVALID_PASSWORD") {
+                er.innerHTML = "Hibás jelszó."
+            }
+            er.style.display = "block"
+        }
+        
     }
 
 
@@ -162,7 +175,7 @@
             <button id="login" on:click={loginHandler}>Bejelentkezés</button>
         </form>
 
-
+        <p class="error" id="loginError"></p>
         
     </div>
 
