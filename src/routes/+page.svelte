@@ -1,18 +1,17 @@
 <script>
     import {onMount} from "svelte";
     import {apiUrl} from "$lib/Scripts/variables.js";
-
-
+    
     async function api (method, path, body = null) {
 
         const url = `${apiUrl}${path}`;
 
         // Set up the request options
         const options = {
-            method, // The HTTP method (GET, POST, PUT, DELETE, etc.)
+            method: method, // The HTTP method (GET, POST, PUT, DELETE, etc.)
             headers: {
                 'Content-Type': 'application/json', // Set content type to JSON
-            },
+            }
         };
 
         // If the method is POST, PUT, or PATCH, we add the body
@@ -166,13 +165,13 @@
     </div>
     <div id="body-col2">
 
-        <form action="" id="loginBox" class="formBox">
+        <form action="" id="loginBox" class="formBox" on:submit|preventDefault={loginHandler}>
             <h3>Bejelentkezés</h3>
             <label for="l-username">Felhasználónév vagy e-mail:</label>
             <input type="text" name="l-username" id="l-username" autocomplete="username">
             <label for="l-password">Jelszó:</label>
             <input type="password" name="l-password" id="l-password" autocomplete="current-password">
-            <button id="login" on:click={loginHandler}>Bejelentkezés</button>
+            <button id="login">Bejelentkezés</button>
         </form>
 
         <p class="error" id="loginError"></p>
