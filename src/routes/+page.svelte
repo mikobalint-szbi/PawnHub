@@ -20,6 +20,8 @@
             options.body = JSON.stringify(body); // Convert body to JSON string
         }
 
+        options.credentials = 'include'
+
         try {
             const response = await fetch(url, options);
 
@@ -45,9 +47,9 @@
             password: "shopPassword"
         });
 
-        console.log(reply.user.token)
+        console.log(reply)
         
-        document.cookie = `token=${reply.user.token}; path=/; secure; samesite=strict;`;
+        //document.cookie = `token=${reply.user.token}; path=/; secure; samesite=strict;`;
         
 
     }
