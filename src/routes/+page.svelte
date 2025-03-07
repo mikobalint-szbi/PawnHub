@@ -19,7 +19,7 @@
             options.body = JSON.stringify(body); // Convert body to JSON string
         }
 
-        options.credentials = 'include'
+        // options.credentials = 'include'
 
         try {
             const response = await fetch(url, options);
@@ -48,6 +48,8 @@
             username: username,
             password: password
         });
+
+        console.log(reply)
 
         if (reply.user && reply.user.isCustomer) {
             console.log("success!")
@@ -336,7 +338,8 @@
         align-items: center;
         justify-content: baseline;
         flex-direction: column;
-        padding-top: 13vh;
+        padding-top: 9vh;
+        padding-bottom: 9vh;
         gap: 10px;
 
     }
