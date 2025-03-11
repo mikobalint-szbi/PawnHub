@@ -1,6 +1,8 @@
 <script>
     import { onMount } from "svelte";
 
+    export let userBox;
+
     function toggle_userDropdown () {
 
         let ud = document.getElementById("userDropdown")

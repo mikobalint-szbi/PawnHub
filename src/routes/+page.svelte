@@ -17,7 +17,6 @@
         // If the method is POST, PUT, or PATCH, we add the body
         if (body) {
             options.body = JSON.stringify(body); // Convert body to JSON string
-            console.log(options.body)
         }
 
         // options.credentials = 'include'
@@ -49,6 +48,7 @@
         
         let username = document.getElementById("l-username").value
         let password = document.getElementById("l-password").value
+        document.getElementById("loginError").style.display = "none"
 
         if (password && username) {
 
@@ -59,17 +59,20 @@
 
             console.log(reply)
 
-            if (reply.user && reply.user.isCustomer) {
-                console.log("success!")
-            }
-            else if (reply.error) {
+            if (reply.error) {
 
-                if (reply.error.code = "USER_NOT_FOUND") {
+                if (reply.error.code == "USER_NOT_FOUND") {
                     loginError("Hibás felhasználónév vagy e-mail-cím.")
                 }
-                else if (reply.error.code = "INVALID_PASSWORD") {
+                else if (reply.error.code == "INVALID_PASSWORD") {
                     loginError("Hibás jelszó.")
                 }
+            }
+
+            else {
+                document.cookie = `auth_token=${reply.auth_token};path=/`;
+
+                //location.assign('home')
             }
 
         }
