@@ -18,6 +18,11 @@
 
     }
 
+    function logout () {
+        localStorage.clear()
+        location.assign("/")
+    }
+
     onMount(()=>{
 
         document.getElementById("userBox").addEventListener("click", toggle_userDropdown)
@@ -48,7 +53,7 @@
                         <img src="IMG/Global/settings.png" alt="Fiók kezelése">
                         <p>Fiók kezelése</p>
                     </button>
-                    <button on:click={()=>location.assign('/')}>
+                    <button on:click={logout}>
                         <img src="IMG/Global/logout.png" alt="Kijelentkezés">
                         <p>Kijelentkezés</p>
                     </button>

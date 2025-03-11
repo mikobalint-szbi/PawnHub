@@ -70,9 +70,15 @@
             }
 
             else {
-                document.cookie = `auth_token=${reply.auth_token};path=/`;
+                localStorage["auth_token"] = reply.auth_token
+                localStorage["user"] = JSON.stringify({
+                    username: reply.user.username,
+                    email: reply.user.email,
+                    isCustomer: Boolean(reply.user.isCustomer),
+                    imgUrl: reply.user.imgUrl
+                })
 
-                //location.assign('home')
+                location.assign('home')
             }
 
         }
