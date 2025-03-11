@@ -17,6 +17,7 @@
         // If the method is POST, PUT, or PATCH, we add the body
         if (body) {
             options.body = JSON.stringify(body); // Convert body to JSON string
+            console.log(options.body)
         }
 
         // options.credentials = 'include'
@@ -38,33 +39,46 @@
         }
     };
 
+    function loginError (text) {
+        let er = document.getElementById("loginError")
+        er.innerHTML = text
+        er.style.display = "block"
+    }
 
     async function loginHandler(){
         
         let username = document.getElementById("l-username").value
         let password = document.getElementById("l-password").value
 
-        let reply = await api('POST', '/login', {
-            username: username,
-            password: password
-        });
+        if (password && username) {
 
-        console.log(reply)
+            let reply = await api('POST', '/login', {
+                username: username,
+                password: password
+            });
 
-        if (reply.user && reply.user.isCustomer) {
-            console.log("success!")
-        }
-        else if (reply.error) {
-            let er = document.getElementById("loginError")
+            console.log(reply)
 
-            if (reply.error.code = "USER_NOT_FOUND") {
-                er.innerHTML = "Hibás felhasználónév vagy e-mail-cím."
+            if (reply.user && reply.user.isCustomer) {
+                console.log("success!")
             }
-            else if (reply.error.code = "INVALID_PASSWORD") {
-                er.innerHTML = "Hibás jelszó."
+            else if (reply.error) {
+
+                if (reply.error.code = "USER_NOT_FOUND") {
+                    loginError("Hibás felhasználónév vagy e-mail-cím.")
+                }
+                else if (reply.error.code = "INVALID_PASSWORD") {
+                    loginError("Hibás jelszó.")
+                }
             }
-            er.style.display = "block"
+
         }
+
+        else {
+            loginError("Kérjük, töltse ki mindkettő beviteli mezőt.")
+        }
+
+
         
     }
 
