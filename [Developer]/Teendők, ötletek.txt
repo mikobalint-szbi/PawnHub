@@ -4,7 +4,6 @@ http://infojegyzet.hu/webszerkesztes/dokumentacio
 Teendők:
 - olvasmány: https://aws.amazon.com/what-is/cross-origin-resource-sharing/
 
-- Nem változtatja a linket a register page 😢
 - Sütik elfogadása popup
 
 

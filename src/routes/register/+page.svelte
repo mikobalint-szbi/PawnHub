@@ -14,7 +14,7 @@
         document.getElementById("ps-option2").classList.remove("active")
         isCustomer  =  true
         // window.history.pushState(null, "", "/register?for=customer");
-        replaceState("/register?for=customer", {})
+        //replaceState("/register?for=customer", {})
 
     }
     function psOption2_clicked(){
@@ -22,7 +22,8 @@
         document.getElementById("ps-option2").classList.add("active")
         isCustomer  =  false
         // window.history.pushState(null, "", "/register?for=shop");
-        replaceState("/register?for=shop", {})
+        //replaceState("/register?for=shop", {})
+        
     }
 
 
@@ -39,6 +40,10 @@
             psOption2_clicked()
         }
 
+        try {
+            replaceState("/register", {})
+        } 
+        catch {}
 
 
     })
