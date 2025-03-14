@@ -26,6 +26,51 @@
         
     }
 
+    function register () {
+        if (isCustomer == true) {
+
+            let data = {
+                name: document.getElementById("customerName").value,
+                birthday: document.getElementById("birthDate").value,
+                idCardNum: document.getElementById("idCardNum").value,
+                idCardExp: document.getElementById("idCardExp").value,
+                email: document.getElementById("cust-email").value,
+                mobile: document.getElementById("cust-phone").value,
+                shippingAddress: document.getElementById("cust-shippingAddress").value,
+                billingAddress: document.getElementById("cust-billingAddress").value,
+                iban: document.getElementById("cust-iban").value,
+                username: document.getElementById("username").value,
+                password: document.getElementById("newPassword1").value
+
+            }
+
+            console.log(data)
+
+
+
+
+        }
+        else {
+
+            let data = {
+                name: document.getElementById("shopName").value,
+                taxId: document.getElementById("taxId").value,
+                estYear: document.getElementById("estYear").value,
+                intro: document.getElementById("intro").value,
+                email: document.getElementById("shop-email").value,
+                mobile: document.getElementById("shop-phone").value,
+                settlement_id: 23, // TEENDŐ !!
+                address: document.getElementById("shop-address").value,
+                iban: document.getElementById("shop-iban").value,
+                username: document.getElementById("username").value,
+                password: document.getElementById("newPassword1").value
+
+            }
+
+            console.log(data)
+
+        }
+    }
 
 
 
@@ -164,7 +209,7 @@
                     </div>
                     <div class="cgRow">
                         <label for="intro" class="cgLabel">Bemutatkozószöveg:</label>
-                        <textarea name="inro" class="cgInput" id="intro"></textarea>
+                        <textarea name="intro" class="cgInput" id="intro"></textarea>
                     </div>
                 </div>
                 <div class="cgFoot">
@@ -223,7 +268,7 @@
                         <input type="text" class="cgInput" id="shop-address">
                     </div>
                     <div class="cgRow">
-                        <label for="shop-billingAddress" class="cgLabel">Iban-számlaszám:</label>
+                        <label for="shop-iban" class="cgLabel">Iban-számlaszám:</label>
                         <input type="text" class="cgInput" id="shop-billingAddress">
                     </div>
                 </div>
@@ -259,7 +304,7 @@
 
     </div>
     <div class="bottom">
-        <button>
+        <button on:click={register}>
             <img src="IMG/Global/select.png" alt="">
             <p>Regisztráció</p>
         </button>
