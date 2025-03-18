@@ -91,6 +91,10 @@
         
     }
 
+    if (localStorage["auth_token"]) {
+        location.assign("/home")
+    }
+
 
     onMount(()=>{
 
@@ -114,11 +118,12 @@
 
             sessionStorage.setItem("loginSwitch",2)
         })
+
     })
 
 
 </script>
-
+{#if !localStorage["auth_token"]}
 <section id="body">
     <div id="body-col1">
 
@@ -204,6 +209,7 @@
     </div>
 
 </section>
+{/if}
 
 <style lang="scss">
 
