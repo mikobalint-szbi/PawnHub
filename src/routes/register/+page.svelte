@@ -72,6 +72,10 @@
         }
     }
 
+    if (!localStorage["auth_token"]) {}
+    else {
+        location.assign("/home")
+    }
 
 
     onMount(()=> {
@@ -95,7 +99,7 @@
 
 
 </script>
-
+{#if !localStorage["auth_token"]}
 <section id="body">
 
     <div id="head-div">
@@ -304,6 +308,8 @@
 
     </div>
     <div class="bottom">
+        <p class="errore" id="registerError">A Lorem Ipsum egy egyszerű szövegrészlete, szövegutánzata a betűszedő és nyomdaiparnak. A Lorem Ipsum az 1500-as évek óta standard szövegrészletként szolgált az iparban; mikor egy ismeretlen nyomdász összeállította a betűkészletét és egy példa-könyvet vagy szöveget nyomott papírra, ezt használta. Nem csak 5 évszázadot élt túl, de az elektronikus betűkészleteknél is változatlanul megmaradt. Az 1960-as években népszerűsítették a Lorem Ipsum részleteket magukbafoglaló Letraset lapokkal, és legutóbb softwarekkel mint például az Aldus Pagemaker.</p>
+
         <button on:click={register}>
             <img src="IMG/Global/select.png" alt="">
             <p>Regisztráció</p>
@@ -311,6 +317,7 @@
     </div>
 
 </section>
+{/if}
 
 <style lang="scss">
     
@@ -373,6 +380,11 @@
             }
         }
 
+    }
+
+    #bottom {
+        display: flex !important;
+        flex-direction: column !important;
     }
 
 

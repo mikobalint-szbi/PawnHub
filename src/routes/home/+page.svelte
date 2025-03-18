@@ -3,12 +3,18 @@
 
 
     
-    let user = JSON.parse(localStorage["user"]);
-    let isCustomer = user.isCustomer;
+
 
     //import {open_popup} from "$lib/Scripts/popup.js"
 
-    if (!localStorage["auth_token"]) {
+    let isCustomer;
+    let user;
+    
+    if (localStorage["auth_token"]) {
+        user = JSON.parse(localStorage["user"]);
+        isCustomer = user.isCustomer;
+    }
+    else {
         location.assign("/")
     }
 

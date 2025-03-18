@@ -32,6 +32,7 @@
             // Parse and return the response JSON
             const data = await response.json();
             return data;
+
         } catch (error) {
             console.error('Request failed:', error);
             return null;
@@ -75,7 +76,7 @@
                     username: reply.user.username,
                     email: reply.user.email,
                     isCustomer: Boolean(reply.user.isCustomer),
-                    imgUrl: reply.user.imgUrl
+                    img: reply.user.img
                 })
 
                 location.assign('home')

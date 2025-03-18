@@ -23,7 +23,7 @@
 
 <div class="app">
 	<header>
-		<Header userBox={true}/>
+		<Header/>
 	</header>
 		<section id="popupBody">
 			<ProductPopup/>

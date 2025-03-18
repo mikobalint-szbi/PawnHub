@@ -27,17 +27,20 @@
 
     onMount(()=>{
 
-        document.getElementById("userBox").addEventListener("click", toggle_userDropdown)
+
 
         if (localStorage["user"]) {
-        let user = JSON.parse(localStorage["user"])
 
-        if (user.img) {
+            document.getElementById("userBox").addEventListener("click", toggle_userDropdown)
 
-            document.getElementById("userBox-image").style.backgroundImage = `url('data:image/png;base64,${user.img}')`;
-            document.getElementById("userDropDown-image").style.backgroundImage = `url('data:image/png;base64,${user.img}')`;
+            let user = JSON.parse(localStorage["user"])
+
+            if (user.img) {
+
+                document.getElementById("userBox-image").style.backgroundImage = `url('data:image/png;base64,${user.img}')`;
+                document.getElementById("userDropDown-image").style.backgroundImage = `url('data:image/png;base64,${user.img}')`;
+            }
         }
-    }
 
     })
 

@@ -2,9 +2,10 @@
 http://infojegyzet.hu/webszerkesztes/dokumentacio
 
 Teendők:
-- olvasmány: https://aws.amazon.com/what-is/cross-origin-resource-sharing/
 
-- Sütik elfogadása popup
+- Regisztráció oldal
+    • Hibaüzenet
+	• Regisztrációs végponttal összekötés
 
 
 
