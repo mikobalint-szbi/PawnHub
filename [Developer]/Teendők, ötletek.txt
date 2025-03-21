@@ -4,8 +4,7 @@ http://infojegyzet.hu/webszerkesztes/dokumentacio
 Teendők:
 
 - Regisztráció oldal
-    • Hibaüzenet
-	• Regisztrációs végponttal összekötés
+    • MessageOK betűmérete nem állítódik be valamiért
 
 
 

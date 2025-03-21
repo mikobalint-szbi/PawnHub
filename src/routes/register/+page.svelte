@@ -4,6 +4,8 @@
     import { page } from "$app/stores"
     import { replaceState } from "$app/navigation";
     import {api, formatPhone, isOver18, isFuture, validate_customer} from "$lib/Scripts/functions.js";
+    import {open_popup, close_popup, save_popup} from "$lib/Scripts/popup.js";
+
 
 
     let isCustomer = true;
@@ -27,7 +29,7 @@
         
     }
 
-    function register () {
+    async function register () {
 
         document.getElementById("registError").style.display = "none"
 
@@ -50,12 +52,17 @@
 
             console.log(data)
 
+            open_popup("messageOK","szöveg",()=>{location.assign("/")})
+
             if (validate_customer(data)) {
                 console.log("success!!!!!!!!!")
+
+
+                let reply = await api('POST', '/customer', data);
+            
+                console.log(reply)
             }
 
-
-            console.log(data)
 
 
 

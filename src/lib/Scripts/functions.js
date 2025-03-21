@@ -137,7 +137,7 @@ export function validate_customer(data, settingsMode = false){
     let good = true;
 
     if (!data.name || !data.birthday || !data.idCardNum || !data.idCardExp || !data.email || !data.username || !data.password) {
-        registError("Kérjük, töltse ki az összes csillaggal jelölt mezőt.")
+        registError("Kérjük, az összes csillaggal jelölt mezőt töltse ki.")
         good = false
     }
     else if (!regex.custName.test(data.name)){

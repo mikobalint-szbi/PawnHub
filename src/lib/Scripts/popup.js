@@ -23,9 +23,13 @@ export function save_popup(popupID){
 
 }
 
-export function open_popup(popupID, create, backButton){
+export function open_popup(popupID, ...args){
+
+    let backButton = false
 
     if (["productPopup","loanPopup","customerPopup"].includes(popupID)){
+
+        let create = args[0]
 
         if (create){
 
@@ -35,6 +39,15 @@ export function open_popup(popupID, create, backButton){
         else{
             document.getElementById(popupID + "-submitText").innerHTML = "Módosítások mentése"
         }
+    }
+    else if (popupID == "messageOK"){
+        console.log(args)
+        let text = args[0]
+        let okbutton = args[1]
+
+        document.getElementById("okMessage").innerHTML = `<p>${text}</p>`
+        document.getElementById("okButton").addEventListener("click",okbutton)
+
     }
 
     if (backButton){
