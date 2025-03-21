@@ -1,9 +1,10 @@
 <script>
-
+    import '$lib/Styles/settings.scss';
     import { onMount } from "svelte";
     import { page } from "$app/stores"
     import { replaceState } from "$app/navigation";
-    import '$lib/Styles/settings.scss';
+    import {api, formatPhone, isOver18, isFuture, validate_customer} from "$lib/Scripts/functions.js";
+
 
     let isCustomer = true;
 
@@ -27,6 +28,9 @@
     }
 
     function register () {
+
+        document.getElementById("registError").style.display = "none"
+
         if (isCustomer == true) {
 
             let data = {
@@ -38,11 +42,18 @@
                 mobile: document.getElementById("cust-phone").value,
                 shippingAddress: document.getElementById("cust-shippingAddress").value,
                 billingAddress: document.getElementById("cust-billingAddress").value,
-                iban: document.getElementById("cust-iban").value,
+                iban: document.getElementById("cust-iban").value.toUpperCase(),
                 username: document.getElementById("username").value,
                 password: document.getElementById("newPassword1").value
 
             }
+
+            console.log(data)
+
+            if (validate_customer(data)) {
+                console.log("success!!!!!!!!!")
+            }
+
 
             console.log(data)
 
@@ -94,6 +105,8 @@
         } 
         catch {}
 
+        document.getElementById("cust-phone").addEventListener("input",formatPhone)
+        document.getElementById("shop-phone").addEventListener("input",formatPhone)
 
     })
 
@@ -175,19 +188,19 @@
                 <h3 class="cgTitle">Személyes adatok</h3>
                 <div class="cgBody">
                     <div class="cgRow">
-                        <label for="customerName" class="cgLabel">Teljes név:</label>
+                        <label for="customerName" class="cgLabel">Teljes név: <span class="star">*</span></label>
                         <input type="text" class="cgInput" id="customerName">
                     </div>
                     <div class="cgRow">
-                        <label for="birthDate" class="cgLabel">Születési dátum:</label>
+                        <label for="birthDate" class="cgLabel">Születési dátum: <span class="star">*</span></label>
                         <input type="date" class="cgInput" id="birthDate">
                     </div>
                     <div class="cgRow">
-                        <label for="idCardNum" class="cgLabel">Személyi igazolvány száma:</label>
+                        <label for="idCardNum" class="cgLabel">Személyi igazolvány száma: <span class="star">*</span></label>
                         <input type="text" class="cgInput" id="idCardNum">
                     </div>
                     <div class="cgRow">
-                        <label for="idCardExp" class="cgLabel">Személyi igazolvány lejárati dátuma:</label>
+                        <label for="idCardExp" class="cgLabel">Személyi igazolvány lejárati dátuma: <span class="star">*</span></label>
                         <input type="date" class="cgInput" id="idCardExp">
                     </div>
                 </div>
@@ -200,11 +213,11 @@
                 <h3 class="cgTitle">A zálogház adatai</h3>
                 <div class="cgBody">
                     <div class="cgRow">
-                        <label for="shopName" class="cgLabel">Cégnév:</label>
+                        <label for="shopName" class="cgLabel">Cégnév: <span class="star">*</span></label>
                         <input type="text" class="cgInput" id="shopName">
                     </div>
                     <div class="cgRow">
-                        <label for="taxId" class="cgLabel">Adószám:</label>
+                        <label for="taxId" class="cgLabel">Adószám: <span class="star">*</span></label>
                         <input type="text" class="cgInput" id="taxId">
                     </div>
                     <div class="cgRow">
@@ -227,12 +240,12 @@
                 <h3 class="cgTitle">Elérhetőségek</h3>
                 <div class="cgBody">
                     <div class="cgRow">
-                        <label for="cust-email" class="cgLabel">E-mail-cím:</label>
+                        <label for="cust-email" class="cgLabel">E-mail-cím: <span class="star">*</span></label>
                         <input type="email" class="cgInput" id="cust-email">
                     </div>
                     <div class="cgRow">
                         <label for="cust-phone" class="cgLabel">Telefonszám:</label>
-                        <input type="phone" class="cgInput" id="cust-phone">
+                        <input type="phone" class="cgInput" id="cust-phone" value="+">
                     </div>
                     <div class="cgRow">
                         <label for="cust-shippingAddress" class="cgLabel">Szállítási cím:</label>
@@ -243,7 +256,7 @@
                         <input type="text" class="cgInput" id="cust-billingAddress">
                     </div>
                     <div class="cgRow">
-                        <label for="cust-iban" class="cgLabel">Iban-számlaszám:</label>
+                        <label for="cust-iban" class="cgLabel">IBAN-számlaszám:</label>
                         <input type="text" class="cgInput" id="cust-iban">
                     </div>
                 </div>
@@ -256,23 +269,23 @@
                 <h3 class="cgTitle">Elérhetőségek</h3>
                 <div class="cgBody">
                     <div class="cgRow">
-                        <label for="shop-email" class="cgLabel">E-mail-cím:</label>
+                        <label for="shop-email" class="cgLabel">E-mail-cím: <span class="star">*</span></label>
                         <input type="email" class="cgInput" id="shop-email">
                     </div>
                     <div class="cgRow">
-                        <label for="shop-phone" class="cgLabel">Telefonszám:</label>
-                        <input type="phone" class="cgInput" id="shop-phone">
+                        <label for="shop-phone" class="cgLabel">Telefonszám: <span class="star">*</span></label>
+                        <input type="phone" class="cgInput" id="shop-phone" value="+">
                     </div>
                     <div class="cgRow">
-                        <label for="shop-settlement" class="cgLabel">Település:</label>
+                        <label for="shop-settlement" class="cgLabel">Település: <span class="star">*</span></label>
                         <input type="text" class="cgInput" id="shop-settlement">
                     </div>
                     <div class="cgRow">
-                        <label for="shop-address" class="cgLabel">Utca, házszám:</label>
+                        <label for="shop-address" class="cgLabel">Utca, házszám: <span class="star">*</span></label>
                         <input type="text" class="cgInput" id="shop-address">
                     </div>
                     <div class="cgRow">
-                        <label for="shop-iban" class="cgLabel">Iban-számlaszám:</label>
+                        <label for="shop-iban" class="cgLabel">IBAN-számlaszám:</label>
                         <input type="text" class="cgInput" id="shop-billingAddress">
                     </div>
                 </div>
@@ -287,15 +300,15 @@
             <div class="cgBody">
                 <form action="">
                     <div class="cgRow unset">
-                        <label for="username" class="cgLabel">Felhasználónév:</label>
+                        <label for="username" class="cgLabel">Felhasználónév: <span class="star">*</span></label>
                         <input type="text" class="cgInput" id="username" autocomplete="username">
                     </div>
                     <div class="cgRow">
-                        <label for="newPassword1" class="cgLabel">Jelszó:</label>
+                        <label for="newPassword1" class="cgLabel">Jelszó: <span class="star">*</span></label>
                         <input type="password" class="cgInput" id="newPassword1" autocomplete="new-password">
                     </div>
                     <div class="cgRow">
-                        <label for="newPassword2" class="cgLabel">Jelszó még egyszer:</label>
+                        <label for="newPassword2" class="cgLabel">Jelszó még egyszer: <span class="star">*</span></label>
                         <input type="password" class="cgInput" id="newPassword2" autocomplete="new-password">
                     </div>
                 </form>
@@ -308,7 +321,7 @@
 
     </div>
     <div class="bottom">
-        <p class="errore" id="registerError">A Lorem Ipsum egy egyszerű szövegrészlete, szövegutánzata a betűszedő és nyomdaiparnak. A Lorem Ipsum az 1500-as évek óta standard szövegrészletként szolgált az iparban; mikor egy ismeretlen nyomdász összeállította a betűkészletét és egy példa-könyvet vagy szöveget nyomott papírra, ezt használta. Nem csak 5 évszázadot élt túl, de az elektronikus betűkészleteknél is változatlanul megmaradt. Az 1960-as években népszerűsítették a Lorem Ipsum részleteket magukbafoglaló Letraset lapokkal, és legutóbb softwarekkel mint például az Aldus Pagemaker.</p>
+        <p class="error" id="registError">A Lorem Ipsum egy egyszerű szövegrészlete, szövegutánzata a betűszedő és nyomdaiparnak. A Lorem Ipsum az 1500-as évek óta standard szövegrészletként szolgált az iparban; mikor egy ismeretlen nyomdász összeállította a betűkészletét és egy példa-könyvet vagy szöveget nyomott papírra, ezt használta. Nem csak 5 évszázadot élt túl, de az elektronikus betűkészleteknél is változatlanul megmaradt. Az 1960-as években népszerűsítették a Lorem Ipsum részleteket magukbafoglaló Letraset lapokkal, és legutóbb softwarekkel mint például az Aldus Pagemaker.</p>
 
         <button on:click={register}>
             <img src="IMG/Global/select.png" alt="">
@@ -382,9 +395,15 @@
 
     }
 
-    #bottom {
+    .bottom {
         display: flex !important;
         flex-direction: column !important;
+    
+        #registError {
+            margin-top: -8px;
+            text-align: center;
+            padding: 0 10px;
+        }
     }
 
 

@@ -1,43 +1,7 @@
 <script>
     import {onMount} from "svelte";
     import {apiUrl} from "$lib/Scripts/variables.js";
-    
-    async function api (method, path, body = null) {
-
-        const url = `${apiUrl}${path}`;
-
-        // Set up the request options
-        const options = {
-            method: method, // The HTTP method (GET, POST, PUT, DELETE, etc.)
-            headers: {
-                'Content-Type': 'application/json', // Set content type to JSON
-            }
-        };
-
-        // If the method is POST, PUT, or PATCH, we add the body
-        if (body) {
-            options.body = JSON.stringify(body); // Convert body to JSON string
-        }
-
-        // options.credentials = 'include'
-
-        try {
-            const response = await fetch(url, options);
-
-            // Check if the response is successful
-            if (!response.ok) {
-                // throw new Error(`Error: ${response.statusText}`);
-            }
-
-            // Parse and return the response JSON
-            const data = await response.json();
-            return data;
-
-        } catch (error) {
-            console.error('Request failed:', error);
-            return null;
-        }
-    };
+    import {api} from "$lib/Scripts/functions.js";
 
     function loginError (text) {
         let er = document.getElementById("loginError")

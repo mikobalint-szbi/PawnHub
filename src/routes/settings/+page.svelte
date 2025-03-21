@@ -139,7 +139,7 @@
                             <input type="text" class="cgInput" id="cust-billingAddress">
                         </div>
                         <div class="cgRow">
-                            <label for="cust-iban" class="cgLabel">Iban-számlaszám:</label>
+                            <label for="cust-iban" class="cgLabel">IBAN-számlaszám:</label>
                             <input type="text" class="cgInput" id="cust-iban">
                         </div>
                     </div>
@@ -171,7 +171,7 @@
                             <input type="text" class="cgInput" id="shop-address">
                         </div>
                         <div class="cgRow">
-                            <label for="shop-billingAddress" class="cgLabel">Iban-számlaszám:</label>
+                            <label for="shop-billingAddress" class="cgLabel">IBAN-számlaszám:</label>
                             <input type="text" class="cgInput" id="shop-billingAddress">
                         </div>
                     </div>
