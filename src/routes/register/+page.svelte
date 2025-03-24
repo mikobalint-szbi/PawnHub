@@ -4,7 +4,7 @@
     import { onMount } from "svelte";
     import { page } from "$app/stores"
     import { replaceState } from "$app/navigation";
-    import {api, formatPhone, isOver18, isFuture, validate_customer, registError, toggle_settlDropdown, init_settlInput} from "$lib/Scripts/functions.js";
+    import {api, formatPhone, isOver18, isFuture, validate_customer, validate_shop, registError, toggle_settlDropdown, init_settlInput, validate_reply} from "$lib/Scripts/functions.js";
     import {open_popup, close_popup, save_popup} from "$lib/Scripts/popup.js";
 
 
@@ -67,42 +67,9 @@
 
                 let reply = await api('POST', '/customer', data);
 
-                console.log("reply:")
-                console.log(reply)
-
-                if (reply.errors){
-
-                    let taken = {
-                        username: (reply.errors.username && reply.errors.username == "The username has already been taken."),
-                        email: (reply.errors.email && reply.errors.email == "The email has already been taken.")
-                    }
-
-                    if (taken.username && taken.email){
-                        registError("A megadott felhasználónév és e-mail-cím már foglalt.<br>Ha van már PawnHub-fiókja, kérjük, jelentkezzen be.")
-                    }
-                    else if (taken.username) {
-                        registError("A megadott felhasználónév már foglalt.<br>Kérjük, válasszon másik felhasználónevet.")
-                    }
-                    else if (taken.email) {
-                        registError("A megadott e-mail-cím már foglalt.<br>Ha van már PawnHub-fiókja, kérjük, jelentkezzen be.")
-
-                    }
-                    else {
-                        registError("Ismeretlen szerverhiba történt.")
-                        console.log(reply.errors)
-                    }
-
-                }
-                else {
-                    open_popup("messageOK","A regisztráció megtörtént! <br> Kérjük, jelentkezzen be vadonatúj PawnHub-fiókjába.",()=>{location.assign("/")})
-
-                }
-
-
+                validate_reply(reply)
 
             }
-
-
 
 
 
@@ -116,15 +83,30 @@
                 intro: document.getElementById("intro").value,
                 email: document.getElementById("shop-email").value,
                 mobile: document.getElementById("shop-phone").value,
-                settlement_id: 23, // TEENDŐ !!
+                settlement_id: null, // TEENDŐ !!
                 address: document.getElementById("shop-address").value,
-                iban: document.getElementById("shop-iban").value,
+                iban: document.getElementById("shop-iban").value.toUpperCase(),
                 username: document.getElementById("username").value,
                 password: document.getElementById("newPassword1").value
 
             }
 
+            if (localStorage["chosenSettlement"]) {
+                data.settlement_id = localStorage["chosenSettlement"].split("-")[0]
+            }
+
             console.log(data)
+
+            if (validate_shop(data)) {
+                
+                
+                let reply = await api('POST', '/shop', data);
+
+                console.log("reply:")
+                console.log(reply)
+                validate_reply(reply)
+
+            }
 
         }
     }
@@ -344,7 +326,7 @@
                     </div>
                     <div class="cgRow">
                         <label for="shop-iban" class="cgLabel">IBAN-számlaszám:</label>
-                        <input type="text" class="cgInput" id="shop-billingAddress">
+                        <input type="text" class="cgInput" id="shop-iban">
                     </div>
                 </div>
                 <div class="cgFoot">

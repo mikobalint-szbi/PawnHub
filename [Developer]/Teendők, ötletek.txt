@@ -4,8 +4,7 @@ http://infojegyzet.hu/webszerkesztes/dokumentacio
 Teendők:
 
 - Regisztráció oldal
-    • Shop register:
-		~ Settlement dropdown
+    • Profilkép feltöltése
 
 
 Miután lesz backend:

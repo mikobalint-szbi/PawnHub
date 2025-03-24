@@ -1,6 +1,7 @@
 
 import {apiUrl} from "$lib/Scripts/variables.js";
 import {regex} from "$lib/Scripts/variables.js";
+import {open_popup} from "$lib/Scripts/popup.js";
 
 export function getNum(str){
     return Number(str.match(/[\d.]+/g)?.join('') || '')
@@ -185,6 +186,94 @@ export function validate_customer(data, settingsMode = false){
 
 }
 
+export function validate_shop(data, settingsMode = false){
+    
+    let good = true;
+
+    if (data.mobile == "+") {
+        data.mobile = ""
+    }
+
+    if (!data.name || !data.taxId || !data.email || !data.username || !data.password || !data.mobile || !data.password || !data.address || !document.getElementById("settlInput").value) {
+        registError("Kérjük, az összes csillaggal jelölt mezőt töltse ki.")
+        good = false
+    }
+    else if (!regex.taxId.test(data.taxId)){
+        registError("Az megadott adószám formátuma hibás!")
+        good = false
+    }
+    else if (data.estYear > new Date().getFullYear()){
+        registError("Az alapítási év nem lehet jövőbeli!")
+        good = false
+    }
+    else if (!regex.email.test(data.email)){
+        registError("Az megadott e-mail-cím formátuma hibás!")
+        good = false
+    }
+    else if (data.mobile.length < 4){
+        registError("Hibás telefonszám!")
+        good = false
+    }
+    else if (!data.settlement_id) {
+
+        registError("A település nevét kérjük a lenyíló listából válassza ki!")
+        good = false
+    }
+    else if (data.iban && !regex.iban.test(data.iban)){
+        registError("Hibás IBAN-számlaszám-formátum!")
+        good = false
+    }
+    else if (data.username.length > 25 || data.username.length < 3){
+        registError("A felhasználónévnek legalább 3 és legfeljebb 25 karakter hosszúnak kell lennie.")
+        good = false
+    }
+    else if (!regex.username.test(data.username)){
+        registError("A felhasználónév csak a latin ábécé kisbetűit, nagybetűit, számjegyeket, illetve kötőjelet, pontot vagy alsóvonalat tartalmazhat.")
+        good = false
+    }
+    else if (document.getElementById("newPassword2").value != data.password){
+        registError("A jelszavak nem egyeznek!")
+        good = false
+    }
+    else if (data.password.length < 8){
+        registError("A jelszónak legalább 8 karakter hosszúnak kell lennie.")
+        good = false
+    }
+
+    return good;
+
+}
+
+export function validate_reply(reply) {
+
+    if (reply.errors){
+
+        let taken = {
+            username: (reply.errors.username && reply.errors.username == "The username has already been taken."),
+            email: (reply.errors.email && reply.errors.email == "The email has already been taken.")
+        }
+
+        if (taken.username && taken.email){
+            registError("A megadott felhasználónév és e-mail-cím már foglalt.<br>Ha van már PawnHub-fiókja, kérjük, jelentkezzen be.")
+        }
+        else if (taken.username) {
+            registError("A megadott felhasználónév már foglalt.<br>Kérjük, válasszon másik felhasználónevet.")
+        }
+        else if (taken.email) {
+            registError("A megadott e-mail-cím már foglalt.<br>Ha van már PawnHub-fiókja, kérjük, jelentkezzen be.")
+
+        }
+        else {
+            registError("Ismeretlen szerverhiba történt.")
+            console.log(reply.errors)
+        }
+
+    }
+    else {
+        open_popup("messageOK","A regisztráció megtörtént! <br> Kérjük, jelentkezzen be vadonatúj PawnHub-fiókjába.",()=>{location.assign("/")})
+
+    }
+}
 
 
 
@@ -231,7 +320,6 @@ export async function toggle_settlDropdown(){
                 }
     
             })
-            console.log(l)
 
             for (const key in l) {
                 let link = document.createElement("a")
