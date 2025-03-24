@@ -194,30 +194,60 @@ export async function toggle_settlDropdown(){
     let input = document.getElementById("settlInput")
     dropdown.style.width = input.offsetWidth + "px"
 
+    localStorage.removeItem("chosenSettlement")
+
     if (input.value != "" && input.value.length >= 2){ 
 
         let reply;
 
-        if (regex.isFirstCharDigit.test(input.value)){
-            reply = await api('GET', `/settlements?postCode=${input.value}`);
+        try {
 
+            if (regex.isFirstCharDigit.test(input.value)){
+                reply = await api('GET', `/settlements?postCode=${input.value}`);
+    
+            }
+            else {
+                reply = await api('GET', `/settlements?searchKey=${input.value}`);
+            }
         }
-        else {
-            reply = await api('GET', `/settlements?searchKey=${input.value}`);
+        catch {
+            reply = []
         }
+
 
         dropdown.innerHTML = ""
 
-        let l = []
+        let l = {}
 
-        reply.forEach((e)=>{
-            if (!l.includes(e.name)){
-                dropdown.innerHTML += `<a onclick="alert()" id="sett${e.id}">${e.name}</a>`
-                l.push(e.name)
+        if (reply) {
+
+            reply.forEach((e)=>{
+                if (!l.hasOwnProperty(e.name)){
+                    l[e.name] = e.id
+
+                }
+                else {
+                    l[e.name] += "-" + e.id
+                }
+    
+            })
+            console.log(l)
+
+            for (const key in l) {
+                let link = document.createElement("a")
+                link.id = l[key]
+                link.text = key
+                link.onclick = () =>{
+                    localStorage["chosenSettlement"] = l[key]
+                    input.value = key
+                    dropdown.style.display = "none"
+                }
+
+                dropdown.appendChild(link)
             }
 
-            
-        })
+        }
+
 
 
 
@@ -234,6 +264,7 @@ export async function toggle_settlDropdown(){
     }
 
 }
+
 
 export function init_settlInput () {
     document.getElementById("settlInput").addEventListener('keyup', toggle_settlDropdown)
