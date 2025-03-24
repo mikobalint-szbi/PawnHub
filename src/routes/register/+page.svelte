@@ -1,15 +1,15 @@
 <script>
     import '$lib/Styles/settings.scss';
+    import '$lib/Styles/settlInput.scss';
     import { onMount } from "svelte";
     import { page } from "$app/stores"
     import { replaceState } from "$app/navigation";
-    import {api, formatPhone, isOver18, isFuture, validate_customer, registError} from "$lib/Scripts/functions.js";
+    import {api, formatPhone, isOver18, isFuture, validate_customer, registError, toggle_settlDropdown, init_settlInput} from "$lib/Scripts/functions.js";
     import {open_popup, close_popup, save_popup} from "$lib/Scripts/popup.js";
 
 
 
     let isCustomer = true;
-
 
 
     function psOption1_clicked(){
@@ -19,6 +19,7 @@
         // window.history.pushState(null, "", "/register?for=customer");
         //replaceState("/register?for=customer", {})
 
+
     }
     function psOption2_clicked(){
         document.getElementById("ps-option1").classList.remove("active")
@@ -26,6 +27,12 @@
         isCustomer  =  false
         // window.history.pushState(null, "", "/register?for=shop");
         //replaceState("/register?for=shop", {})
+
+
+
+
+
+
         
     }
 
@@ -130,22 +137,27 @@
 
     onMount(()=> {
 
-        if ($page.url.searchParams.get("for") == null || $page.url.searchParams.get("for") == "customer"){
+        if (!sessionStorage["registerFor"] || sessionStorage["registerFor"] == "customer"){
             isCustomer  =  true
             psOption1_clicked()
+
+
         }
         else {
             isCustomer  =  false
             psOption2_clicked()
+
+
         }
+        sessionStorage.removeItem("registerFor")
 
-        try {
-            replaceState("/register", {})
-        } 
-        catch {}
+        window.addEventListener("resize", ()=> {
 
-        document.getElementById("cust-phone").addEventListener("input",formatPhone)
-        document.getElementById("shop-phone").addEventListener("input",formatPhone)
+            if (document.getElementById("dropdownContent") != null){
+
+                document.getElementById("dropdownContent").style.width = document.getElementById("settlInput").offsetWidth + "px"
+            }
+        })
 
     })
 
@@ -158,8 +170,8 @@
         <div id="h-col1">
             <!-- svelte-ignore a11y-click-events-have-key-events -->
             <!-- svelte-ignore a11y-no-static-element-interactions -->
-            <a href="/" id="back">
-                <button>
+            <a id="back">
+                <button on:click={()=>location.assign("/")}>
                     <div id="b-col1">
                         <img src="IMG/Global/back.png" alt="Vissza" title="Vissza">
                     </div>
@@ -284,7 +296,7 @@
                     </div>
                     <div class="cgRow">
                         <label for="cust-phone" class="cgLabel">Telefonszám:</label>
-                        <input type="phone" class="cgInput" id="cust-phone" value="+">
+                        <input type="phone" class="cgInput" id="cust-phone" value="+" on:input={formatPhone}>
                     </div>
                     <div class="cgRow">
                         <label for="cust-shippingAddress" class="cgLabel">Szállítási cím:</label>
@@ -313,11 +325,22 @@
                     </div>
                     <div class="cgRow">
                         <label for="shop-phone" class="cgLabel">Telefonszám: <span class="star">*</span></label>
-                        <input type="phone" class="cgInput" id="shop-phone" value="+">
+                        <input type="phone" class="cgInput" id="shop-phone" value="+" on:input={formatPhone}>
                     </div>
                     <div class="cgRow">
-                        <label for="shop-settlement" class="cgLabel">Település: <span class="star">*</span></label>
-                        <input type="text" class="cgInput" id="shop-settlement">
+
+                        <div class="settlDropdown">
+                            <label for="settlInput" class="cgLabel">Település: <span class="star">*</span></label>
+                            <input type="text" id="settlInput" class="cgInput" on:keyup={toggle_settlDropdown}>
+                            <div id="dropdownContent">
+
+                                {#each {length: 37} as _, i}
+                                <!-- svelte-ignore a11y-missing-attribute -->
+                                <a >Link 1</a>
+                                {/each}
+                                </div>
+                        </div>
+                        
                     </div>
                     <div class="cgRow">
                         <label for="shop-address" class="cgLabel">Utca, házszám: <span class="star">*</span></label>

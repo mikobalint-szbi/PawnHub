@@ -9,6 +9,12 @@
         er.style.display = "block"
     }
 
+    function register (for_) {
+
+        sessionStorage["registerFor"] = for_; 
+        location.assign("/register")
+    }
+
     async function loginHandler(){
         
         let username = document.getElementById("l-username").value
@@ -122,8 +128,8 @@
             <div id="registerPromotion-div">
 
                 <!-- svelte-ignore a11y-missing-attribute -->
-                <a href="/register?for=customer">
-                    <button id="registerPromotion">Regisztráljon hozzánk még ma!</button>
+                <a>
+                    <button on:click={()=>register("customer")} id="registerPromotion">Regisztráljon hozzánk még ma!</button>
                 </a>
                 <p id="regDriector">🠦 Tekintsen a képernyő jobb oldalára! 🠦</p>
             </div>
@@ -149,8 +155,9 @@
             </ul>
     
             <div id="registerPromotion-div">
-                <a href="/register?for=shop">
-                    <button id="registerPromotion">Regisztráljon hozzánk még ma!</button>
+                <!-- svelte-ignore a11y-missing-attribute -->
+                <a>
+                    <button on:click={()=>register("shop")} id="registerPromotion">Regisztráljon hozzánk még ma!</button>
                 </a>
                 <p id="regDriector">🠦 Tekintsen a képernyő jobb oldalára! 🠦</p>
             </div>

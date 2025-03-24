@@ -184,3 +184,40 @@ export function validate_customer(data, settingsMode = false){
     return good;
 
 }
+
+export function toggle_settlDropdown(){
+        
+    let dropdown = document.getElementById("dropdownContent")
+    let input = document.getElementById("settlInput")
+    dropdown.style.width = input.offsetWidth + "px"
+
+    if (input.value != ""){ 
+
+        dropdown.style.display = "block"
+
+        if (input.value.length >= 2){
+            // API-kérés:
+            // Lekéri az összeset, ami a megadott két betűvel kezdődik,
+            // azután, amíg az első két betű nem változik, a JS maga végzi a szűrést a harmadik betűtől fogva
+        }
+
+    }
+    else {
+        dropdown.style.display = "none"
+    }
+
+}
+
+export function init_settlInput () {
+    document.getElementById("settlInput").addEventListener('keyup', toggle_settlDropdown)
+    
+    //document.onkeypress = toggle_settlDropdown
+
+    window.addEventListener("resize", ()=> {
+
+        if (document.getElementById("dropdownContent") != null){
+
+            document.getElementById("dropdownContent").style.width = document.getElementById("settlInput").offsetWidth + "px"
+        }
+    })
+}
