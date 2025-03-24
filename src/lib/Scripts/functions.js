@@ -185,21 +185,48 @@ export function validate_customer(data, settingsMode = false){
 
 }
 
-export function toggle_settlDropdown(){
+
+
+
+export async function toggle_settlDropdown(){
         
     let dropdown = document.getElementById("dropdownContent")
     let input = document.getElementById("settlInput")
     dropdown.style.width = input.offsetWidth + "px"
 
-    if (input.value != ""){ 
+    if (input.value != "" && input.value.length >= 2){ 
+
+        let reply;
+
+        if (regex.isFirstCharDigit.test(input.value)){
+            reply = await api('GET', `/settlements?postCode=${input.value}`);
+
+        }
+        else {
+            reply = await api('GET', `/settlements?searchKey=${input.value}`);
+        }
+
+        dropdown.innerHTML = ""
+
+        let l = []
+
+        reply.forEach((e)=>{
+            if (!l.includes(e.name)){
+                dropdown.innerHTML += `<a onclick="alert()" id="sett${e.id}">${e.name}</a>`
+                l.push(e.name)
+            }
+
+            
+        })
+
+
 
         dropdown.style.display = "block"
 
-        if (input.value.length >= 2){
             // API-kérés:
             // Lekéri az összeset, ami a megadott két betűvel kezdődik,
             // azután, amíg az első két betű nem változik, a JS maga végzi a szűrést a harmadik betűtől fogva
-        }
+        
 
     }
     else {

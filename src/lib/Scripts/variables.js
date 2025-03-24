@@ -7,5 +7,6 @@ export const regex = {
     email: new RegExp("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"),
     iban: new RegExp("^[A-Z]{2}[0-9]{2}[A-Z0-9]{1,30}$"),
     username: new RegExp("^[a-zA-Z0-9_.-]+$"),
-    taxId: new RegExp("^\\d{8}-\\d-\\d{2}$")
+    taxId: new RegExp("^\\d{8}-\\d-\\d{2}$"),
+    isFirstCharDigit: new RegExp("^\\d")
 }

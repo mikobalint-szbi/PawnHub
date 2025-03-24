@@ -19,7 +19,7 @@
         // window.history.pushState(null, "", "/register?for=customer");
         //replaceState("/register?for=customer", {})
 
-
+        sessionStorage["registerFor"] = "customer"
     }
     function psOption2_clicked(){
         document.getElementById("ps-option1").classList.remove("active")
@@ -28,7 +28,7 @@
         // window.history.pushState(null, "", "/register?for=shop");
         //replaceState("/register?for=shop", {})
 
-
+        sessionStorage["registerFor"] = "shop"
 
 
 
@@ -149,7 +149,7 @@
 
 
         }
-        sessionStorage.removeItem("registerFor")
+
 
         window.addEventListener("resize", ()=> {
 
@@ -334,11 +334,7 @@
                             <input type="text" id="settlInput" class="cgInput" on:keyup={toggle_settlDropdown}>
                             <div id="dropdownContent">
 
-                                {#each {length: 37} as _, i}
-                                <!-- svelte-ignore a11y-missing-attribute -->
-                                <a >Link 1</a>
-                                {/each}
-                                </div>
+                            </div>
                         </div>
                         
                     </div>
