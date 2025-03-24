@@ -3,8 +3,10 @@ http://infojegyzet.hu/webszerkesztes/dokumentacio
 
 Teendők:
 
-- Regisztráció oldal
-    • Profilkép feltöltése
+- Néhány normális felhasználó-seed létrehozása a backenden (és egyéb táblázatok seedelése)
+- userProfileBox a nevedet és az email-címedet írja ki
+- Settings page elkészítése a Regisztráció page alapján
+- ConfirmDelete megjavítása, hogy az open_popup függvénynél kelljen annak is paramétert adni, ne magánál a komponensnél
 
 
 Miután lesz backend:

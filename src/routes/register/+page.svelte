@@ -4,7 +4,10 @@
     import { onMount } from "svelte";
     import { page } from "$app/stores"
     import { replaceState } from "$app/navigation";
-    import {api, formatPhone, isOver18, isFuture, validate_customer, validate_shop, registError, toggle_settlDropdown, init_settlInput, validate_reply} from "$lib/Scripts/functions.js";
+    import {
+        api, formatPhone, isOver18, isFuture, validate_customer, validate_shop, registError, 
+        toggle_settlDropdown, init_settlInput, validate_reply, get_profilePic, del_profilePic
+    } from "$lib/Scripts/functions.js";
     import {open_popup, close_popup, save_popup} from "$lib/Scripts/popup.js";
 
 
@@ -19,6 +22,7 @@
         // window.history.pushState(null, "", "/register?for=customer");
         //replaceState("/register?for=customer", {})
 
+        localStorage.removeItem("newProfilePic")
         sessionStorage["registerFor"] = "customer"
     }
     function psOption2_clicked(){
@@ -28,6 +32,7 @@
         // window.history.pushState(null, "", "/register?for=shop");
         //replaceState("/register?for=shop", {})
 
+        localStorage.removeItem("newProfilePic")
         sessionStorage["registerFor"] = "shop"
 
 
@@ -65,6 +70,11 @@
 
             if (validate_customer(data)) {
 
+                if (localStorage["newProfilePic"]) {
+                    data.img = localStorage["newProfilePic"]
+                    localStorage.removeItem("newProfilePic")
+                }
+
                 let reply = await api('POST', '/customer', data);
 
                 validate_reply(reply)
@@ -99,6 +109,10 @@
 
             if (validate_shop(data)) {
                 
+                if (localStorage["newProfilePic"]) {
+                    data.img = localStorage["newProfilePic"]
+                    localStorage.removeItem("newProfilePic")
+                }
                 
                 let reply = await api('POST', '/shop', data);
 
@@ -118,6 +132,9 @@
 
 
     onMount(()=> {
+
+        localStorage.removeItem("newProfilePic")
+
 
         if (!sessionStorage["registerFor"] || sessionStorage["registerFor"] == "customer"){
             isCustomer  =  true
@@ -202,14 +219,14 @@
         <div class="cardGroup" id="cgProfile">
             <h3 class="cgTitle profile">{isCustomer ? "Profilkép" : "Zálogház fényképe"}</h3>
             <div class="cgBody profile">
-                <img src="IMG/Global/{isCustomer ? 'no-profile-image.png' : 'no-shop-image.png'}" alt="">
+                <img id="profile-picture" src="IMG/Global/{isCustomer ? 'no-profile-image.png' : 'no-shop-image.png'}" alt="">
             </div>
             <div class="cgFoot profile">
-                <button>
+                <button on:click={get_profilePic}>
                     <img src="IMG/Global/upload.png" alt="">
                     <p>Új {isCustomer ? "profilkép" : "fénykép"} feltöltése</p>
                 </button>
-                <button>
+                <button on:click={()=>del_profilePic(isCustomer)}>
                     <img src="IMG/Global/delete.png" alt="">
                     <p>{isCustomer ? "Profilkép" : "Fénykép"} törlése</p>
                 </button>

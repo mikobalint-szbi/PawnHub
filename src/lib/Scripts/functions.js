@@ -1,7 +1,7 @@
 
 import {apiUrl} from "$lib/Scripts/variables.js";
 import {regex} from "$lib/Scripts/variables.js";
-import {open_popup} from "$lib/Scripts/popup.js";
+import {open_popup, close_popup} from "$lib/Scripts/popup.js";
 
 export function getNum(str){
     return Number(str.match(/[\d.]+/g)?.join('') || '')
@@ -366,4 +366,45 @@ export function init_settlInput () {
             document.getElementById("dropdownContent").style.width = document.getElementById("settlInput").offsetWidth + "px"
         }
     })
+}
+
+export function del_profilePic(isCustomer) {
+
+    document.getElementById("profile-picture").src = `IMG/Global/${isCustomer ? 'no-profile-image.png' : 'no-shop-image.png'}`
+    localStorage.removeItem("newProfilePic")
+    
+
+}
+
+export function get_profilePic() {
+
+    const input = document.createElement("input");
+    input.type = "file";
+    input.accept = "image/*"; // Accepts only image files
+
+    input.addEventListener("change", function (event) {
+        const file = event.target.files[0]; // Get the selected file
+        if (!file) return;
+
+        if (file.size > 3 * 1024 * 1024) {
+            open_popup("messageOK","A feltöltött kép mérete nem lehet nagyobb, mint 3 MB.",()=>{close_popup("messageOK")})
+
+            return; // Exit function if the file is too large
+        }
+
+        const reader = new FileReader();
+        reader.readAsDataURL(file); // Convert file to Base64
+
+        reader.onload = function () {
+            document.getElementById("profile-picture").src = reader.result
+            localStorage["newProfilePic"] = reader.result.split("base64,")[1]
+            
+        };
+
+        reader.onerror = function (error) {
+            console.error("Error converting file to Base64:", error);
+        };
+    });
+
+    input.click(); // Open file dialog
 }
