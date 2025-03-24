@@ -98,7 +98,7 @@
             padding: 20px;
 
             p {
-                font-size: 25px;
+                font-size: 21px;
             }
         }
 

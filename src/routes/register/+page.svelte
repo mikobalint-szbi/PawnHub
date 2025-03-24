@@ -3,7 +3,7 @@
     import { onMount } from "svelte";
     import { page } from "$app/stores"
     import { replaceState } from "$app/navigation";
-    import {api, formatPhone, isOver18, isFuture, validate_customer} from "$lib/Scripts/functions.js";
+    import {api, formatPhone, isOver18, isFuture, validate_customer, registError} from "$lib/Scripts/functions.js";
     import {open_popup, close_popup, save_popup} from "$lib/Scripts/popup.js";
 
 
@@ -50,17 +50,49 @@
 
             }
 
-            console.log(data)
+            // console.log(data)
 
-            open_popup("messageOK","szöveg",()=>{location.assign("/")})
+            // open_popup("messageOK","A regisztráció megtörtént! <br> Kérjük, jelentkezzen be vadonatúj PawnHub-fiókjába.",()=>{location.assign("/")})
+            //open_popup("confirmDelete","A regisztráció megtörtént! <br> Kérjük, jelentkezzen be vadonatúj PawnHub-fiókjába.",()=>{location.assign("/")})
+
 
             if (validate_customer(data)) {
-                console.log("success!!!!!!!!!")
-
 
                 let reply = await api('POST', '/customer', data);
-            
+
+                console.log("reply:")
                 console.log(reply)
+
+                if (reply.errors){
+
+                    let taken = {
+                        username: (reply.errors.username && reply.errors.username == "The username has already been taken."),
+                        email: (reply.errors.email && reply.errors.email == "The email has already been taken.")
+                    }
+
+                    if (taken.username && taken.email){
+                        registError("A megadott felhasználónév és e-mail-cím már foglalt.<br>Ha van már PawnHub-fiókja, kérjük, jelentkezzen be.")
+                    }
+                    else if (taken.username) {
+                        registError("A megadott felhasználónév már foglalt.<br>Kérjük, válasszon másik felhasználónevet.")
+                    }
+                    else if (taken.email) {
+                        registError("A megadott e-mail-cím már foglalt.<br>Ha van már PawnHub-fiókja, kérjük, jelentkezzen be.")
+
+                    }
+                    else {
+                        registError("Ismeretlen szerverhiba történt.")
+                        console.log(reply.errors)
+                    }
+
+                }
+                else {
+                    open_popup("messageOK","A regisztráció megtörtént! <br> Kérjük, jelentkezzen be vadonatúj PawnHub-fiókjába.",()=>{location.assign("/")})
+
+                }
+
+
+
             }
 
 

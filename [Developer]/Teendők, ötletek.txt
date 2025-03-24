@@ -4,8 +4,8 @@ http://infojegyzet.hu/webszerkesztes/dokumentacio
 Teendők:
 
 - Regisztráció oldal
-    • MessageOK betűmérete nem állítódik be valamiért
-
+    • Shop register:
+		~ Settlement dropdown
 
 
 Miután lesz backend:

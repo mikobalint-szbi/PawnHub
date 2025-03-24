@@ -41,11 +41,11 @@ export function open_popup(popupID, ...args){
         }
     }
     else if (popupID == "messageOK"){
-        console.log(args)
+
         let text = args[0]
         let okbutton = args[1]
 
-        document.getElementById("okMessage").innerHTML = `<p>${text}</p>`
+        document.querySelector("#okMessage p").innerHTML = `${text}`
         document.getElementById("okButton").addEventListener("click",okbutton)
 
     }
