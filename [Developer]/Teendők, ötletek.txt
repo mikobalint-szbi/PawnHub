@@ -3,10 +3,6 @@ http://infojegyzet.hu/webszerkesztes/dokumentacio
 
 Teendők:
 
-
-Customer registration Ismeretlen szerverhiba fix: The reply was:
-Objectiban: ['The iban format is invalid.']idCardExp: ['The id card exp is not a valid date.'][[Prototype]]: Object
-
 - Néhány normális felhasználó-seed létrehozása a backenden (és egyéb táblázatok seedelése)
 - userProfileBox a nevedet és az email-címedet írja ki
 - Settings page elkészítése a Regisztráció page alapján

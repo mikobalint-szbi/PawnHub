@@ -76,8 +76,9 @@
                 }
 
                 if (data.iban == "") {
-                    data.iban = null
+                    delete data.iban;
                 }
+
 
                 let reply = await api('POST', '/customer', data);
 
@@ -109,19 +110,19 @@
                 data.settlement_id = localStorage["chosenSettlement"].split("-")[0]
             }
 
-            console.log(data)
-
             if (validate_shop(data)) {
                 
                 if (localStorage["newProfilePic"]) {
                     data.img = localStorage["newProfilePic"]
                     localStorage.removeItem("newProfilePic")
                 }
+
+                if (data.iban == "") {
+                    delete data.iban;
+                }
                 
                 let reply = await api('POST', '/shop', data);
 
-                console.log("reply:")
-                console.log(reply)
                 validate_reply(reply)
 
             }

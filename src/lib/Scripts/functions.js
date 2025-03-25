@@ -116,6 +116,11 @@ export function isOver18(birthdayString) {
     return age >= 18;
 }
 
+export function isDateValid(dateString) {
+
+    return Number(dateString.split('-')[0]) < 3000;
+}
+
 export function isFuture(dateString) {
     const today = new Date();
     const inputDate = new Date(dateString);
@@ -149,8 +154,16 @@ export function validate_customer(data, settingsMode = false){
         registError("Az oldalra 18. életévét be nem töltött személy nem regisztrálhat.")
         good = false
     }
+    else if (!isDateValid(data.birthday)){
+        registError("Hibás születési dátum!")
+        good = false
+    }
     else if (!isFuture(data.idCardExp)){
         registError("Az ön személyi igazolványa lejárt!")
+        good = false
+    }
+    else if (!isDateValid(data.idCardExp)){
+        registError("Hibás személyiigazolvány-lejárati dátum!")
         good = false
     }
     else if (!regex.email.test(data.email)){
@@ -196,6 +209,14 @@ export function validate_shop(data, settingsMode = false){
 
     if (!data.name || !data.taxId || !data.email || !data.username || !data.password || !data.mobile || !data.password || !data.address || !document.getElementById("settlInput").value) {
         registError("Kérjük, az összes csillaggal jelölt mezőt töltse ki.")
+        good = false
+    }
+    else if (data.name.length < 5){
+        registError("A cég nevének legalább 5 karakter hosszúnak kell lennie!")
+        good = false
+    }
+    else if (data.name.length > 100){
+        registError("A cég neve nem lehet hosszabb 100 karakternél!")
         good = false
     }
     else if (!regex.taxId.test(data.taxId)){
