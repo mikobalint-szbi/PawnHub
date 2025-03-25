@@ -75,6 +75,10 @@
                     localStorage.removeItem("newProfilePic")
                 }
 
+                if (data.iban == "") {
+                    data.iban = null
+                }
+
                 let reply = await api('POST', '/customer', data);
 
                 validate_reply(reply)
