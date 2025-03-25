@@ -1,8 +1,15 @@
 <script>
 
-    import { onMount } from "svelte";
     import '$lib/Styles/settings.scss';
-    import {open_popup} from "$lib/Scripts/popup.js";
+    import '$lib/Styles/settlInput.scss';
+    import { onMount } from "svelte";
+    import { page } from "$app/stores"
+    import { replaceState } from "$app/navigation";
+    import {
+        api, formatPhone, isOver18, isFuture, validate_customer, validate_shop, registError, 
+        toggle_settlDropdown, init_settlInput, validate_reply, get_profilePic, del_profilePic
+    } from "$lib/Scripts/functions.js";
+    import {open_popup, close_popup, save_popup} from "$lib/Scripts/popup.js";
 
     let isCustomer;
 
@@ -46,14 +53,15 @@
             <div class="cardGroup" id="cgProfile">
                 <h3 class="cgTitle profile">{isCustomer ? "Profilkép" : "Zálogház fényképe"}</h3>
                 <div class="cgBody profile">
-                    <img src="IMG/Global/{isCustomer ? 'no-profile-image.png' : 'no-shop-image.png'}" alt="">
+                    <img id="profile-picture" src="IMG/Global/{isCustomer ? 'no-profile-image.png' : 'no-shop-image.png'}" alt="">
                 </div>
                 <div class="cgFoot profile">
-                    <button>
+                    <button on:click={get_profilePic}>
                         <img src="IMG/Global/upload.png" alt="">
                         <p>Új {isCustomer ? "profilkép" : "fénykép"} feltöltése</p>
                     </button>
-                    <button>
+                    <button on:click={()=>open_popup("confirmDelete","Biztosan törölni szeretné",()=>{location.assign("/")})
+                }>
                         <img src="IMG/Global/delete.png" alt="">
                         <p>{isCustomer ? "Profilkép" : "Fénykép"} törlése</p>
                     </button>

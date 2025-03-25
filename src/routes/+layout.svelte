@@ -36,7 +36,7 @@
 			<LoanPopup_forCustomers/>
 			<ProductPopup_forCustomers/>
 			<LoanPopup_new_forCustomers/>
-			<ConfirmDelete type={"customer1"}/>
+			<ConfirmDelete/>
 			<MessageOK/>
 		</section>
 

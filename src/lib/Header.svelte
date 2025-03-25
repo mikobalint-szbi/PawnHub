@@ -23,7 +23,7 @@
         location.assign("/")
     }
 
-
+    let user = JSON.parse(localStorage["user"]);
 
     onMount(()=>{
 
@@ -32,8 +32,6 @@
         if (localStorage["user"]) {
 
             document.getElementById("userBox").addEventListener("click", toggle_userDropdown)
-
-            let user = JSON.parse(localStorage["user"])
 
             if (user.img) {
 
@@ -63,8 +61,8 @@
                     <div alt="Profilkép" class="image" id="userDropDown-image"></div>
                 </div>
                 <div class="col2">
-                    <p class="userName">TesztElek</p>
-                    <p class="userEmail">szoftvert.kitunoen.tesztelek@mail.org</p>
+                    <p class="userName">{user.username}</p>
+                    <p class="userEmail">{user.email}</p>
                     <div class="buttons">
                         <button on:click={()=>location.assign('settings')}>
                             <img src="IMG/Global/settings.png" alt="Fiók kezelése">

@@ -6,9 +6,6 @@
 	    document.getElementById("image").addEventListener('click', () => {close_popup("confirmDelete"); open_popup("imageViewer")} )
     });
 
-    export let type;
-
-
 </script>
 
 <dialog id="confirmDelete" class="popupDialog">
