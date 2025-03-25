@@ -1,43 +1,7 @@
 <script>
     import {onMount} from "svelte";
     import {apiUrl} from "$lib/Scripts/variables.js";
-    
-    async function api (method, path, body = null) {
-
-        const url = `${apiUrl}${path}`;
-
-        // Set up the request options
-        const options = {
-            method: method, // The HTTP method (GET, POST, PUT, DELETE, etc.)
-            headers: {
-                'Content-Type': 'application/json', // Set content type to JSON
-            }
-        };
-
-        // If the method is POST, PUT, or PATCH, we add the body
-        if (body) {
-            options.body = JSON.stringify(body); // Convert body to JSON string
-            console.log(options.body)
-        }
-
-        // options.credentials = 'include'
-
-        try {
-            const response = await fetch(url, options);
-
-            // Check if the response is successful
-            if (!response.ok) {
-                // throw new Error(`Error: ${response.statusText}`);
-            }
-
-            // Parse and return the response JSON
-            const data = await response.json();
-            return data;
-        } catch (error) {
-            console.error('Request failed:', error);
-            return null;
-        }
-    };
+    import {api} from "$lib/Scripts/functions.js";
 
     function loginError (text) {
         let er = document.getElementById("loginError")
@@ -45,10 +9,17 @@
         er.style.display = "block"
     }
 
+    function register (for_) {
+
+        sessionStorage["registerFor"] = for_; 
+        location.assign("/register")
+    }
+
     async function loginHandler(){
         
         let username = document.getElementById("l-username").value
         let password = document.getElementById("l-password").value
+        document.getElementById("loginError").style.display = "none"
 
         if (password && username) {
 
@@ -59,17 +30,26 @@
 
             console.log(reply)
 
-            if (reply.user && reply.user.isCustomer) {
-                console.log("success!")
-            }
-            else if (reply.error) {
+            if (reply.error) {
 
-                if (reply.error.code = "USER_NOT_FOUND") {
+                if (reply.error.code == "USER_NOT_FOUND") {
                     loginError("Hibás felhasználónév vagy e-mail-cím.")
                 }
-                else if (reply.error.code = "INVALID_PASSWORD") {
+                else if (reply.error.code == "INVALID_PASSWORD") {
                     loginError("Hibás jelszó.")
                 }
+            }
+
+            else {
+                localStorage["auth_token"] = reply.auth_token
+                localStorage["user"] = JSON.stringify({
+                    username: reply.user.username,
+                    email: reply.user.email,
+                    isCustomer: Boolean(reply.user.isCustomer),
+                    img: reply.user.img
+                })
+
+                location.assign('home')
             }
 
         }
@@ -80,6 +60,10 @@
 
 
         
+    }
+
+    if (localStorage["auth_token"]) {
+        location.assign("/home")
     }
 
 
@@ -105,11 +89,12 @@
 
             sessionStorage.setItem("loginSwitch",2)
         })
+
     })
 
 
 </script>
-
+{#if !localStorage["auth_token"]}
 <section id="body">
     <div id="body-col1">
 
@@ -143,8 +128,8 @@
             <div id="registerPromotion-div">
 
                 <!-- svelte-ignore a11y-missing-attribute -->
-                <a href="/register?for=customer">
-                    <button id="registerPromotion">Regisztráljon hozzánk még ma!</button>
+                <a>
+                    <button on:click={()=>register("customer")} id="registerPromotion">Regisztráljon hozzánk még ma!</button>
                 </a>
                 <p id="regDriector">🠦 Tekintsen a képernyő jobb oldalára! 🠦</p>
             </div>
@@ -170,8 +155,9 @@
             </ul>
     
             <div id="registerPromotion-div">
-                <a href="/register?for=shop">
-                    <button id="registerPromotion">Regisztráljon hozzánk még ma!</button>
+                <!-- svelte-ignore a11y-missing-attribute -->
+                <a>
+                    <button on:click={()=>register("shop")} id="registerPromotion">Regisztráljon hozzánk még ma!</button>
                 </a>
                 <p id="regDriector">🠦 Tekintsen a képernyő jobb oldalára! 🠦</p>
             </div>
@@ -195,6 +181,7 @@
     </div>
 
 </section>
+{/if}
 
 <style lang="scss">
 

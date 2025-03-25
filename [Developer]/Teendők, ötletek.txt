@@ -2,10 +2,11 @@
 http://infojegyzet.hu/webszerkesztes/dokumentacio
 
 Teendők:
-- olvasmány: https://aws.amazon.com/what-is/cross-origin-resource-sharing/
 
-- Sütik elfogadása popup
-
+- Néhány normális felhasználó-seed létrehozása a backenden (és egyéb táblázatok seedelése)
+- userProfileBox a nevedet és az email-címedet írja ki
+- Settings page elkészítése a Regisztráció page alapján
+- ConfirmDelete megjavítása, hogy az open_popup függvénynél kelljen annak is paramétert adni, ne magánál a komponensnél
 
 
 Miután lesz backend:

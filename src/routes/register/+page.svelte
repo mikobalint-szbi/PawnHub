@@ -1,12 +1,18 @@
 <script>
-
+    import '$lib/Styles/settings.scss';
+    import '$lib/Styles/settlInput.scss';
     import { onMount } from "svelte";
     import { page } from "$app/stores"
     import { replaceState } from "$app/navigation";
-    import '$lib/Styles/settings.scss';
+    import {
+        api, formatPhone, isOver18, isFuture, validate_customer, validate_shop, registError, 
+        toggle_settlDropdown, init_settlInput, validate_reply, get_profilePic, del_profilePic
+    } from "$lib/Scripts/functions.js";
+    import {open_popup, close_popup, save_popup} from "$lib/Scripts/popup.js";
+
+
 
     let isCustomer = true;
-
 
 
     function psOption1_clicked(){
@@ -16,6 +22,8 @@
         // window.history.pushState(null, "", "/register?for=customer");
         //replaceState("/register?for=customer", {})
 
+        localStorage.removeItem("newProfilePic")
+        sessionStorage["registerFor"] = "customer"
     }
     function psOption2_clicked(){
         document.getElementById("ps-option1").classList.remove("active")
@@ -23,42 +31,146 @@
         isCustomer  =  false
         // window.history.pushState(null, "", "/register?for=shop");
         //replaceState("/register?for=shop", {})
+
+        localStorage.removeItem("newProfilePic")
+        sessionStorage["registerFor"] = "shop"
+
+
+
+
         
     }
 
+    async function register () {
 
+        document.getElementById("registError").style.display = "none"
+
+        if (isCustomer == true) {
+
+            let data = {
+                name: document.getElementById("customerName").value,
+                birthday: document.getElementById("birthDate").value,
+                idCardNum: document.getElementById("idCardNum").value,
+                idCardExp: document.getElementById("idCardExp").value,
+                email: document.getElementById("cust-email").value,
+                mobile: document.getElementById("cust-phone").value,
+                shippingAddress: document.getElementById("cust-shippingAddress").value,
+                billingAddress: document.getElementById("cust-billingAddress").value,
+                iban: document.getElementById("cust-iban").value.toUpperCase(),
+                username: document.getElementById("username").value,
+                password: document.getElementById("newPassword1").value
+
+            }
+
+            // console.log(data)
+
+            // open_popup("messageOK","A regisztráció megtörtént! <br> Kérjük, jelentkezzen be vadonatúj PawnHub-fiókjába.",()=>{location.assign("/")})
+            //open_popup("confirmDelete","A regisztráció megtörtént! <br> Kérjük, jelentkezzen be vadonatúj PawnHub-fiókjába.",()=>{location.assign("/")})
+
+
+            if (validate_customer(data)) {
+
+                if (localStorage["newProfilePic"]) {
+                    data.img = localStorage["newProfilePic"]
+                    localStorage.removeItem("newProfilePic")
+                }
+
+                let reply = await api('POST', '/customer', data);
+
+                validate_reply(reply)
+
+            }
+
+
+
+        }
+        else {
+
+            let data = {
+                name: document.getElementById("shopName").value,
+                taxId: document.getElementById("taxId").value,
+                estYear: document.getElementById("estYear").value,
+                intro: document.getElementById("intro").value,
+                email: document.getElementById("shop-email").value,
+                mobile: document.getElementById("shop-phone").value,
+                settlement_id: null, // TEENDŐ !!
+                address: document.getElementById("shop-address").value,
+                iban: document.getElementById("shop-iban").value.toUpperCase(),
+                username: document.getElementById("username").value,
+                password: document.getElementById("newPassword1").value
+
+            }
+
+            if (localStorage["chosenSettlement"]) {
+                data.settlement_id = localStorage["chosenSettlement"].split("-")[0]
+            }
+
+            console.log(data)
+
+            if (validate_shop(data)) {
+                
+                if (localStorage["newProfilePic"]) {
+                    data.img = localStorage["newProfilePic"]
+                    localStorage.removeItem("newProfilePic")
+                }
+                
+                let reply = await api('POST', '/shop', data);
+
+                console.log("reply:")
+                console.log(reply)
+                validate_reply(reply)
+
+            }
+
+        }
+    }
+
+    if (!localStorage["auth_token"]) {}
+    else {
+        location.assign("/home")
+    }
 
 
     onMount(()=> {
 
-        if ($page.url.searchParams.get("for") == null || $page.url.searchParams.get("for") == "customer"){
+        localStorage.removeItem("newProfilePic")
+
+
+        if (!sessionStorage["registerFor"] || sessionStorage["registerFor"] == "customer"){
             isCustomer  =  true
             psOption1_clicked()
+
+
         }
         else {
             isCustomer  =  false
             psOption2_clicked()
+
+
         }
 
-        try {
-            replaceState("/register", {})
-        } 
-        catch {}
 
+        window.addEventListener("resize", ()=> {
+
+            if (document.getElementById("dropdownContent") != null){
+
+                document.getElementById("dropdownContent").style.width = document.getElementById("settlInput").offsetWidth + "px"
+            }
+        })
 
     })
 
 
 </script>
-
+{#if !localStorage["auth_token"]}
 <section id="body">
 
     <div id="head-div">
         <div id="h-col1">
             <!-- svelte-ignore a11y-click-events-have-key-events -->
             <!-- svelte-ignore a11y-no-static-element-interactions -->
-            <a href="/" id="back">
-                <button>
+            <a id="back">
+                <button on:click={()=>location.assign("/")}>
                     <div id="b-col1">
                         <img src="IMG/Global/back.png" alt="Vissza" title="Vissza">
                     </div>
@@ -107,14 +219,14 @@
         <div class="cardGroup" id="cgProfile">
             <h3 class="cgTitle profile">{isCustomer ? "Profilkép" : "Zálogház fényképe"}</h3>
             <div class="cgBody profile">
-                <img src="IMG/Global/{isCustomer ? 'no-profile-image.png' : 'no-shop-image.png'}" alt="">
+                <img id="profile-picture" src="IMG/Global/{isCustomer ? 'no-profile-image.png' : 'no-shop-image.png'}" alt="">
             </div>
             <div class="cgFoot profile">
-                <button>
+                <button on:click={get_profilePic}>
                     <img src="IMG/Global/upload.png" alt="">
                     <p>Új {isCustomer ? "profilkép" : "fénykép"} feltöltése</p>
                 </button>
-                <button>
+                <button on:click={()=>del_profilePic(isCustomer)}>
                     <img src="IMG/Global/delete.png" alt="">
                     <p>{isCustomer ? "Profilkép" : "Fénykép"} törlése</p>
                 </button>
@@ -126,19 +238,19 @@
                 <h3 class="cgTitle">Személyes adatok</h3>
                 <div class="cgBody">
                     <div class="cgRow">
-                        <label for="customerName" class="cgLabel">Teljes név:</label>
+                        <label for="customerName" class="cgLabel">Teljes név: <span class="star">*</span></label>
                         <input type="text" class="cgInput" id="customerName">
                     </div>
                     <div class="cgRow">
-                        <label for="birthDate" class="cgLabel">Születési dátum:</label>
+                        <label for="birthDate" class="cgLabel">Születési dátum: <span class="star">*</span></label>
                         <input type="date" class="cgInput" id="birthDate">
                     </div>
                     <div class="cgRow">
-                        <label for="idCardNum" class="cgLabel">Személyi igazolvány száma:</label>
+                        <label for="idCardNum" class="cgLabel">Személyi igazolvány száma: <span class="star">*</span></label>
                         <input type="text" class="cgInput" id="idCardNum">
                     </div>
                     <div class="cgRow">
-                        <label for="idCardExp" class="cgLabel">Személyi igazolvány lejárati dátuma:</label>
+                        <label for="idCardExp" class="cgLabel">Személyi igazolvány lejárati dátuma: <span class="star">*</span></label>
                         <input type="date" class="cgInput" id="idCardExp">
                     </div>
                 </div>
@@ -151,11 +263,11 @@
                 <h3 class="cgTitle">A zálogház adatai</h3>
                 <div class="cgBody">
                     <div class="cgRow">
-                        <label for="shopName" class="cgLabel">Cégnév:</label>
+                        <label for="shopName" class="cgLabel">Cégnév: <span class="star">*</span></label>
                         <input type="text" class="cgInput" id="shopName">
                     </div>
                     <div class="cgRow">
-                        <label for="taxId" class="cgLabel">Adószám:</label>
+                        <label for="taxId" class="cgLabel">Adószám: <span class="star">*</span></label>
                         <input type="text" class="cgInput" id="taxId">
                     </div>
                     <div class="cgRow">
@@ -164,7 +276,7 @@
                     </div>
                     <div class="cgRow">
                         <label for="intro" class="cgLabel">Bemutatkozószöveg:</label>
-                        <textarea name="inro" class="cgInput" id="intro"></textarea>
+                        <textarea name="intro" class="cgInput" id="intro"></textarea>
                     </div>
                 </div>
                 <div class="cgFoot">
@@ -178,12 +290,12 @@
                 <h3 class="cgTitle">Elérhetőségek</h3>
                 <div class="cgBody">
                     <div class="cgRow">
-                        <label for="cust-email" class="cgLabel">E-mail-cím:</label>
+                        <label for="cust-email" class="cgLabel">E-mail-cím: <span class="star">*</span></label>
                         <input type="email" class="cgInput" id="cust-email">
                     </div>
                     <div class="cgRow">
                         <label for="cust-phone" class="cgLabel">Telefonszám:</label>
-                        <input type="phone" class="cgInput" id="cust-phone">
+                        <input type="phone" class="cgInput" id="cust-phone" value="+" on:input={formatPhone}>
                     </div>
                     <div class="cgRow">
                         <label for="cust-shippingAddress" class="cgLabel">Szállítási cím:</label>
@@ -194,7 +306,7 @@
                         <input type="text" class="cgInput" id="cust-billingAddress">
                     </div>
                     <div class="cgRow">
-                        <label for="cust-iban" class="cgLabel">Iban-számlaszám:</label>
+                        <label for="cust-iban" class="cgLabel">IBAN-számlaszám:</label>
                         <input type="text" class="cgInput" id="cust-iban">
                     </div>
                 </div>
@@ -207,24 +319,31 @@
                 <h3 class="cgTitle">Elérhetőségek</h3>
                 <div class="cgBody">
                     <div class="cgRow">
-                        <label for="shop-email" class="cgLabel">E-mail-cím:</label>
+                        <label for="shop-email" class="cgLabel">E-mail-cím: <span class="star">*</span></label>
                         <input type="email" class="cgInput" id="shop-email">
                     </div>
                     <div class="cgRow">
-                        <label for="shop-phone" class="cgLabel">Telefonszám:</label>
-                        <input type="phone" class="cgInput" id="shop-phone">
+                        <label for="shop-phone" class="cgLabel">Telefonszám: <span class="star">*</span></label>
+                        <input type="phone" class="cgInput" id="shop-phone" value="+" on:input={formatPhone}>
                     </div>
                     <div class="cgRow">
-                        <label for="shop-settlement" class="cgLabel">Település:</label>
-                        <input type="text" class="cgInput" id="shop-settlement">
+
+                        <div class="settlDropdown">
+                            <label for="settlInput" class="cgLabel">Település: <span class="star">*</span></label>
+                            <input type="text" id="settlInput" class="cgInput" on:keyup={toggle_settlDropdown}>
+                            <div id="dropdownContent">
+
+                            </div>
+                        </div>
+                        
                     </div>
                     <div class="cgRow">
-                        <label for="shop-address" class="cgLabel">Utca, házszám:</label>
+                        <label for="shop-address" class="cgLabel">Utca, házszám: <span class="star">*</span></label>
                         <input type="text" class="cgInput" id="shop-address">
                     </div>
                     <div class="cgRow">
-                        <label for="shop-billingAddress" class="cgLabel">Iban-számlaszám:</label>
-                        <input type="text" class="cgInput" id="shop-billingAddress">
+                        <label for="shop-iban" class="cgLabel">IBAN-számlaszám:</label>
+                        <input type="text" class="cgInput" id="shop-iban">
                     </div>
                 </div>
                 <div class="cgFoot">
@@ -238,15 +357,15 @@
             <div class="cgBody">
                 <form action="">
                     <div class="cgRow unset">
-                        <label for="username" class="cgLabel">Felhasználónév:</label>
+                        <label for="username" class="cgLabel">Felhasználónév: <span class="star">*</span></label>
                         <input type="text" class="cgInput" id="username" autocomplete="username">
                     </div>
                     <div class="cgRow">
-                        <label for="newPassword1" class="cgLabel">Jelszó:</label>
+                        <label for="newPassword1" class="cgLabel">Jelszó: <span class="star">*</span></label>
                         <input type="password" class="cgInput" id="newPassword1" autocomplete="new-password">
                     </div>
                     <div class="cgRow">
-                        <label for="newPassword2" class="cgLabel">Jelszó még egyszer:</label>
+                        <label for="newPassword2" class="cgLabel">Jelszó még egyszer: <span class="star">*</span></label>
                         <input type="password" class="cgInput" id="newPassword2" autocomplete="new-password">
                     </div>
                 </form>
@@ -259,13 +378,16 @@
 
     </div>
     <div class="bottom">
-        <button>
+        <p class="error" id="registError">A Lorem Ipsum egy egyszerű szövegrészlete, szövegutánzata a betűszedő és nyomdaiparnak. A Lorem Ipsum az 1500-as évek óta standard szövegrészletként szolgált az iparban; mikor egy ismeretlen nyomdász összeállította a betűkészletét és egy példa-könyvet vagy szöveget nyomott papírra, ezt használta. Nem csak 5 évszázadot élt túl, de az elektronikus betűkészleteknél is változatlanul megmaradt. Az 1960-as években népszerűsítették a Lorem Ipsum részleteket magukbafoglaló Letraset lapokkal, és legutóbb softwarekkel mint például az Aldus Pagemaker.</p>
+
+        <button on:click={register}>
             <img src="IMG/Global/select.png" alt="">
             <p>Regisztráció</p>
         </button>
     </div>
 
 </section>
+{/if}
 
 <style lang="scss">
     
@@ -328,6 +450,17 @@
             }
         }
 
+    }
+
+    .bottom {
+        display: flex !important;
+        flex-direction: column !important;
+    
+        #registError {
+            margin-top: -8px;
+            text-align: center;
+            padding: 0 10px;
+        }
     }
 
 

@@ -1,17 +1,34 @@
 <script>
+    import {onMount} from "svelte";
 
-    let isCustomer = true
+
+    
+
 
     //import {open_popup} from "$lib/Scripts/popup.js"
-    //import {onMount} from "svelte";
-    //onMount(()=>open_popup("productChooser",false, false))
+
+    let isCustomer;
+    let user;
+    
+    if (localStorage["auth_token"]) {
+        user = JSON.parse(localStorage["user"]);
+        isCustomer = user.isCustomer;
+    }
+    else {
+        location.assign("/")
+    }
+
+    onMount(()=>{
+        
+    })
+
 </script>
 
+{#if localStorage["auth_token"]}
 <section id="body">
 
-
     <div id="welcome">
-        <h2>Üdvözöljük, [FELHASZNÁLÓ]!</h2>
+        <h2>Üdvözöljük, {user.username}!</h2>
         <p>Reméljük, kellemesen telik a napja.</p>
     </div>
     <div id="options">
@@ -56,6 +73,7 @@
     </div>
 
 </section>
+{/if}
 
 <style lang="scss">
 

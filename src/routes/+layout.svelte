@@ -15,6 +15,7 @@
 	import ProductPopup_forCustomers from '$lib/Popups/ProductPopup_forCustomers.svelte';
 	import AccessDenied from '$lib/Pages/AccessDenied.svelte';
     import ConfirmDelete from '$lib/Popups/ConfirmDelete.svelte';
+    import MessageOK from '$lib/Popups/MessageOK.svelte';
 
 
 	let access_granted = true
@@ -36,6 +37,7 @@
 			<ProductPopup_forCustomers/>
 			<LoanPopup_new_forCustomers/>
 			<ConfirmDelete type={"customer1"}/>
+			<MessageOK/>
 		</section>
 
 		{#if access_granted}

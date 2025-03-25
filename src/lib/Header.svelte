@@ -1,6 +1,8 @@
 <script>
     import { onMount } from "svelte";
 
+
+
     function toggle_userDropdown () {
 
         let ud = document.getElementById("userDropdown")
@@ -16,9 +18,30 @@
 
     }
 
+    function logout () {
+        localStorage.clear()
+        location.assign("/")
+    }
+
+
+
     onMount(()=>{
 
-        document.getElementById("userBox").addEventListener("click", toggle_userDropdown)
+
+
+        if (localStorage["user"]) {
+
+            document.getElementById("userBox").addEventListener("click", toggle_userDropdown)
+
+            let user = JSON.parse(localStorage["user"])
+
+            if (user.img) {
+
+                document.getElementById("userBox-image").style.backgroundImage = `url('data:image/png;base64,${user.img}')`;
+                document.getElementById("userDropDown-image").style.backgroundImage = `url('data:image/png;base64,${user.img}')`;
+            }
+        }
+
     })
 
 </script>
@@ -29,34 +52,34 @@
         <h3>PawnHub</h3>
     </a>
 
-    <div id="rightBox">
-        <div id="userBox">
-            <div alt="Profilkép" class="image"></div>
-        </div>
-        <div id="userDropdown">
-
-            <div class="col1">
-                <div alt="Profilkép" class="image"></div>
+    {#if localStorage["auth_token"]}
+        <div id="rightBox">
+            <div id="userBox">
+                <div alt="Profilkép" class="image" id="userBox-image"></div>
             </div>
-            <div class="col2">
-                <p class="userName">TesztElek</p>
-                <p class="userEmail">szoftvert.kitunoen.tesztelek@mail.org</p>
-                <div class="buttons">
-                    <button on:click={()=>location.assign('settings')}>
-                        <img src="IMG/Global/settings.png" alt="Fiók kezelése">
-                        <p>Fiók kezelése</p>
-                    </button>
-                    <button on:click={()=>location.assign('/')}>
-                        <img src="IMG/Global/logout.png" alt="Kijelentkezés">
-                        <p>Kijelentkezés</p>
-                    </button>
+            <div id="userDropdown">
+
+                <div class="col1">
+                    <div alt="Profilkép" class="image" id="userDropDown-image"></div>
                 </div>
+                <div class="col2">
+                    <p class="userName">TesztElek</p>
+                    <p class="userEmail">szoftvert.kitunoen.tesztelek@mail.org</p>
+                    <div class="buttons">
+                        <button on:click={()=>location.assign('settings')}>
+                            <img src="IMG/Global/settings.png" alt="Fiók kezelése">
+                            <p>Fiók kezelése</p>
+                        </button>
+                        <button on:click={logout}>
+                            <img src="IMG/Global/logout.png" alt="Kijelentkezés">
+                            <p>Kijelentkezés</p>
+                        </button>
+                    </div>
+                </div>
+
             </div>
-
-
         </div>
-    </div>
-
+    {/if}
 
 </div>
 
@@ -206,7 +229,7 @@
                         border: 1px solid black;
                         border-radius: 4px;
                         background-color: rgb(161, 213, 179);
-                        background-image: url("IMG/sample2.1.jpg");
+                        background-image: url("IMG/Global/no-profile-image.png");
                         background-size: cover;
                         background-position: center;
                     }
