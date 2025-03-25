@@ -23,7 +23,7 @@
         location.assign("/")
     }
 
-    let user = JSON.parse(localStorage["user"]);
+    let user = JSON.parse(localStorage["user"] ?? "[]");
 
     onMount(()=>{
 

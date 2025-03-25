@@ -35,20 +35,8 @@
             <!-- svelte-ignore a11y-no-static-element-interactions -->
             <div id="popup-div">
 
-                <div id="message" class="popupGrid-element">
-                    {#if type == "customer1"}
-                        <p>Biztosan törölni szeretné a PawnHub-fiókkal nem rendelkező ügyfelet a zálogház adattárjából?</p>
-                    {:else if type == "customer2"}
-                        <p>Biztosan törölni szeretné a PawnHub-fiókkal rendelkező felhasználót az ügyfelei közül?</p>
-                    {:else if type == "product1"}
-                        <p>Biztosan törölni szeretné a terméket a zálogban tartott termékek közül?</p>
-                    {:else if type == "product2"}
-                        <p>Biztosan törölni szeretné a terméket a zálogház kínálatából?</p>
-                    {:else if type == "loan"}
-                        <p>Biztosan törölni szeretné az adósságot?</p>
-                    {:else if type == "account"}
-                        <p>Biztosan törölni szeretné a PawnHub-fiókját?</p>
-                    {/if}
+                <div id="cdMessage" class="popupGrid-element">
+                    <p></p>
 
                 </div>
 
@@ -74,7 +62,7 @@
 
     @media (min-width: 0px) {
         
-        #message {
+        #cdMessage {
             padding: 10px;
 
             p {
@@ -94,7 +82,7 @@
     }
     @media (min-width: 404px) {
 
-        #message {
+        #cdMessage {
 
             p {
                 font-size: 22px;
@@ -109,7 +97,7 @@
     /* Small devices (portrait tablets and large phones, 600px and up) */
     @media (min-width: 596px) {
 
-        #message {
+        #cdMessage {
             padding: 20px;
 
             p {
@@ -155,7 +143,7 @@
             align-items: center;
             display: flex;
 
-            #message{
+            #cdMessage{
                 text-align: center;
                 width: 100% !important;
 

@@ -60,7 +60,7 @@
                         <img src="IMG/Global/upload.png" alt="">
                         <p>Új {isCustomer ? "profilkép" : "fénykép"} feltöltése</p>
                     </button>
-                    <button on:click={()=>open_popup("confirmDelete","Biztosan törölni szeretné",()=>{location.assign("/")})
+                    <button on:click={()=>open_popup("confirmDelete","profilePic",()=>{alert("Ide kell egy profilképtörlő api-t is tartalmazó funkció.")})
                 }>
                         <img src="IMG/Global/delete.png" alt="">
                         <p>{isCustomer ? "Profilkép" : "Fénykép"} törlése</p>

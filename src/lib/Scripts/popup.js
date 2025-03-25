@@ -49,6 +49,35 @@ export function open_popup(popupID, ...args){
         document.getElementById("okButton").addEventListener("click",okbutton)
 
     }
+    else if (popupID == "confirmDelete") {
+        let textID = args[0]
+        let yesButton = args[1]
+        let noButton = args[2] // default: close_popup
+
+        let texts = {
+            "customer1": "Biztosan törölni szeretné a PawnHub-fiókkal nem rendelkező ügyfelet a zálogház adattárjából?",
+            "customer2": "Biztosan törölni szeretné a PawnHub-fiókkal rendelkező felhasználót az ügyfelei közül?",
+            "product1": "Biztosan törölni szeretné a terméket a zálogban tartott termékek közül?",
+            "product2": "Biztosan törölni szeretné a terméket a zálogház kínálatából?",
+            "loan": "Biztosan törölni szeretné az adósságot?",
+            "account": "Biztosan törölni szeretné PawnHub-fiókját?",
+            "profilePic": "Biztosan törölni szeretné a fiókjához tartozó profilképet?"
+        }
+
+
+        if (texts[textID]) {
+            document.querySelector("#cdMessage p").innerHTML = `${texts[textID]}`
+        }
+        else {
+            document.querySelector("#cdMessage p").innerHTML = `${textID}`
+        }
+
+        document.getElementById("yesButton").addEventListener("click", yesButton)
+
+        if (noButton){
+            document.getElementById("noButton").addEventListener("click", noButton)
+        }
+    }
 
     if (backButton){
         document.getElementById(popupID + "-backButton").style.visibility = "visible"
