@@ -216,7 +216,7 @@
                 box-shadow: 0.5px 0.5px 12px rgba($color: #000000, $alpha: 0.5);
                 padding: 9px;
                 border-radius: 3px;
-                gap: 6px;
+                gap: 8px;
 
                 .col1 {
 

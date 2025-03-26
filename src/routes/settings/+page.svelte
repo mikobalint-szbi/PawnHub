@@ -12,6 +12,55 @@
     import {open_popup, close_popup, save_popup} from "$lib/Scripts/popup.js";
 
     let isCustomer;
+    let user;
+    
+    if (localStorage["auth_token"]) {
+        user = JSON.parse(localStorage["user"]);
+        isCustomer = user.isCustomer;
+    }
+    else {
+        location.assign("/")
+    }
+
+    async function cust_change_general() {
+        let data = {
+            name: document.getElementById("customerName").value,
+            birthday: document.getElementById("birthDate").value,
+            idCardNum: document.getElementById("idCardNum").value,
+            idCardExp: document.getElementById("idCardExp").value,
+        }
+
+        console.log(data)
+    }
+
+    async function shop_change_general() {
+
+    }
+
+    async function cust_change_contacts() {
+        let data = {
+            email: document.getElementById("cust-email").value,
+            mobile: document.getElementById("cust-phone").value,
+            shippingAddress: document.getElementById("cust-shippingAddress").value,
+            billingAddress: document.getElementById("cust-billingAddress").value,
+            iban: document.getElementById("cust-iban").value.toUpperCase(),
+
+        }
+        console.log(data)
+
+    }
+
+    async function shop_change_contacts() {
+        
+    }
+
+    async function change_password() {
+        let data = {
+            password: document.getElementById("newPassword1").value
+        }
+        console.log(data)
+
+    }
 
 
     onMount(()=> {
@@ -90,7 +139,7 @@
                         </div>
                     </div>
                     <div class="cgFoot">
-                        <button>
+                        <button on:click={cust_change_general}>
                             <img src="IMG/Global/save.png" alt="">
                             <p>Módosítások mentése</p>
                         </button>
@@ -118,7 +167,7 @@
                         </div>
                     </div>
                     <div class="cgFoot">
-                        <button>
+                        <button on:click={shop_change_general}>
                             <img src="IMG/Global/save.png" alt="">
                             <p>Módosítások mentése</p>
                         </button>
@@ -152,7 +201,7 @@
                         </div>
                     </div>
                     <div class="cgFoot">
-                        <button>
+                        <button on:click={cust_change_contacts}>
                             <img src="IMG/Global/save.png" alt="">
                             <p>Módosítások mentése</p>
                         </button>
@@ -184,7 +233,7 @@
                         </div>
                     </div>
                     <div class="cgFoot">
-                        <button>
+                        <button on:click={shop_change_contacts}>
                             <img src="IMG/Global/save.png" alt="">
                             <p>Módosítások mentése</p>
                         </button>
