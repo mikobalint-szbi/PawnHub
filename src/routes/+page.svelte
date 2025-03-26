@@ -23,34 +23,47 @@
 
         if (password && username) {
 
-            let reply = await api('POST', '/login', {
-                username: username,
-                password: password
-            });
+            let reply;
 
-            console.log(reply)
 
-            if (reply.error) {
+            try {
+                reply = await api('POST', '/login', {
+                    username: username,
+                    password: password
+                });
+            } catch {
 
-                if (reply.error.code == "USER_NOT_FOUND") {
-                    loginError("Hibás felhasználónév vagy e-mail-cím.")
-                }
-                else if (reply.error.code == "INVALID_PASSWORD") {
-                    loginError("Hibás jelszó.")
-                }
             }
 
+            if (reply){
+
+                if (reply.error) {
+
+                    if (reply.error.code == "USER_NOT_FOUND") {
+                        loginError("Hibás felhasználónév vagy e-mail-cím.")
+                    }
+                    else if (reply.error.code == "INVALID_PASSWORD") {
+                        loginError("Hibás jelszó.")
+                    }
+                }
+
+                else {
+                    localStorage["auth_token"] = reply.auth_token
+                    localStorage["user"] = JSON.stringify({
+                        username: reply.user.username,
+                        email: reply.user.email,
+                        isCustomer: Boolean(reply.user.isCustomer),
+                        img: reply.user.img
+                    })
+
+                    location.assign('home')
+                }
+
+            }
             else {
-                localStorage["auth_token"] = reply.auth_token
-                localStorage["user"] = JSON.stringify({
-                    username: reply.user.username,
-                    email: reply.user.email,
-                    isCustomer: Boolean(reply.user.isCustomer),
-                    img: reply.user.img
-                })
-
-                location.assign('home')
+                loginError("Nem sikerült csatlakozni a szerverhez.")
             }
+        
 
         }
 
