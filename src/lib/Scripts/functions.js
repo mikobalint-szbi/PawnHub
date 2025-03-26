@@ -7,31 +7,40 @@ export function getNum(str){
     return Number(str.match(/[\d.]+/g)?.join('') || '')
 }
 
-export async function api(method, url, body = null) {
 
-    const headers = {
-        'Content-Type': 'application/json',
+export async function api (method, path, body = null) {
+
+    const url = `${apiUrl}${path}`;
+
+    // Set up the request options
+    const options = {
+        method: method, // The HTTP method (GET, POST, PUT, DELETE, etc.)
+        headers: {
+            'Content-Type': 'application/json', // Set content type to JSON
+        }
     };
-  
-    // Check if auth_token exists in localStorage
+
     const token = localStorage.getItem('auth_token');
     if (token) {
-        headers['Authorization'] = `Bearer ${token}`;
+        options.headers['Authorization'] = `Bearer ${token}`;
     }
-  
-    const options = {
-        method: method,
-        headers: headers
-    };
-  
-    // If the method is not GET, add the body data
+
+    // If the method is POST, PUT, or PATCH, we add the body
     if (body) {
-        options.body = JSON.stringify(body);
+        options.body = JSON.stringify(body); // Convert body to JSON string
     }
-  
+
+    // options.credentials = 'include'
+
     try {
         const response = await fetch(url, options);
 
+        // Check if the response is successful
+        if (!response.ok) {
+            // throw new Error(`Error: ${response.statusText}`);
+        }
+
+        // Parse and return the response JSON
         let data = await response.text();
 
         try {
@@ -45,11 +54,10 @@ export async function api(method, url, body = null) {
         }
 
     } catch (error) {
-        console.error('Error during API request:', error);
-        throw error;
+        console.error('Request failed:', error);
+        return null;
     }
-}
-  
+};
 
 export function formatPhone(e) {
     let value = e.target.value.replace(/\D/g, ""); // Remove non-numeric characters
