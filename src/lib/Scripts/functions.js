@@ -7,43 +7,49 @@ export function getNum(str){
     return Number(str.match(/[\d.]+/g)?.join('') || '')
 }
 
+export async function api(method, url, body = null) {
 
-export async function api (method, path, body = null) {
-
-    const url = `${apiUrl}${path}`;
-
-    // Set up the request options
-    const options = {
-        method: method, // The HTTP method (GET, POST, PUT, DELETE, etc.)
-        headers: {
-            'Content-Type': 'application/json', // Set content type to JSON
-        }
+    const headers = {
+        'Content-Type': 'application/json',
     };
-
-    // If the method is POST, PUT, or PATCH, we add the body
-    if (body) {
-        options.body = JSON.stringify(body); // Convert body to JSON string
+  
+    // Check if auth_token exists in localStorage
+    const token = localStorage.getItem('auth_token');
+    if (token) {
+        headers['Authorization'] = `Bearer ${token}`;
     }
-
-    // options.credentials = 'include'
-
+  
+    const options = {
+        method: method,
+        headers: headers
+    };
+  
+    // If the method is not GET, add the body data
+    if (body) {
+        options.body = JSON.stringify(body);
+    }
+  
     try {
         const response = await fetch(url, options);
 
-        // Check if the response is successful
-        if (!response.ok) {
-            // throw new Error(`Error: ${response.statusText}`);
+        let data = await response.text();
+
+        try {
+            data = JSON.parse(data);
+            return data;
+        }
+        catch {
+            console.log("Error parsing JSON:")
+            console.log(data)
+            return null;
         }
 
-        // Parse and return the response JSON
-        const data = await response.json();
-        return data;
-
     } catch (error) {
-        console.error('Request failed:', error);
-        return null;
+        console.error('Error during API request:', error);
+        throw error;
     }
-};
+}
+  
 
 export function formatPhone(e) {
     let value = e.target.value.replace(/\D/g, ""); // Remove non-numeric characters
@@ -138,7 +144,7 @@ export function registError (text) {
     er.style.display = "block"
 }
 
-export function validate_customer(data, settingsMode = false){
+export function validate_customer(data){
     
     let good = true;
 
@@ -147,7 +153,7 @@ export function validate_customer(data, settingsMode = false){
         good = false
     }
     else if (!regex.custName.test(data.name)){
-        registError("Kérjük, adja meg a vezetéknevét és mindegyik keresztnevét.<br>Nagybetűvel kell őket kezdenie.")
+        registError("Kérjük, adja meg a vezetéknevét és mindegyik keresztnevét.<br>(Nagybetűvel kell őket kezdenie.)")
         good = false
     }
     else if (!isOver18(data.birthday)){
@@ -267,32 +273,38 @@ export function validate_shop(data, settingsMode = false){
 
 export function validate_reply(reply) {
 
-    if (reply.errors){
+    if (reply){
 
-        let taken = {
-            username: (reply.errors.username && reply.errors.username == "The username has already been taken."),
-            email: (reply.errors.email && reply.errors.email == "The email has already been taken.")
-        }
+        if (reply.errors){
 
-        if (taken.username && taken.email){
-            registError("A megadott felhasználónév és e-mail-cím már foglalt.<br>Ha van már PawnHub-fiókja, kérjük, jelentkezzen be.")
-        }
-        else if (taken.username) {
-            registError("A megadott felhasználónév már foglalt.<br>Kérjük, válasszon másik felhasználónevet.")
-        }
-        else if (taken.email) {
-            registError("A megadott e-mail-cím már foglalt.<br>Ha van már PawnHub-fiókja, kérjük, jelentkezzen be.")
+            let taken = {
+                username: (reply.errors.username && reply.errors.username == "The username has already been taken."),
+                email: (reply.errors.email && reply.errors.email == "The email has already been taken.")
+            }
+
+            if (taken.username && taken.email){
+                registError("A megadott felhasználónév és e-mail-cím már foglalt.<br>Ha van már PawnHub-fiókja, kérjük, jelentkezzen be.")
+            }
+            else if (taken.username) {
+                registError("A megadott felhasználónév már foglalt.<br>Kérjük, válasszon másik felhasználónevet.")
+            }
+            else if (taken.email) {
+                registError("A megadott e-mail-cím már foglalt.<br>Ha van már PawnHub-fiókja, kérjük, jelentkezzen be.")
+
+            }
+            else {
+                registError("Ismeretlen szerverhiba történt.")
+                console.log(reply.errors)
+            }
 
         }
         else {
-            registError("Ismeretlen szerverhiba történt.")
-            console.log(reply.errors)
-        }
+            open_popup("messageOK","A regisztráció megtörtént! <br> Kérjük, jelentkezzen be vadonatúj PawnHub-fiókjába.",()=>{location.assign("/")})
 
+        }
     }
     else {
-        open_popup("messageOK","A regisztráció megtörtént! <br> Kérjük, jelentkezzen be vadonatúj PawnHub-fiókjába.",()=>{location.assign("/")})
-
+        registError("Nem sikerült csatlakozni a szerverhez.")
     }
 }
 

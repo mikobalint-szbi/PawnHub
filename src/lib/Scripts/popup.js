@@ -43,7 +43,15 @@ export function open_popup(popupID, ...args){
     else if (popupID == "messageOK"){
 
         let text = args[0]
-        let okbutton = args[1]
+        let okbutton
+
+        if (args[1]){
+            okbutton = args[1]
+        }
+        else {
+            okbutton = ()=>close_popup("messageOK")
+        }
+
 
         document.querySelector("#okMessage p").innerHTML = `${text}`
         document.getElementById("okButton").addEventListener("click",okbutton)

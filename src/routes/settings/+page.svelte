@@ -7,9 +7,11 @@
     import { replaceState } from "$app/navigation";
     import {
         api, formatPhone, isOver18, isFuture, validate_customer, validate_shop, registError, 
-        toggle_settlDropdown, init_settlInput, validate_reply, get_profilePic, del_profilePic
+        toggle_settlDropdown, init_settlInput, validate_reply, get_profilePic, del_profilePic, isDateValid
     } from "$lib/Scripts/functions.js";
     import {open_popup, close_popup, save_popup} from "$lib/Scripts/popup.js";
+import {regex} from "$lib/Scripts/variables.js";
+
 
     let isCustomer;
     let user;
@@ -22,12 +24,55 @@
         location.assign("/")
     }
 
+    function settingsError(text, id) {
+        let er = document.getElementById(id)
+        er.innerHTML = text
+        er.style.display = "block"
+    }
+
     async function cust_change_general() {
+
+        let id = "settingsError-custGeneral"
+        document.getElementById(id).style.display = "none"
+
         let data = {
             name: document.getElementById("customerName").value,
-            birthday: document.getElementById("birthDate").value,
             idCardNum: document.getElementById("idCardNum").value,
             idCardExp: document.getElementById("idCardExp").value,
+        }
+
+        if (!data.name || !data.idCardNum || !data.idCardExp ) {
+            settingsError("Kérjük, az összes csillaggal jelölt mezőt töltse ki.", id)
+        }
+        else if (!regex.custName.test(data.name)){
+            settingsError("Kérjük, adja meg a vezetéknevét és mindegyik keresztnevét.<br>(Nagybetűvel kell őket kezdenie.)", id)
+        }
+        else if (!isFuture(data.idCardExp)){
+            settingsError("Az ön személyi igazolványa lejárt!", id)
+        }
+        else if (!isDateValid(data.idCardExp)){
+            settingsError("Hibás személyiigazolvány-lejárati dátum!", id)
+        }
+        else {
+            console.log(JSON.stringify(data))
+            let reply = await api('PATCH', '/customer', data);
+            
+            console.log("reply", reply)         
+            if (reply){
+
+                if (reply.errors){
+                    settingsError("Ismeretlen szerverhiba történt.", id)
+                    console.log(reply.errors)
+                }
+                else {
+                    open_popup("messageOK","A az adatok módosítása megtörtént.")
+
+                }
+            }
+            else {
+                settingsError("Nem sikerült csatlakozni a szerverhez.", id)
+            }
+
         }
 
         console.log(data)
@@ -35,9 +80,18 @@
 
     async function shop_change_general() {
 
+        let id = "settingsError-shopGeneral"
+        document.getElementById(id).style.display = "none"
+
+
+
     }
 
     async function cust_change_contacts() {
+
+        let id = "settingsError-custContacts"
+        document.getElementById(id).style.display = "none"
+
         let data = {
             email: document.getElementById("cust-email").value,
             mobile: document.getElementById("cust-phone").value,
@@ -51,10 +105,18 @@
     }
 
     async function shop_change_contacts() {
-        
+
+        let id = "settingsError-shopContacts"
+        document.getElementById(id).style.display = "none"
+
+
     }
 
     async function change_password() {
+
+        let id = "settingsError-password"
+        document.getElementById(id).style.display = "none"
+
         let data = {
             password: document.getElementById("newPassword1").value
         }
@@ -105,6 +167,7 @@
                     <img id="profile-picture" src="IMG/Global/{isCustomer ? 'no-profile-image.png' : 'no-shop-image.png'}" alt="">
                 </div>
                 <div class="cgFoot profile">
+                    <p class="error" id="settingsError-profilePic"></p>
                     <button on:click={get_profilePic}>
                         <img src="IMG/Global/upload.png" alt="">
                         <p>Új {isCustomer ? "profilkép" : "fénykép"} feltöltése</p>
@@ -122,23 +185,24 @@
                     <h3 class="cgTitle">Személyes adatok</h3>
                     <div class="cgBody">
                         <div class="cgRow">
-                            <label for="customerName" class="cgLabel">Teljes név:</label>
+                            <label for="customerName" class="cgLabel">Teljes név: <span class="star">*</span></label>
                             <input type="text" class="cgInput" id="customerName">
                         </div>
                         <div class="cgRow">
-                            <label for="birthDate" class="cgLabel">Születési dátum:</label>
-                            <input type="date" class="cgInput" id="birthDate">
+                            <label for="birthDate" class="cgLabel">Születési dátum: <span class="star">*</span></label>
+                            <input type="date" class="cgInput" id="birthDate" disabled>
                         </div>
                         <div class="cgRow">
-                            <label for="idCardNum" class="cgLabel">Személyi igazolvány száma:</label>
+                            <label for="idCardNum" class="cgLabel">Személyi igazolvány száma: <span class="star">*</span></label>
                             <input type="text" class="cgInput" id="idCardNum">
                         </div>
                         <div class="cgRow">
-                            <label for="idCardExp" class="cgLabel">Személyi igazolvány lejárati dátuma:</label>
+                            <label for="idCardExp" class="cgLabel">Személyi igazolvány lejárati dátuma: <span class="star">*</span></label>
                             <input type="date" class="cgInput" id="idCardExp">
                         </div>
                     </div>
                     <div class="cgFoot">
+                        <p class="error" id="settingsError-custGeneral"></p>
                         <button on:click={cust_change_general}>
                             <img src="IMG/Global/save.png" alt="">
                             <p>Módosítások mentése</p>
@@ -150,12 +214,12 @@
                     <h3 class="cgTitle">A zálogház adatai</h3>
                     <div class="cgBody">
                         <div class="cgRow">
-                            <label for="shopName" class="cgLabel">Cégnév:</label>
+                            <label for="shopName" class="cgLabel">Cégnév: <span class="star">*</span></label>
                             <input type="text" class="cgInput" id="shopName">
                         </div>
                         <div class="cgRow">
-                            <label for="taxId" class="cgLabel">Adószám:</label>
-                            <input type="text" class="cgInput" id="taxId">
+                            <label for="taxId" class="cgLabel">Adószám: <span class="star">*</span></label>
+                            <input type="text" class="cgInput" id="taxId" disabled>
                         </div>
                         <div class="cgRow">
                             <label for="estYear" class="cgLabel">Alapítás éve:</label>
@@ -167,6 +231,7 @@
                         </div>
                     </div>
                     <div class="cgFoot">
+                        <p class="error" id="settingsError-shopGeneral"></p>
                         <button on:click={shop_change_general}>
                             <img src="IMG/Global/save.png" alt="">
                             <p>Módosítások mentése</p>
@@ -180,7 +245,7 @@
                     <h3 class="cgTitle">Elérhetőségek</h3>
                     <div class="cgBody">
                         <div class="cgRow">
-                            <label for="cust-email" class="cgLabel">E-mail-cím:</label>
+                            <label for="cust-email" class="cgLabel">E-mail-cím: <span class="star">*</span></label>
                             <input type="email" class="cgInput" id="cust-email">
                         </div>
                         <div class="cgRow">
@@ -201,6 +266,7 @@
                         </div>
                     </div>
                     <div class="cgFoot">
+                        <p class="error" id="settingsError-custContacts"></p>
                         <button on:click={cust_change_contacts}>
                             <img src="IMG/Global/save.png" alt="">
                             <p>Módosítások mentése</p>
@@ -212,19 +278,19 @@
                     <h3 class="cgTitle">Elérhetőségek</h3>
                     <div class="cgBody">
                         <div class="cgRow">
-                            <label for="shop-email" class="cgLabel">E-mail-cím:</label>
+                            <label for="shop-email" class="cgLabel">E-mail-cím: <span class="star">*</span></label>
                             <input type="email" class="cgInput" id="shop-email">
                         </div>
                         <div class="cgRow">
-                            <label for="shop-phone" class="cgLabel">Telefonszám:</label>
+                            <label for="shop-phone" class="cgLabel">Telefonszám: <span class="star">*</span></label>
                             <input type="phone" class="cgInput" id="shop-phone">
                         </div>
                         <div class="cgRow">
-                            <label for="shop-settlement" class="cgLabel">Település:</label>
+                            <label for="shop-settlement" class="cgLabel">Település: <span class="star">*</span></label>
                             <input type="text" class="cgInput" id="shop-settlement">
                         </div>
                         <div class="cgRow">
-                            <label for="shop-address" class="cgLabel">Utca, házszám:</label>
+                            <label for="shop-address" class="cgLabel">Utca, házszám: <span class="star">*</span></label>
                             <input type="text" class="cgInput" id="shop-address">
                         </div>
                         <div class="cgRow">
@@ -233,6 +299,7 @@
                         </div>
                     </div>
                     <div class="cgFoot">
+                        <p class="error" id="settingsError-shopContacts"></p>
                         <button on:click={shop_change_contacts}>
                             <img src="IMG/Global/save.png" alt="">
                             <p>Módosítások mentése</p>
@@ -245,26 +312,22 @@
                 <h3 class="cgTitle">Jelszó módosítása</h3>
                 <div class="cgBody">
                     <form action="">
-                        <div class="cgRow unset" style="display: none;">
-                            <label for="username" class="cgLabel">Felhasználónév:</label>
-                            <input type="text" class="cgInput" id="username" autocomplete="username">
-                        </div>
                         <div class="cgRow">
-                            <label for="oldPassword" class="cgLabel">Régi jelszó:</label>
+                            <label for="oldPassword" class="cgLabel">Régi jelszó: <span class="star">*</span></label>
                             <input type="password" class="cgInput" id="oldPassword" autocomplete="current-password">
                         </div>
                         <div class="cgRow">
-                            <label for="newPassword1" class="cgLabel">Új jelszó</label>
+                            <label for="newPassword1" class="cgLabel">Új jelszó <span class="star">*</span></label>
                             <input type="password" class="cgInput" id="newPassword1" autocomplete="new-password">
                         </div>
                         <div class="cgRow">
-                            <label for="newPassword2" class="cgLabel">Új jelszó még egyszer:</label>
+                            <label for="newPassword2" class="cgLabel">Új jelszó még egyszer: <span class="star">*</span></label>
                             <input type="password" class="cgInput" id="newPassword2" autocomplete="new-password">
                         </div>
                     </form>
                 </div>
-
                 <div class="cgFoot">
+                    <p class="error" id="settingsError-password"></p>
                     <button>
                         <img src="IMG/Global/replace.png" alt="">
                         <p>Jelszó módosítása</p>

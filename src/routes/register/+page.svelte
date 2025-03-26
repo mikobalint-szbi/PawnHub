@@ -79,7 +79,7 @@
                     delete data.iban;
                 }
 
-
+                
                 let reply = await api('POST', '/customer', data);
 
                 validate_reply(reply)
@@ -362,7 +362,7 @@
             <div class="cgBody">
                 <form action="">
                     <div class="cgRow unset">
-                        <label for="username" class="cgLabel">Felhasználónév: <span class="star">*</span></label>
+                        <label for="username" class="cgLabel">Felhasználónév:</label>
                         <input type="text" class="cgInput" id="username" autocomplete="username">
                     </div>
                     <div class="cgRow">
@@ -383,7 +383,7 @@
 
     </div>
     <div class="bottom">
-        <p class="error" id="registError">A Lorem Ipsum egy egyszerű szövegrészlete, szövegutánzata a betűszedő és nyomdaiparnak. A Lorem Ipsum az 1500-as évek óta standard szövegrészletként szolgált az iparban; mikor egy ismeretlen nyomdász összeállította a betűkészletét és egy példa-könyvet vagy szöveget nyomott papírra, ezt használta. Nem csak 5 évszázadot élt túl, de az elektronikus betűkészleteknél is változatlanul megmaradt. Az 1960-as években népszerűsítették a Lorem Ipsum részleteket magukbafoglaló Letraset lapokkal, és legutóbb softwarekkel mint például az Aldus Pagemaker.</p>
+        <p class="error" id="registError"></p>
 
         <button on:click={register}>
             <img src="IMG/Global/select.png" alt="">
