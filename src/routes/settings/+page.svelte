@@ -7,7 +7,8 @@
     import { replaceState } from "$app/navigation";
     import {
         api, formatPhone, isOver18, isFuture, validate_customer, validate_shop, registError, 
-        toggle_settlDropdown, init_settlInput, validate_reply, get_profilePic, del_profilePic, isDateValid
+        toggle_settlDropdown, init_settlInput, validate_reply, get_profilePic, del_profilePic, isDateValid,
+        settingsError
     } from "$lib/Scripts/functions.js";
     import {open_popup, close_popup, save_popup} from "$lib/Scripts/popup.js";
 import {regex} from "$lib/Scripts/variables.js";
@@ -24,17 +25,40 @@ import {regex} from "$lib/Scripts/variables.js";
         location.assign("/")
     }
 
-    function settingsError(text, id, ...args) {
-        let er = document.getElementById(id)
-        er.innerHTML = text
-        er.style.display = "block"
+    async function upload_profilePic() {
+        let id = "settingsError-profilePic"
+        
+        let data = {}
 
-        if (args[0] && args[0] == true) {
-            er.style.color = "rgb(64, 108, 78)"
+        if (localStorage["newProfilePic"]) {
+            data.img = localStorage["newProfilePic"]
+
+            settingsError("Egy pillanat...", id, true)
+            let reply = await api('PATCH', '/customer', data);
+            document.getElementById(id).style.display = "none"
+
+            if (reply){
+
+                if (reply.errors) {
+                    settingsError("Ismeretlen szerverhiba történt.", id)
+                    console.log(reply.errors)
+                }
+                else {
+                    open_popup("messageOK","A fénykép módosítása megtörtént.")
+
+                    let user = JSON.parse(localStorage["user"])
+                    user.img = localStorage["newProfilePic"]
+                    localStorage["user"] = JSON.stringify(user)
+                }
+            }
+            else {
+                settingsError("Nem sikerült csatlakozni a szerverhez.", id)
+            }
+
+            localStorage.removeItem("newProfilePic")
+
         }
-        else {
-            er.style.color = "rgb(156, 30, 30)"
-        }
+
     }
 
     async function cust_change_general() {
@@ -74,7 +98,7 @@ import {regex} from "$lib/Scripts/variables.js";
                     console.log(reply.errors)
                 }
                 else {
-                    open_popup("messageOK","A az adatok módosítása megtörtént.")
+                    open_popup("messageOK","Az adatok módosítása megtörtént.")
 
                 }
             }
@@ -152,7 +176,7 @@ import {regex} from "$lib/Scripts/variables.js";
                     console.log(reply.errors)
                 }
                 else {
-                    open_popup("messageOK","A az adatok módosítása megtörtént.")
+                    open_popup("messageOK","Az adatok módosítása megtörtént.")
 
                 }
             }
@@ -217,7 +241,7 @@ import {regex} from "$lib/Scripts/variables.js";
                     console.log(reply.errors)
                 }
                 else {
-                    open_popup("messageOK","A az adatok módosítása megtörtént.")
+                    open_popup("messageOK","Az adatok módosítása megtörtént.")
 
                 }
             }
@@ -232,6 +256,10 @@ import {regex} from "$lib/Scripts/variables.js";
 
     onMount(()=> {
 
+        if (user.img) {
+            document.getElementById("profile-picture").style.backgroundImage = `url('data:image/png;base64,${user.img}')`;
+        }
+        
 
     })
 
@@ -269,18 +297,26 @@ import {regex} from "$lib/Scripts/variables.js";
             <div class="cardGroup" id="cgProfile">
                 <h3 class="cgTitle profile">{isCustomer ? "Profilkép" : "Zálogház fényképe"}</h3>
                 <div class="cgBody profile">
-                    <img id="profile-picture" src="IMG/Global/{isCustomer ? 'no-profile-image.png' : 'no-shop-image.png'}" alt="">
+                    <div id="profile-picture" style="background-image: url('IMG/Global/{isCustomer ? 'no-profile-image.png' : 'no-shop-image.png'}');" alt=""></div>
                 </div>
                 <div class="cgFoot profile">
                     <p class="error" id="settingsError-profilePic"></p>
-                    <button on:click={get_profilePic}>
-                        <img src="IMG/Global/upload.png" alt="">
-                        <p>Új {isCustomer ? "profilkép" : "fénykép"} feltöltése</p>
+                    <button id="profPicButton1" on:click={()=>get_profilePic(true)}>
+                        <img src="IMG/Global/addFile.png" alt="">
+                        <p id="newProfilePicButton_p">Új {isCustomer ? "profilkép" : "fénykép"} kiválasztása</p>
                     </button>
-                    <button on:click={()=>open_popup("confirmDelete","profilePic",()=>{alert("Ide kell egy profilképtörlő api-t is tartalmazó funkció.")})
+                    <button id="profPicButton2" on:click={()=>open_popup("confirmDelete","profilePic",()=>{alert("Ide kell egy profilképtörlő api-t is tartalmazó funkció.")})
                 }>
                         <img src="IMG/Global/delete.png" alt="">
                         <p>{isCustomer ? "Profilkép" : "Fénykép"} törlése</p>
+                    </button>
+                    <button id="profPicButton3" on:click={upload_profilePic}>
+                        <img src="IMG/Global/select.png" alt="">
+                        <p id="newProfilePicButton_p">Jóváhagyás és feltöltés</p>
+                    </button>
+                    <button id="profPicButton4" on:click={()=>del_profilePic(isCustomer, true)}>
+                        <img src="IMG/Global/delete.png" alt="">
+                        <p>Mégsem</p>
                     </button>
                 </div>
             </div>
@@ -451,4 +487,12 @@ import {regex} from "$lib/Scripts/variables.js";
     
     <style lang="scss">
         
+        #settingsError-profilePic {
+            margin-top: 0;
+        }
+
+        #profPicButton3, #profPicButton4 {
+            display: none !important;
+        }
+
     </style>

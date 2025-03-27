@@ -4,9 +4,13 @@ http://infojegyzet.hu/webszerkesztes/dokumentacio
 Teendők:
 
 - Settings page elkészítése a Regisztráció page alapján
-	• profilkép
+	• Profilkép törlése a szerverről funkció kell még a beállítások oldalhoz
 	• adatok betöltése onPageLoad
+	• tűnjön el a profilkép törlése gomb, ha nincs profilkép
+	• profilkép és jelszó tesztelése shop esetén
+	• shop_contacts és shop_general
 
+- Regisztrációnál is legyen "Egy pillanat..." kiírás
 
 - ConfirmDelete megjavítása, hogy az open_popup függvénynél kelljen annak is paramétert adni, ne magánál a komponensnél
 

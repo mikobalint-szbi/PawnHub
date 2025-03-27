@@ -224,12 +224,12 @@
         <div class="cardGroup" id="cgProfile">
             <h3 class="cgTitle profile">{isCustomer ? "Profilkép" : "Zálogház fényképe"}</h3>
             <div class="cgBody profile">
-                <img id="profile-picture" src="IMG/Global/{isCustomer ? 'no-profile-image.png' : 'no-shop-image.png'}" alt="">
+                <div id="profile-picture" style="background-image: url('IMG/Global/{isCustomer ? 'no-profile-image.png' : 'no-shop-image.png'}');" alt=""></div>
             </div>
             <div class="cgFoot profile">
                 <button on:click={get_profilePic}>
-                    <img src="IMG/Global/upload.png" alt="">
-                    <p>Új {isCustomer ? "profilkép" : "fénykép"} feltöltése</p>
+                    <img src="IMG/Global/addFile.png" alt="">
+                    <p>Új {isCustomer ? "profilkép" : "fénykép"} kiválasztása</p>
                 </button>
                 <button on:click={()=>del_profilePic(isCustomer)}>
                     <img src="IMG/Global/delete.png" alt="">

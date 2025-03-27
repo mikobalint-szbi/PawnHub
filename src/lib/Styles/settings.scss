@@ -179,9 +179,13 @@
             .cgBody.profile {
                 align-items: center;
                 padding: 5px;
-                img {
-                        max-height: 250px;
-                    width: fit-content;
+
+                #profile-picture {
+                    width: 75%;
+                    max-width: 350px;
+                    background-size: cover;
+                    background-position: center;
+                    aspect-ratio: 1 / 1 !important;
                     background-color: rgb(161, 213, 179);
                     border-radius: 4px;
                     box-shadow: 0.3px 0.3px 1px black;

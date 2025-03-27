@@ -409,15 +409,53 @@ export function init_settlInput () {
     })
 }
 
-export function del_profilePic(isCustomer) {
+export function del_profilePic(isCustomer, settingsMode = false) {
 
-    document.getElementById("profile-picture").src = `IMG/Global/${isCustomer ? 'no-profile-image.png' : 'no-shop-image.png'}`
     localStorage.removeItem("newProfilePic")
     
+    if (!settingsMode) {
+        document.getElementById("profile-picture").style.backgroundImage = `url('IMG/Global/${isCustomer ? 'no-profile-image.png' : 'no-shop-image.png'}')`
+
+    }
+    else {
+
+        if (localStorage["user"]) {
+            let user = JSON.parse(localStorage["user"])
+
+            if (user.img) {
+                document.getElementById("profile-picture").style.backgroundImage = `url('data:image/png;base64,${user.img}')`;
+            }
+        }
+
+        document.getElementById("profPicButton4").style.display = "none"
+        document.getElementById("profPicButton3").style.display = "none"
+        document.getElementById("profPicButton2").setAttribute('style', 'display:flex !important');
+        document.getElementById("profPicButton1").setAttribute('style', 'display:flex !important');
+    }
 
 }
 
-export function get_profilePic() {
+export function settingsError(text, id, ...args) {
+    let er = document.getElementById(id)
+    er.innerHTML = text
+    er.style.display = "block"
+
+    if (args[0] && args[0] == true) {
+        er.style.color = "rgb(64, 108, 78)"
+    }
+    else {
+        er.style.color = "rgb(156, 30, 30)"
+    }
+}
+
+export function sleep(n) {
+    return new Promise(resolve => setTimeout(resolve, n * 1000));
+}
+
+export async function get_profilePic(settingsMode = false) {
+
+    localStorage.removeItem("newProfilePic")
+    let error = false
 
     const input = document.createElement("input");
     input.type = "file";
@@ -429,7 +467,7 @@ export function get_profilePic() {
 
         if (file.size > 3 * 1024 * 1024) {
             open_popup("messageOK","A feltöltött kép mérete nem lehet nagyobb, mint 3 MB.",()=>{close_popup("messageOK")})
-
+            error = true
             return; // Exit function if the file is too large
         }
 
@@ -437,7 +475,7 @@ export function get_profilePic() {
         reader.readAsDataURL(file); // Convert file to Base64
 
         reader.onload = function () {
-            document.getElementById("profile-picture").src = reader.result
+            document.getElementById("profile-picture").style.backgroundImage = `url(${reader.result})`
             localStorage["newProfilePic"] = reader.result.split("base64,")[1]
             
         };
@@ -448,4 +486,25 @@ export function get_profilePic() {
     });
 
     input.click(); // Open file dialog
+
+    if (settingsMode) {
+        let id = "settingsError-profilePic"
+
+        if (!error) {
+            while (!localStorage["newProfilePic"]) {
+                await sleep(0.2)
+            }
+
+            //settingsError("Előnézet", id, true)
+            document.getElementById("profPicButton1").style.display = "none"
+            document.getElementById("profPicButton2").style.display = "none"
+            document.getElementById("profPicButton3").setAttribute('style', 'display:flex !important');
+            document.getElementById("profPicButton4").setAttribute('style', 'display:flex !important');
+
+
+        }
+
+
+    }
+
 }
