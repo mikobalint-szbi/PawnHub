@@ -24,10 +24,17 @@ import {regex} from "$lib/Scripts/variables.js";
         location.assign("/")
     }
 
-    function settingsError(text, id) {
+    function settingsError(text, id, ...args) {
         let er = document.getElementById(id)
         er.innerHTML = text
         er.style.display = "block"
+
+        if (args[0] && args[0] == true) {
+            er.style.color = "rgb(64, 108, 78)"
+        }
+        else {
+            er.style.color = "rgb(156, 30, 30)"
+        }
     }
 
     async function cust_change_general() {
@@ -54,8 +61,11 @@ import {regex} from "$lib/Scripts/variables.js";
             settingsError("Hibás személyiigazolvány-lejárati dátum!", id)
         }
         else {
-            console.log(JSON.stringify(data))
+
+            settingsError("Egy pillanat...", id,true)
             let reply = await api('PATCH', '/customer', data);
+            document.getElementById(id).style.display = "none"
+
             
             console.log("reply", reply)         
             if (reply){
@@ -75,7 +85,6 @@ import {regex} from "$lib/Scripts/variables.js";
 
         }
 
-        console.log(data)
     }
 
     async function shop_change_general() {
@@ -100,7 +109,61 @@ import {regex} from "$lib/Scripts/variables.js";
             iban: document.getElementById("cust-iban").value.toUpperCase(),
 
         }
-        console.log(data)
+
+        if (!data.email) {
+            settingsError("Kérjük, az összes csillaggal jelölt mezőt töltse ki.", id)
+        }
+        else if (!regex.email.test(data.email)){
+            settingsError("Az megadott e-mail-cím formátuma hibás!", id)
+        }
+        else if (data.mobile.length > 1 && data.mobile.length < 4){
+            settingsError("Hibás telefonszám!", id)
+        }
+        else if (data.iban && !regex.iban.test(data.iban)){
+            settingsError("Hibás IBAN-számlaszám-formátum!", id)
+        }
+        else {
+
+            for (const key in data) {
+                if (!data[key]) {
+                    data[key] = "<null>"
+                }
+            }
+
+            settingsError("Egy pillanat...", id, true)
+            let reply = await api('PATCH', '/customer', data);
+            document.getElementById(id).style.display = "none"
+
+            
+            console.log("reply", reply)
+            if (reply){
+
+                if (reply.error){
+
+                    if (reply.error.code == "EXISTING_EMAIL") {
+                        settingsError("A megadott e-mail-cím már foglalt.", id)
+                    }
+                    else {
+                        settingsError("Ismeretlen szerverhiba történt.", id)
+                        console.log(reply.errors)
+                    }
+
+
+                }
+                else if (reply.errors) {
+                    settingsError("Ismeretlen szerverhiba történt.", id)
+                    console.log(reply.errors)
+                }
+                else {
+                    open_popup("messageOK","A az adatok módosítása megtörtént.")
+
+                }
+            }
+            else {
+                settingsError("Nem sikerült csatlakozni a szerverhez.", id)
+            }
+
+        }
 
     }
 
@@ -202,7 +265,7 @@ import {regex} from "$lib/Scripts/variables.js";
                         </div>
                     </div>
                     <div class="cgFoot">
-                        <p class="error" id="settingsError-custGeneral"></p>
+                        <p class="error" id="settingsError-custGeneral">Kérjük, várjon...</p>
                         <button on:click={cust_change_general}>
                             <img src="IMG/Global/save.png" alt="">
                             <p>Módosítások mentése</p>
@@ -250,7 +313,7 @@ import {regex} from "$lib/Scripts/variables.js";
                         </div>
                         <div class="cgRow">
                             <label for="cust-phone" class="cgLabel">Telefonszám:</label>
-                            <input type="phone" class="cgInput" id="cust-phone">
+                            <input type="phone" class="cgInput" id="cust-phone" value="" on:input={formatPhone}>
                         </div>
                         <div class="cgRow">
                             <label for="cust-shippingAddress" class="cgLabel">Szállítási cím:</label>
@@ -283,7 +346,7 @@ import {regex} from "$lib/Scripts/variables.js";
                         </div>
                         <div class="cgRow">
                             <label for="shop-phone" class="cgLabel">Telefonszám: <span class="star">*</span></label>
-                            <input type="phone" class="cgInput" id="shop-phone">
+                            <input type="phone" class="cgInput" id="shop-phone" value="" on:input={formatPhone}>
                         </div>
                         <div class="cgRow">
                             <label for="shop-settlement" class="cgLabel">Település: <span class="star">*</span></label>
