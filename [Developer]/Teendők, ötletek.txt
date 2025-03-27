@@ -3,8 +3,11 @@ http://infojegyzet.hu/webszerkesztes/dokumentacio
 
 Teendők:
 
-- userProfileBox a nevedet és az email-címedet írja ki
 - Settings page elkészítése a Regisztráció page alapján
+	• profilkép
+	• adatok betöltése onPageLoad
+
+
 - ConfirmDelete megjavítása, hogy az open_popup függvénynél kelljen annak is paramétert adni, ne magánál a komponensnél
 
 

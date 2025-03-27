@@ -66,7 +66,6 @@ import {regex} from "$lib/Scripts/variables.js";
             let reply = await api('PATCH', '/customer', data);
             document.getElementById(id).style.display = "none"
 
-            
             console.log("reply", reply)         
             if (reply){
 
@@ -134,8 +133,6 @@ import {regex} from "$lib/Scripts/variables.js";
             let reply = await api('PATCH', '/customer', data);
             document.getElementById(id).style.display = "none"
 
-            
-            console.log("reply", reply)
             if (reply){
 
                 if (reply.error){
@@ -145,7 +142,7 @@ import {regex} from "$lib/Scripts/variables.js";
                     }
                     else {
                         settingsError("Ismeretlen szerverhiba történt.", id)
-                        console.log(reply.errors)
+                        console.log(reply.error)
                     }
 
 
@@ -180,10 +177,55 @@ import {regex} from "$lib/Scripts/variables.js";
         let id = "settingsError-password"
         document.getElementById(id).style.display = "none"
 
+        let password2 = document.getElementById("newPassword2").value
+
         let data = {
+            oldPassword: document.getElementById("oldPassword").value,
             password: document.getElementById("newPassword1").value
         }
-        console.log(data)
+
+        if (!data.oldPassword || !data.password || !password2) {
+            settingsError("Kérjük, az összes csillaggal jelölt mezőt töltse ki.", id)
+        }
+        else if (password2 != data.password){
+            settingsError("A jelszavak nem egyeznek!", id)
+        }
+        else if (data.password.length < 8){
+            settingsError("A jelszónak legalább 8 karakter hosszúnak kell lennie.", id)
+        }
+        else {
+            
+            settingsError("Egy pillanat...", id, true)
+            let reply = await api('PATCH', '/customer', data);
+            document.getElementById(id).style.display = "none"
+
+            if (reply){
+
+                if (reply.error){
+
+                    if (reply.error.code == "INVALID_PASSWORD") {
+                        settingsError("Hibás eddigi jelszó!", id)
+                    }
+                    else {
+                        settingsError("Ismeretlen szerverhiba történt.", id)
+                        console.log(reply.error)
+                    }
+
+                }
+                else if (reply.errors) {
+                    settingsError("Ismeretlen szerverhiba történt.", id)
+                    console.log(reply.errors)
+                }
+                else {
+                    open_popup("messageOK","A az adatok módosítása megtörtént.")
+
+                }
+            }
+            else {
+                settingsError("Nem sikerült csatlakozni a szerverhez.", id)
+            }
+
+        }
 
     }
 
@@ -376,7 +418,7 @@ import {regex} from "$lib/Scripts/variables.js";
                 <div class="cgBody">
                     <form action="">
                         <div class="cgRow">
-                            <label for="oldPassword" class="cgLabel">Régi jelszó: <span class="star">*</span></label>
+                            <label for="oldPassword" class="cgLabel">Eddigi jelszó: <span class="star">*</span></label>
                             <input type="password" class="cgInput" id="oldPassword" autocomplete="current-password">
                         </div>
                         <div class="cgRow">
@@ -391,7 +433,7 @@ import {regex} from "$lib/Scripts/variables.js";
                 </div>
                 <div class="cgFoot">
                     <p class="error" id="settingsError-password"></p>
-                    <button>
+                    <button on:click={change_password}>
                         <img src="IMG/Global/replace.png" alt="">
                         <p>Jelszó módosítása</p>
                     </button>
