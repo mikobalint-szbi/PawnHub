@@ -8,7 +8,7 @@
     import {
         api, formatPhone, isOver18, isFuture, validate_customer, validate_shop, registError, 
         toggle_settlDropdown, init_settlInput, validate_reply, get_profilePic, cancel_profilePic, isDateValid,
-        settingsError
+        settingsError, logout
     } from "$lib/Scripts/functions.js";
     import {open_popup, close_popup, save_popup} from "$lib/Scripts/popup.js";
 import {regex} from "$lib/Scripts/variables.js";
@@ -331,6 +331,42 @@ import {regex} from "$lib/Scripts/variables.js";
         }
     }
 
+    async function del_account(isCustomer) {
+
+        let id = "settingsError-delAccount";
+
+        if (isCustomer) {
+            close_popup("confirmDelete")
+
+            settingsError("Egy pillanat...", id, true)
+            let reply = await api('DELETE', `/customer/${user.customer_id}`);
+            document.getElementById(id).style.display = "none"
+
+            console.log(reply)
+
+            if (reply) {
+
+                if (reply.error) {
+
+                    if (reply.error.code = "LOANS_FOUND"){
+                        
+                        open_popup("messageOK","Nem törölheti fiókját, amíg vannak kifizetetlen adósságai.")
+                    }
+                    else {
+                        settingsError("Ismeretlen szerverhiba történt.", id)
+                    }
+                }
+                else {
+                    open_popup("messageOK","Fiókját töröltük.", logout)
+                }
+            }
+            else {
+                console.log("Miért?????")
+                settingsError("Nem sikerült csatlakozni a szerverhez.", id)
+            }
+        }
+    }
+
     onMount(()=> {
 
         if (user.img) {
@@ -560,7 +596,8 @@ import {regex} from "$lib/Scripts/variables.js";
 
         </div>
         <div class="bottom">
-            <button on:click={() => open_popup("confirmDelete", false, false)}>
+            <p class="error" id="settingsError-delAccount"></p>
+            <button on:click={() => open_popup("confirmDelete", "account", ()=>del_account(isCustomer))}>
                 <img src="IMG/Global/delete.png" alt="">
                 <p>Fiók törlése</p>
             </button>

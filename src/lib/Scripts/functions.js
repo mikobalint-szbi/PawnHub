@@ -7,6 +7,11 @@ export function getNum(str){
     return Number(str.match(/[\d.]+/g)?.join('') || '')
 }
 
+export function logout () {
+    localStorage.clear()
+    location.assign("/")
+    console.log("heeeee")
+}
 
 export async function api (method, path, body = null) {
 

@@ -384,7 +384,6 @@
     </div>
     <div class="bottom">
         <p class="error" id="registError"></p>
-
         <button on:click={register}>
             <img src="IMG/Global/select.png" alt="">
             <p>Regisztráció</p>
@@ -457,16 +456,7 @@
 
     }
 
-    .bottom {
-        display: flex !important;
-        flex-direction: column !important;
-    
-        #registError {
-            margin-top: -8px;
-            text-align: center;
-            padding: 0 10px;
-        }
-    }
+
 
 
 </style>

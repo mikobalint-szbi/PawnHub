@@ -44,7 +44,7 @@
             </div>
 
             <div id="bottomRow">
-                <button on:click={() => {}} id="yesButton" class="bottomButton">
+                <button id="yesButton" class="bottomButton">
                     <img src="IMG/Global/select.png" alt="" id="yesImg">
                     <p id="loanPopup-yesText" class="yesText">Igen</p>
                 </button>

@@ -1,6 +1,6 @@
 <script>
     import { onMount } from "svelte";
-
+    import { logout } from "$lib/Scripts/functions.js";
 
 
     function toggle_userDropdown () {
@@ -16,11 +16,6 @@
 
         }
 
-    }
-
-    function logout () {
-        localStorage.clear()
-        location.assign("/")
     }
 
     let user = JSON.parse(localStorage["user"] ?? "[]");

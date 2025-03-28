@@ -4,6 +4,8 @@ http://infojegyzet.hu/webszerkesztes/dokumentacio
 Teendők:
 
 - Settings page elkészítése a Regisztráció page alapján
+	• Hol tartottam: A del_account függvény miért fut le még egyszer, miután egyszer már sikeresen lefutott????????????? (customer)
+
 	• Profilkép törlése a szerverről funkció kell még a beállítások oldalhoz
 	• adatok betöltése onPageLoad
 	• tűnjön el a profilkép törlése gomb, ha nincs profilkép
