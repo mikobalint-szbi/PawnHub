@@ -6,7 +6,7 @@
     import { replaceState } from "$app/navigation";
     import {
         api, formatPhone, isOver18, isFuture, validate_customer, validate_shop, registError, 
-        toggle_settlDropdown, init_settlInput, validate_reply, get_profilePic, del_profilePic
+        toggle_settlDropdown, init_settlInput, validate_reply, get_profilePic, cancel_profilePic
     } from "$lib/Scripts/functions.js";
     import {open_popup, close_popup, save_popup} from "$lib/Scripts/popup.js";
 
@@ -231,7 +231,7 @@
                     <img src="IMG/Global/addFile.png" alt="">
                     <p>Új {isCustomer ? "profilkép" : "fénykép"} kiválasztása</p>
                 </button>
-                <button on:click={()=>del_profilePic(isCustomer)}>
+                <button on:click={()=>cancel_profilePic(isCustomer)}>
                     <img src="IMG/Global/delete.png" alt="">
                     <p>{isCustomer ? "Profilkép" : "Fénykép"} törlése</p>
                 </button>

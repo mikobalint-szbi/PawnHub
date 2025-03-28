@@ -409,7 +409,7 @@ export function init_settlInput () {
     })
 }
 
-export function del_profilePic(isCustomer, settingsMode = false) {
+export function cancel_profilePic(isCustomer, settingsMode = false) {
 
     localStorage.removeItem("newProfilePic")
     

@@ -7,7 +7,7 @@
     import { replaceState } from "$app/navigation";
     import {
         api, formatPhone, isOver18, isFuture, validate_customer, validate_shop, registError, 
-        toggle_settlDropdown, init_settlInput, validate_reply, get_profilePic, del_profilePic, isDateValid,
+        toggle_settlDropdown, init_settlInput, validate_reply, get_profilePic, cancel_profilePic, isDateValid,
         settingsError
     } from "$lib/Scripts/functions.js";
     import {open_popup, close_popup, save_popup} from "$lib/Scripts/popup.js";
@@ -44,11 +44,17 @@ import {regex} from "$lib/Scripts/variables.js";
                     console.log(reply.errors)
                 }
                 else {
-                    open_popup("messageOK","A fénykép módosítása megtörtént.")
+                    open_popup("messageOK","A fénykép módosítása megtörtént.", ()=>{
+                        document.getElementById("profPicButton4").style.display = "none"
+                        document.getElementById("profPicButton3").style.display = "none"
+                        document.getElementById("profPicButton2").setAttribute('style', 'display:flex !important');
+                        document.getElementById("profPicButton1").setAttribute('style', 'display:flex !important');
+                    })
 
                     let user = JSON.parse(localStorage["user"])
                     user.img = localStorage["newProfilePic"]
                     localStorage["user"] = JSON.stringify(user)
+
                 }
             }
             else {
@@ -60,6 +66,49 @@ import {regex} from "$lib/Scripts/variables.js";
         }
 
     }
+
+    
+    async function del_profilePic() {
+
+        close_popup("confirmDelete")
+
+        let id = "settingsError-profilePic"
+        
+        let data = {
+            img: "<null>"
+        }
+
+        settingsError("Egy pillanat...", id, true)
+        let reply = await api('PATCH', '/customer', data);
+        document.getElementById(id).style.display = "none"
+
+        if (reply){
+
+            if (reply.errors) {
+                settingsError("Ismeretlen szerverhiba történt.", id)
+                console.log(reply.errors)
+            }
+            else {
+                open_popup("messageOK","A fénykép törlésre került.")
+
+                let user = JSON.parse(localStorage["user"])
+                user.img = ""
+                localStorage["user"] = JSON.stringify(user)
+
+                document.getElementById("profile-picture").style.backgroundImage = `url('IMG/Global/${isCustomer ? 'no-profile-image.png' : 'no-shop-image.png'}')`
+                document.getElementById("profPicButton2").setAttribute('style', 'display:none !important');
+            }
+        }
+        else {
+            settingsError("Nem sikerült csatlakozni a szerverhez.", id)
+        }
+
+        localStorage.removeItem("newProfilePic")
+
+    
+
+    }
+
 
     async function cust_change_general() {
 
@@ -287,6 +336,9 @@ import {regex} from "$lib/Scripts/variables.js";
         if (user.img) {
             document.getElementById("profile-picture").style.backgroundImage = `url('data:image/png;base64,${user.img}')`;
         }
+        else {
+            document.getElementById("profPicButton2").setAttribute('style', 'display:none !important');
+        }
 
         get_data()
         
@@ -335,7 +387,7 @@ import {regex} from "$lib/Scripts/variables.js";
                         <img src="IMG/Global/addFile.png" alt="">
                         <p id="newProfilePicButton_p">Új {isCustomer ? "profilkép" : "fénykép"} kiválasztása</p>
                     </button>
-                    <button id="profPicButton2" on:click={()=>open_popup("confirmDelete","profilePic",()=>{alert("Ide kell egy profilképtörlő api-t is tartalmazó funkció.")})
+                    <button id="profPicButton2" on:click={()=>open_popup("confirmDelete","profilePic",()=>del_profilePic(isCustomer))
                 }>
                         <img src="IMG/Global/delete.png" alt="">
                         <p>{isCustomer ? "Profilkép" : "Fénykép"} törlése</p>
@@ -344,7 +396,7 @@ import {regex} from "$lib/Scripts/variables.js";
                         <img src="IMG/Global/select.png" alt="">
                         <p id="newProfilePicButton_p">Jóváhagyás és feltöltés</p>
                     </button>
-                    <button id="profPicButton4" on:click={()=>del_profilePic(isCustomer, true)}>
+                    <button id="profPicButton4" on:click={()=>cancel_profilePic(isCustomer, true)}>
                         <img src="IMG/Global/delete.png" alt="">
                         <p>Mégsem</p>
                     </button>
