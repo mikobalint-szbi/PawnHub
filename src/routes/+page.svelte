@@ -49,12 +49,22 @@
 
                 else {
                     localStorage["auth_token"] = reply.auth_token
-                    localStorage["user"] = JSON.stringify({
+
+                    let user = {
                         username: reply.user.username,
                         email: reply.user.email,
                         isCustomer: Boolean(reply.user.isCustomer),
-                        img: reply.user.img
-                    })
+                        img: reply.user.img,
+                    }
+
+                    if (user.isCustomer){
+                        user.customer_id = reply.user.customer_id
+                    }
+                    else {
+                        user.shop_id = reply.user.shop_id
+                    }
+
+                    localStorage["user"] = JSON.stringify(user)
 
                     location.assign('home')
                 }

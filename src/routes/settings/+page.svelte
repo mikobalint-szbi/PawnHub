@@ -153,6 +153,15 @@ import {regex} from "$lib/Scripts/variables.js";
                 }
             }
 
+            if (data.mobile == "+"){
+                data.mobile = "<null>"
+            }
+
+            if (data.email && data.email != user.email) {
+                user.email = data.email
+                localStorage["user"] = JSON.stringify(user)
+            }
+
             settingsError("Egy pillanat...", id, true)
             let reply = await api('PATCH', '/customer', data);
             document.getElementById(id).style.display = "none"
@@ -253,12 +262,33 @@ import {regex} from "$lib/Scripts/variables.js";
 
     }
 
+    async function get_data () {
+        if (isCustomer) {
+            let reply = await api('GET', `/customer/${user.customer_id}`);
+            console.log(reply)
+            document.getElementById("customerName").value = reply.name? reply.name : "";
+            document.getElementById("birthDate").value = reply.birthday? reply.birthday : "";
+            document.getElementById("idCardNum").value = reply.idCardNum? reply.idCardNum : "";
+            document.getElementById("idCardExp").value = reply.idCardExp? reply.idCardExp : "";
+            document.getElementById("cust-email").value = user.email? user.email : "";
+            document.getElementById("cust-phone").value = reply.mobile? reply.mobile : "";
+            document.getElementById("cust-shippingAddress").value = reply.shippingAddress? reply.shippingAddress : "";
+            document.getElementById("cust-billingAddress").value = reply.billingAddress? reply.billingAddress : "";
+            document.getElementById("cust-iban").value = reply.iban? reply.iban : "";
+
+        }
+        else {
+
+        }
+    }
 
     onMount(()=> {
 
         if (user.img) {
             document.getElementById("profile-picture").style.backgroundImage = `url('data:image/png;base64,${user.img}')`;
         }
+
+        get_data()
         
 
     })
