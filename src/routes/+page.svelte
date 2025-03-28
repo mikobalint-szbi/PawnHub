@@ -82,6 +82,12 @@
 
     onMount(()=>{
 
+        document.querySelector('button#login').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                loginHandler()
+            }
+        });
+
         sessionStorage.setItem("loginSwitch",1)
 
         document.querySelector(".switch #opt1").addEventListener("click",(e)=>{
