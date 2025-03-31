@@ -398,6 +398,7 @@ export async function toggle_settlDropdown(){
 
     }
     else {
+        dropdown.innerHTML = ""
         dropdown.style.display = "none"
     }
 

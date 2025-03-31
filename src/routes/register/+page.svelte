@@ -45,7 +45,7 @@
 
         document.getElementById("registError").style.display = "none"
 
-        if (isCustomer == true) {
+        if (isCustomer) {
 
             let data = {
                 name: document.getElementById("customerName").value,
@@ -343,15 +343,12 @@
                         <input type="phone" class="cgInput" id="shop-phone" value="+" on:input={formatPhone}>
                     </div>
                     <div class="cgRow">
-
                         <div class="settlDropdown">
                             <label for="settlInput" class="cgLabel">Település: <span class="star">*</span></label>
                             <input type="text" id="settlInput" class="cgInput" on:keyup={toggle_settlDropdown}>
                             <div id="dropdownContent">
-
                             </div>
                         </div>
-                        
                     </div>
                     <div class="cgRow">
                         <label for="shop-address" class="cgLabel">Utca, házszám: <span class="star">*</span></label>
