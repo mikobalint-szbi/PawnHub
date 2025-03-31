@@ -80,7 +80,7 @@ import {regex} from "$lib/Scripts/variables.js";
         }
 
         settingsError("Egy pillanat...", id, true)
-        let reply = await api('PATCH', '/customer', data);
+        let reply = await api('PATCH', isCustomer? '/customer' : '/shop', data);
         document.getElementById(id).style.display = "none"
 
         if (reply){
