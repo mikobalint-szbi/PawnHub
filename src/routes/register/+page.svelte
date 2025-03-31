@@ -104,7 +104,7 @@
                 intro: document.getElementById("intro").value,
                 email: document.getElementById("shop-email").value,
                 mobile: document.getElementById("shop-phone").value,
-                settlement_id: null, // TEENDŐ !!
+                settlement_id: null,
                 address: document.getElementById("shop-address").value,
                 website: document.getElementById("shop-website").value,
                 iban: document.getElementById("shop-iban").value.toUpperCase(),

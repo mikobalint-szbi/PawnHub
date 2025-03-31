@@ -34,7 +34,7 @@ import {regex} from "$lib/Scripts/variables.js";
             data.img = localStorage["newProfilePic"]
 
             settingsError("Egy pillanat...", id, true)
-            let reply = await api('PATCH', '/customer', data);
+            let reply = await api('PATCH', (isCustomer ? '/customer' : '/shop'), data);
             document.getElementById(id).style.display = "none"
 
             if (reply){
@@ -317,7 +317,7 @@ import {regex} from "$lib/Scripts/variables.js";
         if (!sessionStorage["accountDeleted"]){
             if (isCustomer) {
                 let reply = await api('GET', `/customer/${user.customer_id}`);
-                console.log(reply)
+
                 document.getElementById("customerName").value = reply.name? reply.name : "";
                 document.getElementById("birthDate").value = reply.birthday? reply.birthday : "";
                 document.getElementById("idCardNum").value = reply.idCardNum? reply.idCardNum : "";
@@ -330,7 +330,19 @@ import {regex} from "$lib/Scripts/variables.js";
 
             }
             else {
+                let reply = await api('GET', `/shop/${user.shop_id}`);
+                console.log(reply)
 
+                document.getElementById("shopName").value = reply.name? reply.name : "";
+                document.getElementById("taxId").value = reply.taxId? reply.taxId : "";
+                document.getElementById("estYear").value = reply.estYear? reply.estYear : "";
+                document.getElementById("intro").value = reply.intro? reply.intro : "";
+                document.getElementById("shop-email").value = user.email? user.email : "";
+                document.getElementById("shop-phone").value = reply.mobile? reply.mobile : "";
+                //document.getElementById("shop-settlement").value = ;
+                document.getElementById("shop-address").value = reply.address? reply.address : "";
+                document.getElementById("shop-website").value = reply.website? reply.website : "";
+                document.getElementById("shop-iban").value = reply.iban? reply.iban : "";
             }
         }
 
@@ -571,8 +583,8 @@ import {regex} from "$lib/Scripts/variables.js";
                             <input type="text" class="cgInput" id="shop-website" value="">
                         </div>
                         <div class="cgRow">
-                            <label for="shop-billingAddress" class="cgLabel">IBAN-számlaszám:</label>
-                            <input type="text" class="cgInput" id="shop-billingAddress">
+                            <label for="shop-iban" class="cgLabel">IBAN-számlaszám:</label>
+                            <input type="text" class="cgInput" id="shop-iban">
                         </div>
                     </div>
                     <div class="cgFoot">
