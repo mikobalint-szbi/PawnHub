@@ -259,6 +259,10 @@ export function validate_shop(data, settingsMode = false){
         registError("A település nevét kérjük a lenyíló listából válassza ki!")
         good = false
     }
+    else if (data.website && !regex.website.test(data.website)){
+        registError("A megadott weboldal címének hibás a formátuma!")
+        good = false
+    }
     else if (data.iban && !regex.iban.test(data.iban)){
         registError("Hibás IBAN-számlaszám-formátum!")
         good = false

@@ -91,6 +91,12 @@
         }
         else {
 
+            let website = document.getElementById("shop-website").value
+
+            if (website && !(website.startsWith("https://") || website.startsWith("http://"))) {
+                document.getElementById("shop-website").value = "https://" + website
+            }
+
             let data = {
                 name: document.getElementById("shopName").value,
                 taxId: document.getElementById("taxId").value,
@@ -100,6 +106,7 @@
                 mobile: document.getElementById("shop-phone").value,
                 settlement_id: null, // TEENDŐ !!
                 address: document.getElementById("shop-address").value,
+                website: document.getElementById("shop-website").value,
                 iban: document.getElementById("shop-iban").value.toUpperCase(),
                 username: document.getElementById("username").value,
                 password: document.getElementById("newPassword1").value
@@ -110,6 +117,7 @@
                 data.settlement_id = localStorage["chosenSettlement"].split("-")[0]
             }
 
+
             if (validate_shop(data)) {
                 
                 if (localStorage["newProfilePic"]) {
@@ -119,6 +127,9 @@
 
                 if (data.iban == "") {
                     delete data.iban;
+                }
+                if (data.website == "") {
+                    delete data.website;
                 }
                 
                 let reply = await api('POST', '/shop', data);
@@ -350,6 +361,10 @@
                         <label for="shop-iban" class="cgLabel">IBAN-számlaszám:</label>
                         <input type="text" class="cgInput" id="shop-iban">
                     </div>
+                    <div class="cgRow">
+                        <label for="shop-website" class="cgLabel">Weboldal:</label>
+                        <input type="text" class="cgInput" id="shop-website" value="">
+                    </div>
                 </div>
                 <div class="cgFoot">
 
@@ -362,7 +377,7 @@
             <div class="cgBody">
                 <form action="">
                     <div class="cgRow unset">
-                        <label for="username" class="cgLabel">Felhasználónév:</label>
+                        <label for="username" class="cgLabel">Felhasználónév: <span class="star">*</span></label>
                         <input type="text" class="cgInput" id="username" autocomplete="username">
                     </div>
                     <div class="cgRow">

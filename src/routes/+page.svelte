@@ -3,10 +3,17 @@
     import {apiUrl} from "$lib/Scripts/variables.js";
     import {api} from "$lib/Scripts/functions.js";
 
-    function loginError (text) {
+    function loginError (text, ...args) {
         let er = document.getElementById("loginError")
         er.innerHTML = text
         er.style.display = "block"
+
+        if (args[0] && args[0] == true) {
+            er.style.color = "rgb(64, 108, 78)"
+        }
+        else {
+            er.style.color = "rgb(156, 30, 30)"
+        }
     }
 
     function register (for_) {
@@ -25,15 +32,13 @@
 
             let reply;
 
-
+            loginError("Egy pillanat...", true)
             try {
                 reply = await api('POST', '/login', {
                     username: username,
                     password: password
                 });
-            } catch {
-
-            }
+            } catch {}
 
             if (reply){
 

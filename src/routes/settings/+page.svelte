@@ -49,6 +49,7 @@ import {regex} from "$lib/Scripts/variables.js";
                         document.getElementById("profPicButton3").style.display = "none"
                         document.getElementById("profPicButton2").setAttribute('style', 'display:flex !important');
                         document.getElementById("profPicButton1").setAttribute('style', 'display:flex !important');
+                        close_popup("messageOK")
                     })
 
                     let user = JSON.parse(localStorage["user"])
@@ -312,62 +313,75 @@ import {regex} from "$lib/Scripts/variables.js";
     }
 
     async function get_data () {
-        if (isCustomer) {
-            let reply = await api('GET', `/customer/${user.customer_id}`);
-            console.log(reply)
-            document.getElementById("customerName").value = reply.name? reply.name : "";
-            document.getElementById("birthDate").value = reply.birthday? reply.birthday : "";
-            document.getElementById("idCardNum").value = reply.idCardNum? reply.idCardNum : "";
-            document.getElementById("idCardExp").value = reply.idCardExp? reply.idCardExp : "";
-            document.getElementById("cust-email").value = user.email? user.email : "";
-            document.getElementById("cust-phone").value = reply.mobile? reply.mobile : "";
-            document.getElementById("cust-shippingAddress").value = reply.shippingAddress? reply.shippingAddress : "";
-            document.getElementById("cust-billingAddress").value = reply.billingAddress? reply.billingAddress : "";
-            document.getElementById("cust-iban").value = reply.iban? reply.iban : "";
 
-        }
-        else {
+        if (!sessionStorage["accountDeleted"]){
+            if (isCustomer) {
+                let reply = await api('GET', `/customer/${user.customer_id}`);
+                console.log(reply)
+                document.getElementById("customerName").value = reply.name? reply.name : "";
+                document.getElementById("birthDate").value = reply.birthday? reply.birthday : "";
+                document.getElementById("idCardNum").value = reply.idCardNum? reply.idCardNum : "";
+                document.getElementById("idCardExp").value = reply.idCardExp? reply.idCardExp : "";
+                document.getElementById("cust-email").value = user.email? user.email : "";
+                document.getElementById("cust-phone").value = reply.mobile? reply.mobile : "";
+                document.getElementById("cust-shippingAddress").value = reply.shippingAddress? reply.shippingAddress : "";
+                document.getElementById("cust-billingAddress").value = reply.billingAddress? reply.billingAddress : "";
+                document.getElementById("cust-iban").value = reply.iban? reply.iban : "";
 
+            }
+            else {
+
+            }
         }
+
+
     }
 
     async function del_account(isCustomer) {
 
-        let id = "settingsError-delAccount";
 
-        if (isCustomer) {
-            close_popup("confirmDelete")
+        if (!sessionStorage["accountDeleted"]) {
 
-            settingsError("Egy pillanat...", id, true)
-            let reply = await api('DELETE', `/customer/${user.customer_id}`);
-            document.getElementById(id).style.display = "none"
+            let id = "settingsError-delAccount";
 
-            console.log(reply)
+            if (isCustomer) {
+                close_popup("confirmDelete")
 
-            if (reply) {
+                settingsError("Egy pillanat...", id, true)
+                let reply = await api('DELETE', `/customer/${user.customer_id}`);
+                document.getElementById(id).style.display = "none"
 
-                if (reply.error) {
+                console.log(reply)
 
-                    if (reply.error.code = "LOANS_FOUND"){
-                        
-                        open_popup("messageOK","Nem törölheti fiókját, amíg vannak kifizetetlen adósságai.")
+                if (reply) {
+
+                    if (reply.error) {
+
+                        if (reply.error.code = "LOANS_FOUND"){
+                            
+                            open_popup("messageOK","Nem törölheti fiókját, amíg vannak kifizetetlen adósságai.")
+                        }
+                        else {
+                            settingsError("Ismeretlen szerverhiba történt.", id)
+                        }
                     }
                     else {
-                        settingsError("Ismeretlen szerverhiba történt.", id)
+                        sessionStorage["accountDeleted"] = "true"
+                        open_popup("messageOK","Fiókját töröltük.", logout)
+
                     }
                 }
                 else {
-                    open_popup("messageOK","Fiókját töröltük.", logout)
+                    console.log("Miért?????")
+                    settingsError("Nem sikerült csatlakozni a szerverhez.", id)
                 }
-            }
-            else {
-                console.log("Miért?????")
-                settingsError("Nem sikerült csatlakozni a szerverhez.", id)
             }
         }
     }
 
     onMount(()=> {
+
+        sessionStorage.removeItem("accountDeleted");
 
         if (user.img) {
             document.getElementById("profile-picture").style.backgroundImage = `url('data:image/png;base64,${user.img}')`;
@@ -551,6 +565,10 @@ import {regex} from "$lib/Scripts/variables.js";
                         <div class="cgRow">
                             <label for="shop-address" class="cgLabel">Utca, házszám: <span class="star">*</span></label>
                             <input type="text" class="cgInput" id="shop-address">
+                        </div>
+                        <div class="cgRow">
+                            <label for="shop-website" class="cgLabel">Weboldal:</label>
+                            <input type="text" class="cgInput" id="shop-website" value="">
                         </div>
                         <div class="cgRow">
                             <label for="shop-billingAddress" class="cgLabel">IBAN-számlaszám:</label>
