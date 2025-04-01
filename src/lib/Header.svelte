@@ -19,6 +19,7 @@
     }
 
     let user = JSON.parse(localStorage["user"] ?? "[]");
+    let isCustomer = user.isCustomer;
 
     onMount(()=>{
 
@@ -32,6 +33,16 @@
 
                 document.getElementById("userBox-image").style.backgroundImage = `url('data:image/png;base64,${user.img}')`;
                 document.getElementById("userDropDown-image").style.backgroundImage = `url('data:image/png;base64,${user.img}')`;
+            }
+            else {
+                if (isCustomer) {
+                    document.getElementById("userBox-image").style.backgroundImage = `url('IMG/Global/no-profile-image.png')`;
+                    document.getElementById("userDropDown-image").style.backgroundImage = `url('IMG/Global/no-profile-image.png')`;
+                }
+                else {
+                    document.getElementById("userBox-image").style.backgroundImage = `url('IMG/Global/no-shop-image-round.png')`;
+                    document.getElementById("userDropDown-image").style.backgroundImage = `url('IMG/Global/no-shop-image.png')`;
+                }
             }
         }
 

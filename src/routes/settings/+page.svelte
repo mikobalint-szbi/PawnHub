@@ -11,7 +11,7 @@
         settingsError, logout
     } from "$lib/Scripts/functions.js";
     import {open_popup, close_popup, save_popup} from "$lib/Scripts/popup.js";
-import {regex} from "$lib/Scripts/variables.js";
+    import {regex} from "$lib/Scripts/variables.js";
 
 
     let isCustomer;
@@ -80,7 +80,7 @@ import {regex} from "$lib/Scripts/variables.js";
         }
 
         settingsError("Egy pillanat...", id, true)
-        let reply = await api('PATCH', '/customer', data);
+        let reply = await api('PATCH', isCustomer? '/customer' : '/shop', data);
         document.getElementById(id).style.display = "none"
 
         if (reply){
@@ -136,7 +136,7 @@ import {regex} from "$lib/Scripts/variables.js";
         }
         else {
 
-            settingsError("Egy pillanat...", id,true)
+            settingsError("Egy pillanat...", id, true)
             let reply = await api('PATCH', '/customer', data);
             document.getElementById(id).style.display = "none"
 
@@ -164,6 +164,55 @@ import {regex} from "$lib/Scripts/variables.js";
 
         let id = "settingsError-shopGeneral"
         document.getElementById(id).style.display = "none"
+
+        let data = {
+            name: document.getElementById("shopName").value,
+            estYear: document.getElementById("estYear").value,
+            intro: document.getElementById("intro").value
+        }
+
+        if (!data.name) {
+            settingsError("Kérjük, az összes csillaggal jelölt mezőt töltse ki.", id)
+        }
+        else if (data.name.length < 5){
+            settingsError("A cég nevének legalább 5 karakter hosszúnak kell lennie!", id)
+        }
+        else if (data.name.length > 100){
+            settingsError("A cég neve nem lehet hosszabb 100 karakternél!", id)
+        }
+        else if (data.estYear > new Date().getFullYear()){
+            settingsError("Az alapítási év nem lehet jövőbeli!", id)
+        }
+        else {
+            
+            for (const key in data) {
+                if (!data[key]) {
+                    data[key] = "<null>"
+                }
+            }
+            
+            settingsError("Egy pillanat...", id, true)
+            let reply = await api('PATCH', '/shop', data);
+            document.getElementById(id).style.display = "none"
+
+            console.log("reply", reply)
+
+            if (reply){
+
+                if (reply.errors){
+                    settingsError("Ismeretlen szerverhiba történt.", id)
+                    console.log(reply.errors)
+                }
+                else {
+                    open_popup("messageOK","Az adatok módosítása megtörtént.")
+
+                }
+            }
+            else {
+                settingsError("Nem sikerült csatlakozni a szerverhez.", id)
+            }
+
+        }
 
 
 
@@ -252,6 +301,98 @@ import {regex} from "$lib/Scripts/variables.js";
         let id = "settingsError-shopContacts"
         document.getElementById(id).style.display = "none"
 
+        let website = document.getElementById("shop-website").value
+
+        if (website && !(website.startsWith("https://") || website.startsWith("http://"))) {
+            document.getElementById("shop-website").value = "https://" + website
+        }
+
+        let data = {
+            email: document.getElementById("shop-email").value,
+            mobile: document.getElementById("shop-phone").value,
+            address: document.getElementById("shop-address").value,
+            website: document.getElementById("shop-website").value,
+            iban: document.getElementById("shop-iban").value.toUpperCase(),
+        }
+
+        if (localStorage["chosenSettlement"]) {
+            data.settlement_id = localStorage["chosenSettlement"].split("-")[0]
+        }
+
+        if (data.mobile == "+") {
+            data.mobile = ""
+        }
+
+        if (!data.email || !data.mobile || !document.getElementById("settlInput") || !data.address) {
+            settingsError("Kérjük, az összes csillaggal jelölt mezőt töltse ki.", id)
+        }
+        else if (!regex.email.test(data.email)){
+            settingsError("Az megadott e-mail-cím formátuma hibás!", id)
+        }
+        else if (data.mobile.length < 4){
+            settingsError("Hibás telefonszám!", id)
+        }
+        else if (sessionStorage["originalSettlement"] != document.getElementById("settlInput").value && !data.settlement_id) {
+            settingsError("A település nevét kérjük a lenyíló listából válassza ki!", id)
+        }
+        else if (data.website && !regex.website.test(data.website)){
+            settingsError("A megadott weboldal címének hibás a formátuma!", id)
+        }
+        else if (data.iban && !regex.iban.test(data.iban)){
+            settingsError("Hibás IBAN-számlaszám-formátum!", id)
+        }
+        else {
+            
+            for (const key in data) {
+                if (!data[key]) {
+                    data[key] = "<null>"
+                }
+            }
+            
+            if (data.email && data.email != user.email) {
+                user.email = data.email
+                localStorage["user"] = JSON.stringify(user)
+            }
+
+            settingsError("Egy pillanat...", id, true)
+            let reply = await api('PATCH', '/shop', data);
+            document.getElementById(id).style.display = "none"
+
+            
+            if (reply){
+
+                if (reply.error){
+
+                    if (reply.error.code == "EXISTING_EMAIL") {
+                        settingsError("A megadott e-mail-cím már foglalt.", id)
+                    }
+                    else {
+                        settingsError("Ismeretlen szerverhiba történt.", id)
+                        console.log(reply.error)
+                    }
+
+
+                }
+                else if (reply.errors) {
+                    settingsError("Ismeretlen szerverhiba történt.", id)
+                    console.log(reply.errors)
+                }
+                else {
+                    open_popup("messageOK","Az adatok módosítása megtörtént.")
+
+                }
+            }
+            else {
+                settingsError("Nem sikerült csatlakozni a szerverhez.", id)
+            }
+
+
+        }
+
+
+
+
+        console.log(data)
 
     }
 
@@ -279,7 +420,7 @@ import {regex} from "$lib/Scripts/variables.js";
         else {
             
             settingsError("Egy pillanat...", id, true)
-            let reply = await api('PATCH', '/customer', data);
+            let reply = await api('PATCH', isCustomer? '/customer' : '/shop', data);
             document.getElementById(id).style.display = "none"
 
             if (reply){
@@ -301,7 +442,9 @@ import {regex} from "$lib/Scripts/variables.js";
                 }
                 else {
                     open_popup("messageOK","Az adatok módosítása megtörtént.")
-
+                    document.getElementById("oldPassword").value = ""
+                    document.getElementById("newPassword1").value = ""
+                    document.getElementById("newPassword2").value = ""
                 }
             }
             else {
@@ -331,7 +474,6 @@ import {regex} from "$lib/Scripts/variables.js";
             }
             else {
                 let reply = await api('GET', `/shop/${user.shop_id}`);
-                console.log(reply)
 
                 document.getElementById("shopName").value = reply.name? reply.name : "";
                 document.getElementById("taxId").value = reply.taxId? reply.taxId : "";
@@ -339,7 +481,8 @@ import {regex} from "$lib/Scripts/variables.js";
                 document.getElementById("intro").value = reply.intro? reply.intro : "";
                 document.getElementById("shop-email").value = user.email? user.email : "";
                 document.getElementById("shop-phone").value = reply.mobile? reply.mobile : "";
-                //document.getElementById("shop-settlement").value = ;
+                document.getElementById("settlInput").value = reply.settlement.name;
+                sessionStorage["originalSettlement"] = reply.settlement.name
                 document.getElementById("shop-address").value = reply.address? reply.address : "";
                 document.getElementById("shop-website").value = reply.website? reply.website : "";
                 document.getElementById("shop-iban").value = reply.iban? reply.iban : "";
@@ -355,15 +498,14 @@ import {regex} from "$lib/Scripts/variables.js";
         if (!sessionStorage["accountDeleted"]) {
 
             let id = "settingsError-delAccount";
+            close_popup("confirmDelete")
+
 
             if (isCustomer) {
-                close_popup("confirmDelete")
 
                 settingsError("Egy pillanat...", id, true)
                 let reply = await api('DELETE', `/customer/${user.customer_id}`);
                 document.getElementById(id).style.display = "none"
-
-                console.log(reply)
 
                 if (reply) {
 
@@ -384,9 +526,30 @@ import {regex} from "$lib/Scripts/variables.js";
                     }
                 }
                 else {
-                    console.log("Miért?????")
                     settingsError("Nem sikerült csatlakozni a szerverhez.", id)
                 }
+            }
+            else { //isShop
+
+                settingsError("Egy pillanat...", id, true)
+                let reply = await api('DELETE', `/shop`);
+                document.getElementById(id).style.display = "none"
+
+                if (reply) {
+
+                    if (reply.error) {
+                        settingsError("Ismeretlen szerverhiba történt.", id)
+                    }
+                    else {
+                        sessionStorage["accountDeleted"] = "true"
+                        open_popup("messageOK","Fiókját töröltük.", logout)
+
+                    }
+                }
+                else {
+                    settingsError("Nem sikerült csatlakozni a szerverhez.", id)
+                }
+
             }
         }
     }
@@ -571,8 +734,12 @@ import {regex} from "$lib/Scripts/variables.js";
                             <input type="phone" class="cgInput" id="shop-phone" value="" on:input={formatPhone}>
                         </div>
                         <div class="cgRow">
-                            <label for="shop-settlement" class="cgLabel">Település: <span class="star">*</span></label>
-                            <input type="text" class="cgInput" id="shop-settlement">
+                            <div class="settlDropdown">
+                                <label for="settlInput" class="cgLabel">Település: <span class="star">*</span></label>
+                                <input type="text" id="settlInput" class="cgInput" on:keyup={toggle_settlDropdown}>
+                                <div id="dropdownContent">
+                                </div>
+                            </div>
                         </div>
                         <div class="cgRow">
                             <label for="shop-address" class="cgLabel">Utca, házszám: <span class="star">*</span></label>

@@ -6,10 +6,18 @@
     import {toggle_settlDropdown, init_settlInput} from "$lib/Scripts/functions.js";
 
 
+    async function init_categories() {
+        let reply = await api('GET', `/customer/${user.customer_id}`);
+        
+        
+    }
 
     onMount(()=> {
 
+
+        init_categories()
         init_settlInput()
+
 
     })
 

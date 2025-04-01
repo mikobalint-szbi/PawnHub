@@ -4,7 +4,8 @@
     import Cust_Loans from "$lib/Pages/Cust_Loans.svelte";
     import Layout from "../+layout.svelte";
 
-    let isCustomer = false
+    let user = JSON.parse(localStorage["user"] ?? "[]");
+    let isCustomer = user.isCustomer;
 
 </script>
 
