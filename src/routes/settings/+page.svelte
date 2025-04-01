@@ -11,7 +11,7 @@
         settingsError, logout
     } from "$lib/Scripts/functions.js";
     import {open_popup, close_popup, save_popup} from "$lib/Scripts/popup.js";
-import {regex} from "$lib/Scripts/variables.js";
+    import {regex} from "$lib/Scripts/variables.js";
 
 
     let isCustomer;
