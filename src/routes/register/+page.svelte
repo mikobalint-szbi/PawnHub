@@ -79,8 +79,9 @@
                     delete data.iban;
                 }
 
-                
+                registError("Egy pillanat...", true)
                 let reply = await api('POST', '/customer', data);
+                document.getElementById("registError").style.display = "none"
 
                 validate_reply(reply)
 
@@ -132,7 +133,9 @@
                     delete data.website;
                 }
                 
+                registError("Egy pillanat...", true)
                 let reply = await api('POST', '/shop', data);
+                document.getElementById("registError").style.display = "none"
 
                 validate_reply(reply)
 

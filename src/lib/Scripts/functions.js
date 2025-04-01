@@ -151,10 +151,17 @@ export function isFuture(dateString) {
     return inputDate >= today;
 }
 
-export function registError (text) {
+export function registError (text, ...args) {
     let er = document.getElementById("registError")
     er.innerHTML = text
     er.style.display = "block"
+
+    if (args[0] && args[0] == true) {
+        er.style.color = "rgb(64, 108, 78)"
+    }
+    else {
+        er.style.color = "rgb(156, 30, 30)"
+    }
 }
 
 export function validate_customer(data){
