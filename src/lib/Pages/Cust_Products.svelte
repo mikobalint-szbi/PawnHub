@@ -3,6 +3,7 @@
     import { onMount } from "svelte";
     import '$lib/Styles/productCard.scss';
     import '$lib/Styles/settlInput.scss';
+    import CategorySelector from "$lib/CategorySelector.svelte";
     import {toggle_settlDropdown, init_settlInput} from "$lib/Scripts/functions.js";
 
 
@@ -59,9 +60,7 @@
             <div class="row2">
                 <div class="col1">
                     <label for="selectCategory">Kategória:</label>
-                    <select name="selectCategory" id="selectCategory">
-                        <option value="">Az összes kategória</option>
-                    </select>
+                    <CategorySelector/>
                 </div>
                 <div class="col2">
                     <label for="">Ár: </label>
