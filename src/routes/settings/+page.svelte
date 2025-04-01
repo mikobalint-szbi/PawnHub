@@ -498,15 +498,14 @@ import {regex} from "$lib/Scripts/variables.js";
         if (!sessionStorage["accountDeleted"]) {
 
             let id = "settingsError-delAccount";
+            close_popup("confirmDelete")
+
 
             if (isCustomer) {
-                close_popup("confirmDelete")
 
                 settingsError("Egy pillanat...", id, true)
                 let reply = await api('DELETE', `/customer/${user.customer_id}`);
                 document.getElementById(id).style.display = "none"
-
-                console.log(reply)
 
                 if (reply) {
 
@@ -529,6 +528,28 @@ import {regex} from "$lib/Scripts/variables.js";
                 else {
                     settingsError("Nem sikerült csatlakozni a szerverhez.", id)
                 }
+            }
+            else { //isShop
+
+                settingsError("Egy pillanat...", id, true)
+                let reply = await api('DELETE', `/shop`);
+                document.getElementById(id).style.display = "none"
+
+                if (reply) {
+
+                    if (reply.error) {
+                        settingsError("Ismeretlen szerverhiba történt.", id)
+                    }
+                    else {
+                        sessionStorage["accountDeleted"] = "true"
+                        open_popup("messageOK","Fiókját töröltük.", logout)
+
+                    }
+                }
+                else {
+                    settingsError("Nem sikerült csatlakozni a szerverhez.", id)
+                }
+
             }
         }
     }
