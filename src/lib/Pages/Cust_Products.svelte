@@ -5,19 +5,69 @@
     import '$lib/Styles/settlInput.scss';
     import CategorySelector from "$lib/CategorySelector.svelte";
     import {toggle_settlDropdown, init_settlInput} from "$lib/Scripts/functions.js";
+    import { goto } from '$app/navigation';
+    import { page } from '$app/stores';
 
-
-    async function init_categories() {
-        let reply = await api('GET', `/customer/${user.customer_id}`);
-        
-        
+    function setQueryParam(key, value) {
+        const url = new URL(window.location.href);
+        url.searchParams.set(key, value);
+        goto(url.toString(), { replaceState: true });
     }
+    function getQueryParam(key) {
+        return $page.url.searchParams.get(key);
+    }
+    function removeAllQueryParams() {
+        const url = new URL(window.location.href);
+        url.search = '';  // Clear query parameters
+        goto(url.toString(), { replaceState: true });
+    }
+
+    function search () {
+        removeAllQueryParams()
+
+        if (document.getElementById("searchBar").value) {
+            setQueryParam("searchKey", document.getElementById("searchBar").value)
+
+        }
+    }
+
+    function get_items () {
+
+        let params = {
+            searchKey: getQueryParam("searchKey"),
+            hold: getQueryParam("holding"),
+            searchIn: getQueryParam("searchIn"),
+            catG: getQueryParam("categoryGroup"),
+            page: getQueryParam("page"),
+            orderBy: getQueryParam("orderBy"),
+            min: getQueryParam("minPrice"),
+            max: getQueryParam("maxPrice")
+        }
+
+        console.log(params)
+
+    }
+
+    function fill_inputs() {
+
+        document.getElementById("searchBar").value = getQueryParam("searchKey")
+        /*document.getElementById("").value = getQueryParam("holding")
+        document.getElementById("").value = getQueryParam("searchIn")
+        document.getElementById("").value = getQueryParam("categoryGroup")
+        document.getElementById("").value = getQueryParam("page")
+        document.getElementById("").value = getQueryParam("orderBy")*/
+        document.getElementById("minPrice").value = getQueryParam("minPrice")
+        document.getElementById("maxPrice").value = getQueryParam("maxPrice")
+    }
+
 
     onMount(()=> {
 
-
-        init_categories()
+        fill_inputs()
+        get_items()
+        
         init_settlInput()
+
 
 
     })
@@ -137,7 +187,7 @@
             </fieldset>
 
             <div class="row5">
-                <button id="searchButton">
+                <button id="searchButton" on:click={search}>
                     <img src="IMG/Global/search.png" alt="">
                     <p>Keresés</p>
                 </button>
