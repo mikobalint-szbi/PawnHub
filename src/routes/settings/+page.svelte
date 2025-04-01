@@ -332,7 +332,7 @@ import {regex} from "$lib/Scripts/variables.js";
         else if (data.mobile.length < 4){
             settingsError("Hibás telefonszám!", id)
         }
-        else if (!(sessionStorage["originalSettlement"] == document.getElementById("settlInput") || data.settlement_id)) {
+        else if (sessionStorage["originalSettlement"] != document.getElementById("settlInput").value && !data.settlement_id) {
             settingsError("A település nevét kérjük a lenyíló listából válassza ki!", id)
         }
         else if (data.website && !regex.website.test(data.website)){
@@ -354,7 +354,38 @@ import {regex} from "$lib/Scripts/variables.js";
                 localStorage["user"] = JSON.stringify(user)
             }
 
-            console.log(data)
+            settingsError("Egy pillanat...", id, true)
+            let reply = await api('PATCH', '/shop', data);
+            document.getElementById(id).style.display = "none"
+
+            
+            if (reply){
+
+                if (reply.error){
+
+                    if (reply.error.code == "EXISTING_EMAIL") {
+                        settingsError("A megadott e-mail-cím már foglalt.", id)
+                    }
+                    else {
+                        settingsError("Ismeretlen szerverhiba történt.", id)
+                        console.log(reply.error)
+                    }
+
+
+                }
+                else if (reply.errors) {
+                    settingsError("Ismeretlen szerverhiba történt.", id)
+                    console.log(reply.errors)
+                }
+                else {
+                    open_popup("messageOK","Az adatok módosítása megtörtént.")
+
+                }
+            }
+            else {
+                settingsError("Nem sikerült csatlakozni a szerverhez.", id)
+            }
+
 
         }
 
@@ -389,7 +420,7 @@ import {regex} from "$lib/Scripts/variables.js";
         else {
             
             settingsError("Egy pillanat...", id, true)
-            let reply = await api('PATCH', '/customer', data);
+            let reply = await api('PATCH', isCustomer? '/customer' : '/shop', data);
             document.getElementById(id).style.display = "none"
 
             if (reply){
@@ -411,7 +442,9 @@ import {regex} from "$lib/Scripts/variables.js";
                 }
                 else {
                     open_popup("messageOK","Az adatok módosítása megtörtént.")
-
+                    document.getElementById("oldPassword").value = ""
+                    document.getElementById("newPassword1").value = ""
+                    document.getElementById("newPassword2").value = ""
                 }
             }
             else {
