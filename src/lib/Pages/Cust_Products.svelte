@@ -4,31 +4,49 @@
     import '$lib/Styles/productCard.scss';
     import '$lib/Styles/settlInput.scss';
     import CategorySelector from "$lib/CategorySelector.svelte";
-    import {toggle_settlDropdown, init_settlInput} from "$lib/Scripts/functions.js";
+    import {
+        toggle_settlDropdown, init_settlInput, getAllQueryParams, setAllQueryParams, setQueryParam, getQueryParam, 
+        removeAllQueryParams
+    } from "$lib/Scripts/functions.js";
     import { goto } from '$app/navigation';
     import { page } from '$app/stores';
 
-    function setQueryParam(key, value) {
-        const url = new URL(window.location.href);
-        url.searchParams.set(key, value);
-        goto(url.toString(), { replaceState: true });
-    }
-    function getQueryParam(key) {
-        return $page.url.searchParams.get(key);
-    }
-    function removeAllQueryParams() {
-        const url = new URL(window.location.href);
-        url.search = '';  // Clear query parameters
-        goto(url.toString(), { replaceState: true });
-    }
+    
 
-    function search () {
+    async function search () {
         removeAllQueryParams()
-
+        
         if (document.getElementById("searchBar").value) {
-            setQueryParam("searchKey", document.getElementById("searchBar").value)
-
+            setTimeout(() => {
+                setQueryParam("searchKey", document.getElementById("searchBar").value)
+            }, 100);
         }
+        if (document.getElementById("selectCategory").value != "0") {
+            setTimeout(() => {
+                setQueryParam("category", document.getElementById("selectCategory").value)
+            }, 100);
+        }
+        if (document.getElementById("minPrice").value) {
+            setTimeout(() => {
+                setQueryParam("minPrice", document.getElementById("minPrice").value)
+            }, 100);
+        }
+        if (document.getElementById("maxPrice").value) {
+            setTimeout(() => {
+                setQueryParam("maxPrice", document.getElementById("maxPrice").value)
+            }, 100);
+        }
+        if (document.getElementById("selectCounty").value != "0") {
+            setTimeout(() => {
+                setQueryParam("holding", document.getElementById("selectCounty").value)
+            }, 100);
+        }
+
+
+
+
+        
+
     }
 
     function get_items () {
@@ -37,7 +55,7 @@
             searchKey: getQueryParam("searchKey"),
             hold: getQueryParam("holding"),
             searchIn: getQueryParam("searchIn"),
-            catG: getQueryParam("categoryGroup"),
+            category: getQueryParam("category"),
             page: getQueryParam("page"),
             orderBy: getQueryParam("orderBy"),
             min: getQueryParam("minPrice"),
@@ -50,12 +68,18 @@
 
     function fill_inputs() {
 
-        document.getElementById("searchBar").value = getQueryParam("searchKey")
+        if (getQueryParam("searchKey"))
+            document.getElementById("searchBar").value = getQueryParam("searchKey")
         /*document.getElementById("").value = getQueryParam("holding")
         document.getElementById("").value = getQueryParam("searchIn")
         document.getElementById("").value = getQueryParam("categoryGroup")
         document.getElementById("").value = getQueryParam("page")
         document.getElementById("").value = getQueryParam("orderBy")*/
+        if (getQueryParam("category"))
+            document.getElementById("selectCategory").value = getQueryParam("category")
+        if (getQueryParam("holding"))
+            document.getElementById("selectCounty").value = getQueryParam("holding")
+        
         document.getElementById("minPrice").value = getQueryParam("minPrice")
         document.getElementById("maxPrice").value = getQueryParam("maxPrice")
     }
@@ -66,7 +90,7 @@
         fill_inputs()
         get_items()
         
-        init_settlInput()
+        init_settlInput(true)
 
 
 
@@ -171,17 +195,15 @@
 
                 </div>
                 <div class="row4">
-                    <div id="selectedSettlements">                
-                        {#each {length: 17} as _, i}
+                    <div id="selectedSettlements">
+
                         <div class="settlTag" title="Kattintson a törléshez!">
-                            <p class="name">
-                                {Array("Nagykőrös","Jászfelsőszentgyörgy", "Kiskunfélegyháza", "Szob", "Kocsér", "Tiszakécske")[Math.floor(Math.random() * 6)]}
-                            </p>
+                            <p class="name">A</p>
                             <button class="delButton">
                                 <img src="IMG/Global/close.png" alt="">
                             </button>
                         </div>
-                        {/each}
+
                     </div>
                 </div>
             </fieldset>

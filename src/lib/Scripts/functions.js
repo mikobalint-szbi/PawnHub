@@ -2,7 +2,9 @@
 import {apiUrl} from "$lib/Scripts/variables.js";
 import {regex} from "$lib/Scripts/variables.js";
 import {open_popup, close_popup} from "$lib/Scripts/popup.js";
-
+import { json } from "@sveltejs/kit";
+import { goto } from '$app/navigation';
+import { page } from '$app/stores';
 export function getNum(str){
     return Number(str.match(/[\d.]+/g)?.join('') || '')
 }
@@ -10,7 +12,41 @@ export function getNum(str){
 export function logout () {
     localStorage.clear()
     location.assign("/")
-    console.log("heeeee")
+}
+
+export function getAllQueryParams() {
+    const url = new URL(window.location.href); // Read current URL
+    const params = Object.fromEntries(url.searchParams.entries()); // Convert query params to an object
+    return params;
+}
+export function setAllQueryParams(params) {
+    const url = new URL(window.location.href); // Read current URL
+
+    // Update the query parameters with the object passed
+    Object.entries(params).forEach(([key, value]) => {
+        url.searchParams.set(key, value); // Set or update the parameter
+    });
+
+    // Update the URL without reloading the page, using SvelteKit's `goto`
+    goto(url.toString(), { replaceState: true });
+}
+export function setQueryParam(key, value) {
+    const url = new URL(window.location.href);
+    console.log("\n")
+    console.log("1", url)
+    url.searchParams.set(key, value);
+    console.log("2", url)
+    console.log("3", url.toString())
+
+    goto(url.toString(), { replaceState: false });
+}
+export function getQueryParam(key) {
+    return $page.url.searchParams.get(key);
+}
+export function removeAllQueryParams() {
+    const url = new URL(window.location.href);
+    url.search = '';  // Clear query parameters
+    goto(url.toString(), { replaceState: true });
 }
 
 export async function api (method, path, body = null) {
@@ -334,7 +370,7 @@ export function validate_reply(reply) {
 
 
 
-export async function toggle_settlDropdown(){
+export async function toggle_settlDropdown(multiple=false){
         
     let dropdown = document.getElementById("dropdownContent")
     let input = document.getElementById("settlInput")
@@ -383,9 +419,29 @@ export async function toggle_settlDropdown(){
                 link.id = l[key]
                 link.text = key
                 link.onclick = () =>{
-                    localStorage["chosenSettlement"] = l[key]
-                    input.value = key
-                    dropdown.style.display = "none"
+                    if (!multiple){
+                        localStorage["chosenSettlement"] = l[key]
+                        input.value = key
+                        dropdown.style.display = "none"
+                    }
+                    else {
+                        let param = getQueryParam("settlements") ?? ""
+                        let cs = JSON.parse(localStorage["chosenSettlements"] ?? "[]")
+
+                        if (param != "") {
+                            param += `,${l[key]}`
+                        }
+                        else {
+                            param = l[key]
+                        }
+
+                        cs[key] = l[key]
+
+                        localStorage["chosenSettlements"] = JSON.stringify(cs)
+                        setQueryParam("settlements", param)
+
+                    }
+
                 }
 
                 dropdown.appendChild(link)
@@ -412,8 +468,8 @@ export async function toggle_settlDropdown(){
 }
 
 
-export function init_settlInput () {
-    document.getElementById("settlInput").addEventListener('keyup', toggle_settlDropdown)
+export function init_settlInput (multiple=false) {
+    document.getElementById("settlInput").addEventListener('keyup', ()=> toggle_settlDropdown(multiple))
     
     //document.onkeypress = toggle_settlDropdown
 
