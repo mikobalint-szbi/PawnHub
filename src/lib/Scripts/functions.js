@@ -32,16 +32,22 @@ export function setAllQueryParams(params) {
 }
 export function setQueryParam(key, value) {
     const url = new URL(window.location.href);
-    console.log("\n")
-    console.log("1", url)
-    url.searchParams.set(key, value);
-    console.log("2", url)
-    console.log("3", url.toString())
+
+    if (value) {
+        url.searchParams.set(key, value);
+    } 
+    else {
+        url.searchParams.delete(key);
+    }
 
     goto(url.toString(), { replaceState: false });
 }
 export function getQueryParam(key) {
-    return $page.url.searchParams.get(key);
+    let value = null;
+    page.subscribe(($page) => {
+        value = $page.url.searchParams.get(key);
+    })();
+    return value
 }
 export function removeAllQueryParams() {
     const url = new URL(window.location.href);
@@ -368,6 +374,126 @@ export function validate_reply(reply) {
     }
 }
 
+export function add_firstSettlement() {
+    
+    if (sessionStorage["settlements_firstResult"]) {
+        let firstResult = JSON.parse(sessionStorage["settlements_firstResult"])
+        let name = Object.keys(firstResult)[0]
+        
+        add_settlement(name, firstResult[name])
+
+        sessionStorage.removeItem("settlements_firstResult")
+
+        document.getElementById("dropdownContent").style.display = "none"
+
+        setTimeout(() => {
+            document.getElementById("settlInput").focus()
+        }, 50);
+    }
+}
+export function complete_settlementName() {
+    if (sessionStorage["settlements_firstResult"]) {
+        let firstResult = JSON.parse(sessionStorage["settlements_firstResult"])
+        let name = Object.keys(firstResult)[0]
+
+        document.getElementById("settlInput").value = name
+    }
+}
+
+export function remove_settlement(name, code) {
+
+
+    // Query Params:
+
+    let param = getQueryParam("settlements") ?? ""
+
+    param = param.replaceAll(`${code}`,"").replaceAll("__","_")
+    
+    if (param[0] == "_")
+        param = param.slice(1)
+    if (param.charAt(param.length - 1) == "_")
+        param = param.slice(0, -1);
+
+
+    setQueryParam("settlements", param)
+
+    // LocalStorage:
+
+    let cs = JSON.parse(localStorage["chosenSettlements"] ?? "{}")
+    delete cs[name]
+
+    if (Object.keys(cs).length == 0){
+        document.getElementById("selectedSettlements").style.display = "none"
+    }
+
+    localStorage["chosenSettlements"] = JSON.stringify(cs)
+
+    // User Interface:
+
+    let sender = document.getElementById("settlTag_" + code)
+
+    if (sender)
+        sender.remove()
+
+    
+}
+
+export function add_settlement (name, code ) {
+    
+    // Query Params: 
+
+    let param = getQueryParam("settlements") ?? ""
+
+    if (param != "") {
+        if (!param.split("_").includes(`${code}`)) {
+            param += `_${code}`
+        }
+    }
+    else {
+        param = code
+    }
+    setQueryParam("settlements", param)
+
+    // LocalStorage:
+
+    let cs = JSON.parse(localStorage["chosenSettlements"] ?? "{}")
+    cs[name] = code
+    localStorage["chosenSettlements"] = JSON.stringify(cs)
+
+    // User Interface:
+
+    let ss = document.getElementById("selectedSettlements")
+
+    const settlTag = document.createElement("div");
+    settlTag.className = "settlTag";
+    settlTag.id = "settlTag_" + code;
+    settlTag.title = "Kattintson a törléshez!";
+    settlTag.onclick = () => remove_settlement(name, code);
+
+    const namePara = document.createElement("p");
+    namePara.className = "name";
+    namePara.textContent = name;
+
+    const delButton = document.createElement("button");
+    delButton.className = "delButton";
+    
+
+    const img = document.createElement("img");
+    img.src = "IMG/Global/close.png";
+    img.alt = "Bezárás";
+
+    delButton.appendChild(img);
+    settlTag.appendChild(namePara);
+    settlTag.appendChild(delButton);
+    ss.appendChild(settlTag);
+
+    
+    // Etc 
+    document.getElementById("settlInput").value = ""
+    document.getElementById("selectedSettlements").style.display = "flex"
+    
+}
+
 
 
 export async function toggle_settlDropdown(multiple=false){
@@ -376,6 +502,7 @@ export async function toggle_settlDropdown(multiple=false){
     let input = document.getElementById("settlInput")
     dropdown.style.width = input.offsetWidth + "px"
 
+    dropdown.innerHTML = ""
     localStorage.removeItem("chosenSettlement")
 
     if (input.value != "" && input.value.length >= 2){ 
@@ -413,38 +540,47 @@ export async function toggle_settlDropdown(multiple=false){
                 }
     
             })
+            if (Object.keys(l).length >= 1) {
 
-            for (const key in l) {
-                let link = document.createElement("a")
-                link.id = l[key]
-                link.text = key
-                link.onclick = () =>{
-                    if (!multiple){
-                        localStorage["chosenSettlement"] = l[key]
-                        input.value = key
-                        dropdown.style.display = "none"
-                    }
-                    else {
-                        let param = getQueryParam("settlements") ?? ""
-                        let cs = JSON.parse(localStorage["chosenSettlements"] ?? "[]")
+                let settlements_firstResult = {}
+                let firstKey = Object.keys(l)[0]
+                settlements_firstResult[firstKey] = l[firstKey]
 
-                        if (param != "") {
-                            param += `,${l[key]}`
+
+                sessionStorage["settlements_firstResult"] = JSON.stringify(settlements_firstResult)
+
+                for (const key in l) {
+                    let link = document.createElement("a")
+                    link.id = l[key]
+                    link.text = key
+                    link.onclick = () =>{
+                        if (!multiple){
+                            localStorage["chosenSettlement"] = l[key]
+                            input.value = key
+
                         }
                         else {
-                            param = l[key]
+                            add_settlement(key, l[key])
+
                         }
+                        sessionStorage.removeItem("settlements_firstResult")
 
-                        cs[key] = l[key]
+                        dropdown.style.display = "none"
 
-                        localStorage["chosenSettlements"] = JSON.stringify(cs)
-                        setQueryParam("settlements", param)
+                        setTimeout(() => {
+                            input.focus()
+                        }, 50);
 
                     }
-
+                    dropdown.appendChild(link)
                 }
-
+            }
+            else {
+                let link = document.createElement("a")
+                link.id = "empty"
+                link.innerHTML = "Nincs találat"
                 dropdown.appendChild(link)
+
             }
 
         }
@@ -469,8 +605,28 @@ export async function toggle_settlDropdown(multiple=false){
 
 
 export function init_settlInput (multiple=false) {
-    document.getElementById("settlInput").addEventListener('keyup', ()=> toggle_settlDropdown(multiple))
+    let settlInput = document.getElementById("settlInput")
+
+    settlInput.addEventListener('keyup', ()=> toggle_settlDropdown(multiple))
     
+    settlInput.addEventListener('keypress', function (e) {
+
+        if (e.key === 'Enter') {
+            add_firstSettlement()
+        }
+    });
+
+    settlInput.addEventListener('keydown', function (e) {
+
+        if (e.key === 'Tab') {
+            setTimeout(() => {
+                e.target.focus()
+                complete_settlementName()
+            }, 5);
+        }
+    });
+
+
     //document.onkeypress = toggle_settlDropdown
 
     window.addEventListener("resize", ()=> {
@@ -480,6 +636,8 @@ export function init_settlInput (multiple=false) {
             document.getElementById("dropdownContent").style.width = document.getElementById("settlInput").offsetWidth + "px"
         }
     })
+
+
 }
 
 export function cancel_profilePic(isCustomer, settingsMode = false) {

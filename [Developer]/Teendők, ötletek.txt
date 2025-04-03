@@ -2,9 +2,9 @@
 http://infojegyzet.hu/webszerkesztes/dokumentacio
 
 Teendők:
-
-Hol tartottam:
-- A települések a keresőnél elég, ha csak a localStorage-ben jelennek meg. Nem feltétlenül kell őket a linkbe beletenni.
+- Az oldal betöltésekor fejtse ki a query params-ból a termékkereső oldal, hogy mely települések vannak kiválasztva.
+	• Mindig a query params írja felül a localStorage-ot.
+- A termékkereső-API meghívása, az eredmények kiírása
 
 
 Miután lesz backend:

@@ -6,7 +6,7 @@
     import CategorySelector from "$lib/CategorySelector.svelte";
     import {
         toggle_settlDropdown, init_settlInput, getAllQueryParams, setAllQueryParams, setQueryParam, getQueryParam, 
-        removeAllQueryParams
+        removeAllQueryParams, add_firstSettlement
     } from "$lib/Scripts/functions.js";
     import { goto } from '$app/navigation';
     import { page } from '$app/stores';
@@ -67,7 +67,6 @@
     }
 
     function fill_inputs() {
-
         if (getQueryParam("searchKey"))
             document.getElementById("searchBar").value = getQueryParam("searchKey")
         /*document.getElementById("").value = getQueryParam("holding")
@@ -149,7 +148,7 @@
 
             <fieldset>
                 <legend>Keresés helye</legend>
-                <div class="row3">
+                <div class="row3" id="row3">
 
                     <select name="selectCounty" id="selectCounty">
                         <optgroup label="Nagyvárosok">
@@ -190,19 +189,19 @@
                                 {/each}
                               </div>
                         </div>
-                        <button>Hozzáadás</button>
+                        <button on:click={add_firstSettlement}>Hozzáadás</button>
                     </div>
 
                 </div>
                 <div class="row4">
                     <div id="selectedSettlements">
 
-                        <div class="settlTag" title="Kattintson a törléshez!">
+                        <!--div class="settlTag" title="Kattintson a törléshez!">
                             <p class="name">A</p>
                             <button class="delButton">
                                 <img src="IMG/Global/close.png" alt="">
                             </button>
-                        </div>
+                        </div-->
 
                     </div>
                 </div>
@@ -529,37 +528,8 @@
                         column-gap: 4px;
                         padding: 6px;
                         overflow: hidden;
+                        display: none;
 
-                        .settlTag {
-                            display: flex;
-                            background-color: rgb(128, 204, 154);
-                            padding: 3px;
-                            padding-left: 12px;
-                            padding-right: 8px;
-                            gap: 6px;
-                            align-items: center;
-                            border-radius: 20px;
-                            border: 1px solid rgb(106, 137, 116);
-                            cursor: pointer;
-
-                            .name {
-                                margin: 0;
-                            }
-                            .delButton {
-                                height: 16px;
-                                width: 16px;
-                                border-radius: 100%;
-                                display: flex;
-                                justify-content: center;
-                                align-items: center;
-                                border: 1px solid rgb(101, 145, 109);
-                                background-color: rgb(110, 153, 125);
-
-                                img {
-                                    width: 100%;
-                                }
-                            }
-                        }
                     }
                 }
 
@@ -604,6 +574,51 @@
         }
 
     }
+
+    :global(.settlTag) {
+        display: flex;
+        background-color: rgb(128, 204, 154);
+        padding: 3px;
+        padding-left: 12px;
+        padding-right: 8px;
+        gap: 6px;
+        align-items: center;
+        border-radius: 20px;
+        border: 1px solid rgb(106, 137, 116);
+        cursor: pointer;
+
+        :global(.name) {
+            margin: 0;
+        }
+        :global(.delButton) {
+            height: 16px;
+            width: 16px;
+            border-radius: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid rgb(101, 145, 109);
+            background-color: rgb(110, 153, 125);
+
+            :global(img) {
+                width: 100%;
+            }
+        }
+    }
+
+    :global(a#empty) {
+        color: rgb(109, 128, 115) !important;
+    }
+
+    :global(#empty_selectedSettlements) {
+        color: rgb(109, 128, 115) !important;
+        font-style: italic;
+        margin: 0;
+        font-weight: 400;
+        text-indent: 5px;
+        font-size: 15px;
+    }
+
 
 
 </style>
