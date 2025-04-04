@@ -438,9 +438,11 @@ export function remove_settlement(name, code) {
     
 }
 
-export function add_settlement (name, code ) {
+export function add_settlement (name, code, skipParams = false, skipLocStorage = false ) {
     
     // Query Params: 
+
+    if (!skipParams){
 
     let param = getQueryParam("settlements") ?? ""
 
@@ -454,11 +456,15 @@ export function add_settlement (name, code ) {
     }
     setQueryParam("settlements", param)
 
+    }
+
     // LocalStorage:
 
-    let cs = JSON.parse(localStorage["chosenSettlements"] ?? "{}")
-    cs[name] = code
-    localStorage["chosenSettlements"] = JSON.stringify(cs)
+    if (!skipLocStorage) {
+        let cs = JSON.parse(localStorage["chosenSettlements"] ?? "{}")
+        cs[name] = code
+        localStorage["chosenSettlements"] = JSON.stringify(cs)
+    }
 
     // User Interface:
 

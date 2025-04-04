@@ -6,7 +6,7 @@
     import CategorySelector from "$lib/CategorySelector.svelte";
     import {
         toggle_settlDropdown, init_settlInput, getAllQueryParams, setAllQueryParams, setQueryParam, getQueryParam, 
-        removeAllQueryParams, add_firstSettlement
+        removeAllQueryParams, add_firstSettlement, add_settlement, api
     } from "$lib/Scripts/functions.js";
     import { goto } from '$app/navigation';
     import { page } from '$app/stores';
@@ -81,6 +81,62 @@
         
         document.getElementById("minPrice").value = getQueryParam("minPrice")
         document.getElementById("maxPrice").value = getQueryParam("maxPrice")
+
+        // Settlements:
+
+        fill_settlementTags()
+
+    }
+
+    async function fill_settlementTags(){
+        
+        let settlCodes;
+
+        if (getQueryParam("settlements")) {
+            settlCodes = getQueryParam("settlements").split("_")
+
+            localStorage["chosenSettlements"] = "{}"
+
+            settlCodes.forEach(async (code) => {
+                let id;
+
+                if (code.includes("-")) {
+                    id = code.split("-")[0]
+                }
+                else {
+                    id = code
+                }
+
+                let reply = await api('GET', `/settlement/${id}`);
+
+                if (reply && reply.name) {
+                
+                    add_settlement(reply.name, code, true)
+                
+                }
+
+            });
+
+        }
+        else {
+            // Fill from LocalStorage:
+
+            let cs = JSON.parse(localStorage["chosenSettlements"])
+
+            Object.keys(cs).forEach(key=>{
+                
+                setTimeout(() => {
+                    add_settlement(key, cs[key], false, true)
+
+                }, 50);
+
+            })
+
+        
+        }
+
+
+
     }
 
 
