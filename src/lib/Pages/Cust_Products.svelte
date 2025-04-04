@@ -11,8 +11,10 @@
     import { goto } from '$app/navigation';
     import { page } from '$app/stores';
 
+    let searchResults = []
 
-        
+
+    function fill_queryParams_fromInputs (){
                 
         if (document.getElementById("searchBar").value) {
             setTimeout(() => {
@@ -95,6 +97,7 @@
 
         if (reply) {
             console.log(reply)
+            searchResults = reply
         }
         else {
             searchError("Ismeretlen szerverhiba történt!")
@@ -223,6 +226,10 @@
         get_items()
         
         init_settlInput(true)
+
+        setTimeout(() => {
+            search()
+        }, 50);
 
 
 
@@ -354,7 +361,7 @@
     <div id="main-container">
         
 
-        {#each {length: 17} as _, i}
+        {#each searchResults as item, i}
         <!-- svelte-ignore a11y-no-static-element-interactions -->
         <!-- svelte-ignore a11y-click-events-have-key-events -->
         <div class="productCard" on:click={()=>location.assign('product')}>
@@ -366,16 +373,6 @@
                     <h3 class="productTitle" title="Termék neve">Termék neve Termék neve Termék neve Termék neve Termék neve Termék neve Termék neve Termék neve </h3>
                     <p class="productCategory">Karóra</p>
                     <p class="productDescription">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum rerum exercitationem iste voluptate aperiam dolor qui animi quis fugiat magnam assumenda distinctio, consequuntur corrupti expedita sit autem iusto provident! Dicta?
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. 
 
                     </p>
