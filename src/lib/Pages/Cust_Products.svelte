@@ -591,9 +591,9 @@
             margin: 0;
         }
         :global(.delButton) {
-            height: 16px;
-            width: 16px;
-            border-radius: 100%;
+            height: 16px !important;
+            width: 16px !important;
+            border-radius: 100% !important;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -601,7 +601,7 @@
             background-color: rgb(110, 153, 125);
 
             :global(img) {
-                width: 100%;
+                width: 100% !important;
             }
         }
     }
@@ -610,14 +610,7 @@
         color: rgb(109, 128, 115) !important;
     }
 
-    :global(#empty_selectedSettlements) {
-        color: rgb(109, 128, 115) !important;
-        font-style: italic;
-        margin: 0;
-        font-weight: 400;
-        text-indent: 5px;
-        font-size: 15px;
-    }
+
 
 
 

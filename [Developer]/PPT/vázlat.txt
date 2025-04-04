@@ -1,0 +1,39 @@
+
+
+Felhasználói PPT angolul:
+- Hogyan működik, mit tud az oldal
+- Ezt a PPT-t én csinálom
+- Téma: Functions of the Program
+- Szekciók:
+	• The problem → The solution
+	• A különféle funkciók bemutatása
+	
+
+
+Fejlesztői PPT magyarul:
+- Szekciók:
+	• The problem → The solution
+	• A program fejlesztése
+		~ Backend, frontend keretrendszerek összefoglalva (és milyen adatbázis), miket használtunk (Python program is).
+		Backend:
+		~ Modellek
+		~ Kontróllérek
+		Frontend:
+		~ 
+		The database (ek-diagram, egyebek)
+		
+		Responsivity (mobile view too)
+		
+		Tests
+		
+		Teamwork (how we cooperated, using what softwares)
+		~ Ki melyik részét csinálta a projektnek
+		
+		The future:
+		~ Fejlesztési lehetőségek
+		
+
+		
+		
+	
+
