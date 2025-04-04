@@ -1,6 +1,6 @@
 <script>
     import {onMount} from "svelte";
-
+    // import {open_popup} from "$lib/Scripts/popup.js"
 
     
 
@@ -19,7 +19,7 @@
     }
 
     onMount(()=>{
-        
+
     })
 
 </script>

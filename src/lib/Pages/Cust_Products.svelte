@@ -11,11 +11,9 @@
     import { goto } from '$app/navigation';
     import { page } from '$app/stores';
 
-    
 
-    async function search () {
-        removeAllQueryParams()
         
+                
         if (document.getElementById("searchBar").value) {
             setTimeout(() => {
                 setQueryParam("searchKey", document.getElementById("searchBar").value)
@@ -41,12 +39,91 @@
                 setQueryParam("holding", document.getElementById("selectCounty").value)
             }, 100);
         }
+    }
+
+    async function search () {
+        removeAllQueryParams(true)
+        fill_queryParams_fromInputs()
+
+        // Paraméterek összeállítása:
+
+        let data = {
+            searchKey: document.getElementById("searchBar").value,
+            cat: document.getElementById("selectCategory").value,
+            minPrice: document.getElementById("minPrice").value,
+            maxPrice: document.getElementById("maxPrice").value,
+            hold: document.getElementById("selectCounty").value,
+            settlements: "" // toDo
+
+        }
+
+        if (data.searchKey) {
+
+        }
+
+        let cs = JSON.parse(localStorage["chosenSettlements"] ?? "{}") 
+
+        Object.keys(cs).forEach(key=>{
+            data.settlements += `${String(cs[key]).replaceAll("-","_")}_`
+        })
+
+        data.settlements = data.settlements.slice(0, -1)
+
+        // Link összeállítása:
+
+        let url = `/items/?`
+
+        if (data.cat && data.cat[0] == "g") {
+            data.catG = data.cat.slice(1)
+            delete data.cat
+        }
+
+        Object.keys(data).forEach(key=> {
+            if (data[key]){
+                url += `${key}=${data[key]}&`
+
+            }
+        })
+
+        url = url.slice(0, -1)
+
+        // API-kérelem:
+
+        searchError("Keresés folyamatban...", true)
+        let reply = await api('GET', url);
 
 
-
+        if (reply) {
+            console.log(reply)
+        }
+        else {
+            searchError("Ismeretlen szerverhiba történt!")
+        }
 
         
 
+    }
+
+    function searchError (text, ...args) {
+
+        let mainContainer = document.getElementById("main-container")
+
+        mainContainer.innerHTML = ""
+
+        let err = document.createElement('p');
+        err.textContent = text;
+        err.id = 'searchError';
+        err.className = 'error';
+        err.style.display = "block"
+        mainContainer.appendChild(err);
+
+        if (args[0] && args[0] == true) {
+            err.style.color = "rgb(64, 108, 78)"
+            err.style.marginTop = "-15px"
+        }
+        else {
+            err.style.color = "rgb(156, 30, 30)"
+        }
     }
 
     function get_items () {
@@ -62,7 +139,7 @@
             max: getQueryParam("maxPrice")
         }
 
-        console.log(params)
+        // console.log(params)
 
     }
 
@@ -121,7 +198,7 @@
         else {
             // Fill from LocalStorage:
 
-            let cs = JSON.parse(localStorage["chosenSettlements"])
+            let cs = JSON.parse(localStorage["chosenSettlements"] ?? "{}")
 
             Object.keys(cs).forEach(key=>{
                 

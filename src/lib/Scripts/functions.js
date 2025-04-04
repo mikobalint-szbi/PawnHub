@@ -49,10 +49,18 @@ export function getQueryParam(key) {
     })();
     return value
 }
-export function removeAllQueryParams() {
+export function removeAllQueryParams(exceptSettlements = false) {
+
+    let settlements = getQueryParam("settlements") ?? ""
+
     const url = new URL(window.location.href);
     url.search = '';  // Clear query parameters
     goto(url.toString(), { replaceState: true });
+
+    setTimeout(() => {
+        setQueryParam("settlements", settlements)
+    }, 50);
+
 }
 
 export async function api (method, path, body = null) {
@@ -460,38 +468,45 @@ export function add_settlement (name, code, skipParams = false, skipLocStorage =
 
     // LocalStorage:
 
-    if (!skipLocStorage) {
-        let cs = JSON.parse(localStorage["chosenSettlements"] ?? "{}")
+    let cs = JSON.parse(localStorage["chosenSettlements"] ?? "{}")
+    let skip = Object.keys(cs).includes(name)
+
+    if (!skipLocStorage && !skip) {
         cs[name] = code
         localStorage["chosenSettlements"] = JSON.stringify(cs)
     }
 
     // User Interface:
 
-    let ss = document.getElementById("selectedSettlements")
 
-    const settlTag = document.createElement("div");
-    settlTag.className = "settlTag";
-    settlTag.id = "settlTag_" + code;
-    settlTag.title = "Kattintson a törléshez!";
-    settlTag.onclick = () => remove_settlement(name, code);
+    if (!skip){
+        
+        let ss = document.getElementById("selectedSettlements")
 
-    const namePara = document.createElement("p");
-    namePara.className = "name";
-    namePara.textContent = name;
+        const settlTag = document.createElement("div");
+        settlTag.className = "settlTag";
+        settlTag.id = "settlTag_" + code;
+        settlTag.title = "Kattintson a törléshez!";
+        settlTag.onclick = () => remove_settlement(name, code);
 
-    const delButton = document.createElement("button");
-    delButton.className = "delButton";
-    
+        const namePara = document.createElement("p");
+        namePara.className = "name";
+        namePara.textContent = name;
 
-    const img = document.createElement("img");
-    img.src = "IMG/Global/close.png";
-    img.alt = "Bezárás";
+        const delButton = document.createElement("button");
+        delButton.className = "delButton";
+        
 
-    delButton.appendChild(img);
-    settlTag.appendChild(namePara);
-    settlTag.appendChild(delButton);
-    ss.appendChild(settlTag);
+        const img = document.createElement("img");
+        img.src = "IMG/Global/close.png";
+        img.alt = "Bezárás";
+
+        delButton.appendChild(img);
+        settlTag.appendChild(namePara);
+        settlTag.appendChild(delButton);
+        ss.appendChild(settlTag);
+
+    }
 
     
     // Etc 
