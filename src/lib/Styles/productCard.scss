@@ -201,10 +201,11 @@
 
                 .productLocation {
 
-                    p {
+                    p, a {
                         margin: 0;
                         font-size: 15px;
-                        color: rgb(35, 61, 46);
+                        color: rgb(35, 61, 46) !important;
+                        text-decoration: none !important;
 
                     }
 

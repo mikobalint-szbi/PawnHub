@@ -431,7 +431,7 @@
         {#each searchResults as item, i}
         <!-- svelte-ignore a11y-no-static-element-interactions -->
         <!-- svelte-ignore a11y-click-events-have-key-events -->
-        <div class="productCard" on:click={()=>location.assign(`product/${item.id}`)}>
+        <div class="productCard" on:click={()=>location.assign(`product/?id=${item.id}`)}>
             <div class="row1">
                 <div class="col1">
                     {#if item.img}
