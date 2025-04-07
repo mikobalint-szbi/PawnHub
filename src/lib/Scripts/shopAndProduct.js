@@ -139,12 +139,13 @@ export async function get_shopData (shopId) {
                 }
             }
             else {
-                reply.website_out = reply.website.replaceAll("https://", "").replaceAll("http://","")
+                if (reply.website){
+                    reply.website_out = reply.website.replaceAll("https://", "").replaceAll("http://","")
 
-                if (!reply.website.includes("https://") || !reply.website.includes("http://")){
-                    reply.website = "https://" + reply.website
+                    if (!reply.website.includes("https://") || !reply.website.includes("http://")){
+                        reply.website = "https://" + reply.website
+                    }
                 }
-                
 
                 return reply
             }
@@ -158,4 +159,31 @@ export async function get_shopData (shopId) {
 
 export async function get_shopItems (shopId) {
 
+    if (!shopId) {
+        localStorage["error"] = "ShopId not found."
+        history.go(-1)
+    }
+    else {
+
+        let reply = await api("GET", `/items/?shopId=${shopId}`)
+
+        if (reply) {
+
+            if (Array.isArray(reply)){
+                console.log(reply)
+                return reply
+
+            }
+            else {
+                console.log("Ismeretlen szerverhiba történt. [#1]")
+
+            }
+
+
+        }
+        else {
+            console.log("Ismeretlen szerverhiba történt. [#2]")
+        }
+
+    }
 }
