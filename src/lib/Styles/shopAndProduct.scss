@@ -546,9 +546,11 @@
                     }
 
                     
-                    /*#pageContent1 {
-
-                    }*/
+                    #pageContent1 {
+                        p {
+                            margin: 5px 15px;
+                        }
+                    }
                     #pageContent2 {
                         display: none;
                         flex-direction: column;

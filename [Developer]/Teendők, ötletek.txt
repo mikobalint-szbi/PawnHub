@@ -2,10 +2,9 @@
 http://infojegyzet.hu/webszerkesztes/dokumentacio
 
 Teendők:
-- A termékkereső-API meghívása, az eredmények kiírása
+- A Shop page-en a productCardoknak van egy kis hiba a reszponzivitásában. Túl későn törnek flex-direction:column irányba
 
-Hol tartottam:
-- A pageselectorban a diveknek onclick location assign makeLink függvényt adni
+
 
 Miután lesz backend:
 - A Shop és Product page-eknél a címzett mindig az aktuális zálogház legyen, és át se lehessen írni
