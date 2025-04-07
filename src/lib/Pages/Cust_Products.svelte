@@ -6,7 +6,7 @@
     import CategorySelector from "$lib/CategorySelector.svelte";
     import {
         toggle_settlDropdown, init_settlInput, getAllQueryParams, setAllQueryParams, setQueryParam, getQueryParam, 
-        removeAllQueryParams, add_firstSettlement, add_settlement, api, formatNum
+        removeAllQueryParams, add_firstSettlement, add_settlement, api, formatNum, show_pageSelector, hide_pageSelector
     } from "$lib/Scripts/functions.js";
     import { goto } from '$app/navigation';
     import { page } from '$app/stores';
@@ -50,7 +50,6 @@
             setTimeout(() => {
                 setQueryParam("page", sessionStorage["currentPage"])
                 currentPage = sessionStorage["currentPage"]
-                console.log(currentPage)
 
             }, 50);
         }
@@ -60,6 +59,8 @@
     async function search () {
         removeAllQueryParams(true)
         fill_queryParams_fromInputs()
+        hide_pageSelector()
+
 
         // Paraméterek összeállítása:
 
@@ -141,7 +142,6 @@
             sessionStorage["numOfResults"] = reply.length
 
             console.log(searchResults)
-            console.log(currentPage)
             //return reply.items
 
         }
@@ -150,6 +150,7 @@
             //return [];
         }
 
+        show_pageSelector()
     }
 
     function searchError (text, ...args) {
@@ -207,8 +208,16 @@
         document.getElementById("minPrice").value = getQueryParam("minPrice")
         document.getElementById("maxPrice").value = getQueryParam("maxPrice")
 
-        if (getQueryParam("page"))
-            sessionStorage["currentPage"] = getQueryParam("page")
+        if (getQueryParam("page")) {
+            let page = getQueryParam("page");
+            if (page >= 1) {
+                sessionStorage["currentPage"] = getQueryParam("page")
+            }
+            else {
+                sessionStorage["currentPage"] = "1"
+            }
+
+        }
         
 
         // Settlements:
@@ -278,6 +287,7 @@
 
 
     onMount(()=> {
+        hide_pageSelector()
 
         fill_inputs()
         get_items()
@@ -288,7 +298,7 @@
             search()
         }, 50);
 
-
+        show_pageSelector()
 
 
     })

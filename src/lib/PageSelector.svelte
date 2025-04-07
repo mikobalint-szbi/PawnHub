@@ -7,7 +7,6 @@
     url = url.replace(/&page.*/, '');
     url = url.replace(/\?page.*/, '');
 
-
     function makeUrl(pageNum) {
         if (url.includes("?")) {
             return `${url}&page=${pageNum}`
@@ -16,59 +15,73 @@
             return `${url}?page=${pageNum}`
         }
     }
+
+    function makeFunc (pageNum) {
+        if (pageNum <= numOfPages && pageNum > 1) {
+            return ()=> {
+                location.assign(makeUrl(pageNum))
+            }
+        }
+        else {
+            return ()=>{}
+        }
+
+    }
     
 </script>
 
-<div id="pagesContainer">
-    <div id="pages">
-        <div id="pageLeft" class="pageArrow">
-            <img src="IMG/Global/left-arrow.png" alt="">
-        </div>
+    
 
+<div id="pagesContainer" style="display: none;">
+    <div id="pages">
+        <button id="pageLeft" class="pageArrow" on:click={makeFunc(currentPage-1)}>
+            <img src="IMG/Global/left-arrow.png" alt="">
+        </button>
 
         {#if currentPage > 6 && currentPage >= numOfPages}
-            <div class="pageNum">{currentPage-6}</div>
+            <button class="pageNum" on:click={makeFunc(currentPage-6)}>{currentPage-6}</button>
         {/if}
         {#if currentPage > 5 && currentPage >= numOfPages - 1}
-            <div class="pageNum">{currentPage-5}</div>
+            <button class="pageNum" on:click={makeFunc(currentPage-5)}>{currentPage-5}</button>
         {/if}
         {#if currentPage > 4 && currentPage >= numOfPages - 2}
-            <div class="pageNum">{currentPage-4}</div>
+            <button class="pageNum" on:click={makeFunc(currentPage-4)}>{currentPage-4}</button>
         {/if}
         {#if currentPage > 3}
-            <div class="pageNum">{currentPage-3}</div>
+            <button class="pageNum" on:click={makeFunc(currentPage-3)}>{currentPage-3}</button>
         {/if}
         {#if currentPage > 2}
-            <div class="pageNum">{currentPage-2}</div>
+            <button class="pageNum" on:click={makeFunc(currentPage-2)}>{currentPage-2}</button>
         {/if}
         {#if currentPage > 1}
-            <div class="pageNum">{currentPage-1}</div>
+            <button class="pageNum" on:click={makeFunc(currentPage-1)}>{currentPage-1}</button>
         {/if}
     
-        <div class="pageNum active">{currentPage}</div>
+        <button class="pageNum active">{currentPage}</button>
 
         {#if currentPage < numOfPages}
-            <div class="pageNum">{Number(currentPage)+1}</div>
+            <button class="pageNum" on:click={makeFunc(Number(currentPage)+1)}>{Number(currentPage)+1}</button>
         {/if}
         {#if currentPage < numOfPages - 1}
-            <div class="pageNum">{Number(currentPage)+2}</div>
+            <button class="pageNum" on:click={makeFunc(Number(currentPage)+2)}>{Number(currentPage)+2}</button>
         {/if}
         {#if currentPage < numOfPages - 2}
-            <div class="pageNum">{Number(currentPage)+3}</div>
+            <button class="pageNum" on:click={makeFunc(Number(currentPage)+3)}>{Number(currentPage)+3}</button>
         {/if}
         {#if currentPage < numOfPages - 3 && currentPage <= 3}
-            <div class="pageNum">{Number(currentPage)+4}</div>
+            <button class="pageNum" on:click={makeFunc(Number(currentPage)+4)}>{Number(currentPage)+4}</button>
         {/if}
         {#if currentPage < numOfPages - 4 && currentPage <= 2}
-            <div class="pageNum">{Number(currentPage)+5}</div>
+            <button class="pageNum" on:click={makeFunc(Number(currentPage)+5)}>{Number(currentPage)+5}</button>
         {/if}
         {#if currentPage < numOfPages - 5 && currentPage <= 1}
-            <div class="pageNum">{Number(currentPage)+6}</div>
+            <button class="pageNum" on:click={makeFunc(Number(currentPage)+6)}>{Number(currentPage)+6}</button>
         {/if}
         
-        <div id="pageRight" class="pageArrow">
+        <button id="pageRight" class="pageArrow"  on:click={makeFunc(Number(currentPage)+1)}>
             <img src="IMG/Global/right-arrow.png" alt="">
-        </div>
+        </button>
+
     </div>
 
     {#if numOfPages > 7}
@@ -85,7 +98,8 @@
 
         margin-top: -11px;
         margin-bottom: 25px;
-        display: flex;
+        display: flex; //flex
+        visibility: hidden;
         flex-direction: column;
         align-items: center;
 
@@ -94,7 +108,7 @@
 
             gap: 3px;
             
-            div {
+            button {
                 display: flex;
                 height: 30px;
                 width: 30px;
@@ -102,11 +116,13 @@
                 align-items: center;
                 justify-content: center;
                 border-radius: 3px;
+                background-color: rgba($color: #000000, $alpha: 0.0);
             }
 
-            div.active {
+            button.active {
                 background-color: rgb(128, 204, 154);
                 font-weight: bold;
+                cursor: default;
             }
 
             .pageArrow {

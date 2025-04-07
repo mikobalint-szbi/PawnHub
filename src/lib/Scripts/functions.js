@@ -764,3 +764,16 @@ export async function get_profilePic(settingsMode = false) {
 export function formatNum(num) {
     return num.toString().replace(regex.formatNum, " ");
 }
+
+
+export function show_pageSelector() {
+    document.getElementById("pagesContainer").setAttribute('style', 'display:flex !important');
+    document.getElementById("pagesContainer").setAttribute('style', 'visibility: visible !important');
+
+}
+
+export function hide_pageSelector() {
+    document.getElementById("pagesContainer").setAttribute('style', 'display:none !important');
+    document.getElementById("pagesContainer").setAttribute('style', 'visibility: hidden !important');
+
+}
