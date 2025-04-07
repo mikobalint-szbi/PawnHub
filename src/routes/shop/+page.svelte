@@ -5,58 +5,6 @@
     import { open_popup, close_popup } from "$lib/Scripts/popup.js";
 
 
-    function togglePages(id) {
-
-        document.querySelectorAll(".pageTag").forEach((e)=>{
-            e.classList.remove("active")
-        })
-
-        document.getElementById(id).classList.add("active")
-
-        id = id.slice(-1);
-
-        document.querySelectorAll(".pageContent").forEach((e)=>{
-            e.style.display = "none"
-        })
-
-        document.getElementById("pageContent" + id).style.display = "flex"
-
-    }
-
-    function close_newMessage () {
-        document.getElementById("pageTag3").style.display = "none"
-        togglePages("pageTag1")
-        document.querySelector("input#receiver").value = ""
-        document.querySelector("input#topic").value = ""
-        document.querySelector("textarea#messageBody").value = ""
-    }
-
-    function open_newMessage () {
-        if (localStorage["user"]) {
-            document.getElementById("pageTag3").style.display = "block"
-            togglePages("pageTag3")
-        }
-        else {
-            open_popup("messageOK","Az üzenetküldéshez be kell jelentkeznie.",()=>{location.assign("/")})
-        }
-
-    }
-
-    function resizing () {
-
-
-        let w = document.getElementById("main-container").offsetWidth
-        document.getElementById("head-div").style.width = w +"px"
-
-        w = w - (40+10+2*20)
-
-        document.querySelectorAll(".contactRow .value").forEach((e)=>{
-
-            e.style.maxWidth = w + "px"
-
-        })
-    }
-
 
     onMount(()=>{
         resizing()
