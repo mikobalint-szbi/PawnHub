@@ -3,17 +3,29 @@
     import '$lib/Styles/shopAndProduct.scss';
     import '$lib/Styles/productCard.scss';
     import { open_popup, close_popup } from "$lib/Scripts/popup.js";
-    import {togglePages, close_newMessage, open_newMessage, resizing, get_itemData, get_shopData, init} from "$lib/Scripts/shopAndProduct.js"
+    import {
+        formatNum, api, setQueryParam, getQueryParam, get_categories
+    } from "$lib/Scripts/functions.js";
+    import {togglePages, close_newMessage, open_newMessage, resizing, get_shopItems, get_shopData} from "$lib/Scripts/shopAndProduct.js"
 
 
+    async function init() {
+        categories = await get_categories()
+        shop = await get_shopData(shopId)
+        items = await get_shopItems(shopId)
+    }
+
+    let shopId = getQueryParam("id")
+    let shop = null;
+    let items = null;
+    let categories;
+
+    init()
 
     onMount(()=>{
+
         resizing()
 
-        document.querySelectorAll(".pageTag").forEach((e)=>{
-
-            e.addEventListener("click", ()=> togglePages(e.id))
-        })
 
         window.addEventListener("resize", ()=> {
             resizing()
@@ -23,8 +35,8 @@
         // open_popup("imageViewer")
     })
 </script>
-<section id="body">
 
+<section id="body">
     <div id="head-div">
         <div id="h-col1">
             <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -47,16 +59,22 @@
     </div>
 
     <div id="main-container">
-
+        {#if shop}
         <div id="mRow1" class="mRow">
             <div class="col1">
-                <div class="image shop"></div>
+                {#if shop.img}
+                    <div class="image shop" style="background-image: url('data:image/png;base64,{shop.img}');"></div>
+                {:else}
+                    <div class="image shop" style="background-image: url('IMG/Global/no-image.png');"></div>
+                {/if}
 
             </div>
             <div class="col2">
                 <div class="nameField">
-                    <p class="name">Tóth Pista Zálogház és Ékszerüzlet</p>
-                    <p class="estab">Alapítva: 2015</p>
+                    <p class="name">{shop.name}</p>
+                    {#if shop.estYear}
+                        <p class="estab">Alapítva: {shop.estYear}</p>
+                    {/if}
                 </div>
                 <div class="contactsField">
                     <div class="contactRow">
@@ -64,23 +82,25 @@
                             <img src="IMG/Shop/location.png" alt="Hely">
                         </div>
                         <p class="value">
-                            Nagykőrös, Szent Benedek u. 6.
+                            {shop.settlement.postalCode} {shop.settlement.name}, {shop.address}
                         </p>
                     </div>
+                    {#if shop.website}
                     <div class="contactRow">
                         <div class="icon">
                             <img src="IMG/Shop/website.png" alt="Honlap">
                         </div>
-                        <a class="value" href="https://www.tothpistazaloghaz.hu">
-                            tothpistazaloghaz.hu
+                        <a class="value" href="{shop.website}">
+                            {shop.website_out}
                         </a>
                     </div>
+                    {/if}
                     <div class="contactRow">
                         <div class="icon">
                             <img src="IMG/Shop/email.png" alt="Email">
                         </div>
                         <p class="value">
-                            tothpistazaloghaz@mail.org
+                            {shop.email}
                         </p>
                     </div>
                     <div class="contactRow">
@@ -88,7 +108,7 @@
                             <img src="IMG/Shop/phone.png" alt="Telefon">
                         </div>
                         <p class="value">
-                            +36 12 345 6789
+                            {shop.mobile}
                         </p>
                     </div>
                 </div>
@@ -104,9 +124,9 @@
 
             <div class="pageContainer">
                 <div class="pageTags">
-                    <div class="pageTag active" id="pageTag1">Bemutatkozás</div>
-                    <div class="pageTag" id="pageTag2">Árukészlet</div>
-                    <div class="pageTag" id="pageTag3">Üzenet</div>
+                    <button class="pageTag active" id="pageTag1" on:click={()=>togglePages("pageTag1")}>Bemutatkozás</button>
+                    <button class="pageTag" id="pageTag2" on:click={()=>togglePages("pageTag2")}>Árukészlet</button>
+                    <button class="pageTag" id="pageTag3" on:click={()=>togglePages("pageTag3")}>Üzenet</button>
                 </div>
                 <div class="pageContent" id="pageContent1">
                     <p>
@@ -159,7 +179,8 @@
                 </div>
                 <div class="pageContent" id="pageContent2">
     
-                    {#each {length: 17} as _, i}
+                    {#if items}
+                    {#each items as item}
                     <!-- svelte-ignore a11y-click-events-have-key-events -->
                     <!-- svelte-ignore a11y-no-static-element-interactions -->
                     <div class="productCard" on:click={()=>location.assign('product')}>
@@ -199,16 +220,17 @@
                         </div>
                     </div>
                     {/each}
+                    {/if}
                 </div>
                 <div class="pageContent" id="pageContent3">
-                    
+                    {#if shop && localStorage["user"]}
                     <div class="message new">
                         <div class="mHeader new">
                             <div class="col1 mhCol">
                                 <img src="IMG/Messages/out.png" alt="">
                             </div>
                             <div class="col2 mhCol" alt="Címzett" title="Címzett">
-                                <input type="text" name="receiver" id="receiver" placeholder="Címzett" alt="Címzett" class="messageInput" disabled>
+                                <input type="text" name="receiver" id="receiver" placeholder="Címzett" alt="Címzett" class="messageInput" value="{shop.username}" disabled>
                             </div>
                             <div class="col3 mhCol" alt="Tárgy" title="Tárgy">
                                 <input type="text" name="topic" id="topic" placeholder="Tárgy" alt="Tárgy" class="messageInput">
@@ -229,7 +251,7 @@
                             </button>
                         </div>
                     </div>   
-                    
+                    {/if}
                 </div>
             </div>
 
@@ -238,9 +260,11 @@
         <div id="mRow3" class="mRow">
 
         </div>
-
+        {/if}
     </div>
+
 </section>
+
 <style lang="scss">
 
 </style>

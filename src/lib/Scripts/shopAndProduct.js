@@ -62,23 +62,25 @@ export function resizing () {
         w = document.getElementById("main-container").offsetWidth
         let name = document.querySelector(".name")
 
+        if (name) {
 
-        if (window.innerWidth < 596) {
-            name.style.setProperty("max-width",  (w - 20) * 1 + "px", "important")
-        }
-        else if (window.innerWidth < 768) {
-            name.style.setProperty("max-width",  (w - 40) * 1 + "px", "important")
-        }
-        else if (window.innerWidth < 992) {
-            name.style.setProperty("max-width",  (w - 40) * 0.56 + "px", "important")
-        }
-        else if (window.innerWidth < 1230) {
-            name.style.setProperty("max-width",  (w - 40) * 0.605 + "px", "important")
-        }
-        else {
-            name.style.setProperty("max-width",  (w - 40) * 0.627 + "px", "important")
-        }
 
+            if (window.innerWidth < 596) {
+                name.style.setProperty("max-width",  (w - 20) * 1 + "px", "important")
+            }
+            else if (window.innerWidth < 768) {
+                name.style.setProperty("max-width",  (w - 40) * 1 + "px", "important")
+            }
+            else if (window.innerWidth < 992) {
+                name.style.setProperty("max-width",  (w - 40) * 0.56 + "px", "important")
+            }
+            else if (window.innerWidth < 1230) {
+                name.style.setProperty("max-width",  (w - 40) * 0.605 + "px", "important")
+            }
+            else {
+                name.style.setProperty("max-width",  (w - 40) * 0.627 + "px", "important")
+            }
+        }
 
     }
 
@@ -117,13 +119,12 @@ export async function get_itemData (itemId) {
 }
 
 
-export async function get_shopData (item) {
-    if (!item || !item.shop_id) {
+export async function get_shopData (shopId) {
+    if (!shopId) {
         localStorage["error"] = "ShopId not found."
         history.go(-1)
     }
     else {
-        let shopId = item.shop_id
 
         let reply = await api("GET", `/shop/${shopId}`)
 
@@ -138,6 +139,13 @@ export async function get_shopData (item) {
                 }
             }
             else {
+                reply.website_out = reply.website.replaceAll("https://", "").replaceAll("http://","")
+
+                if (!reply.website.includes("https://") || !reply.website.includes("http://")){
+                    reply.website = "https://" + reply.website
+                }
+                
+
                 return reply
             }
         }
@@ -148,3 +156,6 @@ export async function get_shopData (item) {
     }
 }
 
+export async function get_shopItems (shopId) {
+
+}

@@ -12,7 +12,7 @@
     
         categories = await get_categories()
         item = await get_itemData(itemId)
-        shop = await get_shopData(item)
+        shop = await get_shopData(item.shop_id)
     }
     
     let itemId = getQueryParam("id")
@@ -30,6 +30,8 @@
 
         resizing()
 
+
+
         window.addEventListener("resize", ()=> {
             resizing()
         })
@@ -40,7 +42,7 @@
     })
 </script>
 
-{#if item}
+
 <section id="body">
 
     <div id="head-div">
@@ -65,7 +67,7 @@
     </div>
 
     <div id="main-container">
-
+        {#if item}
         <div id="mRow1" class="mRow">
             <div class="col1">
                 {#if item.img}
@@ -181,10 +183,11 @@
         <div id="mRow3" class="mRow">
 
         </div>
-
+        {/if}
     </div>
+
 </section>
-{/if}
+
 
 <style lang="scss">
 
