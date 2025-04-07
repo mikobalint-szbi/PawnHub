@@ -6,12 +6,13 @@
     import CategorySelector from "$lib/CategorySelector.svelte";
     import {
         toggle_settlDropdown, init_settlInput, getAllQueryParams, setAllQueryParams, setQueryParam, getQueryParam, 
-        removeAllQueryParams, add_firstSettlement, add_settlement, api
+        removeAllQueryParams, add_firstSettlement, add_settlement, api, formatNum
     } from "$lib/Scripts/functions.js";
     import { goto } from '$app/navigation';
     import { page } from '$app/stores';
 
     let searchResults = []
+    let categories = {}
 
 
     function fill_queryParams_fromInputs (){
@@ -19,28 +20,33 @@
         if (document.getElementById("searchBar").value) {
             setTimeout(() => {
                 setQueryParam("searchKey", document.getElementById("searchBar").value)
-            }, 100);
+            }, 50);
         }
         if (document.getElementById("selectCategory").value != "0") {
             setTimeout(() => {
                 setQueryParam("category", document.getElementById("selectCategory").value)
-            }, 100);
+            }, 50);
         }
         if (document.getElementById("minPrice").value) {
             setTimeout(() => {
                 setQueryParam("minPrice", document.getElementById("minPrice").value)
-            }, 100);
+            }, 50);
         }
         if (document.getElementById("maxPrice").value) {
             setTimeout(() => {
                 setQueryParam("maxPrice", document.getElementById("maxPrice").value)
-            }, 100);
+            }, 50);
         }
         if (document.getElementById("selectCounty").value != "0") {
             setTimeout(() => {
                 setQueryParam("holding", document.getElementById("selectCounty").value)
-            }, 100);
+            }, 50);
         }
+        if (sessionStorage["page"]) {
+            setTimeout(() => {
+                setQueryParam("page", sessionStorage["page"])
+            }, 50);
+        }        
     }
 
     async function search () {
@@ -55,11 +61,8 @@
             minPrice: document.getElementById("minPrice").value,
             maxPrice: document.getElementById("maxPrice").value,
             hold: document.getElementById("selectCounty").value,
-            settlements: "" // toDo
-
-        }
-
-        if (data.searchKey) {
+            settlements: "",
+            page: sessionStorage["page"] ?? "1"
 
         }
 
@@ -92,12 +95,42 @@
         // API-kérelem:
 
         searchError("Keresés folyamatban...", true)
+
+        if (!localStorage["categories"]) {
+            categories = await api('GET', "/types");
+
+            if (categories) {
+                let dict = {}
+
+                categories.forEach(e=> {
+                    dict[e.id] = e.name
+                })
+                console.log(dict)
+
+                localStorage["categories"] = JSON.stringify(dict)
+            }
+            else {
+                searchError("Ismeretlen szerverhiba történt.")
+            }
+            
+
+            //console.log(categories)
+        }
+        else {
+            categories = JSON.parse(localStorage["categories"])
+        }
+
+
         let reply = await api('GET', url);
 
+        document.getElementById("searchError").style.display = "none"
 
         if (reply) {
             console.log(reply)
-            searchResults = reply
+            searchResults = reply.items
+            sessionStorage["numOfPages"] = Math.ceil(reply.length / 30)
+            sessionStorage["numOfResults"] = reply.length
+
         }
         else {
             searchError("Ismeretlen szerverhiba történt!")
@@ -139,7 +172,7 @@
             page: getQueryParam("page"),
             orderBy: getQueryParam("orderBy"),
             min: getQueryParam("minPrice"),
-            max: getQueryParam("maxPrice")
+            max: getQueryParam("maxPrice"),
         }
 
         // console.log(params)
@@ -161,6 +194,10 @@
         
         document.getElementById("minPrice").value = getQueryParam("minPrice")
         document.getElementById("maxPrice").value = getQueryParam("maxPrice")
+
+        if (getQueryParam("page"))
+            sessionStorage["page"] = getQueryParam("page")
+        
 
         // Settlements:
 
@@ -230,6 +267,7 @@
         setTimeout(() => {
             search()
         }, 50);
+
 
 
 
@@ -359,30 +397,29 @@
     </div>
 
     <div id="main-container">
-        
 
         {#each searchResults as item, i}
         <!-- svelte-ignore a11y-no-static-element-interactions -->
         <!-- svelte-ignore a11y-click-events-have-key-events -->
-        <div class="productCard" on:click={()=>location.assign('product')}>
+        <div class="productCard" on:click={()=>location.assign(`product/${item.id}`)}>
             <div class="row1">
                 <div class="col1">
                     <img src="IMG/Global/no-image.png" class="productImage" alt="Termék fotója">
                 </div>
                 <div class="col2">
-                    <h3 class="productTitle" title="Termék neve">Termék neve Termék neve Termék neve Termék neve Termék neve Termék neve Termék neve Termék neve </h3>
-                    <p class="productCategory">Karóra</p>
+                    <h3 class="productTitle" title="Termék neve">{item.name}</h3>
+                    <p class="productCategory">{categories[item.type_id]}</p>
                     <p class="productDescription">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        {item.description}
 
                     </p>
                     <div class="innerRow">
                         <div class="productLocation">
-                            <p class="productShop">Tóth Pista Zálogház és Ékszerüzlet</p>
-                            <p class="productSettlement">Nagykőrös</p>
+                            <p class="productShop">{item.shop.name}</p>
+                            <p class="productSettlement">{item.settlement.name}</p>
                         </div>
                         <div class="productPrice">
-                            <p >30 000 000 Ft</p>
+                            <p>{formatNum(item.estimatedValue)} Ft</p>
                         </div>
 
                     </div>
