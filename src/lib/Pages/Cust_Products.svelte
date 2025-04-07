@@ -3,15 +3,20 @@
     import { onMount } from "svelte";
     import '$lib/Styles/productCard.scss';
     import '$lib/Styles/settlInput.scss';
+    import '$lib/Styles/shopsAndProducts.scss';
     import CategorySelector from "$lib/CategorySelector.svelte";
     import {
         toggle_settlDropdown, init_settlInput, getAllQueryParams, setAllQueryParams, setQueryParam, getQueryParam, 
         removeAllQueryParams, add_firstSettlement, add_settlement, api, formatNum, show_pageSelector, hide_pageSelector,
         get_categories
     } from "$lib/Scripts/functions.js";
+    import { 
+        fill_queryParams_fromInputs, searchError, fill_settlementTags, fill_inputs, searchButton_pressed 
+    } from '$lib/Scripts/shopsAndProducts.js'
     import { goto } from '$app/navigation';
     import { page } from '$app/stores';
     import PageSelector from '$lib/PageSelector.svelte';
+
 
     let categories = {}
     let searchResults = [];
@@ -20,47 +25,14 @@
     let currentUrl = window.location.href
 
 
-    function fill_queryParams_fromInputs (){
-                
-        if (document.getElementById("searchBar").value) {
-            setTimeout(() => {
-                setQueryParam("searchKey", document.getElementById("searchBar").value)
-            }, 50);
-        }
-        if (document.getElementById("selectCategory").value != "0") {
-            setTimeout(() => {
-                setQueryParam("category", document.getElementById("selectCategory").value)
-            }, 50);
-        }
-        if (document.getElementById("minPrice").value) {
-            setTimeout(() => {
-                setQueryParam("minPrice", document.getElementById("minPrice").value)
-            }, 50);
-        }
-        if (document.getElementById("maxPrice").value) {
-            setTimeout(() => {
-                setQueryParam("maxPrice", document.getElementById("maxPrice").value)
-            }, 50);
-        }
-        if (document.getElementById("selectCounty").value != "0") {
-            setTimeout(() => {
-                setQueryParam("holding", document.getElementById("selectCounty").value)
-            }, 50);
-        }
-        if (sessionStorage["currentPage"]) {
-            setTimeout(() => {
-                setQueryParam("page", sessionStorage["currentPage"])
-                currentPage = sessionStorage["currentPage"]
-
-            }, 50);
-        }
-
-    }
-
     async function search () {
-        removeAllQueryParams(true)
-        fill_queryParams_fromInputs()
         hide_pageSelector()
+
+        removeAllQueryParams(true)
+
+        fill_queryParams_fromInputs()
+        currentPage = sessionStorage["currentPage"]
+
 
 
         // Paraméterek összeállítása:
@@ -104,7 +76,7 @@
 
         // API-kérelem:
 
-        searchError("Adatok lekérése folyamantban......", true)
+        searchError("Adatok lekérése folyamantban...", true)
 
         categories = await get_categories()
 
@@ -132,144 +104,11 @@
         show_pageSelector()
     }
 
-    function searchError (text, ...args) {
-
-        let mainContainer = document.getElementById("main-container")
-
-        mainContainer.innerHTML = ""
-
-        let err = document.createElement('p');
-        err.textContent = text;
-        err.id = 'searchError';
-        err.className = 'error';
-        err.style.display = "block"
-        mainContainer.appendChild(err);
-
-        if (args[0] && args[0] == true) {
-            err.style.color = "rgb(64, 108, 78)"
-            err.style.marginTop = "-15px"
-        }
-        else {
-            err.style.color = "rgb(156, 30, 30)"
-        }
-    }
-
-    function get_items () {
-
-        let params = {
-            searchKey: getQueryParam("searchKey"),
-            hold: getQueryParam("holding"),
-            searchIn: getQueryParam("searchIn"),
-            category: getQueryParam("category"),
-            page: getQueryParam("page"),
-            orderBy: getQueryParam("orderBy"),
-            min: getQueryParam("minPrice"),
-            max: getQueryParam("maxPrice"),
-        }
-
-        // console.log(params)
-
-    }
-
-    function fill_inputs() {
-        if (getQueryParam("searchKey"))
-            document.getElementById("searchBar").value = getQueryParam("searchKey")
-        /*document.getElementById("").value = getQueryParam("holding")
-        document.getElementById("").value = getQueryParam("searchIn")
-        document.getElementById("").value = getQueryParam("categoryGroup")
-        document.getElementById("").value = getQueryParam("page")
-        document.getElementById("").value = getQueryParam("orderBy")*/
-        if (getQueryParam("category"))
-            document.getElementById("selectCategory").value = getQueryParam("category")
-        if (getQueryParam("holding"))
-            document.getElementById("selectCounty").value = getQueryParam("holding")
-        
-        document.getElementById("minPrice").value = getQueryParam("minPrice")
-        document.getElementById("maxPrice").value = getQueryParam("maxPrice")
-
-        if (getQueryParam("page")) {
-            let page = getQueryParam("page");
-            if (page >= 1) {
-                sessionStorage["currentPage"] = getQueryParam("page")
-            }
-            else {
-                sessionStorage["currentPage"] = "1"
-            }
-
-        }
-        
-
-        // Settlements:
-
-        fill_settlementTags()
-
-    }
-
-    async function fill_settlementTags(){
-        
-        let settlCodes;
-
-        if (getQueryParam("settlements")) {
-            settlCodes = getQueryParam("settlements").split("_")
-
-            localStorage["chosenSettlements"] = "{}"
-
-            settlCodes.forEach(async (code) => {
-                let id;
-
-                if (code.includes("-")) {
-                    id = code.split("-")[0]
-                }
-                else {
-                    id = code
-                }
-
-                let reply = await api('GET', `/settlement/${id}`);
-
-                if (reply && reply.name) {
-                
-                    add_settlement(reply.name, code, true)
-                
-                }
-
-            });
-
-        }
-        else {
-            // Fill from LocalStorage:
-
-            let cs = JSON.parse(localStorage["chosenSettlements"] ?? "{}")
-
-            Object.keys(cs).forEach(key=>{
-                
-                setTimeout(() => {
-                    add_settlement(key, cs[key], false, true)
-
-                }, 50);
-
-            })
-
-        
-        }
-
-
-
-    }
-
-    function searchButton_pressed () {
-        setQueryParam("page", "1");
-
-        setTimeout(() => {
-            window.location.reload();
-        }, 50);
-    }
-
 
     onMount(()=> {
         hide_pageSelector()
 
         fill_inputs()
-        get_items()
         
         init_settlInput(true)
 
@@ -450,312 +289,6 @@
 
 <style lang="scss">
     
-    @media (min-width: 0px) {
-
-        #main-container, #searchBox {
-            width: 90%;
-        }
-
-        #searchBox {
-            .row2{
-                flex-direction: column;
-
-                .col1, .col2 {
-                    width: 100%;
-                }
-                .col2 {
-                    input {
-                        width: 45%;
-                    }
-                }
-            }
-        }
-
-        #searchBox {
-            .row3 {
-                flex-direction: column;
-
-                select, .settlInput-box {
-                    width: 100%;
-                }
-            }
-        }
-
-        .settlInput-box {
-            .settlDropdown {
-                width: 55% !important;
-            }
-            button {
-                width: 45% !important;
-            }
-        }
-
-    }
-    @media (min-width: 300px) {
-
-
-
-    
-    }
-    @media (min-width: 340px) {
-
-        .settlInput-box {
-            .settlDropdown {
-                width: 60% !important;
-            }
-            button {
-                width: 40% !important;
-            }
-        }
-
-
-    }
-    @media (min-width: 404px) {
-
-
-
-        .settlInput-box {
-            .settlDropdown {
-                width: 70% !important;
-            }
-            button {
-                width: 30% !important;
-            }
-        }
-    
-    }
-    @media (min-width: 468px) {
-
-        #searchBox {
-            .row2{
-                flex-direction: row;
-                
-                .col1, .col2 {
-                    width: 50%;
-                }
-                .col2 {
-                    input {
-                        width: 40%;
-                    }
-
-                }
-                .col1 {
-                    padding-right: 4px;
-                }
-            }
-        }
-
-
-    }
-    /* Small devices (portrait tablets and large phones, 600px and up) */
-    @media (min-width: 596px) {
-
-        #main-container, #searchBox {
-            width: 87%;
-            max-width: 1000px;
-        }
-
-        .settlInput-box {
-            .settlDropdown {
-                width: 78% !important;
-            }
-            button {
-                width: 22% !important;
-            }
-        }
-
-
-    }
-    @media (min-width: 768px) {
-
-        #main-container, #searchBox {
-            width: 80%;
-            max-width: 1000px;
-        }
-        .settlInput-box {
-            .settlDropdown {
-                width: 65% !important;
-            }
-            button {
-                width: 35% !important;
-            }
-        }
-        
-        #searchBox {
-            .row3 {
-                flex-direction: row;
-
-                select, .settlInput-box {
-                    width: 50%;
-                }
-            }
-        }
-
-    }
-    /* Large devices (laptops/desktops, 992px and up) */
-    @media (min-width: 992px) {
-
-        .settlInput-box {
-            .settlDropdown {
-                width: 72% !important;
-            }
-            button {
-                width: 28% !important;
-            }
-        }
-
-    }
-    /* Extra large devices (large laptops and desktops, 1200px and up) */
-    @media (min-width: 1230px) {
-
-
-
-    }
-
-
-    #body{
-
-        #head-div {
-            margin-bottom: 8px;
-            #h-col2 {
-                h1 {
-                    margin: 0 !important;
-                }
-            }
-        }
-
-        #headDiv-lower {
-
-            height: auto !important;
-            display: flex;
-            justify-content: center;
-
-            #searchBox {
-                border: 1px solid black;
-                padding: 10px;
-                height: fit-content;
-                border-radius: 7px;
-                box-shadow: 1px 1px 2px black;
-                margin-bottom: 20px;
-
-                fieldset {
-                    border: 1px solid rgb(106, 137, 116);
-                }
-
-                .row1 {
-                    #searchBar {
-                        width: 100%;
-                        border-radius: 4px 4px 0 0;
-                        height: 40px;
-                        font-size: 22px;
-                        padding: 0 8px;
-                    }
-                }
-                .row2 {
-                    display: flex;
-                    padding: 10px 0;
-                    gap: 10px;
-                    
-                    .col1 {
-
-                        display: flex;
-                        gap: 4px;
-                        align-items: baseline;
-
-                        p {
-                            width: 50%;
-                        }
-                        select {
-                            width: 100%;
-                            border-radius: 0 !important;
-                            font-size: 16px;
-                        }
-
-                    }
-                    .col2 {
-                        display: flex;
-                        justify-content: end;
-                        align-items: baseline;
-                        gap: 5px;
-
-
-                        input {
-                            text-align: end;
-                        }
-                    }
-                }
-
-                .row3 {
-                    display: flex;
-                    gap: 4px;
-                    padding-bottom: 8px;
-
-                    select {
-                        border-radius: 0;
-                        font-size: 16px;
-                    }
-                    
-
-
-                }
-
-                .row4 {
-                    #selectedSettlements {
-                        min-height: 32px;
-                        display: flex;
-                        background-color: rgb(199, 238, 217);
-                        border: 1px solid black;
-                        flex-wrap: wrap;
-                        row-gap: 6px;
-                        column-gap: 4px;
-                        padding: 6px;
-                        overflow: hidden;
-                        display: none;
-
-                    }
-                }
-
-                .row5 {
-                    display: flex;
-                    justify-content: center;
-                    padding-top: 10px;
-                    width: 100%;
-                    
-                    #searchButton {
-                        width: 100% !important;
-                        height: 47px;
-                        border-radius: 5px;
-                        display: flex;
-                        width: fit-content;
-                        padding: 5px 10px;
-                        align-items: center;
-                        gap: 5px;
-                        justify-content: center;
-
-                        img {
-                            height: 100%;
-                        }
-                        p {
-                            margin: 0;
-                            font-size: 20px;
-                        }
-                    }
-                }
-
-            }
-
-
-
-        }
-
-
-        #main-container {
-
-            margin-bottom: 30px;
-
-        }
-
-    }
 
     :global(.settlTag) {
         display: flex;
@@ -791,9 +324,5 @@
     :global(a#empty) {
         color: rgb(109, 128, 115) !important;
     }
-
-
-
-
 
 </style>

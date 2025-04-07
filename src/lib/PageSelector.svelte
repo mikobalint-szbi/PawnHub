@@ -31,7 +31,7 @@
 </script>
 
     
-
+{#if numOfPages > 1}
 <div id="pagesContainer" style="display: none;">
     <div id="pages">
         <button id="pageLeft" class="pageArrow" on:click={makeFunc(currentPage-1)}>
@@ -88,7 +88,7 @@
         <p class="message">Összesen {numOfPages} oldal.</p>
     {/if}
 </div>
-
+{/if}
 
 
 

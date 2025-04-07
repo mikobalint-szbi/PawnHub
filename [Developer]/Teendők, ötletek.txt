@@ -2,6 +2,9 @@
 http://infojegyzet.hu/webszerkesztes/dokumentacio
 
 Teendők:
+- valamiért nem tölti vissza a query paramétereket a ProductFinder
+
+- shop és product page-eken a levelezés funkció
 - A Shop page-en a productCardoknak van egy kis hiba a reszponzivitásában. Túl későn törnek flex-direction:column irányba
 
 
