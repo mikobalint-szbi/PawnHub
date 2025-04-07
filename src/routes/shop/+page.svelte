@@ -3,6 +3,7 @@
     import '$lib/Styles/shopAndProduct.scss';
     import '$lib/Styles/productCard.scss';
     import { open_popup, close_popup } from "$lib/Scripts/popup.js";
+    import {togglePages, close_newMessage, open_newMessage, resizing, get_itemData, get_shopData, init} from "$lib/Scripts/shopAndProduct.js"
 
 
 

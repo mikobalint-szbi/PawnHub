@@ -1,6 +1,6 @@
+import {get_categories, api} from "$lib/Scripts/functions.js";
 
-
-function togglePages(id) {
+export function togglePages(id) {
 
     document.querySelectorAll(".pageTag").forEach((e)=>{
         e.classList.remove("active")
@@ -19,7 +19,7 @@ function togglePages(id) {
 }
 
 
-function close_newMessage () {
+export function close_newMessage () {
     document.getElementById("pageTag3").style.display = "none"
     togglePages("pageTag1")
     document.querySelector("input#receiver").value = ""
@@ -27,7 +27,7 @@ function close_newMessage () {
     document.querySelector("textarea#messageBody").value = ""
 }
 
-function open_newMessage () {
+export function open_newMessage () {
     if (localStorage["user"]) {
         document.getElementById("pageTag3").style.display = "block"
         togglePages("pageTag3")
@@ -39,7 +39,7 @@ function open_newMessage () {
 }
 
 
-function resizing () {
+export function resizing () {
 
     // ContactRows:
 
@@ -87,8 +87,9 @@ function resizing () {
 }
 
 
-async function get_itemData () {
+export async function get_itemData (itemId) {
     if (!itemId) {
+        localStorage["error"] = "ItemId not found."
         history.go(-1)
     }
     else {
@@ -116,12 +117,13 @@ async function get_itemData () {
 }
 
 
-async function get_shopData () {
+export async function get_shopData (item) {
     if (!item || !item.shop_id) {
+        localStorage["error"] = "ShopId not found."
         history.go(-1)
     }
     else {
-        shopId = item.shop_id
+        let shopId = item.shop_id
 
         let reply = await api("GET", `/shop/${shopId}`)
 
@@ -146,12 +148,3 @@ async function get_shopData () {
     }
 }
 
-
-
-async function init() {
-    
-    categories = await get_categories()
-    item = await get_itemData()
-    shop = await get_shopData()
-
-}

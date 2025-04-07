@@ -6,12 +6,17 @@
         formatNum, api, setQueryParam, getQueryParam, get_categories
     } from "$lib/Scripts/functions.js";
     import { open_popup, close_popup } from "$lib/Scripts/popup.js";
+    import {togglePages, close_newMessage, open_newMessage, resizing, get_itemData, get_shopData} from "$lib/Scripts/shopAndProduct.js"
 
-
+    async function init() {
+    
+        categories = await get_categories()
+        item = await get_itemData(itemId)
+        shop = await get_shopData(item)
+    }
     
     let itemId = getQueryParam("id")
     let item = null;
-    let shopId = null;
     let shop = null;
     let categories;
 

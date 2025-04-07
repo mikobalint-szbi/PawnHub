@@ -104,7 +104,7 @@
 
         // API-kérelem:
 
-        searchError("Keresés folyamatban...", true)
+        searchError("Adatok lekérése folyamantban......", true)
 
         categories = await get_categories()
 
