@@ -5,6 +5,8 @@
     import {
         formatNum, api, setQueryParam, getQueryParam, get_categories
     } from "$lib/Scripts/functions.js";
+    import { open_popup, close_popup } from "$lib/Scripts/popup.js";
+
 
 
     function togglePages(id) {
@@ -34,8 +36,13 @@
     }
 
     function open_newMessage () {
-        document.getElementById("pageTag3").style.display = "block"
-        togglePages("pageTag3")
+        if (localStorage["user"]) {
+            document.getElementById("pageTag3").style.display = "block"
+            togglePages("pageTag3")
+        }
+        else {
+            open_popup("messageOK","Az üzenetküldéshez be kell jelentkeznie.",()=>{location.assign("/")})
+        }
     }
 
     function resizing () {
@@ -134,7 +141,6 @@
                     }
                 }
                 else {
-                    console.log(reply)
                     return reply
                 }
             }
@@ -285,7 +291,7 @@
 
                 </div>
                 <div class="pageContent" id="pageContent3">
-                    {#if shop}
+                    {#if shop && localStorage["user"]}
                     <div class="message new">
                         <div class="mHeader new">
                             <div class="col1 mhCol">

@@ -13,7 +13,7 @@
 	import LoanPopup_forCustomers from '$lib/Popups/LoanPopup_forCustomers.svelte';
 	import LoanPopup_new_forCustomers from '$lib/Popups/LoanPopup_New_forCustomers.svelte';
 	import ProductPopup_forCustomers from '$lib/Popups/ProductPopup_forCustomers.svelte';
-	import AccessDenied from '$lib/Pages/AccessDenied.svelte';
+	//import AccessDenied from '$lib/Pages/AccessDenied.svelte';
     import ConfirmDelete from '$lib/Popups/ConfirmDelete.svelte';
     import MessageOK from '$lib/Popups/MessageOK.svelte';
 
@@ -40,11 +40,9 @@
 			<MessageOK/>
 		</section>
 
-		{#if access_granted}
-			<slot />
-		{:else}
-			<AccessDenied/>
-		{/if}
+
+		<slot />
+
 
 
 	<footer>

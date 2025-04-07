@@ -2,6 +2,8 @@
     import { onMount } from "svelte";
     import '$lib/Styles/shopAndProduct.scss';
     import '$lib/Styles/productCard.scss';
+    import { open_popup, close_popup } from "$lib/Scripts/popup.js";
+
 
     function togglePages(id) {
 
@@ -30,8 +32,14 @@
     }
 
     function open_newMessage () {
-        document.getElementById("pageTag3").style.display = "block"
-        togglePages("pageTag3")
+        if (localStorage["user"]) {
+            document.getElementById("pageTag3").style.display = "block"
+            togglePages("pageTag3")
+        }
+        else {
+            open_popup("messageOK","Az üzenetküldéshez be kell jelentkeznie.",()=>{location.assign("/")})
+        }
+
     }
 
     function resizing () {

@@ -37,7 +37,7 @@
             <div id="popup-div">
 
                 <div id="okMessage" class="popupGrid-element">
-                        <p></p>
+                    <p></p>
                 </div>
 
 
