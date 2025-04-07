@@ -434,7 +434,11 @@
         <div class="productCard" on:click={()=>location.assign(`product/${item.id}`)}>
             <div class="row1">
                 <div class="col1">
-                    <img src="IMG/Global/no-image.png" class="productImage" alt="Termék fotója">
+                    {#if item.img}
+                        <img src="data:image/png;base64,{item.img}" class="productImage" alt="Termék fotója">
+                    {:else}
+                        <img src="IMG/Global/no-image.png" class="productImage" alt="Termék fotója">
+                    {/if}
                 </div>
                 <div class="col2">
                     <h3 class="productTitle" title="Termék neve">{item.name}</h3>
