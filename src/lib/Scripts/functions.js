@@ -777,3 +777,33 @@ export function hide_pageSelector() {
     document.getElementById("pagesContainer").setAttribute('style', 'visibility: hidden !important');
 
 }
+
+export async function get_categories() {
+    let categories
+
+    if (!localStorage["categories"]) {
+        categories = await api('GET', "/types");
+
+        if (categories) {
+            let dict = {}
+
+            categories.forEach(e=> {
+                dict[e.id] = e.name
+            })
+            console.log(dict)
+
+            localStorage["categories"] = JSON.stringify(dict)
+        }
+        else {
+            searchError("Ismeretlen szerverhiba történt.")
+        }
+        
+
+        //console.log(categories)
+    }
+    else {
+        categories = JSON.parse(localStorage["categories"])
+    }
+
+    return categories
+}

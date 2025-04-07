@@ -2,7 +2,9 @@
     import { onMount } from "svelte";
     import '$lib/Styles/shopAndProduct.scss';
     import '$lib/Styles/shopCard.scss';
-
+    import {
+        formatNum, api, setQueryParam, getQueryParam, get_categories
+    } from "$lib/Scripts/functions.js";
 
 
     function togglePages(id) {
@@ -40,61 +42,146 @@
 
         // ContactRows:
 
-        let w = document.getElementById("main-container").offsetWidth
-        document.getElementById("head-div").style.width = w +"px"
+        let w = document.getElementById("main-container")
 
-        w = w - (40+10+2*20)
+        if (w){
+            w = w.offsetWidth
+            document.getElementById("head-div").style.width = w +"px"
 
-        document.querySelectorAll(".contactRow .value").forEach((e)=>{
+            w = w - (40+10+2*20)
 
-            e.style.maxWidth = w + "px"
+            document.querySelectorAll(".contactRow .value").forEach((e)=>{
 
-        })
+                e.style.maxWidth = w + "px"
 
-        // Title:
+            })
 
-        w = document.getElementById("main-container").offsetWidth
-        let name = document.querySelector(".name")
+            // Title:
+
+            w = document.getElementById("main-container").offsetWidth
+            let name = document.querySelector(".name")
 
 
-        if (window.innerWidth < 596) {
-            name.style.setProperty("max-width",  (w - 20) * 1 + "px", "important")
+            if (window.innerWidth < 596) {
+                name.style.setProperty("max-width",  (w - 20) * 1 + "px", "important")
+            }
+            else if (window.innerWidth < 768) {
+                name.style.setProperty("max-width",  (w - 40) * 1 + "px", "important")
+            }
+            else if (window.innerWidth < 992) {
+                name.style.setProperty("max-width",  (w - 40) * 0.56 + "px", "important")
+            }
+            else if (window.innerWidth < 1230) {
+                name.style.setProperty("max-width",  (w - 40) * 0.605 + "px", "important")
+            }
+            else {
+                name.style.setProperty("max-width",  (w - 40) * 0.627 + "px", "important")
+            }
+
+
         }
-        else if (window.innerWidth < 768) {
-            name.style.setProperty("max-width",  (w - 40) * 1 + "px", "important")
-        }
-        else if (window.innerWidth < 992) {
-            name.style.setProperty("max-width",  (w - 40) * 0.56 + "px", "important")
-        }
-        else if (window.innerWidth < 1230) {
-            name.style.setProperty("max-width",  (w - 40) * 0.605 + "px", "important")
-        }
-        else {
-            name.style.setProperty("max-width",  (w - 40) * 0.627 + "px", "important")
-        }
-
 
 
 
     }
 
+    async function get_itemData () {
+        if (!itemId) {
+            history.go(-1)
+        }
+        else {
+            let reply = await api("GET", `/item/${itemId}`)
+
+            if (reply) {
+                if (reply.error) {
+                    if (reply.error.code = "NOT_FOUND") {
+                        console.log("A termék nem található.")
+                        location.assign("/home")
+                    }
+                    else {
+                        console.log("Ismeretlen szerverhiba történt. [#1]")
+                    }
+                }
+                else {
+                    return reply
+                }
+            }
+            else {
+                console.log("Ismeretlen szerverhiba történt. [#2]")
+            }
+
+        }
+    }
+
+
+    async function get_shopData () {
+        if (!item || !item.shop_id) {
+            history.go(-1)
+        }
+        else {
+            shopId = item.shop_id
+
+            let reply = await api("GET", `/shop/${shopId}`)
+
+            if (reply) {
+                if (reply.error) {
+                    if (reply.error.code = "NOT_FOUND") {
+                        console.log("A zálogház nem található.")
+                        location.assign("/home")
+                    }
+                    else {
+                        console.log("Ismeretlen szerverhiba történt. [#1]")
+                    }
+                }
+                else {
+                    console.log(reply)
+                    return reply
+                }
+            }
+            else {
+                console.log("Ismeretlen szerverhiba történt. [#2]")
+            }
+
+        }
+    }
+
+
+
+    async function init() {
+        
+        categories = await get_categories()
+        item = await get_itemData()
+        shop = await get_shopData()
+
+    }
+
+    let itemId = getQueryParam("id")
+    let item = null;
+    let shopId = null;
+    let shop = null;
+    let categories;
+
+    init()
+
+
+  
+
 
     onMount(()=>{
+
         resizing()
-
-        document.querySelectorAll(".pageTag").forEach((e)=>{
-
-            e.addEventListener("click", ()=> togglePages(e.id))
-        })
 
         window.addEventListener("resize", ()=> {
             resizing()
- 
         })
+
+
 
         // open_popup("imageViewer")
     })
 </script>
+
+{#if item}
 <section id="body">
 
     <div id="head-div">
@@ -122,18 +209,22 @@
 
         <div id="mRow1" class="mRow">
             <div class="col1">
-                <div class="image product"></div>
+                {#if item.img}
+                    <div class="image product" style="background-image: url('data:image/png;base64,{item.img}');"></div>
+                {:else}
+                    <div class="image product" style="background-image: url('IMG/Global/no-image.png');"></div>
+                {/if}
 
             </div>
             <div class="col2">
                 <div class="nameField">
-                    <p class="name">SamsungSamsungSamsungSamsungSamsungSamsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
-                    <p class="category">Kategória</p>
+                    <p class="name">{item.name}</p>
+                    <p class="category">{categories[item.type_id]}</p>
                 </div>
                 <div class="priceField">
                     <div class="priceField-inner">
                         <p class="priceLabel">A termék ára:</p>
-                        <p class="price">30 000 000 Ft</p>
+                        <p class="price">{formatNum(item.estimatedValue)} Ft</p>
                     </div>
 
                 </div>
@@ -149,88 +240,38 @@
 
             <div class="pageContainer">
                 <div class="pageTags">
-                    <div class="pageTag active" id="pageTag1">Leírás</div>
-                    <div class="pageTag" id="pageTag2">Kínálja</div>
-                    <div class="pageTag" id="pageTag3">Üzenet</div>
+                    <button class="pageTag active" id="pageTag1" on:click={()=>togglePages("pageTag1")}>Leírás</button>
+                    <button class="pageTag" id="pageTag2" on:click={()=>togglePages("pageTag2")}>Kínálja</button>
+                    <button class="pageTag" id="pageTag3" on:click={()=>togglePages("pageTag3")}>Üzenet</button>
                 </div>
                 <div class="pageContent" id="pageContent1">
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita iure magnam, necessitatibus sint nostrum doloremque consectetur sit amet eos soluta cum, debitis ut distinctio nihil eaque alias deserunt dolorum cumque?
-                        Autem beatae rerum optio fugiat minus laboriosam id neque harum, tenetur, quia sint ad voluptate hic eum, et fugit corporis ex! Atque incidunt eius esse cum quos perspiciatis aliquam accusamus?
-                        Odio nesciunt, voluptatum expedita itaque placeat deleniti esse, debitis dolorem reprehenderit aspernatur officiis quibusdam cumque, maxime quisquam vel ipsam optio officia? Tempore, placeat! Praesentium recusandae, neque magnam quaerat quas non?
-                        Fugiat sint, numquam nostrum dolorem eius facere quae amet soluta dolorum! Distinctio aspernatur sint, nihil atque natus veritatis quos magnam. Officia possimus quaerat pariatur aliquid eos quo quasi ut fuga?
-                        Animi harum, voluptates maxime saepe quidem neque cumque iure, fugiat repudiandae voluptas expedita rerum nam, dolore laborum recusandae et ducimus? Quam aliquam recusandae voluptate molestias consequuntur, doloremque libero maxime odio!
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita iure magnam, necessitatibus sint nostrum doloremque consectetur sit amet eos soluta cum, debitis ut distinctio nihil eaque alias deserunt dolorum cumque?
-                        Autem beatae rerum optio fugiat minus laboriosam id neque harum, tenetur, quia sint ad voluptate hic eum, et fugit corporis ex! Atque incidunt eius esse cum quos perspiciatis aliquam accusamus?
-                        Odio nesciunt, voluptatum expedita itaque placeat deleniti esse, debitis dolorem reprehenderit aspernatur officiis quibusdam cumque, maxime quisquam vel ipsam optio officia? Tempore, placeat! Praesentium recusandae, neque magnam quaerat quas non?
-                        Fugiat sint, numquam nostrum dolorem eius facere quae amet soluta dolorum! Distinctio aspernatur sint, nihil atque natus veritatis quos magnam. Officia possimus quaerat pariatur aliquid eos quo quasi ut fuga?
-                        Animi harum, voluptates maxime saepe quidem neque cumque iure, fugiat repudiandae voluptas expedita rerum nam, dolore laborum recusandae et ducimus? Quam aliquam recusandae voluptate molestias consequuntur, doloremque libero maxime odio!
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita iure magnam, necessitatibus sint nostrum doloremque consectetur sit amet eos soluta cum, debitis ut distinctio nihil eaque alias deserunt dolorum cumque?
-                        Autem beatae rerum optio fugiat minus laboriosam id neque harum, tenetur, quia sint ad voluptate hic eum, et fugit corporis ex! Atque incidunt eius esse cum quos perspiciatis aliquam accusamus?
-                        Odio nesciunt, voluptatum expedita itaque placeat deleniti esse, debitis dolorem reprehenderit aspernatur officiis quibusdam cumque, maxime quisquam vel ipsam optio officia? Tempore, placeat! Praesentium recusandae, neque magnam quaerat quas non?
-                        Fugiat sint, numquam nostrum dolorem eius facere quae amet soluta dolorum! Distinctio aspernatur sint, nihil atque natus veritatis quos magnam. Officia possimus quaerat pariatur aliquid eos quo quasi ut fuga?
-                        Animi harum, voluptates maxime saepe quidem neque cumque iure, fugiat repudiandae voluptas expedita rerum nam, dolore laborum recusandae et ducimus? Quam aliquam recusandae voluptate molestias consequuntur, doloremque libero maxime odio!
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita iure magnam, necessitatibus sint nostrum doloremque consectetur sit amet eos soluta cum, debitis ut distinctio nihil eaque alias deserunt dolorum cumque?
-                        Autem beatae rerum optio fugiat minus laboriosam id neque harum, tenetur, quia sint ad voluptate hic eum, et fugit corporis ex! Atque incidunt eius esse cum quos perspiciatis aliquam accusamus?
-                        Odio nesciunt, voluptatum expedita itaque placeat deleniti esse, debitis dolorem reprehenderit aspernatur officiis quibusdam cumque, maxime quisquam vel ipsam optio officia? Tempore, placeat! Praesentium recusandae, neque magnam quaerat quas non?
-                        Fugiat sint, numquam nostrum dolorem eius facere quae amet soluta dolorum! Distinctio aspernatur sint, nihil atque natus veritatis quos magnam. Officia possimus quaerat pariatur aliquid eos quo quasi ut fuga?
-                        Animi harum, voluptates maxime saepe quidem neque cumque iure, fugiat repudiandae voluptas expedita rerum nam, dolore laborum recusandae et ducimus? Quam aliquam recusandae voluptate molestias consequuntur, doloremque libero maxime odio!
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita iure magnam, necessitatibus sint nostrum doloremque consectetur sit amet eos soluta cum, debitis ut distinctio nihil eaque alias deserunt dolorum cumque?
-                        Autem beatae rerum optio fugiat minus laboriosam id neque harum, tenetur, quia sint ad voluptate hic eum, et fugit corporis ex! Atque incidunt eius esse cum quos perspiciatis aliquam accusamus?
-                        Odio nesciunt, voluptatum expedita itaque placeat deleniti esse, debitis dolorem reprehenderit aspernatur officiis quibusdam cumque, maxime quisquam vel ipsam optio officia? Tempore, placeat! Praesentium recusandae, neque magnam quaerat quas non?
-                        Fugiat sint, numquam nostrum dolorem eius facere quae amet soluta dolorum! Distinctio aspernatur sint, nihil atque natus veritatis quos magnam. Officia possimus quaerat pariatur aliquid eos quo quasi ut fuga?
-                        Animi harum, voluptates maxime saepe quidem neque cumque iure, fugiat repudiandae voluptas expedita rerum nam, dolore laborum recusandae et ducimus? Quam aliquam recusandae voluptate molestias consequuntur, doloremque libero maxime odio!
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita iure magnam, necessitatibus sint nostrum doloremque consectetur sit amet eos soluta cum, debitis ut distinctio nihil eaque alias deserunt dolorum cumque?
-                        Autem beatae rerum optio fugiat minus laboriosam id neque harum, tenetur, quia sint ad voluptate hic eum, et fugit corporis ex! Atque incidunt eius esse cum quos perspiciatis aliquam accusamus?
-                        Odio nesciunt, voluptatum expedita itaque placeat deleniti esse, debitis dolorem reprehenderit aspernatur officiis quibusdam cumque, maxime quisquam vel ipsam optio officia? Tempore, placeat! Praesentium recusandae, neque magnam quaerat quas non?
-                        Fugiat sint, numquam nostrum dolorem eius facere quae amet soluta dolorum! Distinctio aspernatur sint, nihil atque natus veritatis quos magnam. Officia possimus quaerat pariatur aliquid eos quo quasi ut fuga?
-                        Animi harum, voluptates maxime saepe quidem neque cumque iure, fugiat repudiandae voluptas expedita rerum nam, dolore laborum recusandae et ducimus? Quam aliquam recusandae voluptate molestias consequuntur, doloremque libero maxime odio!
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita iure magnam, necessitatibus sint nostrum doloremque consectetur sit amet eos soluta cum, debitis ut distinctio nihil eaque alias deserunt dolorum cumque?
-                        Autem beatae rerum optio fugiat minus laboriosam id neque harum, tenetur, quia sint ad voluptate hic eum, et fugit corporis ex! Atque incidunt eius esse cum quos perspiciatis aliquam accusamus?
-                        Odio nesciunt, voluptatum expedita itaque placeat deleniti esse, debitis dolorem reprehenderit aspernatur officiis quibusdam cumque, maxime quisquam vel ipsam optio officia? Tempore, placeat! Praesentium recusandae, neque magnam quaerat quas non?
-                        Fugiat sint, numquam nostrum dolorem eius facere quae amet soluta dolorum! Distinctio aspernatur sint, nihil atque natus veritatis quos magnam. Officia possimus quaerat pariatur aliquid eos quo quasi ut fuga?
-                        Animi harum, voluptates maxime saepe quidem neque cumque iure, fugiat repudiandae voluptas expedita rerum nam, dolore laborum recusandae et ducimus? Quam aliquam recusandae voluptate molestias consequuntur, doloremque libero maxime odio!
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita iure magnam, necessitatibus sint nostrum doloremque consectetur sit amet eos soluta cum, debitis ut distinctio nihil eaque alias deserunt dolorum cumque?
-                        Autem beatae rerum optio fugiat minus laboriosam id neque harum, tenetur, quia sint ad voluptate hic eum, et fugit corporis ex! Atque incidunt eius esse cum quos perspiciatis aliquam accusamus?
-                        Odio nesciunt, voluptatum expedita itaque placeat deleniti esse, debitis dolorem reprehenderit aspernatur officiis quibusdam cumque, maxime quisquam vel ipsam optio officia? Tempore, placeat! Praesentium recusandae, neque magnam quaerat quas non?
-                        Fugiat sint, numquam nostrum dolorem eius facere quae amet soluta dolorum! Distinctio aspernatur sint, nihil atque natus veritatis quos magnam. Officia possimus quaerat pariatur aliquid eos quo quasi ut fuga?
-                        Animi harum, voluptates maxime saepe quidem neque cumque iure, fugiat repudiandae voluptas expedita rerum nam, dolore laborum recusandae et ducimus? Quam aliquam recusandae voluptate molestias consequuntur, doloremque libero maxime odio!
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita iure magnam, necessitatibus sint nostrum doloremque consectetur sit amet eos soluta cum, debitis ut distinctio nihil eaque alias deserunt dolorum cumque?
-                        Autem beatae rerum optio fugiat minus laboriosam id neque harum, tenetur, quia sint ad voluptate hic eum, et fugit corporis ex! Atque incidunt eius esse cum quos perspiciatis aliquam accusamus?
-                        Odio nesciunt, voluptatum expedita itaque placeat deleniti esse, debitis dolorem reprehenderit aspernatur officiis quibusdam cumque, maxime quisquam vel ipsam optio officia? Tempore, placeat! Praesentium recusandae, neque magnam quaerat quas non?
-                        Fugiat sint, numquam nostrum dolorem eius facere quae amet soluta dolorum! Distinctio aspernatur sint, nihil atque natus veritatis quos magnam. Officia possimus quaerat pariatur aliquid eos quo quasi ut fuga?
-                        Animi harum, voluptates maxime saepe quidem neque cumque iure, fugiat repudiandae voluptas expedita rerum nam, dolore laborum recusandae et ducimus? Quam aliquam recusandae voluptate molestias consequuntur, doloremque libero maxime odio!
+                        {item.description.replaceAll("\n\n","</p><p>").replaceAll("\n","<br>")}
                     </p>
                 </div>
                 <div class="pageContent product" id="pageContent2">
     
+                    {#if shop}
                     <!-- svelte-ignore a11y-click-events-have-key-events -->
                     <!-- svelte-ignore a11y-no-static-element-interactions -->
-                    <div class="shopCard" on:click={()=>location.assign('shop')}>
+                    <div class="shopCard" on:click={()=>location.assign(`shop/?id=${shop.id}`)}>
                         <div class="row1">
                             <div class="col1">
-                                <img src="IMG/Global/no-shop-image.png" class="shopImage" alt="Zálogház fotója">
+                                {#if shop.img}
+                                    <img src="data:image/png;base64,{shop.img}" class="shopImage" alt="A zálogház fotója">
+                                {:else}
+                                    <img src="IMG/Global/no-shop-image.png" class="shopImage" alt="A zálogház fotója">
+                                {/if}
                             </div>
                             <div class="col2">
-                                <h3 class="shopTitle" title="Zálogház neve">Zálogház neve Zálogház neve Zálogház neve Zálogház neve Zálogház neve Zálogház neve Zálogház neve Zálogház neve </h3>
+                                <h3 class="shopTitle" title="Zálogház neve">{shop.name}</h3>
                                 <p class="shopDescription">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum rerum exercitationem iste voluptate aperiam dolor qui animi quis fugiat magnam assumenda distinctio, consequuntur corrupti expedita sit autem iusto provident! Dicta?
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            
+                                    {shop.intro.replaceAll("\n\n","</p><p>").replaceAll("\n","<br>")}
                                 </p>
                                 <div class="innerRow">
                                     <div class="shopLocation">
-                                        <p class="shopSettlement">Nagykőrös</p>
-                                        <p class="shopAddress">Nursiai Hosszúnevű Szent Szent Szent Szent Szent Benedek u. 337.</p>
+                                        <p class="shopSettlement">{shop.settlement.name}</p>
+                                        <p class="shopAddress">{shop.address}</p>
 
                                     </div>
             
@@ -239,17 +280,19 @@
                             </div>
                         </div>
                     </div>
+                    {/if}
+
 
                 </div>
                 <div class="pageContent" id="pageContent3">
-                    
+                    {#if shop}
                     <div class="message new">
                         <div class="mHeader new">
                             <div class="col1 mhCol">
                                 <img src="IMG/Messages/out.png" alt="">
                             </div>
                             <div class="col2 mhCol" alt="Címzett" title="Címzett">
-                                <input type="text" name="receiver" id="receiver" placeholder="Címzett" alt="Címzett" class="messageInput" disabled>
+                                <input type="text" name="receiver" id="receiver" placeholder="Címzett" alt="Címzett" class="messageInput" value="{shop.username}" disabled>
                             </div>
                             <div class="col3 mhCol" alt="Tárgy" title="Tárgy">
                                 <input type="text" name="topic" id="topic" placeholder="Tárgy" alt="Tárgy" class="messageInput">
@@ -270,7 +313,7 @@
                             </button>
                         </div>
                     </div>   
-                    
+                    {/if}
                 </div>
             </div>
 
@@ -282,6 +325,8 @@
 
     </div>
 </section>
+{/if}
+
 <style lang="scss">
 
 </style>

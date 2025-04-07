@@ -6,7 +6,8 @@
     import CategorySelector from "$lib/CategorySelector.svelte";
     import {
         toggle_settlDropdown, init_settlInput, getAllQueryParams, setAllQueryParams, setQueryParam, getQueryParam, 
-        removeAllQueryParams, add_firstSettlement, add_settlement, api, formatNum, show_pageSelector, hide_pageSelector
+        removeAllQueryParams, add_firstSettlement, add_settlement, api, formatNum, show_pageSelector, hide_pageSelector,
+        get_categories
     } from "$lib/Scripts/functions.js";
     import { goto } from '$app/navigation';
     import { page } from '$app/stores';
@@ -105,29 +106,7 @@
 
         searchError("Keresés folyamatban...", true)
 
-        if (!localStorage["categories"]) {
-            categories = await api('GET', "/types");
-
-            if (categories) {
-                let dict = {}
-
-                categories.forEach(e=> {
-                    dict[e.id] = e.name
-                })
-                console.log(dict)
-
-                localStorage["categories"] = JSON.stringify(dict)
-            }
-            else {
-                searchError("Ismeretlen szerverhiba történt.")
-            }
-            
-
-            //console.log(categories)
-        }
-        else {
-            categories = JSON.parse(localStorage["categories"])
-        }
+        categories = await get_categories()
 
 
         let reply = await api('GET', url);
@@ -435,16 +414,16 @@
             <div class="row1">
                 <div class="col1">
                     {#if item.img}
-                        <img src="data:image/png;base64,{item.img}" class="productImage" alt="Termék fotója">
+                        <img src="data:image/png;base64,{item.img}" class="productImage" alt="A termék fotója">
                     {:else}
-                        <img src="IMG/Global/no-image.png" class="productImage" alt="Termék fotója">
+                        <img src="IMG/Global/no-image.png" class="productImage" alt="A termék fotója">
                     {/if}
                 </div>
                 <div class="col2">
                     <h3 class="productTitle" title="Termék neve">{item.name}</h3>
                     <p class="productCategory">{categories[item.type_id]}</p>
                     <p class="productDescription">
-                        {item.description}
+                        {item.description.replaceAll("\n\n","</p><p>").replaceAll("\n","<br>")}
 
                     </p>
                     <div class="innerRow">
