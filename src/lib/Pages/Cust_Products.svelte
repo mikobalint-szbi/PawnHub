@@ -10,9 +10,13 @@
     } from "$lib/Scripts/functions.js";
     import { goto } from '$app/navigation';
     import { page } from '$app/stores';
+    import PageSelector from '$lib/PageSelector.svelte';
 
-    let searchResults = []
     let categories = {}
+    let searchResults = [];
+    let numOfPages = 5;
+    let currentPage = sessionStorage["currentPage"];
+    let currentUrl = window.location.href
 
 
     function fill_queryParams_fromInputs (){
@@ -42,11 +46,15 @@
                 setQueryParam("holding", document.getElementById("selectCounty").value)
             }, 50);
         }
-        if (sessionStorage["page"]) {
+        if (sessionStorage["currentPage"]) {
             setTimeout(() => {
-                setQueryParam("page", sessionStorage["page"])
+                setQueryParam("page", sessionStorage["currentPage"])
+                currentPage = sessionStorage["currentPage"]
+                console.log(currentPage)
+
             }, 50);
-        }        
+        }
+
     }
 
     async function search () {
@@ -62,7 +70,7 @@
             maxPrice: document.getElementById("maxPrice").value,
             hold: document.getElementById("selectCounty").value,
             settlements: "",
-            page: sessionStorage["page"] ?? "1"
+            page: sessionStorage["currentPage"] ?? "1"
 
         }
 
@@ -126,17 +134,21 @@
         document.getElementById("searchError").style.display = "none"
 
         if (reply) {
-            console.log(reply)
             searchResults = reply.items
             sessionStorage["numOfPages"] = Math.ceil(reply.length / 30)
+            numOfPages = Math.ceil(reply.length / 30)
+            currentPage = sessionStorage["currentPage"] ?? 1
             sessionStorage["numOfResults"] = reply.length
+
+            console.log(searchResults)
+            console.log(currentPage)
+            //return reply.items
 
         }
         else {
             searchError("Ismeretlen szerverhiba történt!")
+            //return [];
         }
-
-        
 
     }
 
@@ -196,7 +208,7 @@
         document.getElementById("maxPrice").value = getQueryParam("maxPrice")
 
         if (getQueryParam("page"))
-            sessionStorage["page"] = getQueryParam("page")
+            sessionStorage["currentPage"] = getQueryParam("page")
         
 
         // Settlements:
@@ -254,6 +266,14 @@
 
 
 
+    }
+
+    function searchButton_pressed () {
+        setQueryParam("page", "1");
+
+        setTimeout(() => {
+            window.location.reload();
+        }, 50);
     }
 
 
@@ -386,7 +406,7 @@
             </fieldset>
 
             <div class="row5">
-                <button id="searchButton" on:click={search}>
+                <button id="searchButton" on:click={searchButton_pressed}>
                     <img src="IMG/Global/search.png" alt="">
                     <p>Keresés</p>
                 </button>
@@ -430,6 +450,8 @@
         {/each}
 
     </div>
+
+    <PageSelector numOfPages={numOfPages} currentPage={currentPage} url={currentUrl}/>
 
 </section>
 

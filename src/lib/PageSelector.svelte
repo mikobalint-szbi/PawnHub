@@ -2,7 +2,20 @@
     
     export let numOfPages;
     export let currentPage;
+    export let url;
 
+    url = url.replace(/&page.*/, '');
+    url = url.replace(/\?page.*/, '');
+
+
+    function makeUrl(pageNum) {
+        if (url.includes("?")) {
+            return `${url}&page=${pageNum}`
+        }
+        else {
+            return `${url}?page=${pageNum}`
+        }
+    }
     
 </script>
 

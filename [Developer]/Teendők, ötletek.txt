@@ -4,6 +4,8 @@ http://infojegyzet.hu/webszerkesztes/dokumentacio
 Teendők:
 - A termékkereső-API meghívása, az eredmények kiírása
 
+Hol tartottam:
+- A pageselectorban a diveknek onclick location assign makeLink függvényt adni
 
 Miután lesz backend:
 - A Shop és Product page-eknél a címzett mindig az aktuális zálogház legyen, és át se lehessen írni
