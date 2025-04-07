@@ -9,5 +9,6 @@ export const regex = {
     username: new RegExp("^[a-zA-Z0-9_.-]+$"),
     taxId: new RegExp("^\\d{8}-\\d-\\d{2}$"),
     isFirstCharDigit: new RegExp("^\\d"),
-    website: new RegExp("^(https?:\\/\\/)([a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})(\\/.*)?$")
+    website: new RegExp("^(https?:\\/\\/)([a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})(\\/.*)?$"),
+    formatNum: new RegExp("\\B(?=(\\d{3})+(?!\\d))", "g")
 }

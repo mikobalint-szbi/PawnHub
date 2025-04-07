@@ -760,3 +760,7 @@ export async function get_profilePic(settingsMode = false) {
     }
 
 }
+
+export function formatNum(num) {
+    return num.toString().replace(regex.formatNum, " ");
+}
