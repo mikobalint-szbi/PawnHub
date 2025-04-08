@@ -38,7 +38,7 @@
         hide_pageSelector()
 
         removeAllQueryParams(true)
-
+        
         fill_queryParams_fromInputs()
         currentPage = sessionStorage["currentPage"]
 
@@ -58,6 +58,11 @@
         }
 
         let cs = JSON.parse(localStorage["chosenSettlements"] ?? "{}") 
+        console.log("bb",localStorage["chosenSettlements"])
+
+        if (data.cat == "0"){
+            delete data.cat
+        }
 
         Object.keys(cs).forEach(key=>{
             data.settlements += `${String(cs[key]).replaceAll("-","_")}_`
@@ -83,9 +88,11 @@
 
         url = url.slice(0, -1)
 
+        console.log(url)
+
         // API-kérelem:
 
-        searchError("Adatok lekérése folyamantban...", true)
+        searchError("Adatok lekérése folyamantban...", true, "top")
 
         categories = await get_categories()
 
@@ -101,13 +108,19 @@
             currentPage = sessionStorage["currentPage"] ?? 1
             sessionStorage["numOfResults"] = reply.length
 
+            if (searchResults.length == 0) {
+                searchError("Nincs találat.", true, "big")
+
+            }
+
             console.log(searchResults)
             //return reply.items
 
         }
         else {
-            searchError("Ismeretlen szerverhiba történt!")
-            //return [];
+            searchError("Ismeretlen szerverhiba történt!", false, "big")
+            hide_pageSelector()
+
         }
 
         show_pageSelector()
@@ -335,7 +348,7 @@
     }
 
     #headDiv-lower {
-        display: flex;
+        display: flex !important;
     }
 
 </style>

@@ -27,7 +27,7 @@
     
     function searchButton_pressed () {
         sessionStorage["currentPage"] = "1"
-        fill_queryParams_fromInputs()
+        fill_queryParams_fromInputs(true)
 
         setTimeout(() => {
             window.location.reload();
@@ -55,6 +55,10 @@
 
         let cs = JSON.parse(localStorage["chosenSettlements"] ?? "{}") 
 
+        if (data.hold == "0"){
+            delete data.hold
+        }
+
         Object.keys(cs).forEach(key=>{
             data.settlements += `${String(cs[key]).replaceAll("-","_")}_`
         })
@@ -63,12 +67,7 @@
 
         // Link összeállítása:
 
-        let url = `/items/?`
-
-        if (data.cat && data.cat[0] == "g") {
-            data.catG = data.cat.slice(1)
-            delete data.cat
-        }
+        let url = `/shops/?`
 
         Object.keys(data).forEach(key=> {
             if (data[key]){
@@ -78,10 +77,10 @@
         })
 
         url = url.slice(0, -1)
-
+        console.log(url)
         // API-kérelem:
 
-        searchError("Adatok lekérése folyamantban...", true)
+        searchError("Adatok lekérése folyamantban...", true, "top")
 
         categories = await get_categories()
 
@@ -97,12 +96,18 @@
             currentPage = sessionStorage["currentPage"] ?? 1
             sessionStorage["numOfResults"] = reply.length
 
+            if (searchResults.length == 0) {
+                searchError("Nincs találat.", true, "big")
+
+            }
+
             console.log(searchResults)
             //return reply.items
 
         }
         else {
-            searchError("Ismeretlen szerverhiba történt!")
+            searchError("Ismeretlen szerverhiba történt!", false, "big")
+            hide_pageSelector()
             //return [];
         }
 
@@ -225,7 +230,7 @@
             </fieldset>
 
             <div class="row5">
-                <button id="searchButton">
+                <button id="searchButton" on:click={searchButton_pressed}>
                     <img src="IMG/Global/search.png" alt="">
                     <p>Keresés</p>
                 </button>
@@ -321,7 +326,7 @@
     }
 
     #headDiv-lower {
-        display: flex;
+        display: flex !important;
     }
 
 

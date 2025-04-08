@@ -56,12 +56,29 @@ export function searchError (text, ...args) {
     err.style.display = "block"
     mainContainer.appendChild(err);
 
+    err.style.fontSize = "17px"
+    err.style.marginTop = "20px"
+
     if (args[0] && args[0] == true) {
         err.style.color = "rgb(64, 108, 78)"
-        err.style.marginTop = "-15px"
     }
     else {
         err.style.color = "rgb(156, 30, 30)"
+    }
+    if (args[1]) {
+        if (args[1] == "top") {
+            err.style.marginTop = "-15px"
+        }
+        else if (args[1] == "big") {
+            err.style.fontSize = "25px"
+        }
+        
+    }
+    else {
+
+    }
+    if (args[2] && args[2] == false) {
+        err.style.fontSize = "25px"
     }
 }
 
