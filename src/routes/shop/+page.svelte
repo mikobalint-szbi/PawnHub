@@ -75,7 +75,7 @@
                     {#if shop.estYear}
                         <p class="estab">Alapítva: {shop.estYear}</p>
                     {:else}
-                        <p class="estab">Alapítva: {shop.estYear}</p>
+                        <p class="estab">&nbsp;</p>
                     {/if}
                 </div>
                 <div class="contactsField">

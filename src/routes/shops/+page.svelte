@@ -11,7 +11,7 @@
         get_categories
     } from "$lib/Scripts/functions.js";
     import { 
-        fill_queryParams_fromInputs, searchError, fill_settlementTags, fill_inputs, searchButton_pressed 
+        fill_queryParams_fromInputs, searchError, fill_settlementTags, fill_inputs 
     } from '$lib/Scripts/shopsAndProducts.js'
     import { goto } from '$app/navigation';
     import { page } from '$app/stores';
@@ -25,6 +25,15 @@
     let currentUrl = window.location.href
 
     
+    function searchButton_pressed () {
+        sessionStorage["currentPage"] = "1"
+        fill_queryParams_fromInputs()
+
+        setTimeout(() => {
+            window.location.reload();
+        }, 50);
+    }
+
     async function search () {
         hide_pageSelector()
 
@@ -32,7 +41,6 @@
 
         fill_queryParams_fromInputs(true)
         currentPage = sessionStorage["currentPage"]
-
 
 
         // Paraméterek összeállítása:
@@ -312,7 +320,9 @@
         color: rgb(109, 128, 115) !important;
     }
 
-
+    #headDiv-lower {
+        display: flex;
+    }
 
 
 </style>

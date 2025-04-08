@@ -7,9 +7,9 @@ import {
 
 
 export function fill_queryParams_fromInputs (shopMode = false){
-                
+    console.log("aa" + document.getElementById("searchBar").value)
     if (document.getElementById("searchBar").value) {
-        
+
         setTimeout(() => {
             setQueryParam("searchKey", document.getElementById("searchBar").value)
         }, 50);
@@ -151,10 +151,4 @@ export async function fill_settlementTags(){
     }
 }
 
-export function searchButton_pressed () {
-    setQueryParam("page", "1");
 
-    setTimeout(() => {
-        window.location.reload();
-    }, 50);
-}
