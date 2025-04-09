@@ -179,9 +179,9 @@
 
     </div>
 
-    <div id="headDiv-lower">
+    <div id="headDiv-lower" class="big">
 
-        <div id="searchBox">
+        <div id="searchBox" class="big">
             <div class="row1">
                 <input type="text" id="searchBar" placeholder="Termék neve...">
             </div>
@@ -273,7 +273,7 @@
 
     </div>
 
-    <div id="main-container">
+    <div id="main-container" class="big">
 
         {#each searchResults as item, i}
         <!-- svelte-ignore a11y-no-static-element-interactions -->

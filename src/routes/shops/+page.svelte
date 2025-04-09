@@ -163,9 +163,9 @@
         </div>
     </div>
 
-    <div id="headDiv-lower">
+    <div id="headDiv-lower" class="big">
 
-        <div id="searchBox">
+        <div id="searchBox" class="big">
             <div class="row1">
                 <input type="text" id="searchBar" placeholder="Zálogház neve...">
             </div>
@@ -244,7 +244,7 @@
 
     </div>
 
-    <div id="main-container">
+    <div id="main-container" class="big">
         
         {#each searchResults as shop}
         <!-- svelte-ignore a11y-click-events-have-key-events -->

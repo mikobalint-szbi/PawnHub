@@ -279,6 +279,7 @@
 
         #headDiv-lower{
             width: 951px;
+            
         }
 
     }
