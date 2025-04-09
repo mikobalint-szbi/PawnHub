@@ -165,7 +165,7 @@
 
     <div id="headDiv-lower">
 
-        <div id="searchBox">
+        <div id="searchBox_big", class="searchBox">
             <div class="row1">
                 <input type="text" id="searchBar" placeholder="Zálogház neve...">
             </div>

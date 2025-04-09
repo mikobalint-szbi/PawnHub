@@ -179,9 +179,9 @@
 
     </div>
 
-    <div id="headDiv-lower">
+    <div id="headDiv-lower" class="forCustomer">
 
-        <div id="searchBox">
+        <div id="searchBox_big" class="searchBox">
             <div class="row1">
                 <input type="text" id="searchBar" placeholder="Termék neve...">
             </div>
