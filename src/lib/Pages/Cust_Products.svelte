@@ -128,6 +128,13 @@
 
 
     onMount(()=> {
+
+        document.getElementById("searchBar").addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                searchButton_pressed()
+            }
+        });
+
         hide_pageSelector()
 
         fill_inputs()

@@ -90,7 +90,7 @@
         document.getElementById("searchError").style.display = "none"
 
         if (reply) {
-            searchResults = reply.items
+            searchResults = reply.shops
             sessionStorage["numOfPages"] = Math.ceil(reply.length / 30)
             numOfPages = Math.ceil(reply.length / 30)
             currentPage = sessionStorage["currentPage"] ?? 1
@@ -115,6 +115,13 @@
     }
     
     onMount(()=> {
+
+        document.getElementById("searchBar").addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                searchButton_pressed()
+            }
+        });
+
     
         hide_pageSelector()
 
@@ -151,8 +158,6 @@
         </div>
         <div id="h-col2">
             <h1>Zálogházak</h1>
-
-
         </div>
         <div id="h-col3">
         </div>
@@ -202,11 +207,10 @@
                             <input type="text" id="settlInput" placeholder="Írja be a település nevét!">
                             <div id="dropdownContent">
 
-                                {#each {length: 37} as _, i}
                                 <!-- svelte-ignore a11y-missing-attribute -->
-                                <a >Link 1</a>
-                                {/each}
-                                </div>
+                                <!--a >Link 1</a-->
+
+                            </div>
                         </div>
 
                         <button>Hozzáadás</button>
@@ -242,34 +246,27 @@
 
     <div id="main-container">
         
-        {#each {length: 17} as _, i}
+        {#each searchResults as shop}
         <!-- svelte-ignore a11y-click-events-have-key-events -->
         <!-- svelte-ignore a11y-no-static-element-interactions -->
-        <div class="shopCard" on:click={()=>location.assign('shop')}>
+        <div class="shopCard" on:click={()=>location.assign(`shop/?id=${shop.id}`)}>
             <div class="row1">
                 <div class="col1">
-                    <img src="IMG/Global/no-shop-image.png" alt="A zálogház fotója">
+                    {#if shop.img}
+                        <img src="data:image/png;base64,{shop.img}" class="shopImage" alt="A zálogház fotója">
+                    {:else}
+                        <img src="IMG/Global/no-shop-image.png" class="shopImage" alt="A zálogház fotója">
+                    {/if}
                 </div>
                 <div class="col2">
-                    <h3 class="shopTitle" title="Zálogház neve">Zálogház neve Zálogház neve Zálogház neve Zálogház neve Zálogház neve Zálogház neve Zálogház neve Zálogház neve </h3>
+                    <h3 class="shopTitle" title="Zálogház neve">{shop.name}</h3>
                     <p class="shopDescription">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum rerum exercitationem iste voluptate aperiam dolor qui animi quis fugiat magnam assumenda distinctio, consequuntur corrupti expedita sit autem iusto provident! Dicta?
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-
+                        {shop.intro.replaceAll("\n\n","</p><p>").replaceAll("\n","<br>")}
                     </p>
                     <div class="innerRow">
                         <div class="shopLocation">
-                            <p class="shopSettlement">Nagykőrös</p>
-                            <p class="shopAddress">Nursiai Hosszúnevű Szent Szent Szent Szent Szent Benedek u. 337.</p>
+                            <p class="shopSettlement">{shop.settlement.name}</p>
+                            <p class="shopAddress">{shop.address}</p>
 
                         </div>
 
