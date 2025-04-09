@@ -2,11 +2,11 @@
 
 @media (min-width: 0px) {
 
-    #main-container, #searchBox_big {
+    #main-container, #searchBox {
         width: 90%;
     }
 
-    #searchBox_big {
+    #searchBox {
         .row2{
             flex-direction: column;
 
@@ -21,7 +21,7 @@
         }
     }
 
-    #searchBox_big {
+    #searchBox {
         .row3 {
             flex-direction: column;
 
@@ -76,7 +76,7 @@
 }
 @media (min-width: 468px) {
 
-    #searchBox_big {
+    #searchBox {
         .row2{
             flex-direction: row;
             
@@ -100,7 +100,7 @@
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media (min-width: 596px) {
 
-    #main-container, #searchBox_big {
+    #main-container, #searchBox {
         width: 87%;
         max-width: 1000px;
     }
@@ -118,7 +118,7 @@
 }
 @media (min-width: 768px) {
 
-    #main-container, #searchBox_big {
+    #main-container, #searchBox {
         width: 80%;
         max-width: 1000px;
     }
@@ -131,7 +131,7 @@
         }
     }
     
-    #searchBox_big {
+    #searchBox {
         .row3 {
             flex-direction: row;
 
@@ -182,7 +182,7 @@
         display: flex;
         justify-content: center;
 
-        #searchBox_big {
+        #searchBox {
             border: 1px solid black;
             padding: 10px;
             height: fit-content;
