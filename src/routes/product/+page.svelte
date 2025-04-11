@@ -107,7 +107,9 @@
                 </div>
                 <div class="pageContent" id="pageContent1">
                     <p>
-                        {item.description.replaceAll("\n\n","</p><p>").replaceAll("\n","<br>")}
+                        {#if item.description}
+                            {item.description.replaceAll("\n\n","</p><p>").replaceAll("\n","<br>")}
+                        {/if}
                     </p>
                 </div>
                 <div class="pageContent product" id="pageContent2">

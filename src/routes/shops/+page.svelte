@@ -87,8 +87,10 @@
 
         let reply = await api('GET', url);
 
-        document.getElementById("searchError").style.display = "none"
+        if (document.getElementById("searchError"))
+            document.getElementById("searchError").style.display = "none"
 
+            
         if (reply) {
             searchResults = reply.shops
             sessionStorage["numOfPages"] = Math.ceil(reply.length / 30)

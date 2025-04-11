@@ -807,3 +807,20 @@ export async function get_categories() {
 
     return categories
 }
+
+export function dateDisplay(text) {
+
+    return text.replaceAll("-",'.') + "."
+
+}
+
+export function timeToDate(text){
+
+    text = text.split(" ")[0]
+    return dateDisplay(text)
+
+}
+
+export function roundForint(price) {
+    return Math.round(price / 5) * 5
+}

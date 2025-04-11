@@ -1,7 +1,11 @@
 <script>
     import {open_popup, close_popup, save_popup} from "$lib/Scripts/popup.js";
+    import {api, formatNum, timeToDate, dateDisplay, roundForint} from "$lib/Scripts/functions.js";
     import { onMount } from "svelte";
   
+    let searchResults = []
+    let active = []
+    let expired = []
 
     function psOption1_clicked(){
         document.getElementById("ps-option1").classList.add("active")
@@ -19,6 +23,93 @@
         document.getElementById("ps-option3").classList.add("active")
     }
 
+
+    export function searchError (text, ...args) {
+
+        let mainContainer = document.getElementById("main-container")
+        //mainContainer.innerHTML = ""
+
+        let err = document.createElement('p');
+        err.textContent = text;
+        err.id = 'searchError';
+        err.className = 'error';
+        err.style.display = "block"
+        mainContainer.prepend(err);
+
+        err.style.fontSize = "17px"
+        err.style.marginTop = "20px"
+
+        if (args[0] && args[0] == true) {
+            err.style.color = "rgb(64, 108, 78)"
+        }
+        else {
+            err.style.color = "rgb(156, 30, 30)"
+        }
+        if (args[1]) {
+            if (args[1] == "top") {
+                err.style.marginTop = "-15px"
+            }
+            else if (args[1] == "big") {
+                err.style.fontSize = "25px"
+            }
+            
+        }
+        else {
+
+        }
+        if (args[2] && args[2] == false) {
+            err.style.fontSize = "25px"
+        }
+    }
+
+    async function get_loans () {
+        
+        searchError("Adatok lekérése folyamantban...", true)
+        let reply = await api('GET', "/loans");
+
+
+        if (document.getElementById("searchError"))
+            document.getElementById("searchError").style.display = "none"
+
+        if (reply) {
+
+            // Refine results:
+
+            let loans = reply.loans
+            let items = reply.items
+
+            loans.forEach(loan => {
+                loan.items = []
+
+                items.forEach(itemGroup => {
+                    itemGroup.forEach(item => {
+                        if (item.loan_id == loan.id) {
+                            loan.items.push(item)
+                        }
+                    })
+                })
+            });
+
+            // -------
+
+            searchResults = loans
+
+            if (searchResults.length == 0) {
+                searchError("Nincs találat.", true, "big")
+
+            }
+
+            console.log(searchResults)
+            //return reply.items
+
+        }
+        else {
+            searchError("Ismeretlen szerverhiba történt!", false, "big")
+
+        }
+
+    }
+
     onMount(() =>{
 
         let col7 = document.querySelectorAll("td.col7")
@@ -32,11 +123,13 @@
             }
         }
 
+        get_loans()
+
     })
 
 
 </script>
-
+{#if localStorage["auth_token"]}
 <section id="body">
 
     <div id="head-div">
@@ -98,7 +191,7 @@
 
         </div>
         <div id="hl-col3">
-            <button id="add-button" on:click={() => open_popup("loanPopup_new_forCustomers",true,false)}>
+            <button id="add-button" on:click={() => open_popup("messageOK","Kölcsönfelvétel céljából kérjük, vegye fel a kapcsolatot egy zálogházzal. <br> Ehhez javasoljuk Zálogházkereső oldalunkat, amelyet a főmenüben ér el.")}>
                 <div id="add-col1">
                     <img src="IMG/Global/add.png" alt="Hozzáadás" title="Hozzáadás">
                 </div>
@@ -113,6 +206,7 @@
     <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
     <!-- svelte-ignore a11y-no-static-element-interactions -->
     <div id="main-container">
+        {#if searchResults.length != 0}            
         <table id="main">
             <tr class="thead">
                 <th class="col1" title="Kölcsönadott összeg"><span class="moneyLent">Kölcsönadott</span><span class="moneyBack-inner"><span title="Kölcsönadott összeg">Kölcs. </span>| <span title="Visszatérítendő összeg" class="green">Vissz.</span><span class="interest-inner">| </span><span title="Kamatszázalék" class="interest-inner">Kam.</span></span></th>
@@ -124,52 +218,73 @@
                 <th class="col7">Zálogtárgyak</th>
                 <th class="col8">Leírás</th>
             </tr>
-                {#each {length: 17} as _, i}
-                <div class="row" href="">
+                {#each searchResults as loan}
+                <div class="row" >
                     <td class="col1" href="" tabindex="0" on:click={() => open_popup("loanPopup_forCustomers",false,true)}>
-                        <p title="Kölcsönadott összeg">1 300 000 Ft</p>
-                        <p class="moneyBack-inner green" title="Visszatérítendő összeg">1 500 000 Ft</p>
+                        <p title="Kölcsönadott összeg">{formatNum(loan.givenAmount)} Ft</p>
+                        <p class="moneyBack-inner green" title="Visszatérítendő összeg">{formatNum(roundForint(loan.givenAmount * (1 + loan.interest / 100)))} Ft</p>
                         <p class="interest-inner" title="Kamat">100%</p>
                     </td>
-                    <td class="col2 green" href="" tabindex="-1" on:click={() => open_popup("loanPopup_forCustomers",false,false)}>1 500 000 Ft</td>
+                    <td class="col2 green" href="" tabindex="-1" on:click={() => open_popup("loanPopup_forCustomers",false,false)}>{formatNum(roundForint(loan.givenAmount * (1 + loan.interest / 100)))} Ft</td>
                     <td class="col3"  on:click={() => open_popup("loanPopup_forCustomers",false,false)}>
-                        <p title="Megköttetett">2024.03.10.</p>
-                        <p class="expDate-inner" title="Lejár">2025.01.20.</p>
+                        <p title="Megköttetett">{timeToDate(loan.created_at)}</p>
+                        <p class="expDate-inner" title="Lejár">{dateDisplay(loan.expDate)}</p>
                     </td>
-                    <td class="col4" on:click={() => open_popup("loanPopup_forCustomers",false,false)}>2025.01.20.</td>
-                    <td class="col5" on:click={() => open_popup("loanPopup_forCustomers",false,false)}>100%</td>
+                    <td class="col4" on:click={() => open_popup("loanPopup_forCustomers",false,false)}>{dateDisplay(loan.expDate)}</td>
+                    <td class="col5" on:click={() => open_popup("loanPopup_forCustomers",false,false)}>{loan.interest}%</td>
                     <td class="col6">
 
-                        <div class="shopField-flex" tabindex="0" on:click={()=>location.assign('shop')}>
-                            <img src="IMG/Global/no-shop-image.png" alt="">
-                            <p>Tóth Pista Zálogház és Ékszerüzlet</p>
+                        <div class="shopField-flex" tabindex="0" on:click={()=>location.assign(`shop/?id=${loan.shop.id}`)}>
+                            {#if loan.shop.img}
+                                <img src="data:image/png;base64,{loan.shop.img}" alt="">
+                            {:else}
+                                <img src="IMG/Global/no-shop-image.png" alt="">
+                            {/if}
+                            <p>{loan.shop.name}</p>
                         </div>
                     </td>
                     <td class="col7">
                         <div class="productField-flex">
-                            <div class="productButton"  tabindex="0" on:click={() => open_popup("productPopup_forCustomers",false,false)}>
-                                <img src="IMG/Global/no-image.png" alt="">
-                                <p>SamsungSamsungSamsungSamsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
-                            </div>
-                            <div class="productButton"  tabindex="0" on:click={() => open_popup("productPopup_forCustomers",false,false)}>
-                                <img src="IMG/Global/no-image.png" alt="">
-                                <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
-                            </div>
-                            <p class="productField-more">...és további X db zálogtárgy.</p>
+                            {#if loan.items.length == 0}
+                                <p class="noItems">Nem tartozik  zálogtárgy ehhez az adóssághoz.</p>
+                            {:else}
+
+                                {#each loan.items.slice(0, 2) as item}
+                                    <div class="productButton"  tabindex="0" on:click={() => open_popup("productPopup_forCustomers",false,false)}>
+
+                                        {#if item.img}
+                                            <img src="data:image/png;base64,{item.img}" alt="">
+                                        {:else}
+                                            <img src="IMG/Global/no-image.png" alt="">
+                                        {/if}
+
+                                        <p>{item.name}</p>
+                                    </div>
+                                {/each}
+                            {/if}
+                            {#if loan.items.length > 2}
+                                <p class="productField-more">...és további {loan.items.length-2} db zálogtárgy.</p>
+                            {/if}
                         </div>
                     </td>
                     <td class="col8" on:click={() => open_popup("loanPopup_forCustomers",false,false)}>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores eaque numquam sit, minima cupiditate quisquam consequatur, aspernatur repellendus quos esse laudantium quia veniam...
+                        {#if loan.description}
+                            {#if loan.description.length > 180}
+                                {loan.description.replaceAll("\n\n","</p><p>").replaceAll("\n","<br>").substring(0,180)}...
+                            {:else}
+                                {loan.description.replaceAll("\n\n","</p><p>").replaceAll("\n","<br>")}
+                            {/if}
+                        {/if}
                     </td>
                 </div>
                 {/each}
 
-                
-
         </table>
-    </div>
+        {/if}
 
+    </div>
 </section>
+{/if}
 
 <style lang="scss">
     
@@ -293,7 +408,7 @@
         }
 
         .col5{
-            padding-top: 5px !important;
+            // padding-top: 5px !important;
         }
 
         td{
@@ -382,6 +497,7 @@
 
         td p {
             margin-bottom: 0 !important;
+            margin-top: 0 !important;
         }
 
         table{
@@ -511,7 +627,7 @@
 
                 td.col1, td.col2 {
 
-                    font-size: 20px;
+                    font-size: 19px;
                 }
 
                 .green{
@@ -552,4 +668,7 @@
 
     }
 
+    .noItems {
+        color: rgb(64, 108, 78);
+    }
 </style>

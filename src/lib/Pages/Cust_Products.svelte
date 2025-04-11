@@ -99,7 +99,9 @@
 
         let reply = await api('GET', url);
 
-        document.getElementById("searchError").style.display = "none"
+        if (document.getElementById("searchError"))
+            document.getElementById("searchError").style.display = "none"
+
 
         if (reply) {
             searchResults = reply.items
@@ -291,7 +293,10 @@
                     <h3 class="productTitle" title="Termék neve">{item.name}</h3>
                     <p class="productCategory">{categories[item.type_id]}</p>
                     <p class="productDescription">
-                        {item.description.replaceAll("\n\n","</p><p>").replaceAll("\n","<br>")}
+                        {#if item.description}
+                            {item.description.replaceAll("\n\n","</p><p>").replaceAll("\n","<br>")}
+                        {/if}
+
 
                     </p>
                     <div class="innerRow">
