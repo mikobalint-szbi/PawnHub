@@ -74,7 +74,7 @@
 
     async function get_loans () {
         
-        searchError("Adatok lekérése folyamantban...", true)
+        //searchError("Adatok lekérése folyamantban...", true)
         let reply = await api('GET', "/loans");
 
 
@@ -83,11 +83,11 @@
 
         if (reply) {
 
-            let searchResults = reply
+            searchResults = reply
 
             if (searchResults.length == 0) {
                 searchError("Nincs találat.", true, "big")
-
+                
             }
 
             console.log(searchResults)
@@ -199,6 +199,7 @@
     <div id="main-container">
 
         {#if searchResults.length != 0}
+
         <table id="main">
             <tr class="thead">
                 <th class="col1" title="Kölcsönadott összeg"><span class="moneyLent">Kölcsönadott</span><span class="moneyBack-inner"><span title="Kölcsönadott összeg">Kölcs. </span>| <span title="Visszatérítendő összeg" class="green">Vissz.</span><span class="interest-inner">| </span><span title="Kamatszázalék" class="interest-inner">Kam.</span></span></th>
