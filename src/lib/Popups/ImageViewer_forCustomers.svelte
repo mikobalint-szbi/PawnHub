@@ -3,14 +3,12 @@
     import { onMount } from "svelte";
     import '$lib/Styles/imageViewer.scss';
     import { image_forCustomers } from '@/stores/global.js';
-    import { writable } from 'svelte/store';
 
     $: image = $image_forCustomers;
 
 
     onMount(()=>{
         initial_sizing()
-        
     })
 
 </script>
@@ -39,7 +37,7 @@
                     </li>
                 </ul-->
 
-                {#if $image}
+                {#if image}
                     <img id="popup-img" class="imageViewer-image" src="data:image/png;base64,{image}" alt="Megjelenített kép">
                 {:else}
                     <img id="popup-img" class="imageViewer-image" src="IMG/Global/no-image.png" alt="Megjelenített kép">
