@@ -71,6 +71,10 @@
             width: 90% !important;
         }
 
+        .bottomButton {
+            width: 70%;
+        }
+
     }
     @media (min-width: 340px) {
 
@@ -106,6 +110,9 @@
             width: 80% !important;
         }
 
+        .bottomButton {
+            width: 220px;
+        }
     }
     @media (min-width: 768px) {
 
@@ -155,9 +162,16 @@
     }
 
     #bottomRow {
-
+        height: 79px;
+        align-items: center;
     }
 
+    .bottomButton {
+        height: 100%;
+        img {
+            height: 100%;
+        }
+    }
 
 
 </style>

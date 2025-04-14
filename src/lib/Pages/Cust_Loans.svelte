@@ -80,7 +80,7 @@
 
     async function get_loans () {
         
-        //searchError("Adatok lekérése folyamantban...", true)
+        searchError("Adatok lekérése folyamantban...", true)
         let reply = await api('GET', "/loans");
 
 

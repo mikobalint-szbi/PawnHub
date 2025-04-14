@@ -12,7 +12,6 @@
 	import ProductChooser from '$lib/Popups/ProductChooser.svelte';
 	import CustomerChooser from '$lib/Popups/CustomerChooser.svelte';
 	import LoanPopup_forCustomers from '$lib/Popups/LoanPopup_forCustomers.svelte';
-	import LoanPopup_new_forCustomers from '$lib/Popups/LoanPopup_New_forCustomers.svelte';
 	import ProductPopup_forCustomers from '$lib/Popups/ProductPopup_forCustomers.svelte';
 	//import AccessDenied from '$lib/Pages/AccessDenied.svelte';
     import ConfirmDelete from '$lib/Popups/ConfirmDelete.svelte';
@@ -37,7 +36,6 @@
 			<CustomerChooser/>
 			<LoanPopup_forCustomers/>
 			<ProductPopup_forCustomers/>
-			<LoanPopup_new_forCustomers/>
 			<ConfirmDelete/>
 			<MessageOK/>
 		</section>

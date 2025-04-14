@@ -2,10 +2,6 @@
 http://infojegyzet.hu/webszerkesztes/dokumentacio
 
 
-Hol tartottam:
-- ProductPopup_forCustomers adatbetöltése: loan kártya adatai
-
-
 Teendők:
 - Loanpopup_forcustomer_new törlése referenciákkal együtt
 - A Customer's Loans oldalon működjön az [Aktív|Lejárt|Összes] kapcsoló
