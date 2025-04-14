@@ -2,15 +2,17 @@
     import {open_popup, close_popup, save_popup} from "$lib/Scripts/popup.js";
     import { formatNum, timeToDate, dateDisplay } from "$lib/Scripts/functions.js";
     import { onMount } from 'svelte';
-    import { product_forCustomers, loan_forCustomers, image } from '@/stores/global.js';
+    import { product_forCustomers, loan_forCustomers, image_forCustomers } from '@/stores/global.js';
     import { condition } from "$lib/Scripts/variables.js";
+    import { writable } from 'svelte/store';
+
     
     $: product = $product_forCustomers;
     $: loan = $loan_forCustomers;
 
     function productImage_clicked () {
 
-        image.set(product.img)
+        image_forCustomers.set(product.img)
 
         open_popup("imageViewer_forCustomers")
     }
