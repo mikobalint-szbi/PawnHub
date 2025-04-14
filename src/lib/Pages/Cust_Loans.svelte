@@ -2,6 +2,9 @@
     import {open_popup, close_popup, save_popup} from "$lib/Scripts/popup.js";
     import {api, formatNum, timeToDate, dateDisplay, roundForint} from "$lib/Scripts/functions.js";
     import { onMount } from "svelte";
+    import { writable } from 'svelte/store';
+    import { loan_forCustomers } from '@/stores/global.js';
+
   
     let searchResults = []
     let active = []
@@ -21,6 +24,13 @@
         document.getElementById("ps-option1").classList.remove("active")
         document.getElementById("ps-option2").classList.remove("active")
         document.getElementById("ps-option3").classList.add("active")
+    }
+
+    function loanRow_clicked (i) {
+
+        loan_forCustomers.set(searchResults[i])
+        
+        open_popup("loanPopup_forCustomers")
     }
 
 
@@ -218,20 +228,20 @@
                 <th class="col7">Zálogtárgyak</th>
                 <th class="col8">Leírás</th>
             </tr>
-                {#each searchResults as loan}
+                {#each searchResults as loan, i}
                 <div class="row" >
-                    <td class="col1" href="" tabindex="0" on:click={() => open_popup("loanPopup_forCustomers",false,true)}>
+                    <td class="col1" href="" tabindex="0" on:click={() => loanRow_clicked(i)}>
                         <p title="Kölcsönadott összeg">{formatNum(loan.givenAmount)} Ft</p>
                         <p class="moneyBack-inner green" title="Visszatérítendő összeg">{formatNum(roundForint(loan.givenAmount * (1 + loan.interest / 100)))} Ft</p>
                         <p class="interest-inner" title="Kamat">100%</p>
                     </td>
-                    <td class="col2 green" href="" tabindex="-1" on:click={() => open_popup("loanPopup_forCustomers",false,false)}>{formatNum(roundForint(loan.givenAmount * (1 + loan.interest / 100)))} Ft</td>
-                    <td class="col3"  on:click={() => open_popup("loanPopup_forCustomers",false,false)}>
+                    <td class="col2 green" href="" tabindex="-1" on:click={() => loanRow_clicked(i)}>{formatNum(roundForint(loan.givenAmount * (1 + loan.interest / 100)))} Ft</td>
+                    <td class="col3"  on:click={() => loanRow_clicked(i)}>
                         <p title="Megköttetett">{timeToDate(loan.created_at)}</p>
                         <p class="expDate-inner" title="Lejár">{dateDisplay(loan.expDate)}</p>
                     </td>
-                    <td class="col4" on:click={() => open_popup("loanPopup_forCustomers",false,false)}>{dateDisplay(loan.expDate)}</td>
-                    <td class="col5" on:click={() => open_popup("loanPopup_forCustomers",false,false)}>{loan.interest}%</td>
+                    <td class="col4" on:click={() => loanRow_clicked(i)}>{dateDisplay(loan.expDate)}</td>
+                    <td class="col5" on:click={() => loanRow_clicked(i)}>{loan.interest}%</td>
                     <td class="col6">
 
                         <div class="shopField-flex" tabindex="0" on:click={()=>location.assign(`shop/?id=${loan.shop.id}`)}>
@@ -249,8 +259,8 @@
                                 <p class="noItems">Nem tartozik  zálogtárgy ehhez az adóssághoz.</p>
                             {:else}
 
-                                {#each loan.items.slice(0, 2) as item}
-                                    <div class="productButton"  tabindex="0" on:click={() => open_popup("productPopup_forCustomers",false,false)}>
+                                {#each loan.items.slice(0, 2) as item, j}
+                                    <div class="productButton"  tabindex="0" on:click={() => open_popup("productPopup_forCustomers", searchResults[i].items[j])}>
 
                                         {#if item.img}
                                             <img src="data:image/png;base64,{item.img}" alt="">
@@ -267,7 +277,7 @@
                             {/if}
                         </div>
                     </td>
-                    <td class="col8" on:click={() => open_popup("loanPopup_forCustomers",false,false)}>
+                    <td class="col8" on:click={() => loanRow_clicked(i)}>
                         {#if loan.description}
                             {#if loan.description.length > 180}
                                 {loan.description.replaceAll("\n\n","</p><p>").replaceAll("\n","<br>").substring(0,180)}...

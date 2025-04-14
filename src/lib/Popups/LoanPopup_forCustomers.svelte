@@ -1,6 +1,9 @@
 <script>
     import {open_popup, close_popup, save_popup} from "$lib/Scripts/popup.js";
     import {onMount} from 'svelte';
+    import { loan_forCustomers } from '@/stores/global.js';
+
+    $: data = $loan_forCustomers;
 
     onMount(()=>{
 	    document.getElementById("image").addEventListener('click', () => {close_popup("loanPopup_forCustomers"); open_popup("imageViewer")} )

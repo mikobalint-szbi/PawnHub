@@ -23,13 +23,23 @@ export function save_popup(popupID){
 
 }
 
+export function load_popupData(popupID, object) {
+    console.log(object)
+    if (popupID == "loanPopup_forCustomers") {
+        document.getElementById("")
+    }
+
+}
+
 export function open_popup(popupID, ...args){
 
     let backButton = false
+    let object
 
     if (["productPopup","loanPopup","customerPopup"].includes(popupID)){
 
         let create = args[0]
+        //object = args[1]
 
         if (create){
 
@@ -39,6 +49,7 @@ export function open_popup(popupID, ...args){
         else{
             document.getElementById(popupID + "-submitText").innerHTML = "Módosítások mentése"
         }
+
     }
     else if (popupID == "messageOK"){
 
@@ -86,6 +97,9 @@ export function open_popup(popupID, ...args){
             document.getElementById("noButton").addEventListener("click", noButton)
         }
     }
+    /*else {
+        object = args[0]
+    }*/
 
     if (backButton){
         document.getElementById(popupID + "-backButton").style.visibility = "visible"
@@ -117,6 +131,8 @@ export function open_popup(popupID, ...args){
         popup.showModal()
     }
 
+
+    load_popupData(popupID, object)
 
     document.getElementById("p-name").focus()
 
