@@ -99,7 +99,7 @@
                     <label for="loanBox" class="popup-label">Adósság:</label>
                     <div id="loanBox">
                         <div id="lb-part1">
-                            <h5>Pénzösszeg:</h5>
+                            <h5 title="Visszatérítendő">Visszatér<span class="lb-mobile">.</span><span class="lb-desktop">ítendő</span>:</h5>
                             <p>30 000 Ft</p>
                             <h5>Megköttetett:</h5>
                             <p>2024.03.06.</p>
@@ -165,6 +165,13 @@
                 }
                 #lb-part2{
                     width: 40%;
+                }
+
+                .lb-mobile {
+                    display: inline;
+                }
+                .lb-desktop {
+                    display: none;
                 }
             }
 
@@ -270,10 +277,17 @@
 
             #loanBox{
                 #lb-part1{
-                    width: 50%;
+                    width: 100%;
                 }
                 #lb-part2{
-                    width: 50%;
+                    width: 100%;
+                }
+
+                .lb-mobile {
+                    display: none;
+                }
+                .lb-desktop {
+                    display: inline;
                 }
             }
 

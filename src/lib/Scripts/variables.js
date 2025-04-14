@@ -12,3 +12,11 @@ export const regex = {
     website: new RegExp("^(https?:\\/\\/)([a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})(\\/.*)?$"),
     formatNum: new RegExp("\\B(?=(\\d{3})+(?!\\d))", "g")
 }
+
+export const condition = {
+    5: "🔵 Használatlan",
+    4: "🟢 Kiváló",
+    3: "🟡 Jó",
+    2: "🟠 Kielégítő",
+    1: "🔴 Lehasznált",
+}

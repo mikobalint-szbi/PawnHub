@@ -7,9 +7,9 @@ export let loan_forCustomers = writable({
     customer_id: null,
     description: null,
     expDate: "2000-01-01 1:01:01",
-    givenAmount: 1,
+    givenAmount: 0,
     id: null,
-    interest: null,
+    interest: 0,
     items: [],
     shop: {
         id: null,
@@ -21,13 +21,16 @@ export let loan_forCustomers = writable({
 
 export let product_forCustomers = writable({
     description: null,
-    estimatedValue: null,
+    estimatedValue: 0,
     id: null,
     img: null,
     loan_id: null,
     name: null,
-    payedValue: null,
+    payedValue: 0,
     shop_id: null,
-    type_id: null
+    type: {
+        id: null,
+        name: null
+    }
 
 })

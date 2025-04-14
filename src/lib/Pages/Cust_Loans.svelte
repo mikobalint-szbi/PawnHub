@@ -3,7 +3,7 @@
     import {api, formatNum, timeToDate, dateDisplay, roundForint} from "$lib/Scripts/functions.js";
     import { onMount } from "svelte";
     import { writable } from 'svelte/store';
-    import { loan_forCustomers } from '@/stores/global.js';
+    import { loan_forCustomers, product_forCustomers } from '@/stores/global.js';
 
   
     let searchResults = []
@@ -33,6 +33,13 @@
         open_popup("loanPopup_forCustomers")
     }
 
+    function productButton_clicked (i, j) {
+
+        product_forCustomers.set(searchResults[i].items[j])
+        loan_forCustomers.set(searchResults[i])
+
+        open_popup("productPopup_forCustomers")
+    }
 
     export function searchError (text, ...args) {
 
@@ -243,7 +250,7 @@
                             {:else}
 
                                 {#each loan.items.slice(0, 2) as item, j}
-                                    <div class="productButton"  tabindex="0" on:click={() => open_popup("productPopup_forCustomers", searchResults[i].items[j])}>
+                                    <div class="productButton"  tabindex="0" on:click={() => productButton_clicked(i, j)}>
 
                                         {#if item.img}
                                             <img src="data:image/png;base64,{item.img}" alt="">

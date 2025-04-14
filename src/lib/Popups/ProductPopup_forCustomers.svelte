@@ -1,8 +1,14 @@
 <script>
     import {open_popup, close_popup, save_popup} from "$lib/Scripts/popup.js";
-    import {onMount} from 'svelte';
-
+    import { formatNum } from "$lib/Scripts/functions.js";
+    import { onMount } from 'svelte';
+    import { product_forCustomers, loan_forCustomers } from '@/stores/global.js';
+    import { condition } from "$lib/Scripts/variables.js";
     
+    $: product = $product_forCustomers;
+    $: loan = $loan_forCustomers;
+
+
     function resize() {
 
         const grid = document.getElementById("popup-grid");
@@ -24,11 +30,11 @@
 
 
 
-
     onMount(()=>{
 	    document.getElementById("image").addEventListener('click', () => {close_popup("productPopup_forCustomers"); open_popup("imageViewer")} )
 
         resize()
+        console.log(product)
 
         window.addEventListener("resize", ()=> {
             resize()
@@ -67,43 +73,43 @@
                 </div>
                 <div id="product-name" class="popupGrid-element">
                     <label for="p-name" class="popup-label">Zálogtárgy neve:</label>
-                    <p class="pValue left toResize" id="p-name">Zálogtárgy neveZálogtárgy neveZálogtárgy neveZálogtárgy neveZálogtárgy neveZálogtárgy neve</p>
+                    <p class="pValue left toResize" id="p-name">{product.name}</p>
                 </div>
                 <div id="status" class="popupGrid-element">
                     <label for="p-status" class="popup-label">Státusz:</label>
-                    <p id="p-status" class="popup-input pValue ofHidden left property">Zálog</p>
+                    <p id="p-status" class="popup-input pValue ofHidden left property">🔒 Zálog</p>
                 </div>
                 <div id="category" class="popupGrid-element">
                     <label for="p-category" class="popup-label">Kategória:</label>
-                    <p id="p-category" class="popup-input pValue ofHidden left property">Mobiltelefon-kézikészülék</p>
+                    <p id="p-category" class="popup-input pValue ofHidden left property">{product.type.name}</p>
                 </div>
                 <div id="condition" class="popupGrid-element">
                     <label for="p-condition" class="popup-label">Állapot:</label>
-                    <p id="p-condition" class="popup-input pValue left property">Lehasznált</p>
+                    <p id="p-condition" class="popup-input pValue left property">{condition[product.condition]}</p>
                 </div>
                 <div id="payed-value" class="popupGrid-element">
                     <label for="p-payedValue" class="popup-label">Kifizetett érték:</label>
                     <div class="pv-row">
-                        <p class="popup-input money pValue" id="p-payedValue">15 000 000 Ft</p>
+                        <p class="popup-input money pValue" id="p-payedValue">{formatNum(product.payedValue)} Ft</p>
 
                     </div>
                 </div>
                 <div id="estimated-value" class="popupGrid-element">
                     <label for="p-estimatedValue" class="popup-label">Becsült érték:</label>
                     <div class="pv-row">
-                        <p class="popup-input money pValue" id="p-estimatedValue">16 000 000 Ft</p>
+                        <p class="popup-input money pValue" id="p-estimatedValue">{formatNum(product.estimatedValue)} Ft</p>
                     </div>
                 </div>
                 <div id="description" class="popupGrid-element">
                     <label for="p-description" class="popup-label">Leírás:</label>
-                    <textarea type="text" class="popup-input" id="p-description" readonly></textarea>
+                    <textarea type="text" class="popup-input" id="p-description" readonly>{product.description}</textarea>
                 </div>
                 <div id="loan" class="popupGrid-element">
                     <label for="loanBox" class="popup-label">Adósság:</label>
                     <div id="loanBox">
                         <div id="lb-part1">
-                            <h5>Pénzösszeg:</h5>
-                            <p>30 000 Ft</p>
+                            <h5 title="Visszatérítendő">Visszatér<span class="lb-mobile">.</span><span class="lb-desktop">ítendő</span>:</h5>
+                            <p>{formatNum(loan.givenAmount)} Ft</p>
                             <h5>Megköttetett:</h5>
                             <p>2024.03.06.</p>
                         </div>
@@ -119,10 +125,14 @@
                 </div>
                 <div id="shop" class="popupGrid-element">
                     <div id="shop-row1">
-                        <img src="IMG/Global/no-shop-image.png" alt="">
+                        {#if loan.shop.img}
+                            <img src="data:image/png;base64,{loan.shop.img}" alt="">
+                        {:else}
+                            <img src="IMG/Global/no-shop-image.png" alt="">
+                        {/if}
                     </div>
                     <div id="shop-row2">
-                        <p>Tóth Pista Zálogház és Ékszerüzlet</p>
+                        <p>{loan.shop.name}</p>
                     </div>
                 </div>
 
@@ -162,6 +172,13 @@
                 }
                 #lb-part2{
                     width: 40%;
+                }
+
+                .lb-mobile {
+                    display: inline;
+                }
+                .lb-desktop {
+                    display: none;
                 }
             }
 
@@ -266,10 +283,17 @@
 
             #loanBox{
                 #lb-part1{
-                    width: 50%;
+                    width: 100%;
                 }
                 #lb-part2{
-                    width: 50%;
+                    width: 100%;
+                }
+
+                .lb-mobile {
+                    display: none;
+                }
+                .lb-desktop {
+                    display: inline;
                 }
             }
 
@@ -383,7 +407,7 @@
                 overflow-y: hidden;
                 text-wrap: nowrap;
                 margin-bottom: 0px !important;
-                color: rgb(98, 136, 112);
+                color: rgb(91, 114, 99);
                 font-weight: 400;
                 scrollbar-width: thin;
                 // A p-name mező tartalma hosszabb, mint a popup szélessége. Ezért lóg ki minden.
