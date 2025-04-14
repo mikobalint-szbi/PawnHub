@@ -1,13 +1,17 @@
 
 http://infojegyzet.hu/webszerkesztes/dokumentacio
 
+
+Hol tartottam:
+- A Customer's Loans page-en valamiért nem tölti be az #each a searchResults tartalmát
+
+
 Teendők:
 - A Customer's Loans oldalon működjön az [Aktív|Lejárt|Összes] kapcsoló
 	• A gombok onClick-függvényeit módosítom úgy, hogy cseréljék ki a searchResults lista tartalmát az active és az expired listák elemeinek felhasználásával
 - Customer's Loan popup adatok betöltése.
 - A Loan oldal keresőmezőjének működésre bírása
 - Shop's Loan oldal elkészítése
-
 
 - shop és product page-eken a levelezés funkció
 - A Shop page-en a productCardoknak van egy kis hiba a reszponzivitásában. Túl későn törnek flex-direction:column irányba

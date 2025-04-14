@@ -18,3 +18,16 @@ export let loan_forCustomers = writable({
     }
 
 });
+
+export let product_forCustomers = writable({
+    description: null,
+    estimatedValue: null,
+    id: null,
+    img: null,
+    loan_id: null,
+    name: null,
+    payedValue: null,
+    shop_id: null,
+    type_id: null
+
+})

@@ -83,26 +83,7 @@
 
         if (reply) {
 
-            // Refine results:
-
-            let loans = reply.loans
-            let items = reply.items
-
-            loans.forEach(loan => {
-                loan.items = []
-
-                items.forEach(itemGroup => {
-                    itemGroup.forEach(item => {
-                        if (item.loan_id == loan.id) {
-                            loan.items.push(item)
-                        }
-                    })
-                })
-            });
-
-            // -------
-
-            searchResults = loans
+            let searchResults = reply
 
             if (searchResults.length == 0) {
                 searchError("Nincs találat.", true, "big")
@@ -216,7 +197,8 @@
     <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
     <!-- svelte-ignore a11y-no-static-element-interactions -->
     <div id="main-container">
-        {#if searchResults.length != 0}            
+
+        {#if searchResults.length != 0}
         <table id="main">
             <tr class="thead">
                 <th class="col1" title="Kölcsönadott összeg"><span class="moneyLent">Kölcsönadott</span><span class="moneyBack-inner"><span title="Kölcsönadott összeg">Kölcs. </span>| <span title="Visszatérítendő összeg" class="green">Vissz.</span><span class="interest-inner">| </span><span title="Kamatszázalék" class="interest-inner">Kam.</span></span></th>
