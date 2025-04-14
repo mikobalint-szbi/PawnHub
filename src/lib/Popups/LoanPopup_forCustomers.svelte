@@ -403,7 +403,7 @@
     }
 
     #bottomRow {
-        height: 0px;
+        height: 0px !important;
     }
 
 

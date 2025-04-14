@@ -108,7 +108,6 @@
     }
 
     onMount(() =>{
-        open_popup("imageViewer_forCustomers")
 
         let col7 = document.querySelectorAll("td.col7")
         
