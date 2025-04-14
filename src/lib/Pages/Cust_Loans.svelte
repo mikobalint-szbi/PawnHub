@@ -108,7 +108,8 @@
     }
 
     onMount(() =>{
-        open_popup("imageViewer")
+        open_popup("imageViewer_forCustomers")
+
         let col7 = document.querySelectorAll("td.col7")
         
         for (let i = 0; i < col7.length; i++) {

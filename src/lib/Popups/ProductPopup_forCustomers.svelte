@@ -2,12 +2,18 @@
     import {open_popup, close_popup, save_popup} from "$lib/Scripts/popup.js";
     import { formatNum, timeToDate, dateDisplay } from "$lib/Scripts/functions.js";
     import { onMount } from 'svelte';
-    import { product_forCustomers, loan_forCustomers } from '@/stores/global.js';
+    import { product_forCustomers, loan_forCustomers, image } from '@/stores/global.js';
     import { condition } from "$lib/Scripts/variables.js";
     
     $: product = $product_forCustomers;
     $: loan = $loan_forCustomers;
 
+    function productImage_clicked () {
+
+        image.set(product.img)
+
+        open_popup("imageViewer_forCustomers")
+    }
 
     function resize() {
 
@@ -70,7 +76,9 @@
             <div id="popup-grid">
                 <div id="image" class="popupGrid-element">
                     {#if product.img}
-                        <img src="data:image/png;base64,{product.img}" alt="A termék fényképe">
+                        <!-- svelte-ignore a11y-click-events-have-key-events -->
+                        <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+                        <img src="data:image/png;base64,{product.img}" alt="A termék fényképe" on:click={productImage_clicked}>
                     {:else}
                         <img src="IMG/Global/no-image.png" alt="A termék fényképe">
                     {/if}

@@ -6,6 +6,7 @@
 	import '$lib/Styles/messages.scss';
 	import ProductPopup from '$lib/Popups/ProductPopup.svelte';
 	import ImageViewer from '$lib/Popups/ImageViewer.svelte';
+	import ImageViewer_forCustomers from '$lib/Popups/ImageViewer_forCustomers.svelte';
 	import CustomerPopup from '$lib/Popups/CustomerPopup.svelte';
 	import LoanPopup from '$lib/Popups/LoanPopup.svelte';
 	import ProductChooser from '$lib/Popups/ProductChooser.svelte';
@@ -30,6 +31,7 @@
 			<ProductPopup/>
 			<CustomerPopup/>
 			<ImageViewer/>
+			<ImageViewer_forCustomers/>
 			<LoanPopup/>
 			<ProductChooser/>
 			<CustomerChooser/>

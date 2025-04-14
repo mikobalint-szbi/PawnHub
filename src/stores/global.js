@@ -34,3 +34,6 @@ export let product_forCustomers = writable({
     }
 
 })
+
+export let image_forCustomers = writable("")
+export let image = writable("")

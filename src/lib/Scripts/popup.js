@@ -1,11 +1,16 @@
+import { getNum } from "$lib/Scripts/functions.js";
 
 export function close_popup(popupID){
     let popup = document.getElementById(popupID)
-    document.getElementById("body").style.display = "flex"
-    popup.style.maxHeight = "unset"
-    popup.style.margin = "0"
 
-    popup.close()
+    if (popup) {
+        document.getElementById("body").style.display = "flex"
+        popup.style.maxHeight = "unset"
+        popup.style.margin = "0"
+    
+        popup.close()
+    }
+
 }
 
 export function save_popup(popupID){
@@ -82,7 +87,8 @@ export function open_popup(popupID, ...args){
             "product2": "Biztosan törölni szeretné a terméket a zálogház kínálatából?",
             "loan": "Biztosan törölni szeretné az adósságot?",
             "account": "Biztosan törölni szeretné PawnHub-fiókját?",
-            "profilePic": "Biztosan törölni szeretné a fiókjához tartozó profilképet?"
+            "profilePic": "Biztosan törölni szeretné a fiókjához tartozó profilképet?",
+            "productPic": "Biztosan törölni szeretné a termékhez tartozó képet?"
         }
 
 
@@ -135,7 +141,56 @@ export function open_popup(popupID, ...args){
 
     document.getElementById("p-name").focus()
 
+}
 
+export function initial_sizing() {
+    // for ImageViewer
 
+    let img = document.getElementById("popup-img")
+    let styles = getComputedStyle(img)
+
+    if (getNum(styles.height) > getNum(styles.width)) {
+
+        img.style.setProperty("height", "95%", "important");
+        img.style.setProperty("width", "unset", "important");
+
+    }
+    else {
+        img.style.setProperty("height", "unset", "important");
+        img.style.setProperty("width", "97%", "important");
+
+    }
 
 }
+
+export function resize_image(ratio){
+    document.querySelectorAll(".imageViewer-image").forEach(img => {
+
+        let imgStyles = getComputedStyle(img)
+        let h = getNum(imgStyles.height)
+        let w = getNum(imgStyles.width)
+    
+        /*let container = document.getElementById("popup-div")
+        let ch = container.clientHeight
+        let cw = container.clientWidth*/
+    
+        img.style.setProperty("height", h*ratio + "px", "important");
+        img.style.setProperty("width", w*ratio + "px", "important");
+    });
+
+
+    /*if (ratio < 1) {
+
+        if (h >= w && h < ch-170) {
+            console.log(h < ch-170)
+            img.style.setProperty("height", "95%", "important");
+            img.style.setProperty("width", "unset", "important");
+        }
+        else if (w >= h && w < cw-170) {
+            img.style.setProperty("height", "unset", "important");
+            img.style.setProperty("width", "97%", "important");
+        }
+    }*/
+
+}
+
