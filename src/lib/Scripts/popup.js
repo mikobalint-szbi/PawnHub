@@ -33,6 +33,8 @@ export function save_popup(popupID){
 
 export function open_popup(popupID, ...args){
 
+    close_popup(popupID)
+
     let backButton = false
     let object
 

@@ -2,9 +2,14 @@
     import {open_popup, close_popup, save_popup} from "$lib/Scripts/popup.js";
     import {formatNum, roundForint, dateDisplay, timeToDate} from "$lib/Scripts/functions.js";
     import {onMount} from 'svelte';
-    import { loan_forCustomers } from '@/stores/global.js';
+    import { loan_forCustomers, product_forCustomers } from '@/stores/global.js';
 
     $: loan = $loan_forCustomers;
+
+    function productButton_clicked(j) {
+        product_forCustomers.set(loan.items[j])
+        open_popup("productPopup_forCustomers")
+    }
 
 
 
@@ -111,7 +116,7 @@
                         {#each loan.items as item, j}
                             <!-- svelte-ignore missing-declaration -->
                             <!-- svelte-ignore a11y-click-events-have-key-events -->
-                            <div class="productButton" on:click={() => open_popup("productPopup_forCustomers", loan.items[j])}>
+                            <div class="productButton" on:click={() => productButton_clicked(j)}>
                                 {#if item.img}
                                     <img src="data:image/png;base64,{item.img}" alt="">
                                 {:else}

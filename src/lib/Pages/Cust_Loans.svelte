@@ -2,7 +2,6 @@
     import {open_popup, close_popup, save_popup} from "$lib/Scripts/popup.js";
     import {api, formatNum, timeToDate, dateDisplay, roundForint} from "$lib/Scripts/functions.js";
     import { onMount } from "svelte";
-    import { writable } from 'svelte/store';
     import { loan_forCustomers, product_forCustomers } from '@/stores/global.js';
 
   
@@ -29,7 +28,7 @@
     function loanRow_clicked (i) {
 
         loan_forCustomers.set(searchResults[i])
-        
+    
         open_popup("loanPopup_forCustomers")
     }
 
@@ -109,7 +108,7 @@
     }
 
     onMount(() =>{
-
+        open_popup("imageViewer")
         let col7 = document.querySelectorAll("td.col7")
         
         for (let i = 0; i < col7.length; i++) {

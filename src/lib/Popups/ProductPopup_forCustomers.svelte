@@ -1,6 +1,6 @@
 <script>
     import {open_popup, close_popup, save_popup} from "$lib/Scripts/popup.js";
-    import { formatNum } from "$lib/Scripts/functions.js";
+    import { formatNum, timeToDate, dateDisplay } from "$lib/Scripts/functions.js";
     import { onMount } from 'svelte';
     import { product_forCustomers, loan_forCustomers } from '@/stores/global.js';
     import { condition } from "$lib/Scripts/variables.js";
@@ -69,7 +69,11 @@
 
             <div id="popup-grid">
                 <div id="image" class="popupGrid-element">
-                    <img src="IMG/Global/no-image.png" alt="">
+                    {#if product.img}
+                        <img src="data:image/png;base64,{product.img}" alt="A termék fényképe">
+                    {:else}
+                        <img src="IMG/Global/no-image.png" alt="A termék fényképe">
+                    {/if}
                 </div>
                 <div id="product-name" class="popupGrid-element">
                     <label for="p-name" class="popup-label">Zálogtárgy neve:</label>
@@ -104,27 +108,31 @@
                     <label for="p-description" class="popup-label">Leírás:</label>
                     <textarea type="text" class="popup-input" id="p-description" readonly>{product.description}</textarea>
                 </div>
-                <div id="loan" class="popupGrid-element">
+                <!-- svelte-ignore a11y-click-events-have-key-events -->
+                <!-- svelte-ignore a11y-no-static-element-interactions -->
+                <div id="loan" class="popupGrid-element" on:click={()=>open_popup("loanPopup_forCustomers")}>
                     <label for="loanBox" class="popup-label">Adósság:</label>
                     <div id="loanBox">
                         <div id="lb-part1">
                             <h5 title="Visszatérítendő">Visszatér<span class="lb-mobile">.</span><span class="lb-desktop">ítendő</span>:</h5>
                             <p>{formatNum(loan.givenAmount)} Ft</p>
                             <h5>Megköttetett:</h5>
-                            <p>2024.03.06.</p>
+                            <p>{timeToDate(loan.created_at)}</p>
                         </div>
                         <div id="lb-part2">
                             <h5>Lejár:</h5>
-                            <p>2025.03.06.</p>
+                            <p>{dateDisplay(loan.expDate)}</p>
                             <h5>Kamat:</h5>
-                            <p>4%</p>
+                            <p>{loan.interest}%</p>
                         </div>
 
 
                     </div>
                 </div>
                 <div id="shop" class="popupGrid-element">
-                    <div id="shop-row1">
+                    <!-- svelte-ignore a11y-no-static-element-interactions -->
+                    <!-- svelte-ignore a11y-click-events-have-key-events -->
+                    <div id="shop-row1"  on:click={()=>location.assign(`/shop/?id=${loan.shop.id}`)}>
                         {#if loan.shop.img}
                             <img src="data:image/png;base64,{loan.shop.img}" alt="">
                         {:else}
@@ -497,6 +505,7 @@
 
             }
             #shop{
+                cursor: pointer;
 
                 #shop-row1{
                     display: flex;
