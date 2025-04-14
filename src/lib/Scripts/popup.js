@@ -23,13 +23,13 @@ export function save_popup(popupID){
 
 }
 
-export function load_popupData(popupID, object) {
-    console.log(object)
+/*export function load_popupData(popupID, object) {
+
     if (popupID == "loanPopup_forCustomers") {
         document.getElementById("")
     }
 
-}
+}*/
 
 export function open_popup(popupID, ...args){
 
@@ -130,9 +130,6 @@ export function open_popup(popupID, ...args){
         document.getElementById("marginBottom").style.height = "0"
         popup.showModal()
     }
-
-
-    load_popupData(popupID, object)
 
     document.getElementById("p-name").focus()
 

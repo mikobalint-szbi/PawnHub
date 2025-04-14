@@ -233,7 +233,7 @@
                     <td class="col1" href="" tabindex="0" on:click={() => loanRow_clicked(i)}>
                         <p title="Kölcsönadott összeg">{formatNum(loan.givenAmount)} Ft</p>
                         <p class="moneyBack-inner green" title="Visszatérítendő összeg">{formatNum(roundForint(loan.givenAmount * (1 + loan.interest / 100)))} Ft</p>
-                        <p class="interest-inner" title="Kamat">100%</p>
+                        <p class="interest-inner" title="Kamat">{loan.interest}%</p>
                     </td>
                     <td class="col2 green" href="" tabindex="-1" on:click={() => loanRow_clicked(i)}>{formatNum(roundForint(loan.givenAmount * (1 + loan.interest / 100)))} Ft</td>
                     <td class="col3"  on:click={() => loanRow_clicked(i)}>

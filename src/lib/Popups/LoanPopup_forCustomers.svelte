@@ -1,11 +1,15 @@
 <script>
     import {open_popup, close_popup, save_popup} from "$lib/Scripts/popup.js";
+    import {formatNum, roundForint, dateDisplay, timeToDate} from "$lib/Scripts/functions.js";
     import {onMount} from 'svelte';
     import { loan_forCustomers } from '@/stores/global.js';
 
-    $: data = $loan_forCustomers;
+    $: loan = $loan_forCustomers;
+
+
 
     onMount(()=>{
+
 	    document.getElementById("image").addEventListener('click', () => {close_popup("loanPopup_forCustomers"); open_popup("imageViewer")} )
     });
 
@@ -41,21 +45,21 @@
                 <div id="money-lent" class="popupGrid-element">
                     <label for="p-moneyLent" class="popup-label">Kölcsönadott összeg:</label>
                     <div class="pv-row">
-                        <p class="popup-input money pValue" id="p-moneyLent">14 000 000 Ft</p>
+                        <p class="popup-input money pValue" id="p-moneyLent">{formatNum(loan.givenAmount)} Ft</p>
                     </div>
                 </div>
 
                 <div id="money-back" class="popupGrid-element">
                     <label for="p-moneyBack" class="popup-label">Visszatérítendő összeg:</label>
                     <div class="pv-row">
-                        <p id="p-moneyBack"> 15 000 000 Ft</p>
+                        <p id="p-moneyBack"> {formatNum(roundForint(loan.givenAmount * (1 + loan.interest / 100)))} Ft</p>
                     </div>
                 </div>
 
                 <div id="interest" class="popupGrid-element">
                     <label for="p-interest" class="popup-label">Kamatszázalék:</label>
                     <div class="pv-row">
-                        <p class="popup-input money pValue" id="p-interest">100%</p>
+                        <p class="popup-input money pValue" id="p-interest">{loan.interest}%</p>
 
                     </div>
                 </div>
@@ -63,14 +67,14 @@
                 <div id="start-date" class="popupGrid-element">
                     <label for="p-startDate" class="popup-label">Megkötés dátuma:</label>
                     <div class="pv-row">
-                        <p class="popup-input money pValue" id="p-startDate">2025.02.13.</p>
+                        <p class="popup-input money pValue" id="p-startDate">{timeToDate(loan.created_at)}</p>
                     </div>
                 </div>
 
                 <div id="exp-date" class="popupGrid-element">
                     <label for="p-expDate" class="popup-label">Lejárat dátuma:</label>
                     <div class="pv-row">
-                        <p class="popup-input money pValue" id="p-expDate">2027.02.13.</p>
+                        <p class="popup-input money pValue" id="p-expDate">{dateDisplay(loan.expDate)}</p>
                     </div>
                 </div>
 
@@ -78,21 +82,20 @@
 
                 <div id="description" class="popupGrid-element">
                     <label for="p-description" class="popup-label">Leírás:</label>
-                    <textarea type="text" class="popup-input" id="p-description" readonly>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ea deserunt minus iure beatae quisquam necessitatibus iusto exercitationem, expedita doloribus, tenetur accusantium ipsum fuga, nemo maiores. Sapiente voluptas reiciendis deserunt sit!
-                        Sed quos repudiandae est veniam reiciendis at laborum fugiat beatae tenetur aliquid, porro sint provident exercitationem nesciunt soluta. Aperiam quis consequatur illo quo voluptas ut! Enim cupiditate animi accusantium harum?
-                        Neque provident quaerat vero facere, perferendis dicta esse earum iure unde sint, accusantium rerum necessitatibus reprehenderit sit fugit minus impedit at est consequuntur repellendus qui et. Laborum, consectetur magnam. Illum.
-                        Magnam, veritatis? Laborum, voluptatum ducimus nam nesciunt vel unde veritatis dolore, iure quos, earum non nihil! Ullam tempora aspernatur aliquam molestias illum quia recusandae soluta aperiam. Rerum quos in quibusdam!
-                    </textarea>
+                    <textarea type="text" class="popup-input" id="p-description" readonly>{loan.description}</textarea>
                 </div>
 
                 <!-- svelte-ignore a11y-click-events-have-key-events -->
-                <div id="shop" class="popupGrid-element" on:click={()=>open_popup("shopChooser",false, false)}>
+                <div id="shop" class="popupGrid-element" on:click={()=>location.assign(`/shop/?id=${loan.shop.id}`)}>
                     <div id="shop-row1">
-                        <img src="IMG/Global/no-shop-image.png" alt="">
+                        {#if loan.shop.img}
+                            <img src="data:image/png;base64,{loan.shop.img}" alt="">
+                        {:else}
+                            <img src="IMG/Global/no-shop-image.png" alt="">
+                        {/if}
                     </div>
                     <div id="shop-row2">
-                        <p>Tóth Pista Zálogház és Ékszerüzlet</p>
+                        <p>{loan.shop.name}</p>
                     </div>
                 </div>
 
@@ -101,34 +104,25 @@
                     <p class="popup-label">Zálogtárgyak</p>
                     <div class="productField-flex">
 
-                        <div class="productButton">
-                            <img src="IMG/Global/no-image.png" alt="">
-                            <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
-                        </div>
-                        <div class="productButton">
-                            <img src="IMG/Global/no-image.png" alt="">
-                            <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
-                        </div>
-                        <div class="productButton">
-                            <img src="IMG/Global/no-image.png" alt="">
-                            <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
-                        </div>
-                        <div class="productButton">
-                            <img src="IMG/Global/no-image.png" alt="">
-                            <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
-                        </div>
-                        <div class="productButton">
-                            <img src="IMG/Global/no-image.png" alt="">
-                            <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
-                        </div>
-                        <div class="productButton">
-                            <img src="IMG/Global/no-image.png" alt="">
-                            <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
-                        </div>
-                        <div class="productButton">
-                            <img src="IMG/Global/no-image.png" alt="">
-                            <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
-                        </div>
+                        {#if loan.items.length == 0}
+                            <p class="noItems">Nem tartozik  zálogtárgy ehhez az adóssághoz.</p>
+                        {:else}
+
+                        {#each loan.items as item, j}
+                            <!-- svelte-ignore missing-declaration -->
+                            <!-- svelte-ignore a11y-click-events-have-key-events -->
+                            <div class="productButton" on:click={() => open_popup("productPopup_forCustomers", loan.items[j])}>
+                                {#if item.img}
+                                    <img src="data:image/png;base64,{item.img}" alt="">
+                                {:else}
+                                    <img src="IMG/Global/no-image.png" alt="">
+                                {/if}
+
+                                <p>{item.name}</p>
+                            </div>
+                        {/each}
+  
+                        {/if}
                     </div>
                 </div>
 

@@ -13,6 +13,7 @@ Teendők:
 - A Shop page-en a productCardoknak van egy kis hiba a reszponzivitásában. Túl későn törnek flex-direction:column irányba
 
 Esetleg:
+- A lejárt lejárati dátumok a Loans oldalon pirossal jelennek meg
 - A frontend nem küld településlistát a backendnek hibát kijavítani (tök mindegy, a backendben sem működik a településszűrés)
 
 Miután lesz backend:
