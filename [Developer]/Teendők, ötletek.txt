@@ -3,7 +3,6 @@ http://infojegyzet.hu/webszerkesztes/dokumentacio
 
 
 Teendők:
-- Loanpopup_forcustomer_new törlése referenciákkal együtt
 - A Customer's Loans oldalon működjön az [Aktív|Lejárt|Összes] kapcsoló
 	• A gombok onClick-függvényeit módosítom úgy, hogy cseréljék ki a searchResults lista tartalmát az active és az expired listák elemeinek felhasználásával
 - Customer's Loan popup adatok betöltése.

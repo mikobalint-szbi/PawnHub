@@ -43,7 +43,7 @@
             </div>
         </a>
 
-        <a class="optionBox" href="{isCustomer ? 'shops' : 'customers'}">
+        <a class="optionBox" href="{isCustomer ? 'shops/?page=1' : 'customers'}">
             <div class="imageBox">
                 <img class="image" src="{isCustomer ? 'IMG/Home/shops.png' : 'IMG/Home/customers.png'}" alt="Ügyfelek">
             </div>

@@ -36,7 +36,14 @@ export function fill_queryParams_fromInputs (shopMode = false){
     }
     if (sessionStorage["currentPage"]) {
         setTimeout(() => {
-            setQueryParam("page", sessionStorage["currentPage"])
+            if (sessionStorage["currentPage"] != 1) {
+                setQueryParam("page", sessionStorage["currentPage"])
+            }
+            else {
+                setQueryParam("page", "")
+
+            }
+
 
         }, 50);
     }
@@ -102,16 +109,23 @@ export function fill_inputs(shopMode = false) {
         document.getElementById("maxPrice").value = getQueryParam("maxPrice")
     }
 
-    if (getQueryParam("page")) {
-        let page = getQueryParam("page");
-        if (page >= 1) {
-            sessionStorage["currentPage"] = getQueryParam("page")
-        }
-        else {
-            sessionStorage["currentPage"] = "1"
+    let page = getQueryParam("page");
+
+    if (page) {
+        sessionStorage["currentPage"] = page
+        if (page == 1){
+
+            setTimeout(() => {
+                setQueryParam("pages", "a")
+            }, 50);
+
         }
 
     }
+    else {
+        sessionStorage["currentPage"] = "1"
+    }
+
     
 
     // Settlements:
@@ -151,6 +165,10 @@ export async function fill_settlementTags(){
 
     }
     else {
+
+        localStorage["chosenSettlements"] = "{}"
+
+    }/*
         // Fill from LocalStorage:
 
         let cs = JSON.parse(localStorage["chosenSettlements"] ?? "{}")
@@ -165,7 +183,7 @@ export async function fill_settlementTags(){
         })
 
     
-    }
+    }*/
 }
 
 
