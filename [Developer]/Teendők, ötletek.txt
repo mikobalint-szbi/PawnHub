@@ -3,10 +3,6 @@ http://infojegyzet.hu/webszerkesztes/dokumentacio
 
 
 Teendők:
-- A Customer's Loans oldalon működjön az [Aktív|Lejárt|Összes] kapcsoló
-	• A gombok onClick-függvényeit módosítom úgy, hogy cseréljék ki a searchResults lista tartalmát az active és az expired listák elemeinek felhasználásával
-- Customer's Loan popup adatok betöltése.
-- A Loan oldal keresőmezőjének működésre bírása
 - Shop's Loan oldal elkészítése
 - A loans oldalakon a mobilnézet megjavítása (legyen azonos magassága minden kártyának)
 

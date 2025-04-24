@@ -824,3 +824,14 @@ export function timeToDate(text){
 export function roundForint(price) {
     return Math.round(price / 5) * 5
 }
+
+export function isExpired(dateStr) {
+    const inputDate = new Date(dateStr);
+    const today = new Date();
+  
+    // Normalize both dates to midnight to compare only the date part
+    inputDate.setHours(0, 0, 0, 0);
+    today.setHours(0, 0, 0, 0);
+  
+    return inputDate < today;
+}
