@@ -1,6 +1,6 @@
 <script>
     import {open_popup, close_popup, save_popup} from "$lib/Scripts/popup.js";
-    import {api, formatNum, timeToDate, dateDisplay, roundForint} from "$lib/Scripts/functions.js";
+    import {api, formatNum, timeToDate, dateDisplay, roundForint, isExpired} from "$lib/Scripts/functions.js";
     import { onMount } from "svelte";
     import { loan_forCustomers, product_forCustomers } from '@/stores/global.js';
 
@@ -13,16 +13,98 @@
         document.getElementById("ps-option1").classList.add("active")
         document.getElementById("ps-option2").classList.remove("active")
         document.getElementById("ps-option3").classList.remove("active")
+
+        sessionStorage["loanSwitch"] = "1"
+        switch_results()
+
     }
     function psOption2_clicked(){
         document.getElementById("ps-option1").classList.remove("active")
         document.getElementById("ps-option2").classList.add("active")
         document.getElementById("ps-option3").classList.remove("active")
+
+        sessionStorage["loanSwitch"] = "2"
+        switch_results()
+
     }
     function psOption3_clicked(){
         document.getElementById("ps-option1").classList.remove("active")
         document.getElementById("ps-option2").classList.remove("active")
         document.getElementById("ps-option3").classList.add("active")
+
+        sessionStorage["loanSwitch"] = "3"
+        switch_results()
+
+    }
+
+    function switch_results () {
+
+        if (document.getElementById("searchError"))
+            document.getElementById("searchError").style.display = "none"
+
+        let switchStatus = sessionStorage["loanSwitch"]
+        let searchIn = document.getElementById("searchIn").value
+        let searchKey = document.getElementById("searchKey").value.toLowerCase()
+        let displayList =  []
+        searchResults =  []
+
+        if (!switchStatus || switchStatus == "1"){
+            displayList = active.slice()
+        }
+        else if (switchStatus == "2") {
+            displayList = expired.slice()
+        }
+        else if (switchStatus == "3"){
+            displayList = expired.slice()
+            displayList.push(...active)
+        }
+        else {
+            console.log("switch_results(): error")
+        }
+
+        if (searchKey) {                
+            if (searchIn == "shop") {
+                displayList.forEach(e => {
+                    if (e.shop.name.toLowerCase().includes(searchKey)){
+                        searchResults.push(e)
+                    }
+                })
+            }
+            else if (searchIn == "item") {
+                displayList.forEach(e => {
+                    var BreakException = {};
+
+                    try {
+                        e.items.forEach(item => {
+                            if (item.name.toLowerCase().includes(searchKey)){
+                                searchResults.push(e)
+                                throw BreakException;
+                            }
+                        })
+                    } catch (e) {
+                        if (e !== BreakException) throw e;
+                    }
+                })
+            }
+            else { // description
+                displayList.forEach(e => {
+                    if (e.description.toLowerCase().includes(searchKey)){
+                        searchResults.push(e)
+                    }
+                })
+            }
+            displayList.forEach(e => {
+                
+            })
+        }
+        else {
+            searchResults = displayList
+        }
+
+        if (searchResults.length == 0) {
+            searchError("Nincs találat.", true, "big")
+        }
+
     }
 
     function loanRow_clicked (i) {
@@ -89,7 +171,18 @@
 
         if (reply) {
 
-            searchResults = reply
+            if (reply.length > 0) {
+                reply.forEach(e => {
+                    if (isExpired(e.expDate)){
+                        expired.push(e)
+                    }
+                    else {
+                        active.push(e)
+                    }
+                });
+            }
+
+            switch_results()
 
             if (searchResults.length == 0) {
                 searchError("Nincs találat.", true, "big")
@@ -108,6 +201,12 @@
     }
 
     onMount(() =>{
+
+        document.getElementById('searchKey').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                switch_results()
+            }
+        });
 
         let col7 = document.querySelectorAll("td.col7")
         
@@ -159,13 +258,13 @@
         <div id="hl-col2">
 
             <div id="searchBox">
-                <select name="" id="">
+                <select name="" id="searchIn">
                     <option value="shop">Zálogos</option>
                     <option value="item">Zálogtárgy</option>
-                    <option value="notes">Leírás</option>
+                    <option value="description">Leírás</option>
                 </select>
-                <input type="text">
-                <button>Keresés</button>
+                <input type="text" id="searchKey">
+                <button on:click={switch_results}>Keresés</button>
             </div>
 
             <div id="product-status">
