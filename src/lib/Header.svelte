@@ -63,10 +63,10 @@
             </div>
             <div id="userDropdown">
 
-                <div class="col1">
+                <div class="ud-col1">
                     <div alt="Profilkép" class="image" id="userDropDown-image"></div>
                 </div>
-                <div class="col2">
+                <div class="ud-col2">
                     <p class="userName">{user.username}</p>
                     <p class="userEmail">{user.email}</p>
                     <div class="buttons">
@@ -94,11 +94,11 @@
         #userDropdown {
             width: 300px;
 
-            .col1 {
+            .ud-col1 {
                 width: 46%;
             }
-            .col2 {
-                width: 54%;
+            .ud-col2 {
+                width: 54% !important;
             }
         }
 
@@ -112,11 +112,11 @@
         #userDropdown {
             width: 320px;
 
-            .col1 {
+            .ud-col1 {
                 width: 42%;
             }
-            .col2 {
-                width: 58%;
+            .ud-col2 {
+                width: 58% !important;
             }
         }
 
@@ -130,11 +130,11 @@
         #userDropdown {
             width: 380px;
 
-            .col1 {
+            .ud-col1 {
                 width: 35%;
             }
-            .col2 {
-                width: 65%;
+            .ud-col2 {
+                width: 65% !important;
             }
         }
 
@@ -224,7 +224,7 @@
                 border-radius: 3px;
                 gap: 8px;
 
-                .col1 {
+                .ud-col1 {
 
 
                     .image {
@@ -238,10 +238,11 @@
                         background-position: center;
                     }
                 }
-                .col2 {
+                .ud-col2 {
 
                     padding-top: 1px;
                     overflow: hidden;
+
 
                     .userName {
                         margin: 0;
@@ -256,7 +257,7 @@
 
                     .buttons {
                         display: flex;
-                        width: 100%;
+                        width: 100% !important;
                         flex-direction: column;
                         gap: 3px;
                         margin-top: 6.5px;
@@ -267,6 +268,7 @@
                             gap: 10px;
                             align-items: center;
                             padding-left: 4px;
+                            width: 100% !important;
 
                             img {
                                 height: 90%;

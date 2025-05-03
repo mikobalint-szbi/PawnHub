@@ -3,6 +3,7 @@ http://infojegyzet.hu/webszerkesztes/dokumentacio
 
 
 Teendők:
+- Visszalép-e a loans page a bejelentkező oldalra, ha nincs auth_token?
 - Shop's Loan oldal elkészítése
 - A loans oldalakon a mobilnézet megjavítása (legyen azonos magassága minden kártyának)
 

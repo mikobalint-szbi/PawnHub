@@ -40,7 +40,6 @@
 	    document.getElementById("image").addEventListener('click', () => {close_popup("productPopup_forCustomers"); open_popup("imageViewer")} )
 
         resize()
-        console.log(product)
 
         window.addEventListener("resize", ()=> {
             resize()

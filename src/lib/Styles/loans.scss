@@ -1,0 +1,384 @@
+    
+    @media (min-width: 0px) {
+
+        //.col7{ display: none;}
+        .col8{ display: none;}
+
+
+        .expDate-inner, .moneyBack-inner{
+            display: none;
+        }
+        .concDate, .moneyLent{
+            display: inline;
+        }
+
+        table{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            max-width: 432px;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+
+        }
+        .row{
+            display: flex;
+            border: 1px solid black;
+            flex-direction: column;
+            max-width: 80vw;
+        }
+        td{
+            display: flex;
+            border: none !important;
+            justify-content: center;
+
+        }
+        th, .thead{
+            display: none;
+        }
+        .shopField-flex{
+            img{
+                display: none;
+            }
+            p {
+                font-size: 17px;
+            }
+        }
+        
+        td p {
+            margin-bottom: 0 !important;
+        }
+
+        p.interest-inner{
+            font-size: 18px;
+            margin-top: 2px !important;
+            display: none;
+        }
+
+
+        .productButton{
+            max-width: 100% !important;
+            width: 100% !important;
+            
+
+            p {
+
+                max-height: 60px;
+                overflow: hidden;
+            }
+        }
+
+
+
+    }
+    @media (min-width: 300px) {
+
+
+    
+    }
+    @media (min-width: 340px) {
+
+
+
+        #headDiv-lower{
+            width: 300px;
+        }
+
+
+    }
+
+    @media (min-width: 404px) {
+
+
+
+        #headDiv-lower{
+            width: 360px;
+        }
+
+
+    }
+
+    @media (min-width: 468px) {
+
+        //.col7{ display: none;}
+        .col8{ display: none;}
+
+        // hol tartottam:
+        // - Az 596 pixeles nézetetben a lejárat és a megköttetés dátumát egy cellába kellene sűrítenem.
+        // - Nevetségesnek hat, ha egy kisebb nézeten több adat látszik, mint az eggyel nagyobbon (A 468-ason rajta van a megkötés dátuma)
+
+        .row {
+            display: table-row;
+        }
+
+        .productButton p{
+            max-width: 123px !important;
+            max-height: 60px;
+            overflow: hidden;
+        }
+
+        .col5{
+            // padding-top: 5px !important;
+        }
+
+        td{
+            width: 210px;
+        }
+
+        table{
+            justify-content: left;
+        }
+
+
+
+        #headDiv-lower{
+            width: 432px;
+        }
+
+    }
+    /* Small devices (portrait tablets and large phones, 600px and up) */
+    @media (min-width: 596px) {
+
+        .col1{ width: 148px; max-width: 148px;}
+        .col2{ display: none;}
+        .col3{ width: 114px; max-width: 114px;}
+        .col4{ display: none;}
+        .col5{ display: none; }
+        .col6{ width: 100px; max-width: 100px;}
+        .col7{ width: 196px; max-width: 196px; display: table-cell;}
+        .col8{ display: none;}
+
+        #headDiv-lower{
+            width: 559px;
+        }
+
+        .productButton p{
+            max-width: 110px !important;
+            max-height: 60px;
+            overflow: hidden;
+        }
+
+        p.interest-inner{
+            display: block;
+        }
+
+        
+        table, tbody{
+            display: table;
+            max-width: unset;
+        }
+        tr{
+            display: table-row;
+        }
+        td{
+            display: table-cell;
+            width: 210px;
+            border: 1px solid rgb(106, 137, 116) !important;
+        }
+        th{
+            display: table-cell;
+            font-size: 14px;
+        }
+        .thead{
+            display: table-row;
+        }
+        .shopField-flex{
+            img{
+                display: block;
+            }
+        }
+
+        .shopField-flex{
+            img{
+                width: 80%;
+            }
+            p{
+                font-size: 14px;
+            }
+        }
+
+        .expDate-inner, .moneyBack-inner{
+            display: inline !important;
+
+        }
+        .concDate, .moneyLent{
+            display: none;
+        }
+
+        td p {
+            margin-bottom: 0 !important;
+            margin-top: 0 !important;
+        }
+
+        table{
+            justify-content: center;
+        }
+        
+
+    }
+    @media (min-width: 768px) {
+
+        .col1{ width: 135px; max-width: 135px;}
+        .col2{ display: none;}
+        .col3{ width: 114px; max-width: 114px;}
+        .col4{ display: none;}
+        .col5{ width: 60px; max-width: 60px; display: table-cell;}
+        .col6{ width: 130px; max-width: 130px;}
+        .col7{ width: 299px; max-width: 299px; display: table-cell;}
+        .col8{ display: none;}
+
+        #headDiv-lower{
+            width: 741px;
+        }
+
+        .productButton p{
+            max-width: 210px !important;
+        }
+
+        .shopField-flex{
+            img{
+                width: 80%;
+            }
+        }
+
+        .interest-inner{
+            display: none !important;
+        }
+
+        th{
+            font-size: 16px;
+        }
+    
+
+    }
+    /* Large devices (laptops/desktops, 992px and up) */
+    @media (min-width: 992px) {
+
+        .col1{ width: 135px; max-width: 135px;}
+        .col2{ width: 135px; max-width: 135px; display: table-cell;}
+        .col3{ width: 112px; max-width: 112px;}
+        .col4{ width: 112px; max-width: 112px; display: table-cell;}
+        .col5{ width: 60px; max-width: 60px;}
+        .col6{ width: 130px; max-width: 130px;}
+        .col7{ width: 283px; max-width: 283px; display: table-cell;}
+        .col8{ display: none;}
+
+        #headDiv-lower{
+            width: 968px;
+        }
+
+        .productButton p{
+            max-width: 194px !important;
+        }
+
+
+
+        .shopField-flex{
+            img{
+                width: 90%;
+            }
+        }
+
+
+        .expDate-inner, .moneyBack-inner{
+            display: none !important;
+        }
+        .concDate, .moneyLent{
+            display: inline;
+            text-align: justify;
+        }
+
+    }
+    /* Extra large devices (large laptops and desktops, 1200px and up) */
+    @media (min-width: 1230px) {
+
+        .col1{ width: 135px; max-width: 135px;}
+        .col2{ width: 135px; max-width: 135px;}
+        .col3{ width: 112px; max-width: 112px;}
+        .col4{ width: 112px; max-width: 112px;}
+        .col5{ width: 60px; max-width: 60px;}
+        .col6{ width: 130px; max-width: 130px;}
+        .col7{ width: 270px; max-width: 270px;}
+        .col8{ width: 244px; max-width: 244px; display: table-cell;}
+
+        #headDiv-lower{
+            width: 1198px;
+        }
+
+        .productButton p{
+            max-width: 181px !important;
+        }
+
+
+
+    }
+
+
+    #body{
+
+        #main-container{
+
+            #main{
+
+                td.col1, td.col2, td.col3, td.col4, td.col5{
+                    text-align: right !important;
+                    padding: 0 6px;
+
+                    p{
+                        margin: 6px 0;
+                    }
+
+                    p.interest-inner{
+                        font-weight: 200;
+                    }
+                }
+
+
+
+                td.col1, td.col2 {
+
+                    font-size: 19px;
+                }
+
+                .green{
+                    color: rgb(26, 110, 60);
+                    
+                }
+
+                td.col3, td.col4, td.col5{
+
+                    font-size: 18px;
+                }
+
+
+
+                td.col1, td.col2{
+                    font-weight: 500;
+                }
+
+
+                .col7{
+                    .productField-flex{
+                        
+                        .productField-more{
+                            font-size: 13px;
+                            margin: -5px 0 -4px 0;
+                            text-align: center;
+                        }
+
+                    }
+                }
+                
+                .productButton p {
+                    align-self: self-start;
+                    width: 100%;
+                }
+            }
+        }
+
+    }
+
+    .noItems {
+        color: rgb(64, 108, 78);
+    }
