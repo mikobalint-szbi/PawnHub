@@ -2,7 +2,7 @@
     import {open_popup, close_popup, save_popup} from "$lib/Scripts/popup.js";
     import {api, formatNum, timeToDate, dateDisplay, roundForint, isExpired} from "$lib/Scripts/functions.js";
     import { onMount } from "svelte";
-    import { loan_forCustomers, product_forCustomers } from '@/stores/global.js';
+    import { loan_forShops, product_forShops, loan_empty, isNewEntry } from '@/stores/global.js';
     import '$lib/Styles/loans.scss';
 
 
@@ -62,9 +62,9 @@
         }
 
         if (searchKey) {                
-            if (searchIn == "shop") {
+            if (searchIn == "customer") {
                 displayList.forEach(e => {
-                    if (e.shop.name.toLowerCase().includes(searchKey)){
+                    if (e.customer.name.toLowerCase().includes(searchKey)){
                         searchResults.push(e)
                     }
                 })
@@ -108,17 +108,18 @@
 
         function loanRow_clicked (i) {
 
-        loan_forCustomers.set(searchResults[i])
+        loan_forShops.set(searchResults[i])
+        isNewEntry.set(false)
     
-        open_popup("loanPopup_forCustomers")
+        open_popup("loanPopup")
     }
 
     function productButton_clicked (i, j) {
 
-        product_forCustomers.set(searchResults[i].items[j])
-        loan_forCustomers.set(searchResults[i])
+        product_forShops.set(searchResults[i].items[j])
+        loan_forShops.set(searchResults[i])
 
-        open_popup("productPopup_forCustomers")
+        open_popup("productPopup")
     }
 
     
@@ -199,6 +200,13 @@
 
         }
 
+    }
+
+    function newLoan_clicked () {
+        loan_forShops.set(loan_empty)
+        isNewEntry.set(true)
+
+        open_popup("loanPopup",true,false)
     }
 
     onMount(() =>{
@@ -288,7 +296,7 @@
 
         </div>
         <div id="hl-col3">
-            <button id="add-button" on:click={() => open_popup("messageOK","Kölcsönfelvétel céljából kérjük, vegye fel a kapcsolatot egy zálogházzal. <br> Ehhez javasoljuk Zálogházkereső oldalunkat, amelyet a főmenüben ér el.")}>
+            <button id="add-button" on:click={newLoan_clicked}>
                 <div id="add-col1">
                     <img src="IMG/Global/add.png" alt="Hozzáadás" title="Hozzáadás">
                 </div>

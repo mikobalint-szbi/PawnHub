@@ -1,6 +1,20 @@
 <script>
     import {open_popup, close_popup, save_popup} from "$lib/Scripts/popup.js";
+    import {formatNum, roundForint, dateDisplay, timeToDateValue, dateTodayValue} from "$lib/Scripts/functions.js";
     import {onMount} from 'svelte';
+    import { loan_forShops, product_forShops, isNewEntry, productList_forNewLoan, customer_forNewLoan } from '@/stores/global.js';
+
+    $: loan = $loan_forShops;
+    $: product = $product_forShops;
+    $: products = $productList_forNewLoan;
+    $: customer = $customer_forNewLoan;
+
+    let moneyBack = 0
+
+    function productButton_clicked(j) {
+        product_forShops.set(loan.items[j])
+        open_popup("productPopup")
+    }
 
     onMount(()=>{
 	    document.getElementById("image").addEventListener('click', () => {close_popup("loanPopup"); open_popup("imageViewer")} )
@@ -38,7 +52,11 @@
                 <div id="money-lent" class="popupGrid-element">
                     <label for="p-moneyLent" class="popup-label">Kölcsönadott összeg:</label>
                     <div class="pv-row">
-                        <input type="number" class="popup-input money" id="p-moneyLent">
+                        {#if $isNewEntry}
+                            <input type="number" class="popup-input money" id="p-moneyLent" value="">
+                        {:else}
+                            <input type="number" class="popup-input money" id="p-moneyLent" value="{loan.givenAmount}" disabled>
+                        {/if}
                         <p class="p-current">Ft</p>
                     </div>
                 </div>
@@ -46,14 +64,22 @@
                 <div id="money-back" class="popupGrid-element">
                     <label for="p-moneyBack" class="popup-label">Visszatérítendő összeg:</label>
                     <div class="pv-row">
-                        <p id="p-moneyBack"> 15 000 000 Ft</p>
+                        {#if $isNewEntry}
+                            <p id="p-moneyBack"> {moneyBack} Ft</p>
+                        {:else}
+                            <p id="p-moneyBack"> {formatNum(roundForint(loan.givenAmount * (1 + loan.interest / 100)))} Ft</p>
+                        {/if}
                     </div>
                 </div>
 
                 <div id="interest" class="popupGrid-element">
                     <label for="p-interest" class="popup-label">Kamatszázalék:</label>
                     <div class="pv-row">
-                        <input type="number" class="popup-input money" id="p-interest">
+                        {#if $isNewEntry}
+                            <input type="number" min="0" class="popup-input money" id="p-interest" value="0">
+                        {:else}
+                            <input type="number" min="0" class="popup-input money" id="p-interest" value="{loan.interest}">
+                        {/if}
                         <p class="p-current">%</p>
                     </div>
                 </div>
@@ -61,14 +87,22 @@
                 <div id="start-date" class="popupGrid-element">
                     <label for="p-startDate" class="popup-label">Megkötés dátuma:</label>
                     <div class="pv-row">
-                        <input type="date" class="popup-input money" id="p-startDate">
+                        {#if $isNewEntry}
+                            <input type="date" class="popup-input money" id="p-startDate" value="{dateTodayValue()}">
+                        {:else}
+                            <input type="date" class="popup-input money" id="p-startDate" value="{timeToDateValue(loan.created_at)}" disabled>
+                        {/if}
                     </div>
                 </div>
 
                 <div id="exp-date" class="popupGrid-element">
                     <label for="p-expDate" class="popup-label">Lejárat dátuma:</label>
                     <div class="pv-row">
-                        <input type="date" class="popup-input money" id="p-expDate">
+                        {#if $isNewEntry}
+                            <input type="date" class="popup-input money" id="p-expDate" value="">
+                        {:else}
+                            <input type="date" class="popup-input money" id="p-expDate" value="{loan.expDate}">
+                        {/if}
                     </div>
                 </div>
 
@@ -76,57 +110,95 @@
 
                 <div id="description" class="popupGrid-element">
                     <label for="p-description" class="popup-label">Leírás:</label>
-                    <textarea type="text" class="popup-input" id="p-description"></textarea>
+                    {#if $isNewEntry}
+                        <textarea type="text" class="popup-input" id="p-description"></textarea>
+                    {:else}
+                        <textarea type="text" class="popup-input" id="p-description">{loan.description}</textarea>
+                    {/if}
+
                 </div>
 
                 <!-- svelte-ignore a11y-click-events-have-key-events -->
                 <div id="customer" class="popupGrid-element" on:click={()=>open_popup("customerChooser",false, false)}>
-                    <div id="customer-row1">
-                        <img src="IMG/Global/no-profile-image.png" alt="">
-                    </div>
-                    <div id="customer-row2">
-                        <p>Péld Aladárné Teszt Ilona unokahúga</p>
-                    </div>
+
+                    {#if $isNewEntry}
+                        {#if customer}
+                            <div id="customer-row1">
+                                {#if customer.img}
+                                    <img src="data:image/png;base64,{loan.customer.img}" alt="Az ügyfél fényképe">
+                                {:else}
+                                    <img src="IMG/Global/no-profile-image.png" alt="Az ügyfél fényképe">
+                                {/if}
+                            </div>
+                            <div id="customer-row2" >
+                                <p>{customer.name}</p>
+                            </div>
+                        {:else}
+                            <div id="customer-row1" class="addCustomer">
+                                <img src="IMG/Global/add.png" alt="Ügyfél hozzáadása">
+                            </div>
+                            <div id="customer-row2" class="addCustomer">
+                                <p>Ügyfél hozzárendelése</p>
+                            </div>
+                        {/if}
+                    {:else}
+                        <div id="customer-row1">
+                            {#if loan.customer.img}
+                                <img src="data:image/png;base64,{loan.customer.img}" alt="Az ügyfél fényképe">
+                            {:else}
+                                <img src="IMG/Global/no-profile-image.png" alt="Az ügyfél fényképe">
+                            {/if}
+                        </div>
+                        <div id="customer-row2">
+                            <p>{loan.customer.name}</p>
+                        </div>
+                    {/if}
                 </div>
 
 
                 <div id="products" class="popupGrid-element">
                     <p class="popup-label">Zálogtárgyak</p>
                     <div class="productField-flex">
+                        {#if $isNewEntry}
+                            {#if products.length == 0}
+                                <!-- svelte-ignore missing-declaration -->
+                                <!-- svelte-ignore a11y-click-events-have-key-events -->
+                                <div class="productButton newItem" on:click={()=> open_popup("productChooser",false, false)}>
+                                    <img src="IMG/Global/add.png" alt="">
+                                    <p class="">Termék hozzáadása</p>
+                                </div>
+                            {:else}
+                                <!-- svelte-ignore missing-declaration -->
+                                <!-- svelte-ignore a11y-click-events-have-key-events -->
+                                <div class="productButton newItem" on:click={()=> open_popup("productChooser",false, false)}>
+                                    <img src="IMG/Global/edit.png" alt="">
+                                    <p class="">Terméklista módosítása</p>
+                                </div>
+                            {/if}
+                        {:else}
+                            {#if loan.items.length == 0}
+                                <p class="noItems">Nem tartozik  zálogtárgy ehhez az adóssághoz.</p>
+                            {:else}
+
+                                {#each loan.items as item, j}
+                                    <!-- svelte-ignore missing-declaration -->
+                                    <!-- svelte-ignore a11y-click-events-have-key-events -->
+                                    <div class="productButton" on:click={() => productButton_clicked(j)}>
+                                        {#if item.img}
+                                            <img src="data:image/png;base64,{item.img}" alt="">
+                                        {:else}
+                                            <img src="IMG/Global/no-image.png" alt="">
+                                        {/if}
+
+                                        <p>{item.name}</p>
+                                    </div>
+                                {/each}
+    
+                            {/if}
+                        {/if}
                         <!-- svelte-ignore a11y-click-events-have-key-events -->
                         <!-- svelte-ignore a11y-no-static-element-interactions -->
-                        <div class="productButton newItem" on:click={()=> open_popup("productChooser",false, false)}>
-                            <img src={Math.random() > 0.5 ? "IMG/Global/add.png" : "IMG/Global/edit.png"} alt="">
-                            <p class="">{Math.random() > 0.5 ? "Terméklista módosítása" : "Termék hozzáadása"}</p>
-                        </div>
-                        <div class="productButton">
-                            <img src="IMG/Global/no-image.png" alt="">
-                            <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
-                        </div>
-                        <div class="productButton">
-                            <img src="IMG/Global/no-image.png" alt="">
-                            <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
-                        </div>
-                        <div class="productButton">
-                            <img src="IMG/Global/no-image.png" alt="">
-                            <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
-                        </div>
-                        <div class="productButton">
-                            <img src="IMG/Global/no-image.png" alt="">
-                            <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
-                        </div>
-                        <div class="productButton">
-                            <img src="IMG/Global/no-image.png" alt="">
-                            <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
-                        </div>
-                        <div class="productButton">
-                            <img src="IMG/Global/no-image.png" alt="">
-                            <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
-                        </div>
-                        <div class="productButton">
-                            <img src="IMG/Global/no-image.png" alt="">
-                            <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
-                        </div>
+
                     </div>
                 </div>
 

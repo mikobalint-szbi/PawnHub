@@ -3,6 +3,11 @@ http://infojegyzet.hu/webszerkesztes/dokumentacio
 
 
 Teendők:
+- LoanPopup-ban legyen egy változó, ami megmondja új loan létrehozásáról van-e szó
+	• Ettől függően tölti be vagy nem tölti be a popup a loan_forShops tartalmát (a html-kódba {#if}-eket kell tenni)
+
+- Shop's Popups footer gombok stílusának megjavítása
+
 - Visszalép-e a loans page a bejelentkező oldalra, ha nincs auth_token?
 - Shop's Loan oldal elkészítése
 - A loans oldalakon a mobilnézet megjavítása (legyen azonos magassága minden kártyának)

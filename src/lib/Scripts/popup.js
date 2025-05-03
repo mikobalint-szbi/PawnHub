@@ -49,7 +49,7 @@ export function open_popup(popupID, ...args){
         //object = args[1]
 
         if (create){
-
+            
             document.getElementById(popupID + "-submitText").innerHTML = "Mentés"
             
         }
