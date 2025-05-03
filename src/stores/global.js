@@ -94,3 +94,5 @@ export let isNewEntry = writable(false)
 
 export let productList_forNewLoan = writable([])
 export let customer_forNewLoan = writable(null)
+
+export let products_toChoose = writable([])

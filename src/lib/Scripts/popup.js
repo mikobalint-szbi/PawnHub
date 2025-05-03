@@ -1,4 +1,5 @@
 import { getNum } from "$lib/Scripts/functions.js";
+import { get_allProducts } from "./functions";
 
 export function close_popup(popupID){
     let popup = document.getElementById(popupID)
@@ -104,6 +105,9 @@ export function open_popup(popupID, ...args){
         if (noButton){
             document.getElementById("noButton").addEventListener("click", noButton)
         }
+    }
+    else if (popupID == "productChooser"){
+        get_allProducts()
     }
     /*else {
         object = args[0]

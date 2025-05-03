@@ -5,6 +5,8 @@ import {open_popup, close_popup} from "$lib/Scripts/popup.js";
 import { json } from "@sveltejs/kit";
 import { goto } from '$app/navigation';
 import { page } from '$app/stores';
+import { products_toChoose } from '@/stores/global.js';
+
 export function getNum(str){
     return Number(str.match(/[\d.]+/g)?.join('') || '')
 }
@@ -846,4 +848,26 @@ export function isExpired(dateStr) {
     today.setHours(0, 0, 0, 0);
   
     return inputDate < today;
+}
+
+export async function get_allProducts () {
+        
+    // Adatok lekérése folyamatban...
+
+    let reply = await api('GET', "/shopAllItems");
+
+    // DEL: Adatok lekérése folyamatban...
+
+    if (reply) {
+
+        products_toChoose.set(reply) 
+
+        console.log(reply)
+
+    }
+    else {
+        searchError("Ismeretlen szerverhiba történt!", false, "big")
+
+    }
+
 }

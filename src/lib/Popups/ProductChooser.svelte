@@ -1,9 +1,18 @@
 <script>
     import {open_popup, close_popup, save_popup} from "$lib/Scripts/popup.js";
+    import { api } from "$lib/Scripts/functions.js";
+    import { products_toChoose } from '@/stores/global.js';
     import {onMount} from 'svelte';
+
+    $: allProducts = $products_toChoose;
+
+
+
+
 
     onMount(()=>{
 	    document.getElementById("image").addEventListener('click', () => {close_popup("productChooser"); open_popup("imageViewer")} )
+
     });
 
 

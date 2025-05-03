@@ -6,7 +6,11 @@ Teendők:
 
 - Shop's Loans:
 	• Termékkiválasztó popup elkészítése, API-kérelemmel, mindennel
-	• Ügyfélkiválasztó popup –||–
+		~ Hol tartottam: A get_products függvényt az open_popup függvény futtassa le, hogy a ProductChooser minden megnyitáskor naprakész adatokat mutasson ✅
+		~ Így viszont más a store/global.js-be kell tenni a products listát, hogy mindkét függvény elérje ✅
+		~ Megvannak az adatok, ki is vannak írva a konzolba, már csak meg kell őket jeleníteni a ProductChooser popupban.
+
+	• Ügyfélkiválasztó popup elkészítése, API-kérelemmel, mindennel
 
 - Shop's Popups footer gombok stílusának megjavítása
 
@@ -21,15 +25,19 @@ Esetleg:
 - A lejárt lejárati dátumok a Loans oldalon pirossal jelennek meg
 - A frontend nem küld településlistát a backendnek hibát kijavítani (tök mindegy, a backendben sem működik a településszűrés)
 
+Leadás előtt:
+- Kitörölni a backendből az üres függvényeket
+- A frontendből a console.logokat
+↓
+Leadás:
+- A frontend és a backend repo linkje kissG emailjére
+
 Miután lesz backend:
 - A Shop és Product page-eknél a címzett mindig az aktuális zálogház legyen, és át se lehessen írni
 - Ellenőrizni, hogy egy frontendtesztelő math.randomot sem hagytam a weboldalon
 - A termék- és ügyfélkeresőnél lekorlátozni a sorok neveinek hosszát
 
-Csak ha lesz még rá időm:
-- order by selector még nincs a frontenden. Sorbarendezés comboBox elkészítése (mi alapján, ASC/DESC)
-- animáció az userProfileBox dropdownjának megjelenítésére és eltüntetésére
-- ImageViewer: legyen már marginja annak a szerencsétlen képnek nagyításkor
+
 
 Kuka:
 - Loan popup Zálogtárgyak szekciójában ha a Product Card fölé viszed az egeret, megjelenik a kártya jobb oldalán egy lebegő Törlés gomb, ami a Termék nevét kicsit kitakarja
