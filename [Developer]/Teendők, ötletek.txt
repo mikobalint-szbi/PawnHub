@@ -3,6 +3,13 @@ http://infojegyzet.hu/webszerkesztes/dokumentacio
 
 
 Teendők:
+
+- Shop's Loans:
+	• Termékkiválasztó popup elkészítése, API-kérelemmel, mindennel
+	• Ügyfélkiválasztó popup –||–
+
+- Shop's Popups footer gombok stílusának megjavítása
+
 - Visszalép-e a loans page a bejelentkező oldalra, ha nincs auth_token?
 - Shop's Loan oldal elkészítése
 - A loans oldalakon a mobilnézet megjavítása (legyen azonos magassága minden kártyának)

@@ -11,8 +11,6 @@
         open_popup("productPopup_forCustomers")
     }
 
-
-
     onMount(()=>{
 
 	    document.getElementById("image").addEventListener('click', () => {close_popup("loanPopup_forCustomers"); open_popup("imageViewer")} )
@@ -94,9 +92,9 @@
                 <div id="shop" class="popupGrid-element" on:click={()=>location.assign(`/shop/?id=${loan.shop.id}`)}>
                     <div id="shop-row1">
                         {#if loan.shop.img}
-                            <img src="data:image/png;base64,{loan.shop.img}" alt="">
+                            <img src="data:image/png;base64,{loan.shop.img}" alt="A zálogház fényképe">
                         {:else}
-                            <img src="IMG/Global/no-shop-image.png" alt="">
+                            <img src="IMG/Global/no-shop-image.png" alt="A zálogház fényképe">
                         {/if}
                     </div>
                     <div id="shop-row2">
@@ -113,19 +111,19 @@
                             <p class="noItems">Nem tartozik  zálogtárgy ehhez az adóssághoz.</p>
                         {:else}
 
-                        {#each loan.items as item, j}
-                            <!-- svelte-ignore missing-declaration -->
-                            <!-- svelte-ignore a11y-click-events-have-key-events -->
-                            <div class="productButton" on:click={() => productButton_clicked(j)}>
-                                {#if item.img}
-                                    <img src="data:image/png;base64,{item.img}" alt="">
-                                {:else}
-                                    <img src="IMG/Global/no-image.png" alt="">
-                                {/if}
+                            {#each loan.items as item, j}
+                                <!-- svelte-ignore missing-declaration -->
+                                <!-- svelte-ignore a11y-click-events-have-key-events -->
+                                <div class="productButton" on:click={() => productButton_clicked(j)}>
+                                    {#if item.img}
+                                        <img src="data:image/png;base64,{item.img}" alt="">
+                                    {:else}
+                                        <img src="IMG/Global/no-image.png" alt="">
+                                    {/if}
 
-                                <p>{item.name}</p>
-                            </div>
-                        {/each}
+                                    <p>{item.name}</p>
+                                </div>
+                            {/each}
   
                         {/if}
                     </div>
