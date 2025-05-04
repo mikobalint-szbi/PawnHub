@@ -5,7 +5,10 @@ http://infojegyzet.hu/webszerkesztes/dokumentacio
 Teendők:
 
 - Shop's Loans:
-	• Loan popup: a mégse gomb töröl mindent, és úgy zár be
+	• Loan popup:
+		~ a mégse gomb töröl mindent, és úgy zár be
+		~ a visszatérítendő összeg automatikusan kiszámolósik inputmódosításkor (bindinget használjak: bind:value={varName})
+
 	• Termékkiválasztó popup elkészítése, API-kérelemmel, mindennel
 		~ Hol tartottam: A get_products függvényt az open_popup függvény futtassa le, hogy a ProductChooser minden megnyitáskor naprakész adatokat mutasson ✅
 		~ Így viszont más a store/global.js-be kell tenni a products listát, hogy mindkét függvény elérje ✅
