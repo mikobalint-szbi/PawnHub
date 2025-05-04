@@ -7,6 +7,8 @@ Teendők:
 - Shop's Loans:
 	• Loan popup:
 		~ a visszatérítendő összeg automatikusan kiszámolósik inputmódosításkor (bindinget használjak: bind:value={varName})
+		~ Ügyfélválasztó
+		~ mentés gomb
 
 	• Termékkiválasztó popup elkészítése, API-kérelemmel, mindennel
 		~ Hol tartottam: A get_products függvényt az open_popup függvény futtassa le, hogy a ProductChooser minden megnyitáskor naprakész adatokat mutasson ✅
