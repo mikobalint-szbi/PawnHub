@@ -5,7 +5,10 @@ import {open_popup, close_popup} from "$lib/Scripts/popup.js";
 import { json } from "@sveltejs/kit";
 import { goto } from '$app/navigation';
 import { page } from '$app/stores';
-import { products_toChoose } from '@/stores/global.js';
+import { get } from 'svelte/store';
+import { products_toChoose, productList_forNewLoan } from '@/stores/global.js';
+
+
 
 export function getNum(str){
     return Number(str.match(/[\d.]+/g)?.join('') || '')
@@ -852,15 +855,45 @@ export function isExpired(dateStr) {
 
 export async function get_allProducts () {
         
-    // Adatok lekérése folyamatban...
+    let m = document.getElementById("pcMessage")
+
+    if (m) {
+        m.style.fontSize = "20px"
+        m.innerHTML = "Adatok lekérése folyamatban..."
+    }
 
     let reply = await api('GET', "/shopAllItems");
 
-    // DEL: Adatok lekérése folyamatban...
 
     if (reply) {
 
+        const productList = get(productList_forNewLoan);
+
+        for (let i = 0; i < reply.length; i++) {
+
+            if (productList.some(obj => obj.id == reply[i].id)){
+                reply[i].selected = true
+
+                // Put the element to the beginning:
+                const [item] = reply.splice(i, 1);
+                reply.unshift(item);
+            }
+            else {
+                reply[i].selected = false
+            }
+
+        }
+
         products_toChoose.set(reply) 
+
+        if (reply.length == 0) {
+
+            
+            if (m) {
+                m.innerHTML = "Nincs találat!"
+                m.style.fontSize = "27px"
+            }
+        }
 
         console.log(reply)
 

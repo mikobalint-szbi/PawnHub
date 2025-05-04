@@ -1,13 +1,34 @@
 <script>
     import {open_popup, close_popup, save_popup} from "$lib/Scripts/popup.js";
     import { api } from "$lib/Scripts/functions.js";
-    import { products_toChoose } from '@/stores/global.js';
+    import { products_toChoose, productList_forNewLoan } from '@/stores/global.js';
     import {onMount} from 'svelte';
 
     $: allProducts = $products_toChoose;
 
+    let searchKey = ''
 
+    function toggle_product(i) {
+        if (allProducts[i].selected) {
+            allProducts[i].selected = false
+        }
+        else {
+            allProducts[i].selected = true
+        }
+    }
 
+    function submit () {
+        let l = []
+        allProducts.forEach(e => {
+            if (e.selected) {
+                l.push(e)
+            }
+        });
+
+        productList_forNewLoan.set(l)
+
+        close_popup("productChooser")
+    }
 
 
     onMount(()=>{
@@ -45,7 +66,7 @@
                 <div id="popupSearchBox-container" class="">
                     <div id="popupSearchBox">
                         <label for="searchInput2" class="popup-label">Szűrés:</label>
-                        <input type="text" class="searchInput" id="searchInput2">
+                        <input type="text" class="searchInput" id="searchInput2" bind:value={searchKey}>
                     </div>
                 </div>
 
@@ -56,41 +77,31 @@
                         <p>Új termék létrehozása</p>
                     </div-->
 
-                    {#each {length: 4} as _, i}
-                    <div class="productResult selected">
+                    <!--div class="productResult selected">
                         <img src="IMG/Global/no-image.png" alt="">
                         <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual (alapból hozzá van már kapcsolva az adóssághoz)</p>
-                    </div>
-                    {/each}
+                    </div-->
+                    {#if allProducts.length == 0}
 
-                    {#each {length: 4} as _, i}
-                    <div class="productResult">
-                        <img src="IMG/Global/no-image.png" alt="">
-                        <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
-                    </div>
-                    {/each}
+                        <p id="pcMessage">Adatok lekérése folyamantban...</p>
 
-                    <div class="productResult selected">
-                        <img src="IMG/Global/no-image.png" alt="">
-                        <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
-                    </div>
+                    {:else}
 
-                    <div class="productResult">
-                        <img src="IMG/Global/no-image.png" alt="">
-                        <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
-                    </div>
+                        {#each allProducts as product, i}
+                        <!-- svelte-ignore a11y-click-events-have-key-events -->
+                        <!-- svelte-ignore a11y-no-static-element-interactions -->
+                        <div class="productResult {product.selected? 'selected' : ''}" on:click={()=>toggle_product(i)} style="display: {product.name.toLowerCase().includes(searchKey.toLowerCase())? 'flex' : 'none'}">
+                            {#if product.img}
+                                <img src="data:image/png;base64,{product.img}" alt="A termék fényképe">
+                            {:else}
+                                <img src="IMG/Global/no-image.png" alt="A termék fényképe">
+                            {/if}
+                            <p>{product.name}</p>
+                        </div>
+                        {/each}
 
-                    <div class="productResult selected">
-                        <img src="IMG/Global/no-image.png" alt="">
-                        <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
-                    </div>
+                    {/if}
 
-                    {#each {length: 14} as _, i}
-                    <div class="productResult">
-                        <img src="IMG/Global/no-image.png" alt="">
-                        <p>Samsung Galaxy S23 5G 128GB 8GB RAM Dual</p>
-                    </div>
-                    {/each}
 
                 </div>
 
@@ -101,7 +112,7 @@
                     <img src="IMG/Global/add.png" alt="" id="addImg">
                     <p id="addText">Új termék</p>
                 </button>
-                <button on:click={() => save_popup("productChooser")} id="submitButton" class="bottomButton">
+                <button on:click={submit} id="submitButton" class="bottomButton">
                     <img src="IMG/Global/select.png" alt="" id="submitImg">
                     <p id="submitText">OK</p>
                 </button>
@@ -199,6 +210,14 @@
 
             overflow-y: scroll;
             border-top: 1px solid black;
+
+            #pcMessage {
+                color: rgb(64, 108, 78);
+                font-size: 20px;
+                text-align: center;
+                margin-top: 160px;
+
+            }
 
             .productResult {
 

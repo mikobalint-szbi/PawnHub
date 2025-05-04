@@ -174,6 +174,20 @@
                                     <img src="IMG/Global/edit.png" alt="">
                                     <p class="">Terméklista módosítása</p>
                                 </div>
+
+                                {#each products as item, j}
+                                    <!-- svelte-ignore missing-declaration -->
+                                    <!-- svelte-ignore a11y-click-events-have-key-events -->
+                                    <div class="productButton" on:click={() => productButton_clicked(j)}>
+                                        {#if item.img}
+                                            <img src="data:image/png;base64,{item.img}" alt="">
+                                        {:else}
+                                            <img src="IMG/Global/no-image.png" alt="">
+                                        {/if}
+
+                                        <p>{item.name}</p>
+                                    </div>
+                                {/each}
                             {/if}
                         {:else}
                             {#if loan.items.length == 0}
@@ -265,7 +279,12 @@
                 </button>
                 <button on:click={() => open_popup("confirmDelete", false, false)} id="deleteButton" class="bottomButton">
                     <img src="IMG/Global/delete.png" alt="" id="deleteImg">
-                    <p id="customerPopup-deleteText" class="deleteText">Adósság törlése</p>
+                    {#if $isNewEntry}
+                        <p id="customerPopup-deleteText" class="deleteText">Mégsem</p>
+                    {:else}
+                        <p id="customerPopup-deleteText" class="deleteText">Adósság törlése</p>
+                    {/if}
+
                 </button>
             </div>
         </div>

@@ -5,12 +5,19 @@ http://infojegyzet.hu/webszerkesztes/dokumentacio
 Teendők:
 
 - Shop's Loans:
+	• Loan popup: a mégse gomb töröl mindent, és úgy zár be
 	• Termékkiválasztó popup elkészítése, API-kérelemmel, mindennel
 		~ Hol tartottam: A get_products függvényt az open_popup függvény futtassa le, hogy a ProductChooser minden megnyitáskor naprakész adatokat mutasson ✅
 		~ Így viszont más a store/global.js-be kell tenni a products listát, hogy mindkét függvény elérje ✅
 		~ Megvannak az adatok, ki is vannak írva a konzolba, már csak meg kell őket jeleníteni a ProductChooser popupban.
 
 	• Ügyfélkiválasztó popup elkészítése, API-kérelemmel, mindennel
+
+- Shop's Products:
+	• Miután kész, meg kell csinálnom az új termék funkciót a productChooserben
+
+- Shop's Customers:
+	• Miután kész, meg kell csinálnom az új termék funkciót a customerChooserben
 
 - Shop's Popups footer gombok stílusának megjavítása
 

@@ -360,9 +360,9 @@
                                 <div class="productButton"  tabindex="0" on:click={() => productButton_clicked(i, j)}>
 
                                     {#if item.img}
-                                        <img src="data:image/png;base64,{item.img}" alt="">
+                                        <img src="data:image/png;base64,{item.img}" alt="A termék fényképe">
                                     {:else}
-                                        <img src="IMG/Global/no-image.png" alt="">
+                                        <img src="IMG/Global/no-image.png" alt="A termék fényképe">
                                     {/if}
 
                                     <p>{item.name}</p>
