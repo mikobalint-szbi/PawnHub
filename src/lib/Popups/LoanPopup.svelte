@@ -16,6 +16,19 @@
         open_popup("productPopup")
     }
 
+    function cancel () {
+        document.getElementById("p-moneyLent").value = ""
+        document.getElementById("p-interest").value = ""
+        document.getElementById("p-startDate").value = ""
+        document.getElementById("p-expDate").value = ""
+        document.getElementById("p-description").value = ""
+
+        productList_forNewLoan.set([])
+        customer_forNewLoan.set(null)
+
+        close_popup("loanPopup")
+    }
+
     onMount(()=>{
 	    document.getElementById("image").addEventListener('click', () => {close_popup("loanPopup"); open_popup("imageViewer")} )
     });
@@ -280,7 +293,7 @@
                 <button on:click={() => open_popup("confirmDelete", false, false)} id="deleteButton" class="bottomButton">
                     <img src="IMG/Global/delete.png" alt="" id="deleteImg">
                     {#if $isNewEntry}
-                        <p id="customerPopup-deleteText" class="deleteText">Mégsem</p>
+                        <p id="customerPopup-deleteText" class="deleteText" on:click={cancel}>Mégsem</p>
                     {:else}
                         <p id="customerPopup-deleteText" class="deleteText">Adósság törlése</p>
                     {/if}
