@@ -795,9 +795,9 @@ export async function get_categories() {
             categories.forEach(e=> {
                 dict[e.id] = e.name
             })
-            console.log(dict)
 
             localStorage["categories"] = JSON.stringify(dict)
+            categories = dict
         }
         else {
             searchError("Ismeretlen szerverhiba történt.")

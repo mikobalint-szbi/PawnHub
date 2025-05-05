@@ -41,7 +41,7 @@
                 </div>
                 <div id="status" class="popupGrid-element">
                     <label for="p-status" class="popup-label">Státusz:</label>
-                    <select id="p-status" class="popup-input">
+                    <select id="p-status" class="popup-input" disabled>
                         <option value="" id="p-status-opt1">🔒 Zálog</option>
                         <option value="">💰 Eladó</option>
                     </select>

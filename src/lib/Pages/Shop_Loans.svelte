@@ -94,9 +94,9 @@
                     }
                 })
             }
-            displayList.forEach(e => {
+            /*displayList.forEach(e => {
                 
-            })
+            })*/
         }
         else {
             searchResults = displayList
@@ -345,9 +345,9 @@
 
                     <div class="shopField-flex" tabindex="0" on:click={() => open_popup("customerPopup",false,false)}>
                         {#if loan.customer.img}
-                            <img src="data:image/png;base64,{loan.customer.img}" alt="">
+                            <img src="data:image/png;base64,{loan.customer.img}" alt="Az ügyfél fényképe">
                         {:else}
-                            <img src="IMG/Global/no-profile-image.png" alt="">
+                            <img src="IMG/Global/no-profile-image.png" alt="Az ügyfél fényképe">
                         {/if}
                         <p>{loan.customer.name}</p>
                     </div>

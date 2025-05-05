@@ -10,6 +10,8 @@ Teendők:
 		~ módosítások mentése gomb függvénye
 
 - Shop's Products:
+	• A loan buttonok és az ügyfelek kattinthatók legyenek a táblázatban & a popupokban
+
 	• Miután kész: 
 		~ meg kell csinálnom az új termék funkciót a productChooserben
 		~ A Loan page-en és a Loan popupban a már létező adósságoknál az termék popupját meg lehessen nyitni az termékre kattintva
