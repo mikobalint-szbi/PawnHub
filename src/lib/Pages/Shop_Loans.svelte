@@ -10,6 +10,8 @@
     let active = []
     let expired = []
 
+    sessionStorage["loanSwitch"] = "1"
+
     function psOption1_clicked(){
         document.getElementById("ps-option1").classList.add("active")
         document.getElementById("ps-option2").classList.remove("active")
@@ -106,7 +108,7 @@
 
     }
 
-        function loanRow_clicked (i) {
+    function loanRow_clicked (i) {
 
         loan_forShops.set(searchResults[i])
         isNewEntry.set(false)
@@ -162,7 +164,7 @@
     }
 
 
-    
+
     async function get_loans () {
         
         searchError("Adatok lekérése folyamantban...", true)

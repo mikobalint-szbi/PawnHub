@@ -1,21 +1,217 @@
 <script>
     import {open_popup, close_popup, save_popup} from "$lib/Scripts/popup.js";
+    import {api, formatNum, timeToDate, dateDisplay, roundForint, isExpired} from "$lib/Scripts/functions.js";
+    import { loan_forShops, product_forShops, isNewEntry } from '@/stores/global.js';
+    import { onMount } from "svelte";
+
+    let searchResults = []
+    let pawned = []
+    let sale = []
+
+    sessionStorage["productSwitch"] = "1"
 
     function psOption1_clicked(){
         document.getElementById("ps-option1").classList.add("active")
         document.getElementById("ps-option2").classList.remove("active")
         document.getElementById("ps-option3").classList.remove("active")
+
+        sessionStorage["productSwitch"] = "1"
+        switch_results()
     }
     function psOption2_clicked(){
         document.getElementById("ps-option1").classList.remove("active")
         document.getElementById("ps-option2").classList.add("active")
         document.getElementById("ps-option3").classList.remove("active")
+
+        sessionStorage["productSwitch"] = "2"
+        switch_results()
     }
     function psOption3_clicked(){
         document.getElementById("ps-option1").classList.remove("active")
         document.getElementById("ps-option2").classList.remove("active")
         document.getElementById("ps-option3").classList.add("active")
+
+        sessionStorage["productSwitch"] = "3"
+        switch_results()
     }
+
+    
+    export function searchError (text, ...args) {
+
+        let mainContainer = document.getElementById("main-container")
+        //mainContainer.innerHTML = ""
+
+        let err = document.createElement('p');
+        err.textContent = text;
+        err.id = 'searchError';
+        err.className = 'error';
+        err.style.display = "block"
+        mainContainer.prepend(err);
+
+        err.style.fontSize = "17px"
+        err.style.marginTop = "20px"
+
+        if (args[0] && args[0] == true) {
+            err.style.color = "rgb(64, 108, 78)"
+        }
+        else {
+            err.style.color = "rgb(156, 30, 30)"
+        }
+        if (args[1]) {
+            if (args[1] == "top") {
+                err.style.marginTop = "-15px"
+            }
+            else if (args[1] == "big") {
+                err.style.fontSize = "25px"
+            }
+            
+        }
+        else {
+
+        }
+        if (args[2] && args[2] == false) {
+            err.style.fontSize = "25px"
+        }
+    }
+    
+    function productRow_clicked (i) {
+
+        product_forShops.set(searchResults[i])
+        isNewEntry.set(false)
+    
+        open_popup("productPopup")
+    }
+    
+    function switch_results () {
+
+        if (document.getElementById("searchError"))
+            document.getElementById("searchError").style.display = "none"
+
+        let switchStatus = sessionStorage["productSwitch"]
+        let searchIn = document.getElementById("searchIn").value
+        let searchKey = document.getElementById("searchKey").value.toLowerCase()
+        let displayList =  []
+        searchResults =  []
+
+        if (!switchStatus || switchStatus == "1"){
+            displayList = pawned.slice()
+        }
+        else if (switchStatus == "2") {
+            displayList = sale.slice()
+        }
+        else if (switchStatus == "3"){
+            displayList = pawned.slice()
+            displayList.push(...sale)
+        }
+        else {
+            console.log("switch_results(): error")
+        }
+
+        if (searchKey) {                
+            if (searchIn == "shop") {
+                displayList.forEach(e => {
+                    if (e.shop.name.toLowerCase().includes(searchKey)){
+                        searchResults.push(e)
+                    }
+                })
+            }
+            else if (searchIn == "item") {
+                displayList.forEach(e => {
+                    var BreakException = {};
+
+                    try {
+                        e.items.forEach(item => {
+                            if (item.name.toLowerCase().includes(searchKey)){
+                                searchResults.push(e)
+                                throw BreakException;
+                            }
+                        })
+                    } catch (e) {
+                        if (e !== BreakException) throw e;
+                    }
+                })
+            }
+            else { // description
+                displayList.forEach(e => {
+                    if (e.description.toLowerCase().includes(searchKey)){
+                        searchResults.push(e)
+                    }
+                })
+            }
+            displayList.forEach(e => {
+                
+            })
+        }
+        else {
+            searchResults = displayList
+            console.log("results:", searchResults)
+        }
+
+        if (searchResults.length == 0) {
+            searchError("Nincs találat.", true, "big")
+        }
+
+    }
+
+    async function get_products () {
+        
+        searchError("Adatok lekérése folyamantban...", true)
+        let reply = await api('GET', "/shopAllItems");
+
+        if (document.getElementById("searchError"))
+            document.getElementById("searchError").style.display = "none"
+
+        if (reply) {
+            console.log(reply)
+
+            if (reply.length > 0) {
+                reply.forEach(e => {
+                    if (e.loan_id){
+                        pawned.push(e)
+                    }
+                    else {
+                        sale.push(e)
+                    }
+                });
+            }
+
+            console.log(reply)
+
+            switch_results()
+
+            if (searchResults.length == 0) {
+                searchError("Nincs találat.", true, "big")
+                
+            }
+
+            console.log(searchResults)
+            //return reply.items
+
+        }
+        else {
+            searchError("Ismeretlen szerverhiba történt!", false, "big")
+
+        }
+
+    }
+
+    onMount(() =>{
+
+        document.getElementById('searchKey').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                switch_results()
+            }
+        });
+
+
+        setTimeout(() => {
+            sessionStorage.removeItem("productsPage_reloaded")
+        }, 1000);
+
+
+        get_products()
+
+    })
 
 
 
@@ -55,7 +251,7 @@
         <div id="hl-col2">
 
             <div id="searchBox">
-                <select name="" id="">
+                <select name="" id="searchIn">
                     <option value="name">Név</option>
                     <option value="category">Kategória</option>
                     <option value="customer">Ügyfél</option>
@@ -63,7 +259,7 @@
                     <option value="notes">Leírás</option>
                     <option value="location">Hely</option>
                 </select>
-                <input type="text">
+                <input type="text" id="searchKey">
                 <button>Keresés</button>
             </div>
 
@@ -115,13 +311,13 @@
             </thead>
             <tbody>
 
-                {#each {length: 17} as _, i}
+                {#each searchResults as _, i}
                 <div class="row" href="">
-                    <td class="col1" href="" tabindex="0" on:click={() => open_popup("productPopup",false,false)}>
+                    <td class="col1" href="" tabindex="0" on:click={() => productRow_clicked(i)}>
                         <img src="IMG/Global/no-image.png" alt="">
                     </td>
-                    <td class="col2"  on:click={() => open_popup("productPopup",false,false)}>Tárgy neve</td>
-                    <td class="col3"  on:click={() => open_popup("productPopup",false,false)}>Karórák</td>
+                    <td class="col2"  on:click={() => productRow_clicked(i)}>Tárgy neve</td>
+                    <td class="col3"  on:click={() => productRow_clicked(i)}>Karórák</td>
                     <td class="col4">
                         <div class="loanField-flex">
                             <button>
@@ -140,10 +336,10 @@
                         </div>
 
                     </td>
-                    <td class="col6" on:click={() => open_popup("productPopup",false,false)}>20 000 Ft</td>
-                    <td class="col7" on:click={() => open_popup("productPopup",false,false)}>150 000 Ft</td>
-                    <td class="col8" on:click={() => open_popup("productPopup",false,false)}>Kifogástalan</td>
-                    <td class="col9" on:click={() => open_popup("productPopup",false,false)}>Kirakat alsó polc</td>
+                    <td class="col6" on:click={() => productRow_clicked(i)}>20 000 Ft</td>
+                    <td class="col7" on:click={() => productRow_clicked(i)}>150 000 Ft</td>
+                    <td class="col8" on:click={() => productRow_clicked(i)}>Kifogástalan</td>
+                    <td class="col9" on:click={() => productRow_clicked(i)}>Kirakat alsó polc</td>
                 </div>
                 {/each}
 

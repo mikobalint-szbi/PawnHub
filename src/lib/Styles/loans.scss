@@ -109,7 +109,7 @@
         // - Nevetségesnek hat, ha egy kisebb nézeten több adat látszik, mint az eggyel nagyobbon (A 468-ason rajta van a megkötés dátuma)
 
         .row {
-            display: table-row;
+            display: table-row !important;
         }
 
         .productButton p{
@@ -169,7 +169,7 @@
             max-width: unset;
         }
         tr{
-            display: table-row;
+            display: table-row !important;
         }
         td{
             display: table-cell;
@@ -181,7 +181,7 @@
             font-size: 14px;
         }
         .thead{
-            display: table-row;
+            display: table-row !important;
         }
         .shopField-flex{
             img{

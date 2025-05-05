@@ -26,6 +26,10 @@
         document.getElementById("ps-option3").classList.add("active")
     }
 
+    function get_customers () {
+
+    }
+
     onMount(() =>{
 
         let col6 = document.querySelectorAll("td.col6")
@@ -38,6 +42,12 @@
             
             }
         }
+
+        setTimeout(() => {
+            sessionStorage.removeItem("customersPage_reloaded")
+        }, 1000);
+
+        get_customers()
 
     })
 
