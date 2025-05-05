@@ -341,7 +341,7 @@
                 <td class="col5" on:click={() => loanRow_clicked(i)}>{loan.interest}%</td>
                 <td class="col6">
 
-                    <div class="shopField-flex" tabindex="0" on:click={()=>location.assign(`customer/?id=${loan.customer.id}`)}>
+                    <div class="shopField-flex" tabindex="0" on:click={() => open_popup("customerPopup",false,false)}>
                         {#if loan.customer.img}
                             <img src="data:image/png;base64,{loan.customer.img}" alt="">
                         {:else}

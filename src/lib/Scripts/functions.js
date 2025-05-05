@@ -946,8 +946,6 @@ export async function get_allCustomers () {
 
         }
 
-
-
         customers_toChoose.set(reply) 
 
         if (reply.length == 0) {
@@ -958,8 +956,6 @@ export async function get_allCustomers () {
                 m.style.fontSize = "27px"
             }
         }
-
-        console.log(reply)
 
     }
     else {

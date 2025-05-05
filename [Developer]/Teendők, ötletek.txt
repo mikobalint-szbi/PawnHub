@@ -7,25 +7,20 @@ Teendők:
 - Shop's Loans:
 	• Loan popup:
 		~ a visszatérítendő összeg automatikusan kiszámolósik inputmódosításkor (bindinget használjak: bind:value={varName})
-		~ Ügyfélválasztó
 		~ mentés gomb
 
-	• Termékkiválasztó popup elkészítése, API-kérelemmel, mindennel
-		~ Hol tartottam: A get_products függvényt az open_popup függvény futtassa le, hogy a ProductChooser minden megnyitáskor naprakész adatokat mutasson ✅
-		~ Így viszont más a store/global.js-be kell tenni a products listát, hogy mindkét függvény elérje ✅
-		~ Megvannak az adatok, ki is vannak írva a konzolba, már csak meg kell őket jeleníteni a ProductChooser popupban.
-
-	• Ügyfélkiválasztó popup elkészítése, API-kérelemmel, mindennel
-
 - Shop's Products:
-	• Miután kész, meg kell csinálnom az új termék funkciót a productChooserben
+	• Miután kész: 
+		~ meg kell csinálnom az új termék funkciót a productChooserben
+		~ A Loan page-en és a Loan popupban a már létező adósságoknál az termék popupját meg lehessen nyitni az termékre kattintva
 
 - Shop's Customers:
-	• Miután kész, meg kell csinálnom az új termék funkciót a customerChooserben
+	• Miután kész:
+		~ meg kell csinálnom az új termék funkciót a customerChooserben
+		~ A Loan page-en és a Loan popupban a már létező adósságoknál az ügyfél popupját meg lehessen nyitni az ügyfélre kattintva
 
-- Shop's Popups footer gombok stílusának megjavítása
 
-- Visszalép-e a loans page a bejelentkező oldalra, ha nincs auth_token?
+- Visszalép-e a products és a customers page boltok esetében a bejelentkező oldalra, ha nincs auth_token?
 - Shop's Loan oldal elkészítése
 - A loans oldalakon a mobilnézet megjavítása (legyen azonos magassága minden kártyának)
 
@@ -34,7 +29,6 @@ Teendők:
 
 Esetleg:
 - A lejárt lejárati dátumok a Loans oldalon pirossal jelennek meg
-- A frontend nem küld településlistát a backendnek hibát kijavítani (tök mindegy, a backendben sem működik a településszűrés)
 
 Leadás előtt:
 - Kitörölni a backendből az üres függvényeket

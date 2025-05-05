@@ -17,7 +17,7 @@
     }
 
     function cancel () {
-        
+
         document.getElementById("p-moneyLent").value = ""
         document.getElementById("p-interest").value = ""
         document.getElementById("p-startDate").value = ""
@@ -133,9 +133,11 @@
                 </div>
 
                 <!-- svelte-ignore a11y-click-events-have-key-events -->
-                <div id="customer" class="popupGrid-element" on:click={()=>open_popup("customerChooser",false, false)}>
 
-                    {#if $isNewEntry}
+
+                {#if $isNewEntry}
+
+                    <div id="customer" class="popupGrid-element" on:click={()=>open_popup("customerChooser",false, false)}>
 
                         {#if customer}
                             <div id="customer-row1">
@@ -157,7 +159,10 @@
                             </div>
                         {/if}
 
-                    {:else}
+                    </div>
+
+                {:else}
+                    <div id="customer" class="popupGrid-element" on:click={() => open_popup("customerPopup",false,false)}>
 
                         <div id="customer-row1">
                             {#if loan.customer.img}
@@ -169,9 +174,10 @@
                         <div id="customer-row2">
                             <p>{loan.customer.name}</p>
                         </div>
+                    </div>
 
-                    {/if}
-                </div>
+                {/if}
+
 
 
                 <div id="products" class="popupGrid-element">
