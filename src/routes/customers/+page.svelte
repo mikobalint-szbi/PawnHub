@@ -3,6 +3,12 @@
     import PageSelector from '$lib/PageSelector.svelte';
     import { onMount } from "svelte";
   
+    let reloaded = sessionStorage["customersPage_reloaded"]
+
+    if (!reloaded) {
+        window.location.reload();
+        sessionStorage["customersPage_reloaded"] = "true"
+    }
 
     function psOption1_clicked(){
         document.getElementById("ps-option1").classList.add("active")

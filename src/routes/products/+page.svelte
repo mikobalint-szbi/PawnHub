@@ -8,6 +8,13 @@
     let user = JSON.parse(localStorage["user"] ?? "[]");
     let isCustomer = user.isCustomer;
 
+    let reloaded = sessionStorage["productsPage_reloaded"]
+
+    if (!isCustomer && !reloaded) {
+        window.location.reload();
+        sessionStorage["productsPage_reloaded"] = "true"
+    }
+
 </script>
 
 

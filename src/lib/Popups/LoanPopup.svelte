@@ -316,7 +316,7 @@
                         <p id="loanPopup-submitText" class="submitText">Mentés</p>
                     </button>
                 {:else}
-                    <button on:click={save_loan} id="submitButton" class="bottomButton" style="visibility: none;">
+                    <button on:click={save_loan} id="submitButton" class="bottomButton">
                         <img src="IMG/Global/save.png" alt="" id="submitImg">
                         <p id="loanPopup-submitText" class="submitText">Módosítások mentése</p>
                     </button>
