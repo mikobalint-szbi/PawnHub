@@ -45,7 +45,7 @@ export function open_popup(popupID, ...args){
     let backButton = false
     let object
 
-    if (["productPopup","loanPopup","customerPopup"].includes(popupID)){
+    if (["productPopup"/*,"loanPopup"*/,"customerPopup"].includes(popupID)){
 
         let create = args[0]
         //object = args[1]

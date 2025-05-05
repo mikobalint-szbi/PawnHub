@@ -15,6 +15,14 @@
 
     $: moneyBack = formatNum(roundForint(moneyLent * (1 + interest / 100)))
 
+    function save_newLoan () {
+        
+    }
+
+    function save_loan () {
+
+    }
+
     function productButton_clicked(j) {
         product_forShops.set(loan.items[j])
         open_popup("productPopup")
@@ -301,10 +309,18 @@
             </div>
 
             <div id="bottomRow">
-                <button on:click={() => save_popup("loanPopup")} id="submitButton" class="bottomButton">
-                    <img src="IMG/Global/save.png" alt="" id="submitImg">
-                    <p id="loanPopup-submitText" class="submitText">Módosítások mentése</p>
-                </button>
+
+                {#if $isNewEntry}
+                    <button on:click={save_newLoan} id="submitButton" class="bottomButton">
+                        <img src="IMG/Global/save.png" alt="" id="submitImg">
+                        <p id="loanPopup-submitText" class="submitText">Mentés</p>
+                    </button>
+                {:else}
+                    <button on:click={save_loan} id="submitButton" class="bottomButton" style="visibility: none;">
+                        <img src="IMG/Global/save.png" alt="" id="submitImg">
+                        <p id="loanPopup-submitText" class="submitText">Módosítások mentése</p>
+                    </button>
+                {/if}
 
                 {#if $isNewEntry}
 
