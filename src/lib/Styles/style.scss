@@ -69,7 +69,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 }
 
 .row{
-	display: table-row;
+	display: table-row !important;
 }
 
 *::-webkit-scrollbar {
