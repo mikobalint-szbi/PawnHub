@@ -6,8 +6,8 @@ Teendők:
 
 - Shop's Loans:
 	• Loan popup:
-		~ a visszatérítendő összeg automatikusan kiszámolósik inputmódosításkor (bindinget használjak: bind:value={varName})
-		~ mentés gomb
+		~ mentés gomb függvénye
+		~ módosítások mentése gomb függvénye
 
 - Shop's Products:
 	• Miután kész: 

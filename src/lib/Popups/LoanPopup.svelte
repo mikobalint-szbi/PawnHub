@@ -9,7 +9,11 @@
     $: products = $productList_forNewLoan;
     $: customer = $customer_forNewLoan;
 
-    let moneyBack = 0
+    let moneyLent = 0
+    let interest = 0
+    let moneyBack = "0"
+
+    $: moneyBack = formatNum(roundForint(moneyLent * (1 + interest / 100)))
 
     function productButton_clicked(j) {
         product_forShops.set(loan.items[j])
@@ -67,7 +71,7 @@
                     <label for="p-moneyLent" class="popup-label">Kölcsönadott összeg:</label>
                     <div class="pv-row">
                         {#if $isNewEntry}
-                            <input type="number" class="popup-input money" id="p-moneyLent" value="">
+                            <input type="number" class="popup-input money" id="p-moneyLent" bind:value={moneyLent}>
                         {:else}
                             <input type="number" class="popup-input money" id="p-moneyLent" value="{loan.givenAmount}" disabled>
                         {/if}
@@ -90,9 +94,9 @@
                     <label for="p-interest" class="popup-label">Kamatszázalék:</label>
                     <div class="pv-row">
                         {#if $isNewEntry}
-                            <input type="number" min="0" class="popup-input money" id="p-interest" value="0">
+                            <input type="number" min="0" class="popup-input money" id="p-interest" bind:value={interest}>
                         {:else}
-                            <input type="number" min="0" class="popup-input money" id="p-interest" value="{loan.interest}">
+                            <input type="number" min="0" class="popup-input money" id="p-interest" value="{loan.interest}" disabled>
                         {/if}
                         <p class="p-current">%</p>
                     </div>
