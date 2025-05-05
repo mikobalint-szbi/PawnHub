@@ -1,9 +1,11 @@
 <script>
     import {open_popup, close_popup, save_popup} from "$lib/Scripts/popup.js";
-    import {api, formatNum, timeToDate, dateDisplay, roundForint, isExpired} from "$lib/Scripts/functions.js";
+    import {api, formatNum, timeToDate, dateDisplay, roundForint, isExpired, get_categories} from "$lib/Scripts/functions.js";
     import { loan_forShops, product_forShops, isNewEntry } from '@/stores/global.js';
+    import { condition } from "$lib/Scripts/variables.js";
     import { onMount } from "svelte";
 
+    let categories = {}
     let searchResults = []
     let pawned = []
     let sale = []
@@ -81,6 +83,13 @@
     
         open_popup("productPopup")
     }
+
+    function newProduct_clicked () {
+        product_forShops.set(product_empty)
+        isNewEntry.set(true)
+
+        open_popup("loanPopup",true,false)
+    }
     
     function switch_results () {
 
@@ -108,39 +117,49 @@
         }
 
         if (searchKey) {                
-            if (searchIn == "shop") {
+            if (searchIn == "name") {
                 displayList.forEach(e => {
-                    if (e.shop.name.toLowerCase().includes(searchKey)){
+                    if (e.name.toLowerCase().includes(searchKey)){
                         searchResults.push(e)
                     }
                 })
             }
-            else if (searchIn == "item") {
+            else if (searchIn == "category") {
                 displayList.forEach(e => {
-                    var BreakException = {};
-
-                    try {
-                        e.items.forEach(item => {
-                            if (item.name.toLowerCase().includes(searchKey)){
-                                searchResults.push(e)
-                                throw BreakException;
-                            }
-                        })
-                    } catch (e) {
-                        if (e !== BreakException) throw e;
-                    }
-                })
-            }
-            else { // description
-                displayList.forEach(e => {
-                    if (e.description.toLowerCase().includes(searchKey)){
+                    if (categories[e.type_id].toLowerCase().includes(searchKey)){
                         searchResults.push(e)
                     }
                 })
             }
-            displayList.forEach(e => {
-                
-            })
+            else if (searchIn == "customer") {
+                displayList.forEach(e => {
+                    if (e.customer && e.customer.name.toLowerCase().includes(searchKey)){
+                        searchResults.push(e)
+                    }
+                })
+            }
+            else if (searchIn == "condition") {
+                displayList.forEach(e => {
+                    if (condition[e.condition].toLowerCase().includes(searchKey)){
+                        searchResults.push(e)
+                    }
+                })
+            }
+            else if (searchIn == "description") {
+                displayList.forEach(e => {
+                    if (e.description && e.description.toLowerCase().includes(searchKey)){
+                        searchResults.push(e)
+                    }
+                })
+            }
+            else if (searchIn == "location") {
+                displayList.forEach(e => {
+                    if (e.location && e.location.toLowerCase().includes(searchKey)){
+                        searchResults.push(e)
+                    }
+                })
+            }
+  
         }
         else {
             searchResults = displayList
@@ -148,12 +167,14 @@
         }
 
         if (searchResults.length == 0) {
-            searchError("Nincs találat.", true, "big")
+            //searchError("Nincs találat.", true, "big")
         }
 
     }
 
     async function get_products () {
+
+        categories = await get_categories()
         
         searchError("Adatok lekérése folyamantban...", true)
         let reply = await api('GET', "/shopAllItems");
@@ -162,11 +183,10 @@
             document.getElementById("searchError").style.display = "none"
 
         if (reply) {
-            console.log(reply)
 
             if (reply.length > 0) {
                 reply.forEach(e => {
-                    if (e.loan_id){
+                    if (e.loan){
                         pawned.push(e)
                     }
                     else {
@@ -175,8 +195,6 @@
                 });
             }
 
-            console.log(reply)
-
             switch_results()
 
             if (searchResults.length == 0) {
@@ -184,7 +202,7 @@
                 
             }
 
-            console.log(searchResults)
+            //console.log(searchResults)
             //return reply.items
 
         }
@@ -256,7 +274,7 @@
                     <option value="category">Kategória</option>
                     <option value="customer">Ügyfél</option>
                     <option value="condition">Állapot</option>
-                    <option value="notes">Leírás</option>
+                    <option value="description">Leírás</option>
                     <option value="location">Hely</option>
                 </select>
                 <input type="text" id="searchKey">
@@ -283,7 +301,7 @@
 
         </div>
         <div id="hl-col3">
-            <button id="add-button" on:click={() => open_popup("productPopup",true,true)}>
+            <button id="add-button" on:click={newProduct_clicked}>
                 <div id="add-col1">
                     <img src="IMG/Global/add.png" alt="Hozzáadás" title="Hozzáadás">
                 </div>
@@ -297,6 +315,7 @@
     </div>
 
     <div id="main-container">
+        {#if searchResults.length != 0}
         <table id="main">
             <thead>
                 <th class="col1">Kép</th>
@@ -311,41 +330,66 @@
             </thead>
             <tbody>
 
-                {#each searchResults as _, i}
+                {#each searchResults as product, i}
                 <div class="row" href="">
                     <td class="col1" href="" tabindex="0" on:click={() => productRow_clicked(i)}>
-                        <img src="IMG/Global/no-image.png" alt="">
+                        {#if product.img}
+                            <img src="data:image/png;base64,{product.img}" alt="A termék fényképe">
+                        {:else}
+                            <img src="IMG/Global/no-image.png" alt="A termék fényképe">
+                        {/if}
                     </td>
-                    <td class="col2"  on:click={() => productRow_clicked(i)}>Tárgy neve</td>
-                    <td class="col3"  on:click={() => productRow_clicked(i)}>Karórák</td>
+                    <td class="col2"  on:click={() => productRow_clicked(i)}>{product.name}</td>
+                    <td class="col3"  on:click={() => productRow_clicked(i)}>{categories[product.type_id]}</td>
                     <td class="col4">
-                        <div class="loanField-flex">
-                            <button>
-                                <p title="Pénzösszeg" class="loanField-money">1 300 000 Ft</p>
-                                <p title="Megköttetett" class="loanField-concludion">2024.03.22.</p>
-                                <p title="Lejár" class="loanField-expiration">2025.01.30.</p>
-                                <p title="Kamat" class="loanField-interest">5%</p>
-                            </button>
-                        </div>
 
+                        {#if product.loan}
+                            <!-- svelte-ignore a11y-no-static-element-interactions -->
+                            <!-- svelte-ignore a11y-click-events-have-key-events -->
+                            <div class="loanField-flex" on:click={() => open_popup("loanPopup",false,false)}>
+                                <button>
+                                    <p title="Pénzösszeg" class="loanField-money">{formatNum(roundForint(product.loan.givenAmount * (1 + product.loan.interest / 100)))} Ft</p>
+                                    <p title="Megköttetett" class="loanField-concludion">{timeToDate(product.loan.created_at)}</p>
+                                    <p title="Lejár" class="loanField-expiration">{dateDisplay(product.loan.expDate)}</p>
+                                    <p title="Kamat" class="loanField-interest">{product.loan.interest}%</p>
+                                </button>
+                            </div>
+                        {/if}
                     </td>
-                    <td class="col5" on:click={() => open_popup("customerPopup",false,false)}>
-                        <div class="customerField-flex">
-                            <img src="IMG/Global/no-profile-image.png" alt="">
-                            <p>Péld Aladár</p>
-                        </div>
+                    <td class="col5" >
+                        {#if product.customer}
+                            <!-- svelte-ignore a11y-click-events-have-key-events -->
+                            <!-- svelte-ignore a11y-no-static-element-interactions -->
+                            <div class="customerField-flex" on:click={() => open_popup("customerPopup",false,false)}>
+                                {#if product.customer.img}
+                                    <img src="data:image/png;base64,{product.customer.img}" alt="Az ügyfél fényképe">
+                                {:else}
+                                    <img src="IMG/Global/no-profile-image.png" alt="Az ügyfél fényképe">
+                                {/if}
 
+                                <p>{product.customer.name}</p>
+                            </div>
+                        {/if}
                     </td>
-                    <td class="col6" on:click={() => productRow_clicked(i)}>20 000 Ft</td>
-                    <td class="col7" on:click={() => productRow_clicked(i)}>150 000 Ft</td>
-                    <td class="col8" on:click={() => productRow_clicked(i)}>Kifogástalan</td>
-                    <td class="col9" on:click={() => productRow_clicked(i)}>Kirakat alsó polc</td>
+                    <td class="col6" on:click={() => productRow_clicked(i)}>{formatNum(product.payedValue)} Ft</td>
+                    <td class="col7" on:click={() => productRow_clicked(i)}>{formatNum(product.estimatedValue)} Ft</td>
+                    <td class="col8" on:click={() => productRow_clicked(i)}>{condition[product.condition]}</td>
+                    <td class="col9" on:click={() => productRow_clicked(i)}>
+                        {#if product.location}
+                        {#if product.location.length > 70}
+                            {product.location.replaceAll("\n\n","</p><p>").replaceAll("\n","<br>").substring(0,70)}...
+                        {:else}
+                            {product.location.replaceAll("\n\n","</p><p>").replaceAll("\n","<br>")}
+                        {/if}
+                    {/if}
+                    </td>
                 </div>
                 {/each}
 
                 
             </tbody>
         </table>
+        {/if}
     </div>
 
 </section>
@@ -527,6 +571,11 @@
                 }
                 td.col5{
 
+                }
+
+                td.col8 {
+                    overflow: hidden;
+                    white-space: nowrap;
                 }
                 
             }

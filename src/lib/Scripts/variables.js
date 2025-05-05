@@ -14,7 +14,7 @@ export const regex = {
 }
 
 export const condition = {
-    5: "🔵 Használatlan",
+    5: "🔵 Vadonatúj",
     4: "🟢 Kiváló",
     3: "🟡 Jó",
     2: "🟠 Kielégítő",
