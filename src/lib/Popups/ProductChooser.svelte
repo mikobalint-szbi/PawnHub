@@ -88,16 +88,16 @@
                     {:else}
 
                         {#each allProducts as product, i}
-                        <!-- svelte-ignore a11y-click-events-have-key-events -->
-                        <!-- svelte-ignore a11y-no-static-element-interactions -->
-                        <div class="productResult {product.selected? 'selected' : ''}" on:click={()=>toggle_product(i)} style="display: {product.name.toLowerCase().includes(searchKey.toLowerCase())? 'flex' : 'none'}">
-                            {#if product.img}
-                                <img src="data:image/png;base64,{product.img}" alt="A termék fényképe">
-                            {:else}
-                                <img src="IMG/Global/no-image.png" alt="A termék fényképe">
-                            {/if}
-                            <p>{product.name}</p>
-                        </div>
+                            <!-- svelte-ignore a11y-click-events-have-key-events -->
+                            <!-- svelte-ignore a11y-no-static-element-interactions -->
+                            <div class="productResult {product.selected? 'selected' : ''}" on:click={()=>toggle_product(i)} style="display: {product.name.toLowerCase().includes(searchKey.toLowerCase())? 'flex' : 'none'}">
+                                {#if product.img}
+                                    <img src="data:image/png;base64,{product.img}" alt="A termék fényképe">
+                                {:else}
+                                    <img src="IMG/Global/no-image.png" alt="A termék fényképe">
+                                {/if}
+                                <p>{product.name}</p>
+                            </div>
                         {/each}
 
                     {/if}

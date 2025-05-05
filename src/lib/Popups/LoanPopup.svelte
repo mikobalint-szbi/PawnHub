@@ -17,6 +17,7 @@
     }
 
     function cancel () {
+        
         document.getElementById("p-moneyLent").value = ""
         document.getElementById("p-interest").value = ""
         document.getElementById("p-startDate").value = ""
@@ -135,10 +136,11 @@
                 <div id="customer" class="popupGrid-element" on:click={()=>open_popup("customerChooser",false, false)}>
 
                     {#if $isNewEntry}
+
                         {#if customer}
                             <div id="customer-row1">
                                 {#if customer.img}
-                                    <img src="data:image/png;base64,{loan.customer.img}" alt="Az ügyfél fényképe">
+                                    <img src="data:image/png;base64,{customer.img}" alt="Az ügyfél fényképe">
                                 {:else}
                                     <img src="IMG/Global/no-profile-image.png" alt="Az ügyfél fényképe">
                                 {/if}
@@ -154,7 +156,9 @@
                                 <p>Ügyfél hozzárendelése</p>
                             </div>
                         {/if}
+
                     {:else}
+
                         <div id="customer-row1">
                             {#if loan.customer.img}
                                 <img src="data:image/png;base64,{loan.customer.img}" alt="Az ügyfél fényképe">
@@ -165,6 +169,7 @@
                         <div id="customer-row2">
                             <p>{loan.customer.name}</p>
                         </div>
+
                     {/if}
                 </div>
 
@@ -290,15 +295,23 @@
                     <img src="IMG/Global/save.png" alt="" id="submitImg">
                     <p id="loanPopup-submitText" class="submitText">Módosítások mentése</p>
                 </button>
-                <button on:click={() => open_popup("confirmDelete", false, false)} id="deleteButton" class="bottomButton">
-                    <img src="IMG/Global/delete.png" alt="" id="deleteImg">
-                    {#if $isNewEntry}
-                        <p id="customerPopup-deleteText" class="deleteText" on:click={cancel}>Mégsem</p>
-                    {:else}
-                        <p id="customerPopup-deleteText" class="deleteText">Adósság törlése</p>
-                    {/if}
 
-                </button>
+                {#if $isNewEntry}
+
+                    <button on:click={cancel} id="deleteButton" class="bottomButton">
+                        <img src="IMG/Global/delete.png" alt="" id="deleteImg">
+                        <p id="customerPopup-deleteText" class="deleteText">Mégsem</p>
+                    </button>
+
+                {:else}
+
+                    <button on:click={() => open_popup("confirmDelete", false, false)} id="deleteButton" class="bottomButton">
+                        <img src="IMG/Global/delete.png" alt="" id="deleteImg">
+                        <p id="customerPopup-deleteText" class="deleteText">Adósság törlése</p>
+                    </button>
+
+                {/if}
+
             </div>
         </div>
     </div>

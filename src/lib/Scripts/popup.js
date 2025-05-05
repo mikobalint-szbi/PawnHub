@@ -1,6 +1,6 @@
 import { getNum } from "$lib/Scripts/functions.js";
-import { products_toChoose } from '@/stores/global.js';
-import { get_allProducts } from "./functions";
+import { products_toChoose, customers_toChoose } from '@/stores/global.js';
+import { get_allProducts, get_allCustomers } from "./functions";
 
 export function close_popup(popupID){
     let popup = document.getElementById(popupID)
@@ -110,6 +110,10 @@ export function open_popup(popupID, ...args){
     else if (popupID == "productChooser"){
         products_toChoose.set([])
         get_allProducts()
+    }
+    else if (popupID == "customerChooser"){
+        customers_toChoose.set([])
+        get_allCustomers()
     }
     /*else {
         object = args[0]

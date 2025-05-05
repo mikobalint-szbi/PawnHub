@@ -1,6 +1,51 @@
 <script>
     import {open_popup, close_popup, save_popup} from "$lib/Scripts/popup.js";
+    import { api } from "$lib/Scripts/functions.js";
+    import { customers_toChoose, customer_forNewLoan } from '@/stores/global.js';
     import {onMount} from 'svelte';
+
+    $: allCustomers = $customers_toChoose;
+
+    let searchKey = ''
+
+    function toggle_customer(i) {
+
+        for (let j = 0; j < allCustomers.length; j++){
+
+            if (allCustomers[j].selected) {
+                allCustomers[j].selected = false
+            }
+        }
+
+        if (allCustomers[i].selected) {
+            allCustomers[i].selected = false
+        }
+        else {
+            allCustomers[i].selected = true
+        }
+    }
+
+    function submit () {
+
+        let found = false
+
+        for (let i = 0; i < allCustomers.length; i++){
+            if (allCustomers[i].selected) {
+                customer_forNewLoan.set(allCustomers[i])
+                found = true
+                break
+            }
+        }
+
+        if (found){
+            close_popup("customerChooser")
+        }
+        else {
+            open_popup("messageOK","Kérjük, válasszon ki egy ügyfélt.")
+        }
+
+
+    }
 
     onMount(()=>{
 	    document.getElementById("image").addEventListener('click', () => {close_popup("customerChooser"); open_popup("imageViewer")} )
@@ -42,37 +87,44 @@
 
                 <div id="customerResults">
 
-                    {#each {length: 4} as _, i}
-                    <div class="customerResult">
+                    <!--div class="customerResult selected">
                         <img src="IMG/Global/no-profile-image.png" alt="">
                         <p>Péld Aladárné Teszt Ilona unokahúga</p>
-                    </div>
-                    {/each}
+                    </div-->
 
-                    <div class="customerResult selected">
-                        <img src="IMG/Global/no-profile-image.png" alt="">
-                        <p>Péld Aladárné Teszt Ilona unokahúga</p>
-                    </div>
+                    {#if allCustomers.length == 0}
 
-                    {#each {length: 14} as _, i}
-                    <div class="customerResult">
-                        <img src="IMG/Global/no-profile-image.png" alt="">
-                        <p>Péld Aladárné Teszt Ilona unokahúga</p>
-                    </div>
-                    {/each}
+                        <p id="ccMessage">Adatok lekérése folyamantban...</p>
+
+                    {:else}
+
+                        {#each allCustomers as customer, i}
+                            <!-- svelte-ignore a11y-click-events-have-key-events -->
+                            <!-- svelte-ignore a11y-no-static-element-interactions -->
+                            <div class="customerResult {customer.selected? 'selected' : ''}" on:click={()=>toggle_customer(i)} style="display: {customer.name.toLowerCase().includes(searchKey.toLowerCase())? 'flex' : 'none'}">
+                                {#if customer.img}
+                                    <img src="data:image/png;base64,{customer.img}" alt="Az ügyfél fényképe">
+                                {:else}
+                                    <img src="IMG/Global/no-profile-image.png" alt="Az ügyfél fényképe">
+                                {/if}
+                                <p>{customer.name}</p>
+                            </div>
+                        {/each}
+
+                    {/if}
 
                 </div>
 
             </div>
 
             <div id="bottomRow">
-                <button on:click={() => open_popup("productPopup",true,true)} id="addButton" class="bottomButton">
+                <button on:click={() => open_popup("customer Popup",true,true)} id="addButton" class="bottomButton">
                     <img src="IMG/Global/add.png" alt="" id="addImg">
                     <p id="addText">Új ügyfél</p>
                 </button>
-                <button on:click={() => save_popup("customerChooser")} id="submitButton" class="bottomButton">
+                <button on:click={submit} id="submitButton" class="bottomButton">
                     <img src="IMG/Global/select.png" alt="" id="submitImg">
-                    <p id="submitText">Kiválasztás</p>
+                    <p id="submitText">OK</p>
                 </button>
             </div>
         </div>
@@ -168,6 +220,13 @@
 
             overflow-y: scroll;
             border-top: 1px solid black;
+
+            #ccMessage {
+                color: rgb(64, 108, 78);
+                font-size: 20px;
+                text-align: center;
+                margin-top: 160px;
+            }
 
             .customerResult {
 

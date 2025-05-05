@@ -6,7 +6,7 @@ import { json } from "@sveltejs/kit";
 import { goto } from '$app/navigation';
 import { page } from '$app/stores';
 import { get } from 'svelte/store';
-import { products_toChoose, productList_forNewLoan } from '@/stores/global.js';
+import { products_toChoose, productList_forNewLoan, customer_forNewLoan, customers_toChoose } from '@/stores/global.js';
 
 
 
@@ -860,6 +860,7 @@ export async function get_allProducts () {
     if (m) {
         m.style.fontSize = "20px"
         m.innerHTML = "Adatok lekérése folyamatban..."
+        m.style.color = "rgb(64, 108, 78)"
     }
 
     let reply = await api('GET', "/shopAllItems");
@@ -895,12 +896,76 @@ export async function get_allProducts () {
             }
         }
 
+        // console.log(reply)
+
+    }
+    else {
+        m.innerHTML = "Ismeretlen szerverhiba történt!"
+        m.style.fontSize = "24px"
+        m.style.color = "rgb(156, 30, 30)"
+
+    }
+
+}
+
+export async function get_allCustomers () {
+        
+    let m = document.getElementById("ccMessage")
+
+    if (m) {
+        m.style.fontSize = "20px"
+        m.innerHTML = "Adatok lekérése folyamatban..."
+        m.style.color = "rgb(64, 108, 78)"
+    }
+
+    let reply = await api('GET', "/customers");
+
+
+    if (reply) {
+
+        const customer = get(customer_forNewLoan);
+
+        if (customer) {
+
+            for (let i = 0; i < reply.length; i++) {
+
+                if (reply[i].id == customer.id){
+                    reply[i].selected = true
+    
+                    // Put the element to the beginning:
+                    const [item] = reply.splice(i, 1);
+                    reply.unshift(item);
+    
+                    break
+                }
+                else {
+                    reply[i].selected = false
+                }
+    
+            }
+
+        }
+
+
+
+        customers_toChoose.set(reply) 
+
+        if (reply.length == 0) {
+
+            
+            if (m) {
+                m.innerHTML = "Nincs találat!"
+                m.style.fontSize = "27px"
+            }
+        }
+
         console.log(reply)
 
     }
     else {
-        searchError("Ismeretlen szerverhiba történt!", false, "big")
-
+        m.innerHTML = "Ismeretlen szerverhiba történt!"
+        m.style.fontSize = "24px"
+        m.style.color = "rgb(156, 30, 30)"
     }
 
 }
