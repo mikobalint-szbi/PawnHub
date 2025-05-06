@@ -1,9 +1,0 @@
-Feladatspecifikáció
-
-Rövid ismertetés
-A eszközeg célja
-Műszaki megvalósítás: felhasznált programozási nyelvek, keretrendszerek
-Alkotóelemek
-Megjelenés
-Funkcionalitás
-
