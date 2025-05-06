@@ -516,14 +516,25 @@ export function add_settlement (name, code, skipParams = false, skipLocStorage =
     
     // Etc 
     document.getElementById("settlInput").value = ""
-    document.getElementById("selectedSettlements").style.display = "flex"
+    
+    if (document.getElementById("selectedSettlements"))
+        document.getElementById("selectedSettlements").style.display = "flex"
     
 }
 
 
 
-export async function toggle_settlDropdown(multiple=false){
-        
+export async function toggle_settlDropdown(multiple_=false){
+
+    if (window.location.href.includes("/settings") || window.location.href.includes("/register")) {
+        multiple_ = false
+    }
+    else {
+        multiple_ = true
+    }
+
+
+    console.log(multiple_)
     let dropdown = document.getElementById("dropdownContent")
     let input = document.getElementById("settlInput")
     dropdown.style.width = input.offsetWidth + "px"
@@ -580,7 +591,7 @@ export async function toggle_settlDropdown(multiple=false){
                     link.id = l[key]
                     link.text = key
                     link.onclick = () =>{
-                        if (!multiple){
+                        if (!multiple_){
                             localStorage["chosenSettlement"] = l[key]
                             input.value = key
 
