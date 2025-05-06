@@ -85,7 +85,7 @@
     }
 
     function newProduct_clicked () {
-        product_forShops.set(product_empty)
+        //product_forShops.set(product_empty)
         isNewEntry.set(true)
 
         open_popup("loanPopup",true,false)
